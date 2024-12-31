@@ -32,6 +32,8 @@
         </main>
     </div>
 
+    <!-- Load DOMPurify library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
     <!-- Load search.js first -->
     <script src="../js/search.js"></script>
     
@@ -91,12 +93,12 @@
         function displayResults(results, query) {
             const resultsContainer = document.getElementById('search-results');
             if (results.length === 0) {
-                resultsContainer.innerHTML = `<p>No results found for "${query}"</p>`;
+                resultsContainer.innerHTML = `<p>No results found for "${DOMPurify.sanitize(query)}"</p>`;
                 return;
             }
 
             resultsContainer.innerHTML = `
-                <h2>Results for "${query}"</h2>
+                <h2>Results for "${DOMPurify.sanitize(query)}"</h2>
                 <p class="search-summary">Found ${results.length} matching pages</p>
                 <div class="search-results-list">
                     ${results.map(result => `
