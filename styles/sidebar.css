@@ -1,0 +1,154 @@
+.sidebar-container {
+    position: fixed;
+    top: var(--navbar-height);
+    height: calc(100vh - var(--navbar-height));
+    z-index: 1000;
+    display: flex;
+    transition: transform 0.2s ease;
+    pointer-events: none;
+}
+
+.sidebar {
+    pointer-events: auto;
+    position: fixed;
+    top: 100vh - var(--navbar-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--off-white);
+    color: var(--black);
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s ease;
+    touch-action: pan-y pinch-zoom;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add this new rule for dark mode */
+.sidebar.dark-mode {
+    box-shadow: 2px 0 8px rgba(255, 255, 255, 0.1); /* Slightly grey shadow for dark mode */
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.sidebar-content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+}
+
+.sidebar-content ul {
+    width: 90%;
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0 auto; /* Center the list within the sidebar */
+}
+
+.sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--grey);
+    flex: 0 0 auto;
+    background-color: var(--off-white);
+    width: 100%;
+    position: relative;
+    height: auto;
+    min-height: 90px;
+    margin-top: auto;
+}
+
+.sidebar a, 
+.sidebar p,
+.sidebar button {
+    font-family: var(--font-family);
+    font-size: var(--font-size-text);
+    color: var(--black); /* Ensure links have the same color */
+    text-decoration: none; /* Remove underline from links */
+    width: 100%; /* Ensure all buttons are the same width */
+    display: flex;
+    justify-content: center; /* Center text within the button */
+    align-items: center; /* Center text vertically */
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    width: 100%;
+    background-color: var(--off-white);
+    text-align: center; /* Center text within the dropdown menu */
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1); /* Add shadow on the left side */
+}
+
+.dropdown-menu.active {
+    max-height: 500px; /* Adjust as needed for the content */
+    transition: max-height 0.5s ease-in;
+}
+
+.dropdown-menu a {
+    font-size: calc(var(--font-size-text) * 0.95);  /* Slightly smaller */
+    font-weight: 400;
+    color: var(--black); /* Ensure links have the same color */
+    text-decoration: none; /* Remove underline from links */
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    background-color: var(--off-white);
+    margin: 0.25rem 0;
+    display: block;
+    transition: background-color 0.1s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--grey);
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /* Center text within the button */
+    align-items: center; /* Center text vertically */
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-bottom: none !important;
+    font-size: var(--font-size-text);
+    font-weight: 500;
+    width: 100%; /* Ensure all buttons are the same width */
+    transition: background-color 0.1s ease, box-shadow 0.05s ease;
+}
+
+.dropdown-toggle.active {
+    background-color: var(--grey);
+    box-shadow: var(--shadow-hover);
+}
+
+.sidebar-footer p {
+    font-size: calc(var(--font-size-text) * 0.9);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.dark-mode-toggle {
+    width: calc(100% - 2rem);
+    margin: 0;
+    padding: 0.75rem 1rem;
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    text-align: center;
+    font-size: var(--font-size-text);
+    font-weight: 500;
+}

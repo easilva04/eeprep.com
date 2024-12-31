@@ -1,0 +1,10 @@
+{
+    "questions": [
+        {
+            "question": "What is the voltage across a resistor with a resistance of 2 ohms and a current of 3 amperes?",
+            "options": ["6 V", "5 V", "4 V", "3 V"],
+            "answer": "6 V"
+        }
+        
+    ]
+}

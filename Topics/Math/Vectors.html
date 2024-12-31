@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive review of Vector Analysis for Electrical Engineering students. Learn core concepts, applications, and visual representations.">
+    <meta name="keywords" content="Vector Analysis, Electrical Engineering, Dot Product, Cross Product, Vector Fields, Divergence, Curl, Line Integrals, Surface Integrals">
+    <meta name="author" content="Eddie">
+    <meta name="publisher" content="EEPrep">
+    <title>EE Review - Vector Analysis</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09JTZCW5JJ');
+</script>
+</head>
+
+<body>
+    <div class="topborder"></div>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='ComplexNumbers.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='Geometry.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Vector Analysis</h1>
+        </header>
+
+        <main>
+            <section>
+                <p>Vector analysis provides the mathematical framework for describing physical phenomena in multidimensional
+                    spaces. It involves operations like dot and cross products, divergence, curl, and line integrals, which
+                    are essential in fields such as electromagnetism, fluid dynamics, and mechanical engineering.</p>
+            </section>
+
+            <section>
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><strong>Dot and Cross Products</strong>:
+                        <ul>
+                            <li>Dot product: Measures the projection of one vector onto another. Formula: \(\vec{A} \cdot
+                                \vec{B} = |\vec{A}| |\vec{B}| \cos(\theta)\).</li>
+                            <li>Cross product: Computes a vector perpendicular to two given vectors. Formula: \(\vec{A}
+                                \times \vec{B} = |\vec{A}| |\vec{B}| \sin(\theta) \hat{n}\).</li>
+                            <li>Applications: Work calculations, torque, and angular momentum.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Vector Fields</strong>:
+                        <ul>
+                            <li>Representing physical quantities like velocity, force, and magnetic fields.</li>
+                            <li>Visualized as arrows showing magnitude and direction.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Divergence and Curl</strong>:
+                        <ul>
+                            <li>Divergence: Measures the "spread" of a vector field. Formula: \(\nabla \cdot \vec{F}\).</li>
+                            <li>Curl: Measures the "rotation" of a vector field. Formula: \(\nabla \times \vec{F}\).</li>
+                            <li>Applications: Fluid flow analysis and Maxwell's equations.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Line and Surface Integrals</strong>:
+                        <ul>
+                            <li>Line integrals: Calculating work done along a curve. Formula: \(\int_C \vec{F} \cdot
+                                d\vec{r}\).</li>
+                            <li>Surface integrals: Flux through a surface. Formula: \(\iint_S \vec{F} \cdot \vec{n} \, dS\).
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Applications in Engineering</h3>
+                <ul></ul>
+                    <li><strong>Electromagnetism</strong>: Describing electric and magnetic fields using vector calculus.
+                    </li>
+                    <li><strong>Fluid Dynamics</strong>: Modeling flow rates, circulation, and flux in fluid systems.</li>
+                    <li><strong>Structural Analysis</strong>: Analyzing stresses and forces in mechanical structures.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Visual Representations</h3>
+                <div class="flex-container">
+                    <figure class="flex-figure">
+                        <figcaption>Visualization of a vector field with divergence.</figcaption>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}[scale=0.9]
+                                % Axes for divergence
+                                \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+                                \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+                                % Divergence field
+                                \foreach \x in {-2,-1,0,1,2} {
+                                    \foreach \y in {-2,-1,0,1,2} {
+                                        \draw[->,blue] (\x,\y) -- ++(0.3*\x, 0.3*\y);
+                                    }
+                                }
+                                \node[above left] at (2.5,2.5) {Divergence Field};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+
+                    <figure class="flex-figure">
+                        <figcaption>Visualization of a vector field with curl.</figcaption>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}[scale=0.9]
+                                % Axes for curl
+                                \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+                                \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+                                % Curl field
+                                \foreach \x in {-2,-1,0,1,2} {
+                                    \foreach \y in {-2,-1,0,1,2} {
+                                        \draw[->,red] (\x,\y) -- ++(-0.3*\y, 0.3*\x);
+                                    }
+                                }
+                                \node[above left] at (2.5,2.5) {Curl Field};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+                </div>
+
+                <figure>
+                    <figcaption>Representation of a vector in 2D space.</figcaption>
+                    <script type="text/tikz">
+                        \begin{tikzpicture>
+                            \draw[->] (-1,0) -- (5,0) node[right] {$x$};
+                            \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+                            \draw[->, thick, blue] (0,0) -- (3,2) node[above right] {$\vec{v}$};
+                            \draw[dashed] (3,0) -- (3,2) -- (0,2);
+                            \node[below] at (3,0) {$v_x$};
+                            \node[left] at (0,2) {$v_y$};
+                        \end{tikzpicture>
+                    </script>
+                </figure>
+            </section>
+
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+            </section>
+
+            <script>
+                let questions = [];
+
+                function loadQuestions() {
+                    fetch('../../questions/Math/Vectors.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                            displayQuestions();
+                        })
+                        .catch(error => console.error('Error loading questions:', error));
+                }
+
+                function displayQuestions() {
+                    const questionsContainer = document.getElementById('questions-container');
+                    questionsContainer.innerHTML = '';
+                    questions.forEach((question, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.classList.add('question');
+
+                        const questionTitle = document.createElement('p');
+                        questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                        questionDiv.appendChild(questionTitle);
+
+                        question.options.forEach(option => {
+                            const optionLabel = document.createElement('label');
+                            optionLabel.innerHTML = `
+                                <input type="radio" name="question${index}" value="${option}">
+                                ${option}
+                            `;
+                            questionDiv.appendChild(optionLabel);
+                            questionDiv.appendChild(document.createElement('br'));
+                        });
+
+                        questionsContainer.appendChild(questionDiv);
+                    });
+                    MathJax.typesetPromise([questionsContainer]);
+                }
+
+                document.getElementById('check-answers').addEventListener('click', () => {
+                    let score = 0;
+                    questions.forEach((question, index) => {
+                        const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                        const correctAnswer = question.answer;
+                        if (selectedOption) {
+                            if (selectedOption.value === correctAnswer) {
+                                score++;
+                                selectedOption.parentElement.style.color = 'green';
+                            } else {
+                                selectedOption.parentElement.style.color = 'red';
+                            }
+                        }
+                    });
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                    MathJax.typesetPromise([resultsDiv]);
+                });
+
+                document.getElementById('new-questions').addEventListener('click', () => {
+                    loadQuestions();
+                    document.getElementById('results').innerHTML = '';
+                });
+
+                loadQuestions();
+            </script>
+        </main>
+    </div>
+
+</body>
+
+</html>

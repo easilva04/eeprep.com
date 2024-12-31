@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+% Add your circuit diagrams here
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+        % Example circuit diagram
+        \draw (0,0) to[battery] (0,2)
+              to[resistor] (2,2)
+              to[resistor] (2,0)
+              -- (0,0);
+    \end{circuitikz}
+    \caption{Simple circuit with a battery and resistors.}
+    \label{fig:simple_circuit}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+        % Example circuit diagram
+        \draw (0,0) to[battery] (0,2)
+              to[resistor] (2,2)
+              to[resistor] (2,0)
+              -- (0,0);
+        \draw (2,2) to[short, *-] (3,2)
+              to[short] (3,1)
+              to[short] (2,1);
+    \end{circuitikz}
+    \caption{Simple circuit with a battery and resistors.}
+    \label{fig:second_simple_circuit}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+        \draw
+        (0,0) to[R, l=$R_1$] (2,0)
+        to[R, l=$R_2$] (4,0)
+        to[short, -*] (6,0)
+        (2,0) to[R, l=$R_3$] (2,-2)
+        (4,0) to[R, l=$R_4$] (4,-2)
+        (2,-2) to[short, -*] (4,-2)
+        (0,0) to[short, -*] (0,2)
+        (0,2) to[R, l=$R_5$] (2,2)
+        to[R, l=$R_6$] (4,2)
+        to[short, -*] (6,2)
+        (2,2) to[R, l=$R_7$] (2,4)
+        (4,2) to[R, l=$R_8$] (4,4)
+        (2,4) to[short, -*] (4,4)
+        (0,2) to[short, -*] (0,4)
+        (0,4) to[R, l=$R_9$] (2,4)
+        to[R, l=$R_{10}$] (4,4)
+        to[short, -*] (6,4)
+        (6,0) to[short] (6,4);
+    \end{circuitikz}
+    \caption{Complex resistor network.}
+    \label{fig:resistor_network}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+        \draw
+        (0,0) to[L, l=$L_1$] (2,0)
+        to[C, l=$C_1$] (4,0)
+        to[short, -*] (6,0)
+        (2,0) to[L, l=$L_2$] (2,-2)
+        (4,0) to[C, l=$C_2$] (4,-2)
+        (2,-2) to[short, -*] (4,-2)
+        (0,0) to[short, -*] (0,2)
+        (0,2) to[L, l=$L_3$] (2,2)
+        to[C, l=$C_3$] (4,2)
+        to[short, -*] (6,2)
+        (2,2) to[L, l=$L_4$] (2,4)
+        (4,2) to[C, l=$C_4$] (4,4)
+        (2,4) to[short, -*] (4,4)
+        (0,2) to[short, -*] (0,4)
+        (0,4) to[L, l=$L_5$] (2,4)
+        to[C, l=$C_5$] (4,4)
+        to[short, -*] (6,4)
+        (6,0) to[short] (6,4);
+    \end{circuitikz}
+    \caption{Inductor and capacitor network.}
+    \label{fig:inductor_capacitor_network}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+        \draw
+        (0,0) to[V, l=$V_1$] (0,4)
+        (0,4) to[R, l=$R_1$] (4,4)
+        (4,4) to[L, l=$L_1$] (4,0)
+        (4,0) to[C, l=$C_1$] (0,0)
+        (2,4) to[R, l=$R_2$] (2,2)
+        (2,2) to[L, l=$L_2$] (4,2)
+        (4,2) to[C, l=$C_2$] (2,0)
+        (2,0) to[R, l=$R_3$] (0,2)
+        (0,2) to[L, l=$L_3$] (2,2);
+    \end{circuitikz}
+    \caption{Complex circuit with voltage source, resistors, inductors, and capacitors.}
+    \label{fig:complex_circuit}
+\end{figure}
+
+\end{document}

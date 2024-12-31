@@ -1,0 +1,49 @@
+{
+    "questions": [
+        {
+            "question": "Find the eigenvalues of the matrix \\(\\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}\\).",
+            "options": ["5, 2", "6, 1", "4, 3", "3, 2"],
+            "answer": "5, 2"
+        },
+        {
+            "question": "Determine if the matrix \\(\\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}\\) is invertible.",
+            "options": ["Yes", "No"],
+            "answer": "No"
+        },
+        {
+            "question": "Calculate the determinant of the matrix \\(\\begin{pmatrix} 2 & 3 & 1 \\\\ 1 & 0 & 4 \\\\ 5 & 2 & 1 \\end{pmatrix}\\).",
+            "options": ["-27", "27", "0", "15"],
+            "answer": "-27"
+        },
+        {
+            "question": "Find the rank of the matrix \\(\\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}\\).",
+            "options": ["1", "2", "3", "0"],
+            "answer": "2"
+        },
+        {
+            "question": "Solve the system of linear equations: \\(\\begin{cases} 2x + 3y - z = 1 \\\\ x - y + 4z = 2 \\\\ 3x + y + 2z = 3 \\end{cases}\\).",
+            "options": ["\\(x=1, y=0, z=1\\)", "\\(x=0, y=1, z=1\\)", "\\(x=1, y=1, z=0\\)", "\\(x=1, y=1, z=1\\)"],
+            "answer": "\\(x=1, y=0, z=1\\)"
+        },
+        {
+            "question": "If \\(A\\) is a 3x3 matrix with eigenvalues 1, 2, and 3, find \\(\\det(A^{-1})\\).",
+            "options": ["1/6", "1/9", "6", "9"],
+            "answer": "1/6"
+        },
+        {
+            "question": "Determine the eigenvalues of the matrix \\(\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\).",
+            "options": ["\\(i, -i\\)", "\\(1, -1\\)", "\\(0, 1\\)", "\\(i, i\\)"],
+            "answer": "\\(i, -i\\)"
+        },
+        {
+            "question": "Find the inverse of the matrix \\(\\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}\\).",
+            "options": [
+                "\\(\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}\\)",
+                "\\(\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix} \\times \\frac{1}{1}\\)",
+                "\\(\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix} \\times \\frac{1}{1}\\)",
+                "\\(\\begin{pmatrix} 3 & -5 \\\\ -1 & 2 \\end{pmatrix}\\)"
+            ],
+            "answer": "\\(\\frac{1}{1}\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}\\)"
+        }
+    ]
+}

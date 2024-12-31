@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Comprehensive guide on resistive, inductive, and capacitive networks including series, parallel, and equivalent circuits for electrical engineering students.">
+    <meta name="keywords"
+        content="Resistive Networks, Inductive Networks, Capacitive Networks, Series Circuits, Parallel Circuits, Equivalent Circuits, Electrical Engineering">
+    <meta name="author" content="EE Review">
+    <title>EE Review - Resistive, Inductive, and Capacitive Networks</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js"></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
+</head>
+
+<body>
+    <div class="topborder"></div>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='Circuits.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='nodeLoop.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Resistive, Inductive, and Capacitive Networks (Series, Parallel, and Equivalent Circuits)</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Overview</h2>
+                <p>Resistive, inductive, and capacitive networks form the backbone of circuit analysis. Simplifying
+                    series
+                    and parallel combinations of resistors, inductors, and capacitors allows for efficient calculation
+                    of
+                    voltages and currents in complex circuits.</p>
+            </section>
+            <section>
+                <h3>Series Circuits</h3>
+                <ul>
+                    <li><strong>Definition</strong>: Components are connected end-to-end, forming a single path for
+                        current.
+                    </li>
+                    <li><strong>Total Resistance</strong>: The equivalent resistance is the sum of individual
+                        resistances:
+                        <p>\[ R_{\text{eq}} = R_1 + R_2 + \ldots + R_n \]</p>
+                    </li>
+                    <li><strong>Total Inductance</strong>: The equivalent inductance is the sum of individual
+                        inductances:
+                        <p>\[ L_{\text{eq}} = L_1 + L_2 + \ldots + L_n \]</p>
+                    </li>
+                    <li><strong>Total Capacitance</strong>: The equivalent capacitance is calculated as:
+                        <p>\[ \frac{1}{C_{\text{eq}}} = \frac{1}{C_1} + \frac{1}{C_2} + \ldots + \frac{1}{C_n} \]</p>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Parallel Circuits</h3>
+                <ul>
+                    <li><strong>Definition</strong>: Components are connected across the same two nodes, forming
+                        multiple
+                        paths for current.</li>
+                    <li><strong>Total Resistance</strong>: The equivalent resistance is calculated as:
+                        <p>\[ \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n} \]</p>
+                    </li>
+                    <li><strong>Total Inductance</strong>: The equivalent inductance is calculated as:
+                        <p>\[ \frac{1}{L_{\text{eq}}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_n} \]</p>
+                    </li>
+                    <li><strong>Total Capacitance</strong>: The equivalent capacitance is the sum of individual
+                        capacitances:
+                        <p>\[ C_{\text{eq}} = C_1 + C_2 + \ldots + C_n \]</p>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Equivalent Impedance in Mixed Circuits</h3>
+                <ul>
+                    <li><strong>Concept</strong>: Mixed circuits consist of series and parallel combinations of
+                        resistors,
+                        inductors, and capacitors.</li>
+                    <li><strong>Simplification</strong>:
+                        <ul>
+                            <li>Reduce complex networks step-by-step by identifying and simplifying series and parallel
+                                combinations.</li>
+                            <li>Continue until the circuit is reduced to a single equivalent impedance.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <p>Understanding series and parallel resistive, inductive, and capacitive networks is critical for
+                    analyzing
+                    more advanced circuits, including those with dependent sources, power calculations, and transient
+                    responses.</p>
+            </section>
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let questions = [];
+
+                        function loadQuestions() {
+                            fetch('../../questions/Circuits/ResistiveNetworks.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                                    displayQuestions();
+                                })
+                                .catch(error => console.error('Error loading questions:', error));
+                        }
+
+                        function displayQuestions() {
+                            const questionsContainer = document.getElementById('questions-container');
+                            questionsContainer.innerHTML = '';
+                            questions.forEach((question, index) => {
+                                const questionDiv = document.createElement('div');
+                                questionDiv.classList.add('question');
+
+                                const questionTitle = document.createElement('p');
+                                questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                                questionDiv.appendChild(questionTitle);
+
+                                question.options.forEach(option => {
+                                    const optionLabel = document.createElement('label');
+                                    optionLabel.innerHTML = `
+                                        <input type="radio" name="question${index}" value="${option}">
+                                        ${option}
+                                    `;
+                                    questionDiv.appendChild(optionLabel);
+                                    questionDiv.appendChild(document.createElement('br'));
+                                });
+
+                                questionsContainer.appendChild(questionDiv);
+                            });
+                            MathJax.typesetPromise().then(() => {
+                                if (window.tikzjax) {
+                                    tikzjax.processMathJaxElements();
+                                }
+                            });
+                        }
+
+                        document.getElementById('check-answers').addEventListener('click', () => {
+                            let score = 0;
+                            questions.forEach((question, index) => {
+                                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                                const correctAnswer = question.answer;
+                                if (selectedOption) {
+                                    if (selectedOption.value === correctAnswer) {
+                                        score++;
+                                        selectedOption.parentElement.style.color = 'green';
+                                    } else {
+                                        selectedOption.parentElement.style.color = 'red';
+                                    }
+                                }
+                            });
+                            const resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                            MathJax.typesetPromise([resultsDiv]);
+                        });
+
+                        document.getElementById('new-questions').addEventListener('click', () => {
+                            loadQuestions();
+                            document.getElementById('results').innerHTML = '';
+                        });
+
+                        loadQuestions();
+                    });
+                </script>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

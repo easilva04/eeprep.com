@@ -1,0 +1,15 @@
+
+{
+  "questions": [
+    {
+      "question": "If the numbers in a data set are 2, 4, 4, 6, 8, what is the mean?",
+      "options": ["4", "6", "5", "4.8"],
+      "answer": "4.8"
+    },
+    {
+      "question": "The measure most affected by outliers is?",
+      "options": ["Mean", "Median", "Mode", "Range"],
+      "answer": "Mean"
+    }
+  ]
+}

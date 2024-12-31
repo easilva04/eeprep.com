@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Introduction to fundamental concepts of electrical circuits including basic components, Ohm's Law, series and parallel circuits, Kirchhoff's laws, Thevenin's and Norton's theorems.">
+    <meta name="keywords"
+        content="Electrical Circuits, Ohm's Law, Series Circuits, Parallel Circuits, Kirchhoff's Laws, Thevenin's Theorem, Norton's Theorem, Electrical Engineering">
+    <meta name="author" content="EE Review">
+    <title>EE Review - Circuits Home</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js"></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
+</head>
+
+<body>
+    <div class="topborder"></div>
+    <div id="sidebar-container" role="complementary"></div>
+    <div class="nav-bottom-left">
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='ResistiveNetworks.html'">Next
+            Topic</button>
+    </div>
+    <div class="main-content" role="main">
+        <header>
+            <h1>Chapter 2: Circuits</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Introduction</h2>
+                <p>In this chapter, we will explore the fundamental concepts of electrical circuits. We will cover the
+                    following topics:</p>
+                <ul>
+                    <li>Basic components of circuits</li>
+                    <li>Ohm's Law</li>
+                    <li>Series and parallel circuits</li>
+                    <li>Kirchhoff's laws</li>
+                    <li>Thevenin's and Norton's theorems</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Basic Components of Circuits</h2>
+                <h3>Resistors</h3>
+                <p>Resistors are components that resist the flow of electric current. They are characterized by their
+                    resistance value, measured in ohms (Ω).</p>
+                <h3>Capacitors</h3>
+                <p>Capacitors store electrical energy in an electric field. They are characterized by their capacitance
+                    value, measured in farads (F).</p>
+                <h3>Inductors</h3>
+                <p>Inductors store energy in a magnetic field when electric current flows through them. They are
+                    characterized by their inductance value, measured in henrys (H).</p>
+            </section>
+            <section>
+                <h2>Circuit Diagram</h2>
+                <div id="circuit-diagram"></div>
+            </section>
+            <section>
+                <h2>Components Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Symbol</th>
+                            <th>Unit</th>
+                            <th>Diagram</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resistor</td>
+                            <td>R</td>
+                            <td>Ohm (Ω)</td>
+                            <td>
+                                <div id="resistor-symbol"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Capacitor</td>
+                            <td>C</td>
+                            <td>Farad (F)</td>
+                            <td>
+                                <div id="capacitor-symbol"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inductor</td>
+                            <td>L</td>
+                            <td>Henry (H)</td>
+                            <td>
+                                <div id="inductor-symbol"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Voltage Source</td>
+                            <td>V</td>
+                            <td>Volt (V)</td>
+                            <td>
+                                <div id="voltage-source-symbol"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Current Source</td>
+                            <td>I</td>
+                            <td>Ampere (A)</td>
+                            <td>
+                                <div id="current-source-symbol"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h2>Ohm's Law</h2>
+                <p>Ohm's Law states that the current (I) through a conductor between two points is directly proportional
+                    to
+                    the voltage (V) across the two points and inversely proportional to the resistance (R). The formula
+                    is
+                    given by:</p>
+                <p>\[ V = IR \]</p>
+            </section>
+            <section>
+                <h2>Series and Parallel Circuits</h2>
+                <h3>Series Circuits</h3>
+                <p>In a series circuit, components are connected end-to-end, so the same current flows through each
+                    component. The total resistance is the sum of the individual resistances:</p>
+                <p>\[ R_{total} = R_1 + R_2 + \cdots + R_n \]</p>
+                <h3>Parallel Circuits</h3>
+                <p>In a parallel circuit, components are connected across the same two points, so the voltage across
+                    each
+                    component is the same. The total resistance is given by:</p>
+                <p>\[ \frac{1}{R_{total}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n} \]</p>
+            </section>
+            <section>
+                <h2>Kirchhoff's Laws</h2>
+                <h3>Kirchhoff's Current Law (KCL)</h3>
+                <p>KCL states that the total current entering a junction is equal to the total current leaving the
+                    junction:
+                </p>
+                <p>\[ \sum I_{in} = \sum I_{out} \]</p>
+                <h3>Kirchhoff's Voltage Law (KVL)</h3>
+                <p>KVL states that the sum of the electrical potential differences (voltage) around any closed network
+                    is
+                    zero:</p>
+                <p>\[ \sum V = 0 \]</p>
+            </section>
+            <section>
+                <h2>Thevenin's and Norton's Theorems</h2>
+                <h3>Thevenin's Theorem</h3>
+                <p>Thevenin's Theorem states that any linear electrical network with voltage and current sources and
+                    resistances can be replaced by an equivalent circuit consisting of a single voltage source and a
+                    series
+                    resistance.</p>
+                <h3>Norton's Theorem</h3>
+                <p>Norton's Theorem states that any linear electrical network with voltage and current sources and
+                    resistances can be replaced by an equivalent circuit consisting of a single current source and a
+                    parallel resistance.</p>
+            </section>
+            <section>
+                <h2>Conclusion</h2>
+                <p>Understanding these fundamental concepts is crucial for analyzing and designing electrical circuits.
+                    In the next chapter, we will delve deeper into more advanced topics in circuit analysis.</p>
+                <p><a href="https://www.falstad.com/circuit/">Interactive Circuit Simulator</a></p>
+                <iframe width="100%" height="500px" src="https://www.falstad.com/circuit/circuitjs.html"></iframe>
+            </section>
+            
+        </main>
+    </div>
+</body>
+
+</html>

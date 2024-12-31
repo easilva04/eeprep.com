@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed review of Complex Numbers for Electrical Engineering students. Understand key concepts, polar form, and visual representations.">
+    <meta name="keywords" content="Complex Numbers, Electrical Engineering, Imaginary Unit, Polar Form, AC Circuit Analysis, Signal Processing">
+    <meta name="author" content="Eddie">
+    <meta name="publisher" content="EEPrep">
+    <title>EE Review - Complex Numbers</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09JTZCW5JJ');
+</script>
+</head>
+
+<body>
+    <div class="topborder"></div>
+    <div id="sidebar-container"></div>
+
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='Math.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='Vectors.html'">Next Topic</button>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Complex Numbers</h1>
+        </header>
+        <main>
+            <section>
+                <p>Complex numbers are fundamental in electrical engineering, especially in AC circuit analysis and signal
+                    processing. The imaginary unit is typically denoted as \(j\) instead of \(i\) to avoid confusion with
+                    current.</p>
+
+                <h3>Key Concepts</h3>
+                <p>A complex number is expressed as:</p>
+                <p>\[ z = a + jb \]</p>
+                <p>where:</p>
+                <ul>
+                    <li>\(a\) is the real part</li>
+                    <li>\(b\) is the imaginary part</li>
+                    <li>\(j\) is the imaginary unit where \(j^2 = -1\)</li>
+                </ul>
+
+                <h3>Polar Form</h3>
+                <p>Complex numbers can be written in polar form:</p>
+                <p>\[ z = r\angle\theta = r(\cos\theta + j\sin\theta) = re^{j\theta} \]</p>
+                <p>where:</p>
+                <ul>
+                    <li>\(r = \sqrt{a^2 + b^2}\) (magnitude)</li>
+                    <li>\(\theta = \tan^{-1}(\frac{b}{a})\) (phase angle)</li>
+                </ul>
+
+                <h3>Visual Representations</h3>
+                <figure>
+                    <figcaption>Complex number represented in the complex plane.</figcaption>
+                    <script type="text/tikz">
+                        \begin{tikzpicture}
+                            \draw[->] (-3,0) -- (3,0) node[right] {Re};
+                            \draw[->] (0,-3) -- (0,3) node[above] {Im};
+                            \coordinate (P) at (2,1.5);
+                            \draw[->, thick, blue] (0,0) -- (P) node[above right] {$z = a + jb$};
+                            \draw[dashed] (2,0) -- (P) -- (0,1.5);
+                            \node[below] at (2,0) {$a$};
+                            \node[left] at (0,1.5) {$b$};
+                            \draw (0,0) ++(0.5,0) arc (0:36.87:0.5cm);
+                            \node at (0.8,0.2) {$\theta$};
+                        \end{tikzpicture}
+                    </script>
+                </figure>
+
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let questions = [];
+
+                        function loadQuestions() {
+                            fetch('../../questions/Math/ComplexNumbers.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                                    displayQuestions();
+                                })
+                                .catch(error => console.error('Error loading questions:', error));
+                        }
+
+                        function displayQuestions() {
+                            const questionsContainer = document.getElementById('questions-container');
+                            questionsContainer.innerHTML = '';
+                            questions.forEach((question, index) => {
+                                const questionDiv = document.createElement('div');
+                                questionDiv.classList.add('question');
+
+                                const questionTitle = document.createElement('p');
+                                questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                                questionDiv.appendChild(questionTitle);
+
+                                question.options.forEach(option => {
+                                    const optionLabel = document.createElement('label');
+                                    optionLabel.innerHTML = `
+                                        <input type="radio" name="question${index}" value="${option}">
+                                        ${option}
+                                    `;
+                                    questionDiv.appendChild(optionLabel);
+                                    questionDiv.appendChild(document.createElement('br'));
+                                });
+
+                                questionsContainer.appendChild(questionDiv);
+                            });
+                            MathJax.typesetPromise().then(() => {
+                                if (window.tikzjax) {
+                                    tikzjax.processMathJaxElements();
+                                }
+                            });
+                        }
+
+                        document.getElementById('check-answers').addEventListener('click', () => {
+                            let score = 0;
+                            questions.forEach((question, index) => {
+                                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                                const correctAnswer = question.answer;
+                                if (selectedOption) {
+                                    if (selectedOption.value === correctAnswer) {
+                                        score++;
+                                        selectedOption.parentElement.style.color = 'green';
+                                    } else {
+                                        selectedOption.parentElement.style.color = 'red';
+                                    }
+                                }
+                            });
+                            const resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                            MathJax.typesetPromise([resultsDiv]);
+                        });
+
+                        document.getElementById('new-questions').addEventListener('click', () => {
+                            loadQuestions();
+                            document.getElementById('results').innerHTML = '';
+                        });
+
+                        loadQuestions();
+                    });
+                </script>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+                <script>
+                    MathJax.typesetPromise();
+                </script>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

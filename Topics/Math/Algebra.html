@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive review of Algebra for Electrical Engineering students. Learn core concepts, applications, and visual representations.">
+    <meta name="keywords" content="Algebra, Electrical Engineering, Linear Equations, Quadratic Equations, Inequalities, Polynomials, Control Systems, Signal Processing, Structural Analysis">
+    <meta name="author" content="Eddie">
+    <meta name="publisher" content="EEPrep">
+    <title>EE Review - Algebra</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09JTZCW5JJ');
+</script>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='Math.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='ComplexNumbers.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Algebra</h1>
+        </header>
+        <main>
+            <section>
+                <p>Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. It
+                    is a unifying thread of almost all of mathematics and includes everything from solving elementary
+                    equations to studying abstractions such as groups, rings, and fields.</p>
+            </section>
+
+            <section>
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><strong>Linear Equations</strong>:
+                        <ul>
+                            <li>Solving single-variable equations: \(ax + b = 0\)</li>
+                            <li>Systems of linear equations: Using methods such as substitution, elimination, and matrix
+                                operations.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Quadratic Equations</strong>:
+                        <ul>
+                            <li>Standard form: \(ax^2 + bx + c = 0\)</li>
+                            <li>Solution techniques: Factoring, completing the square, and the quadratic formula.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Inequalities</strong>:
+                        <ul>
+                            <li>Solving linear and quadratic inequalities.</li>
+                            <li>Graphical representation of solutions.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Polynomials</strong>:
+                        <ul>
+                            <li>Operations: Addition, subtraction, multiplication, and division.</li>
+                            <li>Factoring techniques and theorems.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Applications in Engineering</h3>
+                <ul>
+                    <li><strong>Control Systems</strong>: Designing and analyzing system stability and response.</li>
+                    <li><strong>Signal Processing</strong>: Analyzing and manipulating signals using algebraic techniques.
+                    </li>
+                    <li><strong>Structural Analysis</strong>: Solving equations related to stress and strain in materials.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Visual Representations</h3>
+                <div class="centered-content">
+                    <figure class="figure-margin">
+                        <figcaption>Graph of a quadratic function.</figcaption>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}[scale=0.9]
+                                % Axes
+                                \draw[->] (-3,0) -- (3,0) node[below right] {$x$};
+                                \draw[->] (0,-1) -- (0,5) node[above left] {$y$};
+                                % Quadratic function
+                                \draw[thick,blue,domain=-2:2,samples=100] plot (\x,{(\x)*(\x) - 1}) node[right] {$y = x^2 - 1$};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+                </div>
+            </section>
+
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+            </section>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    let questions = [];
+
+                    function loadQuestions() {
+                        fetch('../../questions/Math/Algebra.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                                displayQuestions();
+                            })
+                            .catch(error => console.error('Error loading questions:', error));
+                    }
+
+                    function displayQuestions() {
+                        const questionsContainer = document.getElementById('questions-container');
+                        questionsContainer.innerHTML = '';
+                        questions.forEach((question, index) => {
+                            const questionDiv = document.createElement('div');
+                            questionDiv.classList.add('question');
+
+                            const questionTitle = document.createElement('p');
+                            questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                            questionDiv.appendChild(questionTitle);
+
+                            question.options.forEach(option => {
+                                const optionLabel = document.createElement('label');
+                                optionLabel.innerHTML = `
+                                    <input type="radio" name="question${index}" value="${option}">
+                                    ${option}
+                                `;
+                                questionDiv.appendChild(optionLabel);
+                                questionDiv.appendChild(document.createElement('br'));
+                            });
+
+                            questionsContainer.appendChild(questionDiv);
+                        });
+                        MathJax.typesetPromise().then(() => {
+                            if (window.tikzjax) {
+                                tikzjax.processMathJaxElements();
+                            }
+                        });
+                    }
+
+                    document.getElementById('check-answers').addEventListener('click', () => {
+                        let score = 0;
+                        questions.forEach((question, index) => {
+                            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                            const correctAnswer = question.answer;
+                            if (selectedOption) {
+                                if (selectedOption.value === correctAnswer) {
+                                    score++;
+                                    selectedOption.parentElement.style.color = 'green';
+                                } else {
+                                    selectedOption.parentElement.style.color = 'red';
+                                }
+                            }
+                        });
+                        const resultsDiv = document.getElementById('results');
+                        resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                        MathJax.typesetPromise([resultsDiv]);
+                    });
+
+                    document.getElementById('new-questions').addEventListener('click', () => {
+                        loadQuestions();
+                        document.getElementById('results').innerHTML = '';
+                    });
+
+                    document.getElementById('new-questions').addEventListener('click', () => {
+                        loadQuestions();
+                        document.getElementById('results').innerHTML = '';
+                    });
+
+                    loadQuestions();
+                });
+            </script>
+        </main>
+    </div>
+    
+</body>
+
+</html>

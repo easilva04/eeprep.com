@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Comprehensive guide on node and loop analysis using Kirchhoff's laws for electrical engineering students.">
+    <meta name="keywords" content="Node Analysis, Loop Analysis, Kirchhoff's Laws, KCL, KVL, Electrical Engineering">
+    <meta name="author" content="EE Review">
+    <title>EE Review - Node Loop, KCL, KVL</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js"></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='ResistiveNetworks.html'">Previous
+            Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='AC.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Node and Loop Analysis</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Overview</h2>
+                <p>Node and loop analysis are systematic methods for solving complex circuits by applying
+                    <strong>Kirchhoff's laws</strong>. These techniques simplify the determination of voltages and
+                    currents
+                    in circuits with multiple components and branches.
+                </p>
+            </section>
+            <section>
+                <h3>Node Analysis (Nodal Analysis)</h3>
+                <ul>
+                    <li><strong>Concept</strong>: Based on Kirchhoff's Current Law (KCL), which states that the
+                        algebraic
+                        sum of currents at a node is zero.</li>
+                    <li><strong>Steps to Perform Node Analysis</strong>:
+                        <ol>
+                            <li>Identify all nodes in the circuit.</li>
+                            <li>Choose a reference node (ground) and assign voltage variables to other nodes.</li>
+                            <li>Apply KCL at each node (except the reference node) and express currents in terms of node
+                                voltages.</li>
+                            <li>Solve the resulting simultaneous equations.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Effectiveness</strong>: Node analysis is particularly efficient for circuits with
+                        <strong>multiple parallel branches</strong>.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Loop Analysis (Mesh Analysis)</h3>
+                <ul>
+                    <li><strong>Concept</strong>: Based on Kirchhoff's Voltage Law (KVL), which states that the
+                        algebraic
+                        sum of voltage drops and rises around a closed loop is zero.</li>
+                    <li><strong>Steps to Perform Loop Analysis</strong>:
+                        <ol>
+                            <li>Identify all independent loops in the circuit.</li>
+                            <li>Assign loop currents to each independent loop.</li>
+                            <li>Apply KVL to each loop and express voltages in terms of loop currents.</li>
+                            <li>Solve the resulting simultaneous equations.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Effectiveness</strong>: Loop analysis is most efficient for <strong>planar
+                            circuits</strong>
+                        with fewer loops than nodes.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Applications and Limitations</h3>
+                <ul>
+                    <li><strong>Applications</strong>:
+                        <ul>
+                            <li>Suitable for analyzing linear circuits with resistors, independent/dependent sources,
+                                and
+                                controlled sources.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Limitations</strong>:
+                        <ul>
+                            <li>Node analysis can become cumbersome for circuits with many nodes.</li>
+                            <li>Loop analysis is less effective for <strong>non-planar circuits</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <p>Mastery of node and loop analysis is fundamental for electrical engineers, enabling the systematic
+                    solving of circuits ranging from basic networks to complex systems in power and electronics.</p>
+            </section>
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let questions = [];
+
+                        function loadQuestions() {
+                            fetch('../../questions/Circuits/nodeLoop.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                                    displayQuestions();
+                                })
+                                .catch(error => console.error('Error loading questions:', error));
+                        }
+
+                        function displayQuestions() {
+                            const questionsContainer = document.getElementById('questions-container');
+                            questionsContainer.innerHTML = '';
+                            questions.forEach((question, index) => {
+                                const questionDiv = document.createElement('div');
+                                questionDiv.classList.add('question');
+
+                                const questionTitle = document.createElement('p');
+                                questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                                questionDiv.appendChild(questionTitle);
+
+                                question.options.forEach(option => {
+                                    const optionLabel = document.createElement('label');
+                                    optionLabel.innerHTML = `
+                                        <input type="radio" name="question${index}" value="${option}">
+                                        ${option}
+                                    `;
+                                    questionDiv.appendChild(optionLabel);
+                                    questionDiv.appendChild(document.createElement('br'));
+                                });
+
+                                questionsContainer.appendChild(questionDiv);
+                            });
+                            MathJax.typesetPromise().then(() => {
+                                if (window.tikzjax) {
+                                    tikzjax.processMathJaxElements();
+                                }
+                            });
+                        }
+
+                        document.getElementById('check-answers').addEventListener('click', () => {
+                            let score = 0;
+                            questions.forEach((question, index) => {
+                                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                                const correctAnswer = question.answer;
+                                if (selectedOption) {
+                                    if (selectedOption.value === correctAnswer) {
+                                        score++;
+                                        selectedOption.parentElement.style.color = 'green';
+                                    } else {
+                                        selectedOption.parentElement.style.color = 'red';
+                                    }
+                                }
+                            });
+                            const resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                            MathJax.typesetPromise([resultsDiv]);
+                        });
+
+                        document.getElementById('new-questions').addEventListener('click', () => {
+                            loadQuestions();
+                            document.getElementById('results').innerHTML = '';
+                        });
+
+                        loadQuestions();
+                    });
+                </script>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

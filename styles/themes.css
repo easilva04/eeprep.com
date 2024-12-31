@@ -1,0 +1,94 @@
+body.dark-mode {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+body.dark-mode .navbar {
+    background-color: var(--black);
+    border-bottom: 1px solid var(--grey);
+}
+
+body.dark-mode .hamburger-menu span {
+    background-color: var(--white);
+}
+
+body.dark-mode .sidebar {
+    background-color: var(--black);
+    color: var(--white);
+    border-right: 1px solid var(--grey);
+    box-shadow: 2px 0 8px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .sidebar-footer {
+    background-color: var(--black);
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: var(--black);
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: var(--grey);
+    color: var(--white);
+}
+
+/* LaTeX dark mode styles */
+body.dark-mode .MathJax,
+body.dark-mode .MathJax_SVG,
+body.dark-mode .tikzjax {
+    color: var(--white) !important;
+}
+
+body.dark-mode .MathJax_SVG svg,
+body.dark-mode .tikzjax svg {
+    stroke: var(--white) !important;
+    fill: var(--white) !important;
+}
+
+body.dark-mode .main-content,
+body.dark-mode header,
+body.dark-mode section,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode ul,
+body.dark-mode li,
+body.dark-mode a,
+body.dark-mode button,
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    color: var(--white);
+}
+
+/* Ensure SVG icons switch to white in dark mode */
+body.dark-mode .search-icon svg {
+    fill: var(--white);
+}
+
+/* Ensure dropdown button backgrounds remain black and text turns white in dark mode */
+body.dark-mode .dropdown-toggle,
+body.dark-mode .dropdown-menu a {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--white);
+    background-color: var(--grey);
+    border-color: var(--grey);
+}
+
+.theme-toggle {
+    color: var(--white);
+    background-color: var(--grey);
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}

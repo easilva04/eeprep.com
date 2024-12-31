@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="In-depth review of Discrete Mathematics for Electrical Engineering students. Explore core concepts, applications, and visual representations.">
+    <meta name="keywords" content="Discrete Mathematics, Electrical Engineering, Logic, Set Theory, Graph Theory, Combinatorics, Algorithm Design, Cryptography, Network Analysis">
+    <meta name="author" content="Eddie">
+    <meta name="publisher" content="EEPrep">
+    <title>EE Review - Discrete Math</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09JTZCW5JJ');
+</script>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='ODEs.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <!-- no next topic -->
+    </div>
+    <div class="main-content">
+        <h1>Discrete Mathematics</h1>
+        <main>
+            <section>
+                <h2>Core Concepts</h2>
+                <ul>
+                    <li><strong>Logic and Propositional Calculus</strong>:
+                        <ul>
+                            <li>Truth tables and logical equivalences.</li>
+                            <li>Implications, negations, and quantifiers.</li>
+                            <li>Applications in digital circuit design and automated reasoning.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Set Theory</strong>:
+                        <ul>
+                            <li>Operations like union, intersection, and complement.</li>
+                            <li>Cartesian products and power sets.</li>
+                            <li>Venn diagrams for visualizing relationships.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Graph Theory</strong>:
+                        <ul>
+                            <li>Concepts of vertices, edges, paths, and cycles.</li>
+                            <li>Special types of graphs: trees, bipartite graphs, and complete graphs.</li>
+                            <li>Applications in network design and shortest path algorithms.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Combinatorics</strong>:
+                        <ul>
+                            <li>Permutations and combinations.</li>
+                            <li>Principles of inclusion-exclusion and pigeonhole principle.</li>
+                            <li>Counting problems in algorithm analysis and resource allocation.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Applications in Engineering</h2>
+                <ul>
+                    <li><strong>Algorithm Design</strong>: Creating efficient algorithms using graph theory and combinatorial
+                        optimization.</li>
+                    <li><strong>Cryptography</strong>: Applying number theory and combinatorics for secure communication.</li>
+                    <li><strong>Network Analysis</strong>: Modeling and optimizing computer and communication networks.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Visual Representations</h2>
+                <div class="flex-container">
+                    <figure class="flex-figure">
+                        <figcaption>Example of a graph with vertices and edges.</figcaption>
+                        <div>
+                            <!-- Ensure SVG content is correctly formatted -->
+                            <svg width="200" height="200">
+                                <!-- Nodes -->
+                                <circle cx="50" cy="50" r="15" stroke="black" stroke-width="2" fill="white" />
+                                <circle cx="150" cy="50" r="15" stroke="black" stroke-width="2" fill="white" />
+                                <circle cx="50" cy="150" r="15" stroke="black" stroke-width="2" fill="white" />
+                                <circle cx="150" cy="150" r="15" stroke="black" stroke-width="2" fill="white" />
+                                <!-- Edges -->
+                                <line x1="50" y1="50" x2="150" y2="50" stroke="black" stroke-width="2" />
+                                <line x1="50" y1="50" x2="50" y2="150" stroke="black" stroke-width="2" />
+                                <line x1="150" y1="50" x2="150" y2="150" stroke="black" stroke-width="2" />
+                                <line x1="50" y1="150" x2="150" y2="150" stroke="black" stroke-width="2" />
+                            </svg>
+                        </div>
+                    </figure>
+                    <!-- Add more figures here if needed -->
+                </div>
+            </section>
+
+            <section>
+                <h2>Questions</h2>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let questions = [];
+
+            function loadQuestions() {
+                fetch('../../questions/Math/Discrete.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                        displayQuestions();
+                    })
+                    .catch(error => console.error('Error loading questions:', error));
+            }
+
+            function displayQuestions() {
+                const questionsContainer = document.getElementById('questions-container');
+                questionsContainer.innerHTML = '';
+                questions.forEach((question, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+
+                    const questionTitle = document.createElement('p');
+                    questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                    questionDiv.appendChild(questionTitle);
+
+                    question.options.forEach(option => {
+                        const optionLabel = document.createElement('label');
+                        optionLabel.innerHTML = `
+                            <input type="radio" name="question${index}" value="${option}">
+                            ${option}
+                        `;
+                        questionDiv.appendChild(optionLabel);
+                        questionDiv.appendChild(document.createElement('br'));
+                    });
+
+                    questionsContainer.appendChild(questionDiv);
+                    MathJax.typesetPromise([questionDiv]).then(() => {
+                        if (window.tikzjax) {
+                            tikzjax.processMathJaxElements();
+                        }
+                    });
+                });
+            }
+
+            document.getElementById('check-answers').addEventListener('click', () => {
+                let score = 0;
+                questions.forEach((question, index) => {
+                    const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                    const correctAnswer = question.answer;
+                    if (selectedOption) {
+                        if (selectedOption.value === correctAnswer) {
+                            score++;
+                            selectedOption.parentElement.style.color = 'green';
+                        } else {
+                            selectedOption.parentElement.style.color = 'red';
+                        }
+                    }
+                });
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                MathJax.typesetPromise([resultsDiv]);
+            });
+
+            document.getElementById('new-questions').addEventListener('click', () => {
+                loadQuestions();
+                document.getElementById('results').innerHTML = '';
+            });
+
+            loadQuestions();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+{
+    "Home": [
+        {
+            "title": "Home",
+            "url": "/index.html",
+            "snippet": "Welcome to the Electrical Engineering Review Handbook, your comprehensive resource for mastering electrical engineering concepts..."
+        },
+        {
+            "title": "Introduction",
+            "url": "/Topics/Home/Introduction.html",
+            "snippet": "This introduction section covers the basics of electrical engineering, including fundamental principles and essential terminology..."
+        },
+        {
+            "title": "About",
+            "url": "/Topics/Home/About.html",
+            "snippet": "Learn more about the purpose and scope of this handbook, and how it can help you in your studies and career..."
+        },
+        {
+            "title": "Legal",
+            "url": "/Topics/Home/Legal.html",
+            "snippet": "Understand the legal disclaimers and terms of use for the content provided in this handbook..."
+        }
+    ],
+    "Math": [
+        {
+            "title": "Math Home",
+            "url": "/Topics/Math/Math.html",
+            "snippet": "Explore the mathematical foundations necessary for electrical engineering, including algebra, calculus, and more..."
+        },
+        {
+            "title": "Algebra",
+            "url": "/Topics/Math/Algebra.html",
+            "snippet": "Review key algebraic concepts and techniques that are essential for solving electrical engineering problems..."
+        },
+        {
+            "title": "Complex Numbers",
+            "url": "/Topics/Math/ComplexNumbers.html",
+            "snippet": "Understand the role of complex numbers in electrical engineering, including their use in AC circuit analysis..."
+        },
+        {
+            "title": "Vectors",
+            "url": "/Topics/Math/Vectors.html",
+            "snippet": "Learn about vector mathematics and its applications in electrical engineering, such as in electromagnetics..."
+        },
+        {
+            "title": "Linear Algebra",
+            "url": "/Topics/Math/LinearAlgebra.html",
+            "snippet": "Study linear algebra concepts that are crucial for understanding systems of equations and transformations in engineering..."
+        },
+        {
+            "title": "Geometry",
+            "url": "/Topics/Math/Geometry.html",
+            "snippet": "Review geometric principles and their applications in electrical engineering, including coordinate systems and transformations..."
+        },
+        {
+            "title": "Calculus",
+            "url": "/Topics/Math/Calculus.html",
+            "snippet": "Master calculus concepts that are fundamental to analyzing and solving electrical engineering problems..."
+        },
+        {
+            "title": "Differential Equations",
+            "url": "/Topics/Math/ODEs.html",
+            "snippet": "Learn about differential equations and their applications in modeling and analyzing electrical systems..."
+        }
+    ],
+    "Circuits": [
+        {
+            "title": "Circuits Home",
+            "url": "/Topics/Circuits/Circuits.html",
+            "snippet": "Dive into the world of circuit analysis, starting with the basics and progressing to more advanced topics..."
+        },
+        {
+            "title": "Networks",
+            "url": "/Topics/Circuits/ResistiveNetworks.html",
+            "snippet": "Understand resistive networks and their analysis, including techniques for simplifying and solving circuits..."
+        },
+        {
+            "title": "Node & Loop Analysis",
+            "url": "/Topics/Circuits/nodeLoop.html",
+            "snippet": "Learn about node and loop analysis methods for systematically solving complex electrical circuits..."
+        },
+        {
+            "title": "AC Analysis",
+            "url": "/Topics/Circuits/AC.html",
+            "snippet": "Explore AC circuit analysis, including phasors, impedance, and frequency response..."
+        },
+        {
+            "title": "Waveforms",
+            "url": "/Topics/Circuits/Waveforms.html",
+            "snippet": "Study different types of waveforms and their characteristics, and how they are used in electrical engineering..."
+        },
+        {
+            "title": "Transformations",
+            "url": "/Topics/Circuits/Transformations.html",
+            "snippet": "Understand various transformations used in circuit analysis, such as Laplace and Fourier transforms..."
+        },
+        {
+            "title": "Thevenin & Norton",
+            "url": "/Topics/Circuits/TheveninNorton.html",
+            "snippet": "Learn about Thevenin's and Norton's theorems and their applications in simplifying and analyzing circuits..."
+        }
+    ],
+    "Probability & Statistics": [
+        {
+            "title": "Probability & Statistics",
+            "url": "/Topics/ProbabilityStatistics/ProbStats.html",
+            "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
+        },
+        {
+            "title": "Distributions",
+            "url": "/Topics/ProbabilityStatistics/Distributions.html",
+            "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."},
+        {
+            "title": "Tendencies",
+            "url": "/Topics/ProbabilityStatistics/Tendencies.html",
+            "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."}
+    ]
+}

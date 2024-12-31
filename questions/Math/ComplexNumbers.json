@@ -1,0 +1,54 @@
+{
+    "questions": [
+        {
+            "question": "Find the modulus of the complex number \\(3 + 4i\\).",
+            "options": ["3", "4", "5", "7"],
+            "answer": "5"
+        },
+        {
+            "question": "Calculate the argument of the complex number \\(-1 + i\\).",
+            "options": ["\\(\\frac{\\pi}{4}\\)", "\\(\\frac{3\\pi}{4}\\)", "\\(\\frac{5\\pi}{4}\\)", "\\(\\frac{7\\pi}{4}\\)"],
+            "answer": "\\(\\frac{3\\pi}{4}\\)"
+        },
+        {
+            "question": "Determine the product of the complex numbers \\(1 + i\\) and \\(1 - i\\).",
+            "options": ["0", "1", "2", "3"],
+            "answer": "2"
+        },
+        {
+            "question": "Find the roots of the complex equation \\(z^2 + 1 = 0\\).",
+            "options": ["\\(\\pm i\\)", "\\(\\pm 1\\)", "\\(\\pm \\sqrt{2}\\)", "\\(\\pm \\sqrt{-1\\)"],
+            "answer": "\\(\\pm i\\)"
+        },
+        {
+            "question": "Express the complex number \\(1 + i\\) in polar form.",
+            "options": ["\\(\\sqrt{2}e^{i\\pi/4}\\)", "\\(\\sqrt{2}e^{-i\\pi/4}\\)", "\\(2e^{i\\pi/4}\\)", "\\(2e^{-i\\pi/4}\\)"],
+            "answer": "\\(\\sqrt{2}e^{i\\pi/4}\\)"
+        },
+        {
+            "question": "Find all cube roots of unity.",
+            "options": [
+                "\\(1, \\frac{-1 \\pm i\\sqrt{3}}{2}\\)",
+                "\\(1, -1, i\\)",
+                "\\(1, i, -i\\)",
+                "\\(1, \\frac{-1 \\pm i\\sqrt{2}}{2}\\)"
+            ],
+            "answer": "\\(1, \\frac{-1 \\pm i\\sqrt{3}}{2}\\)"
+        },
+        {
+            "question": "Compute \\( (1 + i)^{10} \\).",
+            "options": ["1024", "0", "32i", "1024i"],
+            "answer": "1024i"
+        },
+        {
+            "question": "If \\(z = \\cos \\theta + i \\sin \\theta\\), find \\(\\log z\\).",
+            "options": [
+                "\\(i \\theta\\)",
+                "\\(-i \\theta\\)",
+                "\\(\\ln r + i \\theta\\)",
+                "\\(\\ln r - i \\theta\\)"
+            ],
+            "answer": "\\(i \\theta\\)"
+        }
+    ]
+}

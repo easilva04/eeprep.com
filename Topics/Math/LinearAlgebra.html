@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive guide on linear algebra for electrical engineering students.">
+    <meta name="keywords" content="Linear Algebra, Matrices, Vector Spaces, Eigenvalues, Electrical Engineering">
+    <meta name="author" content="EE Review">
+    <title>EE Review - Linear Algebra</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js"></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='Vectors.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='Calculus.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Linear Algebra</h1>
+        </header>
+        <main>
+            <section>
+                <p>Linear algebra provides the mathematical framework for solving systems of equations, performing
+                    matrix operations, and analyzing vector spaces, which are crucial in engineering and computational
+                    problem-solving. It plays a fundamental role in control systems, optimization, and computer
+                    graphics.
+                </p>
+            </section>
+            <section>
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><strong>Matrices and Determinants</strong>:
+                        <ul>
+                            <li>Matrix operations: Addition, subtraction, multiplication, and inversion.</li>
+                            <li>Determinants: Computing and interpreting the determinant for matrix properties.</li>
+                            <li>Applications: Solving linear systems and finding matrix inverses.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Vector Spaces</strong>:
+                        <ul>
+                            <li>Basis and dimension: Understanding span and linear independence.</li>
+                            <li>Subspaces: Null space, column space, and row space.</li>
+                            <li>Applications: Representing and transforming data in multi-dimensional spaces.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Eigenvalues and Eigenvectors</strong>:
+                        <ul>
+                            <li>Definitions and computation: Solving \(Av = \lambda v\).</li>
+                            <li>Diagonalization: Simplifying matrix operations using eigenvectors.</li>
+                            <li>Applications: Stability analysis and principal component analysis.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Linear Transformations</strong>:
+                        <ul>
+                            <li>Mapping between vector spaces.</li>
+                            <li>Applications: Rotations, scaling, and shearing in 2D and 3D spaces.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Applications in Engineering</h3>
+                <ul>
+                    <li><strong>Control Systems</strong>: Designing and analyzing state-space representations.</li>
+                    <li><strong>Computer Graphics</strong>: Transforming and projecting 3D models onto 2D screens.</li>
+                    <li><strong>Signal Processing</strong>: Analyzing signals using matrix decomposition techniques.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Visual Representations</h3>
+                <figure>
+                    <figcaption>Visualization of vectors and their transformation.</figcaption>
+                    <script type="text/tikz">
+                        \begin{tikzpicture}
+                            % Axes
+                            \draw[->] (-3,0) -- (3,0) node[right] {x};
+                            \draw[->] (0,-3) -- (0,3) node[above] {y};
+                            % Vectors
+                            \draw[thick,blue,->] (0,0) -- (2,1) node[anchor=south west] {v};
+                            \draw[thick,red,->] (0,0) -- (-1,2) node[anchor=south east] {u};
+                        \end{tikzpicture}
+                    </script>
+                </figure>
+
+                <figure>
+                    <figcaption>Visualization of a linear transformation applied to basis vectors.</figcaption>
+                    <script type="text/tikz">
+                        \begin{tikzpicture}
+                            % Axes
+                            \draw[->] (-3,0) -- (3,0) node[right] {x};
+                            \draw[->] (0,-3) -- (0,3) node[above] {y};
+                            % Basis vectors
+                            \draw[thick,blue,->] (0,0) -- (1,0) node[anchor=north east] {i};
+                            \draw[thick,red,->] (0,0) -- (0,1) node[anchor=south west] {j};
+                            % Transformed vectors
+                            \draw[thick,green,->] (0,0) -- (1,1) node[anchor=south west] {T(i)};
+                            \draw[thick,orange,->] (0,0) -- (-1,1) node[anchor=south east] {T(j)};
+                        \end{tikzpicture}
+                    </script>
+                </figure>
+            </section>
+
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let questions = [];
+
+                        function loadQuestions() {
+                            fetch('../../questions/Math/LinearAlgebra.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                                    displayQuestions();
+                                })
+                                .catch(error => console.error('Error loading questions:', error));
+                        }
+
+                        function displayQuestions() {
+                            const questionsContainer = document.getElementById('questions-container');
+                            questionsContainer.innerHTML = '';
+                            questions.forEach((question, index) => {
+                                const questionDiv = document.createElement('div');
+                                questionDiv.classList.add('question');
+
+                                const questionTitle = document.createElement('p');
+                                questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                                questionDiv.appendChild(questionTitle);
+
+                                question.options.forEach(option => {
+                                    const optionLabel = document.createElement('label');
+                                    optionLabel.innerHTML = `
+                                        <input type="radio" name="question${index}" value="${option}">
+                                        ${option}
+                                    `;
+                                    questionDiv.appendChild(optionLabel);
+                                    questionDiv.appendChild(document.createElement('br'));
+                                });
+
+                                questionsContainer.appendChild(questionDiv);
+                            });
+
+                            MathJax.typesetPromise([questionsContainer]);
+                        }
+
+                        document.getElementById('check-answers').addEventListener('click', () => {
+                            let score = 0;
+                            questions.forEach((question, index) => {
+                                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                                const correctAnswer = question.answer;
+                                if (selectedOption) {
+                                    if (selectedOption.value === correctAnswer) {
+                                        score++;
+                                        selectedOption.parentElement.style.color = 'green';
+                                    } else {
+                                        selectedOption.parentElement.style.color = 'red';
+                                    }
+                                }
+                            });
+
+                            const resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                            MathJax.typesetPromise([resultsDiv]);
+                        });
+
+                        document.getElementById('new-questions').addEventListener('click', () => {
+                            loadQuestions();
+                            document.getElementById('results').innerHTML = '';
+                        });
+
+                        loadQuestions();
+                    });
+                </script>
+            </section>
+        </main>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive review of Analytical Geometry for Electrical Engineering students. Learn core concepts, applications, and visual representations.">
+    <meta name="keywords" content="Analytical Geometry, Electrical Engineering, Points, Distances, Lines, Slopes, Circles, Conic Sections, Structural Analysis, Robotics, Optics">
+    <meta name="author" content="Eddie">
+    <meta name="publisher" content="EEPrep">
+    <title>EE Review - Analytical Geometry</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09JTZCW5JJ');
+</script>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='Vectors.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='LinearAlgebra.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Analytic Geometry</h1>
+        </header>
+        <main>
+            <section>
+                <p>Analytic geometry bridges algebra and geometry, providing a systematic way to study shapes and their
+                    properties using the Cartesian coordinate system. It serves as a foundation for advanced topics in
+                    mathematics, engineering, and physics.</p>
+            </section>
+
+            <section>
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><strong>Points and Distances</strong>:
+                        <ul>
+                            <li>Distance formula: \[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]</li>
+                            <li>Midpoint formula: \[M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\]</li>
+                        </ul>
+                    </li>
+                    <li><strong>Lines and Slopes</strong>:
+                        <ul>
+                            <li>Slope formula: \[m = \frac{y_2 - y_1}{x_2 - x_1}\]</li>
+                            <li>Equation of a line: \[y = mx + b\] (slope-intercept form)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Circles</strong>:
+                        <ul>
+                            <li>Standard equation: \[(x - h)^2 + (y - k)^2 = r^2\]</li>
+                            <li>Applications in modeling wave fronts and circular motion.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Conic Sections</strong>:
+                        <ul>
+                            <li>Parabolas: \[y^2 = 4px\] (focus-directrix form)</li>
+                            <li>Ellipses: \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\]</li>
+                            <li>Hyperbolas: \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\]</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Applications in Engineering</h3>
+                <ul>
+                    <li><strong>Structural Analysis</strong>: Using geometric principles to model stress and strain in beams
+                        and frameworks.</li>
+                    <li><strong>Robotics</strong>: Calculating paths and motions using coordinate geometry.</li>
+                    <li><strong>Optics</strong>: Designing lenses and reflectors based on conic sections.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Visual Representations</h3>
+                <div class="flex-container">
+                    <figure class="figure-style">
+                        <figcaption>Illustration of a circle with radius and tangent.</figcaption>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}[scale=0.9]
+                                % Axes
+                                \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+                                \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+                                % Circle and tangent
+                                \draw[thick] (0,0) circle (2cm);
+                                \draw[->,red] (2,0) -- ++(0,1.5) node[right] {Tangent};
+                                \draw[->,blue] (0,0) -- (2,0) node[below] {Radius};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+
+                    <figure class="figure-flex">
+                        <figcaption>Examples of geometric shapes: circle and ellipse.</figcaption>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}[scale=0.9]
+                                % Axes
+                                \draw[->] (-4,0) -- (4,0) node[right] {$x$};
+                                \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+                                % Circle
+                                \draw[thick,blue] (0,0) circle (2cm);
+                                \node[below] at (2,0) {$(h + r, k)$};
+                                % Ellipse
+                                \draw[thick,red] (0,0) ellipse (3cm and 1.5cm);
+                                \node[above] at (-3,0) {Focus};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+                </div>
+            </section>
+
+            <section></section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+            </section>
+        </main>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let questions = [];
+
+            function loadQuestions() {
+                fetch('../../questions/Math/Geometry.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                        displayQuestions();
+                    })
+                    .catch(error => console.error('Error loading questions:', error));
+            }
+
+            function displayQuestions() {
+                const questionsContainer = document.getElementById('questions-container');
+                questionsContainer.innerHTML = '';
+                questions.forEach((question, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+
+                    const questionTitle = document.createElement('p');
+                    questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                    questionDiv.appendChild(questionTitle);
+
+                    question.options.forEach(option => {
+                        const optionLabel = document.createElement('label');
+                        optionLabel.innerHTML = `
+                            <input type="radio" name="question${index}" value="${option}">
+                            ${option}
+                        `;
+                        questionDiv.appendChild(optionLabel);
+                        questionDiv.appendChild(document.createElement('br'));
+                    });
+
+                    questionsContainer.appendChild(questionDiv);
+                    MathJax.typesetPromise([questionDiv]).then(() => {
+                        if (window.tikzjax) {
+                            tikzjax.processMathJaxElements();
+                        }
+                    });
+                });
+            }
+
+            document.getElementById('check-answers').addEventListener('click', () => {
+                let score = 0;
+                questions.forEach((question, index) => {
+                    const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                    const correctAnswer = question.answer;
+                    if (selectedOption) {
+                        if (selectedOption.value === correctAnswer) {
+                            score++;
+                            selectedOption.parentElement.style.color = 'green';
+                        } else {
+                            selectedOption.parentElement.style.color = 'red';
+                        }
+                    }
+                });
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                MathJax.typesetPromise([resultsDiv]);
+            });
+
+            document.getElementById('new-questions').addEventListener('click', () => {
+                loadQuestions();
+                document.getElementById('results').innerHTML = '';
+            });
+
+            document.getElementById('new-questions').addEventListener('click', () => {
+                loadQuestions();
+                document.getElementById('results').innerHTML = '';
+            });
+
+            loadQuestions();
+        });
+    </script>
+</body>
+
+</html>

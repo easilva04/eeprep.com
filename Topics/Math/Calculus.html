@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive review of Calculus for Electrical Engineering students. Learn core concepts, applications, and visual representations.">
+    <meta name="keywords" content="Calculus, Electrical Engineering, Differential Calculus, Integral Calculus, Multivariable Calculus, Structural Analysis, Fluid Dynamics, Thermodynamics">
+    <meta name="author" content="Eddie">
+    <meta name="publisher" content="EEPrep">
+    <title>EE Review - Calculus</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../../js/loadSidebar.js" defer></script>
+    <script src="../../js/navbar.js" defer></script>
+    <script src="../../js/themeToggle.js" defer></script>
+    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/service-worker.js" defer></script>
+    <script src="../../js/config.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09JTZCW5JJ');
+</script>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+    <div class="nav-bottom-left">
+        <button class="styled-button" onclick="window.location.href='LinearAlgebra.html'">Previous Topic</button>
+    </div>
+    <div class="nav-bottom-right">
+        <button class="styled-button" onclick="window.location.href='ODEs.html'">Next Topic</button>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Calculus Overview</h1>
+        </header>
+        <main>
+            <section>
+                <p>Calculus is the mathematical study of change, providing essential tools for understanding and modeling
+                    dynamic systems in engineering, physics, and other sciences. It encompasses differential, integral,
+                    single-variable, and multivariable calculus, forming the backbone of many engineering analyses.</p>
+            </section>
+
+            <section>
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><strong>Differential Calculus</strong>:
+                        <ul>
+                            <li>Derivatives: Measuring rates of change, with applications in optimization and motion
+                                analysis.
+                            </li>
+                            <li>Rules of differentiation: Power rule, product rule, quotient rule, and chain rule.</li>
+                            <li>Applications: Tangent lines, maxima and minima, and related rates problems.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Integral Calculus</strong>:
+                        <ul>
+                            <li>Indefinite integrals: Antiderivatives and integration techniques (e.g., substitution,
+                                integration by parts).</li>
+                            <li>Definite integrals: Calculating areas under curves and solving accumulation problems.</li>
+                            <li>Applications: Computing areas, volumes, and work.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Multivariable Calculus</strong>:
+                        <ul>
+                            <li>Partial derivatives: Analyzing functions of multiple variables.</li>
+                            <li>Gradient, divergence, and curl: Tools for vector calculus in 3D space.</li>
+                            <li>Applications: Optimization with constraints, flux, and field analysis.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Applications in Engineering</h3>
+                <ul>
+                    <li><strong>Structural Analysis</strong>: Computing stresses and deformations in beams and materials.
+                    </li>
+                    <li><strong>Fluid Dynamics</strong>: Modeling flow rates and changes in fluid systems using differential
+                        equations.</li>
+                    <li><strong>Thermodynamics</strong>: Analyzing heat transfer and energy transformations with integrals
+                        and
+                        partial derivatives.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Mathematical Representation</h3>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <p>
+                            Here is the LaTeX representation of the function and its tangent line:
+                            \[
+                            f(x) = x^2 \quad \text{and its tangent line at } x = a \text{ is } y = f(a) + f'(a)(x - a)
+                            \]
+                        </p>
+                    </div>
+                    <figure class="flex-item">
+                        <script type="text/tikz">
+                            \begin{tikzpicture}[scale=0.9]
+                                \draw[thick,->] (-3,0) -- (3,0) node[below right] {$x$};
+                                \draw[thick,->] (0,-0.5) -- (0,5) node[above left] {$y$};
+                                \draw[blue,thick,domain=-2:2,samples=100] plot (\x,{(\x)^2}) node[right] {$f(x) = x^2$};
+                                \draw[red,thick,domain=0:2] plot (\x,{2*\x - 1}) node[below right] {Tangent at $x=1$};
+                                \filldraw[black] (1,1) circle (2pt) node[above left] {$(1,1)$};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+                </div>
+            </section>
+
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+            </section>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    let questions = [];
+
+                    function loadQuestions() {
+                        fetch('../../questions/Math/Calculus.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
+                                displayQuestions();
+                            })
+                            .catch(error => console.error('Error loading questions:', error));
+                    }
+
+                    function displayQuestions() {
+                        const questionsContainer = document.getElementById('questions-container');
+                        questionsContainer.innerHTML = '';
+                        questions.forEach((question, index) => {
+                            const questionDiv = document.createElement('div');
+                            questionDiv.classList.add('question');
+
+                            const questionTitle = document.createElement('p');
+                            questionTitle.innerHTML = `${index + 1}. ${question.question}`;
+                            questionDiv.appendChild(questionTitle);
+
+                            question.options.forEach(option => {
+                                const optionLabel = document.createElement('label');
+                                optionLabel.innerHTML = `
+                                    <input type="radio" name="question${index}" value="${option}">
+                                    ${option}
+                                `;
+                                questionDiv.appendChild(optionLabel);
+                                questionDiv.appendChild(document.createElement('br'));
+                            });
+
+                            questionsContainer.appendChild(questionDiv);
+                        });
+                        MathJax.typesetPromise().then(() => {
+                            if (window.tikzjax) {
+                                tikzjax.processMathJaxElements();
+                            }
+                        });
+                    }
+
+                    document.getElementById('check-answers').addEventListener('click', () => {
+                        let score = 0;
+                        questions.forEach((question, index) => {
+                            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                            const correctAnswer = question.answer;
+                            if (selectedOption) {
+                                if (selectedOption.value === correctAnswer) {
+                                    score++;
+                                    selectedOption.parentElement.style.color = 'green';
+                                } else {
+                                    selectedOption.parentElement.style.color = 'red';
+                                }
+                            }
+                        });
+                        const resultsDiv = document.getElementById('results');
+                        resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
+                        MathJax.typesetPromise([resultsDiv]);
+                    });
+
+                    document.getElementById('new-questions').addEventListener('click', () => {
+                        loadQuestions();
+                        document.getElementById('results').innerHTML = '';
+                        score = 0;
+                    });
+
+                    loadQuestions();
+                });
+            </script>
+        </main>
+    </div>
+</body>
+
+</html>

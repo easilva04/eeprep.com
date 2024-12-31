@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search Results">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <!-- Remove or replace favicon:
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    -->
+</head>
+
+<body>
+    <div class="topborder"></div>
+    <div id="sidebar-container"></div>
+
+    <div class="main-content">
+        <header>
+            <h1>Search Results</h1>
+        </header>
+
+        <main>
+            <div id="search-form">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">Search</button>
+            </div>
+            <section id="search-results">
+                <p>Enter a search term above...</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Load search.js first -->
+    <script src="../js/search.js"></script>
+    
+    <!-- Initialize search -->
+    <script>
+        let searchEngine;
+        async function initSearch() {
+            console.log('Initializing search...');
+            searchEngine = new SearchEngine();
+
+            // Fetch and flatten pages from new JSON structure
+            const pagesResponse = await fetch('../Topics/pages.json');
+            const pagesData = await pagesResponse.json();
+            let allPages = [];
+            for (const section in pagesData) {
+                allPages = allPages.concat(pagesData[section]);
+            }
+            // Initialize the search index with all pages
+            await searchEngine.initializeSearchIndex(allPages);
+
+            console.log('Search engine initialized');
+            
+            const resultsContainer = document.getElementById('search-results');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+
+            // Get query from URL if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialQuery = urlParams.get('q');
+            if (initialQuery) {
+                searchInput.value = initialQuery;
+                setTimeout(() => performSearch(initialQuery), 500); // Give more time for index to build
+            }
+
+            searchButton.addEventListener('click', () => {
+                performSearch(searchInput.value);
+            });
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch(searchInput.value);
+                }
+            });
+        }
+
+        function performSearch(query) {
+            const resultsContainer = document.getElementById('search-results');
+            if (!query) {
+                resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+                return;
+            }
+
+            const results = searchEngine.search(query);
+            displayResults(results, query);
+        }
+
+        function displayResults(results, query) {
+            const resultsContainer = document.getElementById('search-results');
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `<p>No results found for "${query}"</p>`;
+                return;
+            }
+
+            resultsContainer.innerHTML = `
+                <h2>Results for "${query}"</h2>
+                <p class="search-summary">Found ${results.length} matching pages</p>
+                <div class="search-results-list">
+                    ${results.map(result => `
+                        <div class="search-result-item">
+                            <a href="${result.url}">
+                                <h3>${result.title}</h3>
+                            </a>
+                            <div class="matched-terms">
+                                Matched: ${result.matchedTerms.map(term => 
+                                    `<span class="matched-term">${term}</span>`
+                                ).join(', ')}
+                            </div>
+                            ${result.excerpts.map(excerpt => `
+                                <p class="search-excerpt">${excerpt}</p>
+                            `).join('')}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Initialize after DOM content loads
+        document.addEventListener('DOMContentLoaded', initSearch);
+    </script>
+
+    <!-- Load other scripts -->
+    <script src="../js/navbar.js"></script>
+    <script src="../js/loadSidebar.js"></script>
+    <script src="../js/themeToggle.js"></script>
+</body>
+</html>
+
+</html>

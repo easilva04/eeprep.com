@@ -1,0 +1,44 @@
+@media (max-width: 1200px) {
+    body {
+        padding: var(--navbar-height) 5% 0 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: var(--navbar-height) 2% 0 2%;
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    .title-full {
+        display: none;
+    }
+    
+    .title-mobile {
+        display: block;
+    }
+
+    .sidebar {
+        transition: transform 0.2s ease;
+        will-change: transform;
+        height: calc(100% - var(--navbar-height));
+        overflow: hidden;
+    }
+
+    .sidebar-content {
+        max-height: none;
+    }
+
+    .dropdown-menu {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .dropdown-menu.active {
+        position: relative;
+        overflow-y: visible;
+    }
+}

@@ -1,0 +1,627 @@
+@import url('mobile.css');
+@import url('navbar.css');
+@import url('sidebar.css');
+@import url('themes.css');
+@import url('styles.css');
+
+:root {
+    --off-white: #f0f0f0;
+    --white: #ffffff;
+    --black: #151515;
+    --grey: #808080;
+    --sidebar-width: 220px;
+    --mobile-breakpoint: 768px;
+    --arrow-height: 40px;
+    --border-radius: 12px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.18);
+    --shadow-active: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --font-family: 'Bookman', serif;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 1.75rem;
+    --font-size-h3: 1.5rem;
+    --font-size-h4: 1.25rem;
+    --font-size-text: 1rem;
+    --sidebar-header-size: 1.25rem;
+    --navbar-height: 60px;
+}
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.1s ease, box-shadow 0.05s ease;
+    font-family: var(--font-family);
+    font-size: var(--font-size-text);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Common typography styles - these will override component styles */
+h1, h2, h3, h4, h5, h6,
+.navbar-title,
+.sidebar a,
+.dropdown-toggle,
+.dark-mode-toggle {
+    font-family: var(--font-family);
+}
+
+h1 { font-size: var(--font-size-h1); margin-bottom: 2rem; font-weight: 700; }
+h2 { font-size: var(--font-size-h2); margin-bottom: 1.75rem; font-weight: 600; }
+h3 { font-size: var(--font-size-h3); margin-bottom: 1.5rem; font-weight: 600; }
+h4 { font-size: var(--font-size-h4); margin-bottom: 1.25rem; font-weight: 500; }
+
+/* Layout */
+body {
+    line-height: 1.6;
+    color: var(--black);
+    background-color: var(--off-white);
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: var(--navbar-height) 10% 0 10%;
+}
+
+.main-content {
+    padding: 1rem;
+    width: 100%;
+    max-width: 80%;
+    margin: 2rem auto 0;
+    color: var(--black);
+}
+
+/* Override component-specific typography */
+.navbar-title {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+}
+
+.sidebar a, 
+.sidebar p {
+    font-size: var(--font-size-text);
+}
+
+.dropdown-toggle {
+    font-size: var(--font-size-text);
+    font-weight: 500;
+}
+
+.dropdown-menu a {
+    font-size: calc(var(--font-size-text) * 0.95);
+}
+
+/* LaTeX styles */
+.MathJax, .MathJax_Preview, .MathJax_SVG, .MathJax_Display, .tikzjax {
+    font-family: initial !important;
+    font-size: initial !important;
+    line-height: initial !important;
+}
+
+/* Search Results Styles */
+#search-form {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+#search-input {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: var(--font-size-text);
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    color: var(--black) !important; /* Force black text */
+    background-color: var(--white);
+}
+
+#search-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-result-item {
+    padding: 1rem;
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    background-color: var(--white);
+}
+
+.search-result-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+.search-result-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.search-result-item a:hover h3 {
+    text-decoration: underline;
+}
+
+mark {
+    background-color: rgba(255, 255, 0, 0.4);
+    padding: 0.1em 0;
+}
+
+/* Dark mode styles for search */
+body.dark-mode #search-input {
+    background-color: var(--white); /* Light background in dark mode */
+    border-color: var(--grey);
+    color: var(--black) !important; /* Force black text even in dark mode */
+}
+
+body.dark-mode #search-button {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+body.dark-mode .search-result-item {
+    background-color: var(--black);
+}
+
+body.dark-mode mark {
+    background-color: rgba(255, 255, 0, 0.2);
+    color: inherit;
+}
+
+.search-excerpt {
+    margin: 0.5rem 0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    color: var(--grey);
+}
+
+.search-excerpt mark {
+    color: var(--black);
+    background-color: rgba(255, 255, 0, 0.3);
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+}
+
+body.dark-mode .search-excerpt {
+    color: #c0c0c0;
+}
+
+body.dark-mode .search-excerpt mark {
+    color: var(--white);
+    background-color: rgba(255, 255, 0, 0.2);
+}
+
+/* Search Dropdown Styles */
+.search-container {
+    position: relative;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-dropdown.active {
+    display: block;
+}
+
+.search-dropdown-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-dropdown-item:hover {
+    background-color: var(--off-white);
+}
+
+.search-dropdown-item h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    color: var(--black);
+}
+
+.search-dropdown-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--grey);
+}
+
+.search-highlight {
+    background-color: rgba(255, 255, 0, 0.3);
+    padding: 0 0.2em;
+}
+
+body.dark-mode .search-dropdown {
+    background: var(--black);
+    border-color: var(--grey);
+}
+
+body.dark-mode .search-dropdown-item {
+    background-color: var(--black);
+    border-bottom: 1px solid var(--grey);
+}
+
+body.dark-mode .search-dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-dropdown-item h4 {
+    color: var(--white);
+}
+
+body.dark-mode .search-dropdown-item p {
+    color: var(--grey);
+}
+
+body.dark-mode .search-dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-summary {
+    margin-bottom: 1rem;
+    color: var(--grey);
+    font-style: italic;
+}
+
+.matched-terms {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--grey);
+}
+
+.matched-term {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    margin: 0 0.2rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+body.dark-mode .matched-term {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    color: var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--white);
+    background-color: var(--black);
+    border-color: var(--grey);
+}
+
+/* Styled Button Styles */
+.styled-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.styled-button:hover {
+    background-color: var(--grey);
+}
+
+.styled-button:active {
+    background-color: var(--black);
+    color: var(--off-white);
+}
+
+/* Dark mode styles for the button */
+body.dark-mode .styled-button {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+body.dark-mode .styled-button:hover {
+    background-color: var(--grey);
+}
+
+body.dark-mode .styled-button:active {
+    background-color: var(--white);
+    color: var(--off-white);
+}
+
+/* ...existing code... */
+
+/* Contact Form Styles */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-text);
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--black);
+}
+
+.contact-form input.invalid,
+.contact-form textarea.invalid {
+    border-color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.05);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-status {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.form-status.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: var(--font-size-text);
+    font-weight: 500;
+}
+
+.contact-form button[type="submit"]:disabled {
+    background-color: var(--grey);
+    cursor: not-allowed;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .contact-form {
+    background: var(--black);
+}
+
+body.dark-mode .form-status.success {
+    background-color: rgba(212, 237, 218, 0.1);
+    color: #98c9a3;
+    border-color: #98c9a3;
+}
+
+body.dark-mode .form-status.error {
+    background-color: rgba(248, 215, 218, 0.1);
+    color: #e6a5a5;
+    border-color: #e6a5a5;
+}
+
+/* ...existing code... */
+
+.nav-top-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.nav-top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.nav-bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.nav-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-status {
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.form-status.success {
+    color: green;
+}
+
+.form-status.error {
+    color: red;
+}
+
+.contact-section {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.contact-section h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+}
+
+#contactForm input,
+#contactForm textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#contactForm textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#contactForm button {
+    padding: 0.8rem 1.5rem;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+#contactForm button:hover {
+    background: #1976D2;
+}
+
+/* ...existing code... */
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.error-message.visible {
+    display: block;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.loading-spinner.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#contactForm button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-status {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.form-status.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ...existing code... */

@@ -1,0 +1,499 @@
+{
+  "questions": [
+    {
+      "question": "Which distribution is symmetrical and bell-shaped?",
+      "options": ["Normal", "Binomial", "Poisson", "Geometric"],
+      "answer": "Normal"
+    },
+    {
+      "question": "When flipping a fair coin 3 times, what is the probability of exactly 2 heads?",
+      "options": ["1/8", "3/8", "1/4", "3/4"],
+      "answer": "3/8"
+    },
+    {
+      "question": "Which distribution models the number of events in a fixed interval of time?",
+      "options": ["Poisson", "Binomial", "Geometric", "Normal"],
+      "answer": "Poisson"
+    },
+    {
+      "question": "Which distribution describes the total number of successes in n independent trials?",
+      "options": ["Binomial", "Uniform", "Poisson", "Exponential"],
+      "answer": "Binomial"
+    },
+    {
+      "question": "Which distribution is used to model the waiting time between events in a Poisson process?",
+      "options": ["Exponential", "Geometric", "Binomial", "Normal"],
+      "answer": "Exponential"
+    },
+    {
+      "question": "Which distribution often models the number of trials up to the first success?",
+      "options": ["Geometric", "Poisson", "Normal", "Uniform"],
+      "answer": "Geometric"
+    },
+    {
+      "question": "Which distribution is defined by parameters μ and σ²?",
+      "options": ["Normal", "Binomial", "Uniform", "Poisson"],
+      "answer": "Normal"
+    },
+    {
+      "question": "Which distribution is used to model rare events?",
+      "options": ["Poisson", "Binomial", "Normal", "Exponential"],
+      "answer": "Poisson"
+    },
+    {
+      "question": "Which distribution is used to model the sample mean distribution for large sample sizes?",
+      "options": ["Normal", "Binomial", "Exponential", "Uniform"],
+      "answer": "Normal"
+    },
+    {
+      "question": "Which distribution can be described as a series of repeated Bernoulli trials with success/failure outcomes?",
+      "options": ["Binomial", "Exponential", "Poisson", "Uniform"],
+      "answer": "Binomial"
+    },
+    {
+      "question": "Which distribution can be used to model the number of successes until the r-th is reached?",
+      "options": ["Negative Binomial", "Poisson", "Uniform", "Normal"],
+      "answer": "Negative Binomial"
+    },
+    {
+      "question": "Which distribution is memoryless in a discrete sense?",
+      "options": ["Geometric", "Binomial", "Poisson", "Normal"],
+      "answer": "Geometric"
+    },
+    {
+      "question": "Which distribution is described by shape and scale parameters and is often used in reliability analysis?",
+      "options": ["Weibull", "Binomial", "Uniform", "Geometric"],
+      "answer": "Weibull"
+    },
+    {
+      "question": "Which distribution has a constant probability density in a given interval and zero outside?",
+      "options": ["Uniform", "Normal", "Exponential", "Binomial"],
+      "answer": "Uniform"
+    },
+    {
+      "question": "Which distribution is the continuous analog of the Geometric distribution?",
+      "options": ["Exponential", "Binomial", "Normal", "Poisson"],
+      "answer": "Exponential"
+    },
+    {
+      "question": "Which distribution can approximate the Binomial distribution when n is large and p is small?",
+      "options": ["Poisson", "Geometric", "Normal", "Exponential"],
+      "answer": "Poisson"
+    },
+    {
+      "question": "Which distribution can approximate the Binomial distribution when n is large and p is near 0.5?",
+      "options": ["Normal", "Poisson", "Exponential", "Uniform"],
+      "answer": "Normal"
+    },
+    {
+      "question": "Which distribution is used to describe the sum of squares of k independent standard normal variables?",
+      "options": ["Chi-square", "Binomial", "Uniform", "Negative Binomial"],
+      "answer": "Chi-square"
+    },
+    {
+      "question": "Which distribution is useful for confidence intervals for a population mean when the sample size is small?",
+      "options": ["Student's t", "Chi-square", "Binomial", "Uniform"],
+      "answer": "Student's t"
+    },
+    {
+      "question": "Which distribution is the ratio of a standard normal variable and the square root of a chi-square variable divided by its df?",
+      "options": ["Student's t", "F", "Binomial", "Geometric"],
+      "answer": "Student's t"
+    },
+    {
+      "question": "Which distribution is the ratio of two chi-square distributions divided by their df?",
+      "options": ["F", "Normal", "Exponential", "Weibull"],
+      "answer": "F"
+    },
+    {
+      "question": "Which distribution is often used to describe the lifetime of components with a constant failure rate?",
+      "options": ["Exponential", "Normal", "Binomial", "Beta"],
+      "answer": "Exponential"
+    },
+    {
+      "question": "Which distribution is bounded between 0 and 1 and often used to describe proportions?",
+      "options": ["Beta", "Uniform", "Binomial", "Poisson"],
+      "answer": "Beta"
+    },
+    {
+      "question": "Which distribution generalizes the Beta distribution to multiple variables?",
+      "options": ["Dirichlet", "Uniform", "Exponential", "Binomial"],
+      "answer": "Dirichlet"
+    },
+    {
+      "question": "Which distribution is a generalization of the Bernoulli distribution to multiple categories?",
+      "options": ["Multinomial", "Binomial", "Poisson", "Negative Binomial"],
+      "answer": "Multinomial"
+    },
+    {
+      "question": "Which distribution is used to model the time until the i-th event in a Poisson process?",
+      "options": ["Gamma", "Binomial", "Normal", "Uniform"],
+      "answer": "Gamma"
+    },
+    {
+      "question": "Which distribution is a continuous probability distribution on (0,∞) with parameters k>0 and θ>0?",
+      "options": ["Gamma", "Poisson", "Normal", "Binomial"],
+      "answer": "Gamma"
+    },
+    {
+      "question": "Which distribution is a special case of the Gamma distribution with shape parameter k=1?",
+      "options": ["Exponential", "Binomial", "Geometric", "Normal"],
+      "answer": "Exponential"
+    },
+    {
+      "question": "Which distribution uses a location parameter µ and a scale parameter β, often for survival analysis?",
+      "options": ["Weibull", "Uniform", "Binomial", "Poisson"],
+      "answer": "Weibull"
+    },
+    {
+      "question": "Which distribution is often used to describe daily stock returns, assuming independence?",
+      "options": ["Normal", "Geometric", "Poisson", "Binomial"],
+      "answer": "Normal"
+    },
+    {
+      "question": "Which distribution is used in Bayesian statistics to describe a prior for the probability of success?",
+      "options": ["Beta", "Binomial", "Normal", "Uniform"],
+      "answer": "Beta"
+    },
+    {
+      "question": "Which distribution describes the minimum of several exponential random variables?",
+      "options": ["Exponential", "Normal", "Binomial", "Poisson"],
+      "answer": "Exponential"
+    },
+    {
+      "question": "Which distribution often describes over-dispersed count data where variance exceeds the mean?",
+      "options": ["Negative Binomial", "Poisson", "Uniform", "Normal"],
+      "answer": "Negative Binomial"
+    },
+    {
+      "question": "Which distribution has an S-shaped CDF and is common in logistic regression?",
+      "options": ["Logistic", "Binomial", "Poisson", "Normal"],
+      "answer": "Logistic"
+    },
+    {
+      "question": "Which distribution is used to model lifetimes on (0,∞) and can be skewed right?",
+      "options": ["Weibull", "Uniform", "Binomial", "Poisson"],
+      "answer": "Weibull"
+    },
+    {
+      "question": "Which distribution is bounded between 0 and 1 and can take many shapes based on α and β parameters?",
+      "options": ["Beta", "Binomial", "Normal", "Poisson"],
+      "answer": "Beta"
+    },
+    {
+      "question": "Which distribution deals with integer counts and is a discrete analog to the Gamma distribution?",
+      "options": ["Negative Binomial", "Poisson", "Binomial", "Geometric"],
+      "answer": "Negative Binomial"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Binomial}(5, 0.4)\\), what is \\(P(X=2)\\)?",
+      "options": [
+        "\\(\\binom{5}{2} (0.4)^2 (0.6)^3\\)",
+        "\\(\\binom{5}{2} (0.6)^2 (0.4)^3\\)",
+        "\\(0.4^5\\)",
+        "\\(0.6^5\\)"
+      ],
+      "answer": "\\(\\binom{5}{2} (0.4)^2 (0.6)^3\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Poisson}(3)\\), what is the PMF formula?",
+      "options": [
+        "\\(\\frac{e^{-\\lambda} \\lambda^x}{x!}\\)",
+        "\\(\\binom{n}{x} p^x (1-p)^{n-x}\\)",
+        "\\(\\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}\\)",
+        "\\(\\frac{1}{b-a}\\) for \\(x\\) between \\(a\\) and \\(b\\)"
+      ],
+      "answer": "\\(\\frac{e^{-\\lambda} \\lambda^x}{x!}\\)"
+    },
+    {
+      "question": "If \\(X \\sim N(0,1)\\), find \\(P(|X| < 2)\\). Approximate using the empirical rule.",
+      "options": [
+        "0.95",
+        "0.68",
+        "0.99",
+        "0.50"
+      ],
+      "answer": "0.95"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Geometric}(p=0.2)\\), find \\(P(X=3)\\).",
+      "options": [
+        "\\((0.2)(0.8)^2\\)",
+        "\\((0.8)(0.2)^2\\)",
+        "\\((0.2)^3\\)",
+        "\\(0.8^3\\)"
+      ],
+      "answer": "\\((0.2)(0.8)^2\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Uniform}(2,10)\\), find \\(E[X]\\).",
+      "options": [
+        "\\(\\frac{2+10}{2} = 6\\)",
+        "\\(\\frac{10-2}{2} = 4\\)",
+        "\\(2 \\times 10 = 20\\)",
+        "\\frac{10^2 - 2^2}{2} = \\frac{48}{2} = 24\\)"
+      ],
+      "answer": "\\(\\frac{2+10}{2} = 6\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Exponential}(\\lambda=1.5)\\), find \\(\\mathrm{Var}(X)\\).",
+      "options": [
+        "\\(\\frac{1}{(1.5)^2}\\)",
+        "\\(\\lambda = 1.5\\)",
+        "\\(\\frac{2}{\\lambda} = \\frac{2}{1.5}\\)",
+        "\\(\\frac{e^{-\\lambda} \\lambda^x}{x!}\\)"
+      ],
+      "answer": "\\(\\frac{1}{(1.5)^2}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Binomial}(10, 0.5)\\), find \\(P(X \\ge 8)\\).",
+      "options": [
+        "\\(\\binom{10}{8} 0.5^{10} + \\binom{10}{9} 0.5^{10} + \\binom{10}{10} 0.5^{10}\\)",
+        "\\(1 - \\binom{10}{0} 0.5^{10}\\)",
+        "\\(\\binom{10}{8} 0.5^2\\)",
+        "\\(\\binom{10}{8} 0.5^{10}\\)"
+      ],
+      "answer": "\\(\\binom{10}{8} 0.5^{10} + \\binom{10}{9} 0.5^{10} + \\binom{10}{10} 0.5^{10}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Gamma}(k=3, \\theta=2)\\), what is the PDF?",
+      "options": [
+        "\\(\\frac{x^{3 - 1} e^{-x/2}}{2^3 \\Gamma(3)}\\) for \\(x>0\\)",
+        "\\(\\binom{n}{x} p^x (1-p)^{n-x}\\)",
+        "\\(\\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}\\)",
+        "\\(\\lambda e^{-\\lambda x}\\) for \\(x>0\\)"
+      ],
+      "answer": "\\(\\frac{x^{3 - 1} e^{-x/2}}{2^3 \\Gamma(3)}\\) for \\(x>0\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\chi^2(4)\\), what is \\(E[X]\\)?",
+      "options": [
+        "4",
+        "2",
+        "6",
+        "8"
+      ],
+      "answer": "4"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Negative\\ Binomial}(r=5, p=0.3)\\), find \\(P(X=8)\\). (\\(X\\) is total trials upon 5th success.)",
+      "options": [
+        "\\(\\binom{8 - 1}{5 - 1} (0.3)^5 (0.7)^{8 - 5}\\)",
+        "\\(0.3^8 \\times 0.7^5\\)",
+        "\\(\\binom{5}{8} (0.3)^8 (0.7)^{5 - 8}\\)",
+        "\\(\\frac{e^{-\\lambda} \\lambda^x}{x!}\\)"
+      ],
+      "answer": "\\(\\binom{8 - 1}{5 - 1} (0.3)^5 (0.7)^{8 - 5}\\)"
+    },
+    {
+      "question": "If \\(X \\sim N(\\mu=10, \\sigma^2=4)\\), find \\(P(X < 8)\\).",
+      "options": [
+        "\\(\\Phi\\bigl(\\frac{8 - 10}{2}\\bigr)\\)",
+        "\\(1 - \\Phi\\bigl(\\frac{8 - 10}{2}\\bigr)\\)",
+        "\\(\\Phi\\bigl(\\frac{10 - 8}{2}\\bigr)\\)",
+        "\\(1 - \\Phi\\bigl(\\frac{10 - 8}{2}\\bigr)\\)"
+      ],
+      "answer": "\\(\\Phi\\bigl(\\frac{8 - 10}{2}\\bigr)\\)"
+    },
+    {
+      "question": "If \\(X \\sim F(d_1=6, d_2=10)\\), find the mean if \\(d_2 > 2\\).",
+      "options": [
+        "\\(\\frac{d_2}{d_2 - 2} = \\frac{10}{8}\\)",
+        "\\(\\frac{d_2}{d_2 - 2} = \\frac{6}{4}\\)",
+        "\\(\\frac{2 d_2}{d_2 - 2}\\)",
+        "None of the above"
+      ],
+      "answer": "\\(\\frac{d_2}{d_2 - 2} = \\frac{10}{8}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Beta}(2, 5)\\), which is \\(E[X]\\)?",
+      "options": [
+        "\\(\\frac{2}{2+5} = \\frac{2}{7}\\)",
+        "\\(\\frac{5}{2+5} = \\frac{5}{7}\\)",
+        "\\(\\frac{2 \\times 5}{2+5}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "answer": "\\(\\frac{2}{2+5} = \\frac{2}{7}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Dirichlet}(\\alpha_1=2, \\alpha_2=3, \\alpha_3=4)\\), how many parameters define it?",
+      "options": [
+        "3",
+        "2",
+        "9",
+        "1"
+      ],
+      "answer": "3"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Multinomial}(n=4, p_1=0.2, p_2=0.3, p_3=0.5)\\), find \\(P(X_1=1, X_2=2, X_3=1)\\).",
+      "options": [
+        "\\(\\binom{4}{1,2,1} (0.2)^1 (0.3)^2 (0.5)^1\\)",
+        "\\((0.2^4) + (0.3^4) + (0.5^4)\\)",
+        "\\(\\binom{4}{1} (0.2)^1 (0.8)^3\\)",
+        "\\(4 (0.2^4) (0.5^4)\\)"
+      ],
+      "answer": "\\(\\binom{4}{1,2,1} (0.2)^1 (0.3)^2 (0.5)^1\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Normal}(\\mu=0, \\sigma^2=1)\\), find the mode of \\(X\\).",
+      "options": [
+        "0",
+        "1",
+        "\\(\\mu + \\sigma = 1\\)",
+        "\\(\\mu - \\sigma = -1\\)"
+      ],
+      "answer": "0"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Binomial}(6, 0.1)\\), find \\(P(X>1)\\).",
+      "options": [
+        "\\(1 - [P(X=0) + P(X=1)]\\)",
+        "\\(1 - P(X=0)\\)",
+        "\\(P(X=1)\\)",
+        "\\(1 - P(X=1)\\)"
+      ],
+      "answer": "\\(1 - [P(X=0) + P(X=1)]\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Poisson}(2)\\), find \\(P(X \\le 2)\\).",
+      "options": [
+        "\\(e^{-2} \\bigl(\\frac{2^0}{0!} + \\frac{2^1}{1!} + \\frac{2^2}{2!}\\bigr)\\)",
+        "\\(\\binom{2}{2} (0.5)^2\\)",
+        "\\(1 - e^{-2}\\)",
+        "\\(e^2\\)"
+      ],
+      "answer": "\\(e^{-2} \\bigl(\\frac{2^0}{0!} + \\frac{2^1}{1!} + \\frac{2^2}{2!}\\bigr)\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Student\\text{'s}\\ t}(df=5)\\), find \\(P(|X| < 1)\\).",
+      "options": [
+        "\\(2 F_t(1; 5) - 1\\)",
+        "\\(1 - 2 F_t(1; 5)\\)",
+        "\\(\\Phi(0.2)\\)",
+        "\\(F(1; 5, 5)\\)"
+      ],
+      "answer": "\\(2 F_t(1; 5) - 1\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Exponential}(\\lambda=2)\\), find \\(P(X \\le 3)\\).",
+      "options": [
+        "\\(1 - e^{-2 \\times 3}\\)",
+        "\\(e^{-2 \\times 3}\\)",
+        "\\(2 \\times 3 \\times e^{-2 \\times 3}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "answer": "\\(1 - e^{-2 \\times 3}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Logistic}(\\mu=0, s=1)\\), find the PDF at \\(x=0\\).",
+      "options": [
+        "\\(\\frac{1}{4s} = \\frac{1}{4}\\)",
+        "\\(\\frac{1}{2\\pi} = 0.159\\)",
+        "\\(\\frac{1}{s} \\Phi(0)\\)",
+        "None of the above"
+      ],
+      "answer": "\\(\\frac{1}{4s} = \\frac{1}{4}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Binomial}(3, \\tfrac{2}{3})\\), find \\(P(X=3)\\).",
+      "options": [
+        "\\(\\binom{3}{3} (\\tfrac{2}{3})^3 (\\tfrac{1}{3})^0\\)",
+        "\\((\\tfrac{1}{3})^3\\)",
+        "\\((\\tfrac{2}{3})^2 (\\tfrac{1}{3})^1\\)",
+        "\\(\\binom{3}{3} (\\tfrac{2}{3})^3 (\\tfrac{1}{3})^0\\)"
+      ],
+      "answer": "\\(\\binom{3}{3} (\\tfrac{2}{3})^3 (\\tfrac{1}{3})^0\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Uniform}(a,b)\\), find \\(\\mathrm{Var}(X)\\).",
+      "options": [
+        "\\(\\frac{(b - a)^2}{12}\\)",
+        "\\(\\frac{(b + a)^2}{12}\\)",
+        "\\(b - a\\)",
+        "\\(\\frac{a + b}{2}\\)"
+      ],
+      "answer": "\\(\\frac{(b - a)^2}{12}\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Beta}(3,3)\\), find the mode(s) of \\(X\\) on \\((0,1)\\).",
+      "options": [
+        "\\(\\frac{3 - 1}{3 + 3 - 2} = \\frac{2}{4} = 0.5\\)",
+        "3",
+        "\\(\\frac{1}{3}\\)",
+        "No mode exists"
+      ],
+      "answer": "\\(\\frac{3 - 1}{3 + 3 - 2} = \\frac{2}{4} = 0.5\\)"
+    },
+    {
+      "question": "If \\(X_1, ..., X_n\\) are i.i.d. from \\(N(\\mu, \\sigma^2)\\), which distribution does the sample mean follow?",
+      "options": [
+        "\\(N(\\mu, \\tfrac{\\sigma^2}{n})\\)",
+        "\\(N(\\mu, \\sigma^2)\\)",
+        "\\(t(n-1)\\)",
+        "\\(N(\\mu, \\sigma^2 n)\\)"
+      ],
+      "answer": "\\(N(\\mu, \\tfrac{\\sigma^2}{n})\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Poisson}(1.2)\\), find \\(P(X \\ge 3)\\).",
+      "options": [
+        "\\(1 - [P(X=0) + P(X=1) + P(X=2)]\\)",
+        "\\(P(X=3)\\)",
+        "\\(e^{-1.2} \\frac{(1.2)^3}{3!}\\)",
+        "\\(1 - e^{-1.2}\\)"
+      ],
+      "answer": "\\(1 - [P(X=0) + P(X=1) + P(X=2)]\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Negative\\ Binomial}(r=2, p=0.1)\\), what is the expected number of trials until the 2nd success?",
+      "options": [
+        "\\(\\frac{r}{p} = \\frac{2}{0.1} = 20\\)",
+        "\\(2 + p = 2.1\\)",
+        "\\(r (1 - p) = 2 \\times 0.9 = 1.8\\)",
+        "None of the above"
+      ],
+      "answer": "\\(\\frac{r}{p} = \\frac{2}{0.1} = 20\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Gamma}(k=2, \\theta=3)\\), what is \\(E[X]\\)?",
+      "options": [
+        "\\(k \\theta = 2 \\times 3 = 6\\)",
+        "\\(k + \\theta = 5\\)",
+        "\\(\\frac{k}{\\theta} = \\frac{2}{3}\\)",
+        "None of the above"
+      ],
+      "answer": "\\(k \\theta = 2 \\times 3 = 6\\)"
+    },
+    {
+      "question": "If \\(X \\sim \\chi^2(6)\\), what is \\(\\mathrm{Var}(X)\\)?",
+      "options": [
+        "\\(2 \\times df = 12\\)",
+        "\\(df = 6\\)",
+        "\\(df - 2 = 4\\)",
+        "None of the above"
+      ],
+      "answer": "\\(2 \\times df = 12\\)"
+    },
+    {
+      "question": "If \\(X \\sim F(5,10)\\), which statement about \\(P(X>1)\\) is correct?",
+      "options": [
+        "P(X>1) > 0.5",
+        "P(X>1) < 0.5",
+        "P(X>1) = 0.5",
+        "Cannot be determined"
+      ],
+      "answer": "P(X>1) < 0.5"
+    },
+    {
+      "question": "If \\(X \\sim \\mathrm{Student\\text{'s}\\ t}(df=10)\\), which is the mean of \\(X\\)?",
+      "options": [
+        "0",
+        "The df, 10",
+        "1",
+        "Undefined"
+      ],
+      "answer": "0"
+    }
+  ]
+}
