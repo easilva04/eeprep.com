@@ -1,6 +1,7 @@
 import os
 import subprocess
 import re
+import sys
 
 def extract_circuits_from_latex(latex_file):
     with open(latex_file, "r") as f:
@@ -8,9 +9,11 @@ def extract_circuits_from_latex(latex_file):
     circuits = re.findall(r'\\begin{circuitikz}(.*?)\\end{circuitikz}', content, re.DOTALL)
     return circuits
 
-def extract_labels(circuit_code):
-    labels = re.findall(r'l=\$(.*?)\$', circuit_code)
-    return "_".join(labels) if labels else "circuit"
+def extract_labels(content, index):
+    labels = re.findall(r'\\label\{(.*?)\}', content)
+    label = labels[index] if index < len(labels) else f"circuit_{index}"
+    print(f"Extracted label: {label}")  # Debug print
+    return label
 
 def generate_latex_circuit(circuit_code, label, output_dir):
     latex_code = f"""
@@ -45,13 +48,20 @@ def clean_up(label, output_dir):
             os.remove(file_path)
 
 if __name__ == "__main__":
-    latex_file = os.path.join(os.getcwd(), "diagrams.tex")
+    latex_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "diagrams.tex"))  # Corrected hardcoded path to the LaTeX file
+    
+    if not os.path.exists(latex_file):
+        print(f"Error: The file {latex_file} does not exist.")
+        sys.exit(1)
+    
     output_dir = os.getcwd()
     svg_dir = os.path.join(output_dir, "../")
     os.makedirs(svg_dir, exist_ok=True)
     circuits = extract_circuits_from_latex(latex_file)
+    content = open(latex_file, "r").read()
     for i, circuit in enumerate(circuits):
-        label = extract_labels(circuit) or f"circuit_{i}"
+        label = extract_labels(content, i)
+        print(f"Processing circuit {i} with label: {label}")  # Debug print
         generate_latex_circuit(circuit, label, output_dir)
         compile_latex_to_pdf(label, output_dir)
         convert_pdf_to_svg(label, output_dir, svg_dir)

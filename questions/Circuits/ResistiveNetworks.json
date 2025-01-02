@@ -6,14 +6,7 @@
             "answer": "10 ohms"
         },
         {
-            "question": "Which of the following circuit diagrams represents two resistors, 4 ohms and 6 ohms, connected in series?",
-            "options": [
-                "\\begin{circuitikz} \\draw (0,0) to[R=4\\ohm] (2,0) -- (4,0) to[R=6\\ohm] (6,0); \\end{circuitikz}",
-                "\\begin{circuitikz} \\draw (0,0) to[R=4\\ohm] (2,0) -- (2,2) to[R=6\\ohm] (2,4); \\end{circuitikz}",
-                "\\begin{circuitikz} \\draw (0,0) to[R=6\\ohm] (2,0) -- (4,0) to[R=4\\ohm] (6,0); \\end{circuitikz}",
-                "\\begin{circuitikz} \\draw (0,0) to[R=6\\ohm] (2,0) -- (2,2) to[R=4\\ohm] (2,4); \\end{circuitikz}"
-            ],
-            "answer": "\\begin{circuitikz} \\draw (0,0) to[R=4\\ohm] (2,0) -- (4,0) to[R=6\\ohm] (6,0); \\end{circuitikz}"
+            
         }
     ]
 }
