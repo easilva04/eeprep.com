@@ -68,7 +68,7 @@
     <div class="main-content">
         <header>
             <h1>TEMPLATE</h1> <!-- TODO: Change header text -->
-            <img src="https://www.eeprep.com/images/template-header-image.jpg"
+            <img src="C:\Users\eddie\OneDrive\Documents\Websites\eeprep.com\assets\eeprep.png"
                 alt="Electrical Engineering Review Template"> <!-- TODO: Update image source and alt text -->
         </header>
         <main>
@@ -84,7 +84,7 @@
                     let questions = [];
 
                     function loadQuestions() {
-                        fetch('../../questions/PATH/DIRECTORY.json') //TODO: UPDATE PATH
+                        fetch('../../questions/DigitalSystems/StateMachines.json') // Updated path
                             .then(response => response.json())
                             .then(data => {
                                 questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
