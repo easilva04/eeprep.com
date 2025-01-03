@@ -11,14 +11,10 @@ The EEPrep project is a comprehensive collection of resources and tools designed
 This project aims to provide a structured and efficient way for students and professionals to enhance their knowledge and skills in electrical engineering.
 
 ## TODO:
-<!-- TODO content will be dynamically inserted here -->
-<script>
-fetch('./Todo.md')
-  .then(response => response.text())
-  .then(text => {
-    const converter = new showdown.Converter();
-    const html = converter.makeHtml(text);
-    document.querySelector('#todo-content').innerHTML = html;
-  });
-</script>
-<div id="todo-content"></div>
+- Review and update the **Study Guides** with the latest information.
+- Add new **Practice Problems** to cover recent exam topics.
+- Update the **Reference Materials** with the latest standards and formulas.
+- Enhance the **Software Tools** with new features and bug fixes.
+- Complete the **Documentation** for new users.
+
+For more detailed tasks, refer to the [TODO file](./Todo.md).
