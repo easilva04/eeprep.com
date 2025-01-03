@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the primary purpose of electrical safety?",
+            "options": ["To prevent electrical fires", "To protect human life", "To ensure equipment longevity", "To reduce energy consumption"],
+            "answer": "To protect human life"
+        },
+        {
+            "question": "Which of the following is a common electrical safety device?",
+            "options": ["Resistor", "Capacitor", "Circuit breaker", "Inductor"],
+            "answer": "Circuit breaker"
+        },
+        {
+            "question": "What should you do if you encounter a live wire?",
+            "options": ["Touch it to see if it's live", "Call a professional", "Ignore it", "Cut it with scissors"],
+            "answer": "Call a professional"
+        }
+    ]
+}

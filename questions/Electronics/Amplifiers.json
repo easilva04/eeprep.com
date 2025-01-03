@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the primary function of an amplifier?",
+            "options": ["Increase signal power", "Decrease signal power", "Store signal power", "Convert signal power"],
+            "answer": "Increase signal power"
+        },
+        {
+            "question": "Which class of amplifier has the highest efficiency?",
+            "options": ["Class A", "Class B", "Class AB", "Class D"],
+            "answer": "Class D"
+        },
+        {
+            "question": "What is the purpose of a biasing circuit in an amplifier?",
+            "options": ["Stabilize operating point", "Increase gain", "Decrease gain", "Filter signals"],
+            "answer": "Stabilize operating point"
+        }
+    ]
+}

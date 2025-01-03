@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the main goal of the implementation phase in software development?",
+            "options": ["To gather requirements", "To write and test code", "To design the system architecture", "To deploy the software"],
+            "answer": "To write and test code"
+        },
+        {
+            "question": "Which of the following is a common programming language used in software implementation?",
+            "options": ["Python", "HTML", "CSS", "SQL"],
+            "answer": "Python"
+        },
+        {
+            "question": "What is unit testing?",
+            "options": ["Testing individual components of the software", "Testing the entire system", "Testing the user interface", "Testing the database"],
+            "answer": "Testing individual components of the software"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "questions": [
+        {
+            "question": "What is the process of converting information into a code to prevent unauthorized access?",
+            "options": ["Encryption", "Decryption", "Authentication", "Authorization"],
+            "answer": "Encryption"
+        },
+        {
+            "question": "Which term refers to the verification of a user's identity?",
+            "options": ["Encryption", "Decryption", "Authentication", "Authorization"],
+            "answer": "Authentication"
+        },
+        {
+            "question": "What is the process of converting encrypted data back into its original form?",
+            "options": ["Encryption", "Decryption", "Authentication", "Authorization"],
+            "answer": "Decryption"
+        },
+        {
+            "question": "Which term refers to the process of giving someone permission to do or have something?",
+            "options": ["Encryption", "Decryption", "Authentication", "Authorization"],
+            "answer": "Authorization"
+        }
+    ]
+}

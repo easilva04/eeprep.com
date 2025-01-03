@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is digital communication?",
+            "options": ["Transmission of binary data", "Transmission of analog signals", "Transmission of modulated signals", "Transmission of multiplexed signals"],
+            "answer": "Transmission of binary data"
+        },
+        {
+            "question": "Which of the following is a digital modulation technique?",
+            "options": ["Amplitude Modulation", "Frequency Modulation", "Phase Modulation", "Quadrature Amplitude Modulation"],
+            "answer": "Quadrature Amplitude Modulation"
+        },
+        {
+            "question": "What is the main advantage of digital communication over analog communication?",
+            "options": ["Better noise immunity", "Simpler receiver design", "Lower bandwidth requirement", "Higher power efficiency"],
+            "answer": "Better noise immunity"
+        }
+    ]
+}

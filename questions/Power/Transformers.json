@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the main function of a transformer?",
+            "options": ["To convert AC to DC", "To step up or step down voltage", "To store electrical energy", "To measure electrical power"],
+            "answer": "To step up or step down voltage"
+        },
+        {
+            "question": "What is the core of a transformer typically made of?",
+            "options": ["Copper", "Aluminum", "Iron", "Plastic"],
+            "answer": "Iron"
+        },
+        {
+            "question": "Which type of transformer is used in power distribution?",
+            "options": ["Step-up transformer", "Step-down transformer", "Isolation transformer", "Auto transformer"],
+            "answer": "Step-down transformer"
+        }
+    ]
+}

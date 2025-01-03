@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is an analog signal?",
+            "options": ["A signal that varies continuously", "A signal that has discrete levels", "A signal that is always positive", "A signal that is always negative"],
+            "answer": "A signal that varies continuously"
+        },
+        {
+            "question": "Which of the following is a common analog modulation technique?",
+            "options": ["Amplitude Modulation", "Pulse Code Modulation", "Quadrature Amplitude Modulation", "Frequency Shift Keying"],
+            "answer": "Amplitude Modulation"
+        },
+        {
+            "question": "What is the main disadvantage of analog signals compared to digital signals?",
+            "options": ["Higher noise susceptibility", "Lower bandwidth requirements", "Simpler circuitry", "Lower power consumption"],
+            "answer": "Higher noise susceptibility"
+        }
+    ]
+}

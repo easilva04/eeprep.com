@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the formula for electrical power in terms of voltage and current?",
+            "options": ["P = V + I", "P = V - I", "P = V * I", "P = V / I"],
+            "answer": "P = V * I"
+        },
+        {
+            "question": "What is the unit of electrical power?",
+            "options": ["Volt", "Ampere", "Watt", "Ohm"],
+            "answer": "Watt"
+        },
+        {
+            "question": "What is the power factor of a purely resistive circuit?",
+            "options": ["0", "0.5", "1", "-1"],
+            "answer": "1"
+        }
+    ]
+}

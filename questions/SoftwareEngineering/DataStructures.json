@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is a data structure?",
+            "options": ["A way to store and organize data", "A type of database", "A programming language", "A software development methodology"],
+            "answer": "A way to store and organize data"
+        },
+        {
+            "question": "Which of the following is a linear data structure?",
+            "options": ["Array", "Tree", "Graph", "Hash Table"],
+            "answer": "Array"
+        },
+        {
+            "question": "What is the time complexity of searching in a binary search tree?",
+            "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+            "answer": "O(log n)"
+        }
+    ]
+}

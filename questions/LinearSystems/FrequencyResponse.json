@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is frequency response?",
+            "options": ["The steady-state response of a system to a sinusoidal input", "The transient response of a system", "The impulse response of a system"],
+            "answer": "The steady-state response of a system to a sinusoidal input"
+        },
+        {
+            "question": "Which plot is used to represent frequency response?",
+            "options": ["Bode plot", "Nyquist plot", "Root locus"],
+            "answer": "Bode plot"
+        },
+        {
+            "question": "What does the magnitude plot in a Bode plot represent?",
+            "options": ["Gain", "Phase", "Frequency"],
+            "answer": "Gain"
+        }
+    ]
+}

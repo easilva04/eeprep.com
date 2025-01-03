@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the purpose of sampling in signal processing?",
+            "options": ["To reduce noise", "To convert a continuous signal to a discrete signal", "To increase signal strength", "To filter the signal"],
+            "answer": "To convert a continuous signal to a discrete signal"
+        },
+        {
+            "question": "What is aliasing in the context of signal sampling?",
+            "options": ["A type of noise", "A distortion that occurs when the signal is undersampled", "A method of signal amplification", "A technique for signal filtering"],
+            "answer": "A distortion that occurs when the signal is undersampled"
+        },
+        {
+            "question": "What is the minimum sampling rate required to avoid aliasing for a signal with a maximum frequency of 3 kHz?",
+            "options": ["3 kHz", "6 kHz", "9 kHz", "12 kHz"],
+            "answer": "6 kHz"
+        }
+    ]
+}

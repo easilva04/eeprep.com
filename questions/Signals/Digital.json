@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is a digital signal?",
+            "options": ["A signal that varies continuously", "A signal that has discrete levels", "A signal that is always positive", "A signal that is always negative"],
+            "answer": "A signal that has discrete levels"
+        },
+        {
+            "question": "Which of the following is a common digital modulation technique?",
+            "options": ["Amplitude Modulation", "Frequency Modulation", "Phase Modulation", "Pulse Code Modulation"],
+            "answer": "Pulse Code Modulation"
+        },
+        {
+            "question": "What is the main advantage of digital signals over analog signals?",
+            "options": ["Higher noise immunity", "Lower bandwidth requirements", "Simpler circuitry", "Higher power consumption"],
+            "answer": "Higher noise immunity"
+        }
+    ]
+}

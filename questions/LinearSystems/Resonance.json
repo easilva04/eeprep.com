@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is resonance in electrical circuits?",
+            "options": ["A condition where inductive and capacitive reactances are equal", "A condition where resistance is maximum", "A condition where current is zero"],
+            "answer": "A condition where inductive and capacitive reactances are equal"
+        },
+        {
+            "question": "At resonance, the impedance of a series RLC circuit is:",
+            "options": ["Minimum", "Maximum", "Zero"],
+            "answer": "Minimum"
+        },
+        {
+            "question": "In a parallel resonance circuit, the impedance is:",
+            "options": ["Minimum", "Maximum", "Zero"],
+            "answer": "Maximum"
+        }
+    ]
+}

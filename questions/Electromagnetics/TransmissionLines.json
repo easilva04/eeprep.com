@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the characteristic impedance of a transmission line?",
+            "options": ["50 ohms", "75 ohms", "100 ohms", "150 ohms"],
+            "answer": "50 ohms"
+        },
+        {
+            "question": "What is the primary purpose of a transmission line?",
+            "options": ["To transmit electrical power", "To transmit signals", "To reduce noise", "To increase voltage"],
+            "answer": "To transmit signals"
+        },
+        {
+            "question": "What is the effect of a mismatched load on a transmission line?",
+            "options": ["Increased power transfer", "Decreased signal reflection", "Increased signal reflection", "Decreased power transfer"],
+            "answer": "Increased signal reflection"
+        }
+    ]
+}

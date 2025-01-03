@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the function of a diode?",
+            "options": ["Amplify signals", "Rectify signals", "Store energy", "Filter signals"],
+            "answer": "Rectify signals"
+        },
+        {
+            "question": "Which component is used to amplify signals?",
+            "options": ["Resistor", "Capacitor", "Transistor", "Inductor"],
+            "answer": "Transistor"
+        },
+        {
+            "question": "What is the unit of capacitance?",
+            "options": ["Farad", "Henry", "Ohm", "Watt"],
+            "answer": "Farad"
+        }
+    ]
+}

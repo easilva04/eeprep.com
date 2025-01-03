@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the bandgap energy of silicon?",
+            "options": ["1.1 eV", "0.7 eV", "1.5 eV", "2.0 eV"],
+            "answer": "1.1 eV"
+        },
+        {
+            "question": "Which material is commonly used in LEDs?",
+            "options": ["Gallium Arsenide", "Silicon", "Germanium", "Copper"],
+            "answer": "Gallium Arsenide"
+        },
+        {
+            "question": "What type of semiconductor is created by doping silicon with phosphorus?",
+            "options": ["N-type", "P-type", "Intrinsic", "Extrinsic"],
+            "answer": "N-type"
+        }
+    ]
+}

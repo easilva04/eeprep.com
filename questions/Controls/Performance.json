@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the primary goal of performance analysis in control systems?",
+            "options": ["To improve system stability", "To enhance system accuracy", "To reduce system complexity", "To increase system robustness"],
+            "answer": "To enhance system accuracy"
+        },
+        {
+            "question": "Which of the following is a performance criterion?",
+            "options": ["Settling Time", "Nyquist Plot", "Root Locus", "Bode Plot"],
+            "answer": "Settling Time"
+        },
+        {
+            "question": "What does the term 'overshoot' refer to in control systems?",
+            "options": ["The amount by which the system output exceeds the desired response", "The time taken for the system to reach steady state", "The frequency at which the system oscillates", "The phase difference between input and output"],
+            "answer": "The amount by which the system output exceeds the desired response"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the primary purpose of an oscilloscope?",
+            "options": ["Measure voltage", "Measure current", "Display waveforms", "Generate signals"],
+            "answer": "Display waveforms"
+        },
+        {
+            "question": "Which instrument is used to measure electrical resistance?",
+            "options": ["Voltmeter", "Ammeter", "Ohmmeter", "Oscilloscope"],
+            "answer": "Ohmmeter"
+        },
+        {
+            "question": "What is the function of a signal generator?",
+            "options": ["Generate electrical signals", "Measure electrical signals", "Store electrical signals", "Convert electrical signals"],
+            "answer": "Generate electrical signals"
+        }
+    ]
+}

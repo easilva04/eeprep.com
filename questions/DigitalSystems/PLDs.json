@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What does PLD stand for?",
+            "options": ["Programmable Logic Device", "Programmable Linear Device", "Programmable Logic Design", "None of the above"],
+            "answer": "Programmable Logic Device"
+        },
+        {
+            "question": "Which of the following is a type of PLD?",
+            "options": ["FPGA", "Microcontroller", "Microprocessor", "None of the above"],
+            "answer": "FPGA"
+        },
+        {
+            "question": "What is the main advantage of using PLDs?",
+            "options": ["Flexibility in design", "Lower power consumption", "Higher speed", "None of the above"],
+            "answer": "Flexibility in design"
+        }
+    ]
+}

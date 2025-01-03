@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the main function of an electric motor?",
+            "options": ["To convert electrical energy to mechanical energy", "To convert mechanical energy to electrical energy", "To store electrical energy", "To measure electrical power"],
+            "answer": "To convert electrical energy to mechanical energy"
+        },
+        {
+            "question": "What is the main function of an electric generator?",
+            "options": ["To convert electrical energy to mechanical energy", "To convert mechanical energy to electrical energy", "To store electrical energy", "To measure electrical power"],
+            "answer": "To convert mechanical energy to electrical energy"
+        },
+        {
+            "question": "What type of motor is commonly used in household appliances?",
+            "options": ["DC motor", "Induction motor", "Synchronous motor", "Stepper motor"],
+            "answer": "Induction motor"
+        }
+    ]
+}

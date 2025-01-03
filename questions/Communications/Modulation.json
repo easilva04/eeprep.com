@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is modulation?",
+            "options": ["A process of varying a carrier signal", "A process of demodulating a signal", "A process of amplifying a signal", "A process of filtering a signal"],
+            "answer": "A process of varying a carrier signal"
+        },
+        {
+            "question": "Which modulation technique is used in AM radio?",
+            "options": ["Amplitude Modulation", "Frequency Modulation", "Phase Modulation", "Pulse Modulation"],
+            "answer": "Amplitude Modulation"
+        },
+        {
+            "question": "What is the main advantage of Frequency Modulation over Amplitude Modulation?",
+            "options": ["Better noise immunity", "Simpler receiver design", "Lower bandwidth requirement", "Higher power efficiency"],
+            "answer": "Better noise immunity"
+        }
+    ]
+}

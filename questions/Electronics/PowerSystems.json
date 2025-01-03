@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the primary function of a transformer?",
+            "options": ["Increase voltage", "Decrease voltage", "Both increase and decrease voltage", "None of the above"],
+            "answer": "Both increase and decrease voltage"
+        },
+        {
+            "question": "What is the unit of electrical power?",
+            "options": ["Watt", "Volt", "Ampere", "Ohm"],
+            "answer": "Watt"
+        },
+        {
+            "question": "Which component is used to store electrical energy?",
+            "options": ["Resistor", "Capacitor", "Inductor", "Transformer"],
+            "answer": "Capacitor"
+        }
+    ]
+}

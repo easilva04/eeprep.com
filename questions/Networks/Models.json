@@ -1,0 +1,24 @@
+{
+    "questions": [
+        {
+            "question": "Which OSI layer is responsible for data encryption?",
+            "options": ["Application", "Presentation", "Session", "Transport"],
+            "answer": "Presentation"
+        },
+        {
+            "question": "Which OSI layer is responsible for routing packets across networks?",
+            "options": ["Network", "Data Link", "Transport", "Physical"],
+            "answer": "Network"
+        },
+        {
+            "question": "Which OSI layer is responsible for establishing, managing, and terminating connections?",
+            "options": ["Session", "Presentation", "Application", "Transport"],
+            "answer": "Session"
+        },
+        {
+            "question": "Which OSI layer is responsible for error detection and correction?",
+            "options": ["Data Link", "Network", "Transport", "Physical"],
+            "answer": "Data Link"
+        }
+    ]
+}

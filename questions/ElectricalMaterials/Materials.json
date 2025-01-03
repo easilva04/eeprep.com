@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "Which material is commonly used as an insulator?",
+            "options": ["Glass", "Copper", "Aluminum", "Iron"],
+            "answer": "Glass"
+        },
+        {
+            "question": "What is the resistivity of copper?",
+            "options": ["1.68 µΩ·cm", "2.82 µΩ·cm", "1.59 µΩ·cm", "2.44 µΩ·cm"],
+            "answer": "1.68 µΩ·cm"
+        },
+        {
+            "question": "Which material is used for making permanent magnets?",
+            "options": ["Neodymium", "Copper", "Aluminum", "Silver"],
+            "answer": "Neodymium"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is a Bode plot?",
+            "options": ["A graph of the frequency response of a system", "A graph of the time response of a system", "A graph of the state-space model of a system", "A graph of the input-output relationship of a system"],
+            "answer": "A graph of the frequency response of a system"
+        },
+        {
+            "question": "What are the two components of a Bode plot?",
+            "options": ["Magnitude and Phase", "Amplitude and Frequency", "Time and Frequency", "Real and Imaginary"],
+            "answer": "Magnitude and Phase"
+        },
+        {
+            "question": "What does the magnitude plot in a Bode plot represent?",
+            "options": ["The gain of the system as a function of frequency", "The phase shift of the system as a function of frequency", "The time response of the system", "The stability of the system"],
+            "answer": "The gain of the system as a function of frequency"
+        }
+    ]
+}

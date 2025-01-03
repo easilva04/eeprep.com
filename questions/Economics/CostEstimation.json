@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is cost estimation?",
+            "options": ["The process of predicting the cost of a project", "The process of reducing project costs", "The process of increasing project costs", "The process of managing project risks"],
+            "answer": "The process of predicting the cost of a project"
+        },
+        {
+            "question": "Which of the following is a common method of cost estimation?",
+            "options": ["Analogous estimating", "Random guessing", "Speculative estimating", "Arbitrary estimation"],
+            "answer": "Analogous estimating"
+        },
+        {
+            "question": "What is the purpose of a cost baseline?",
+            "options": ["To provide a basis for measuring project performance", "To increase project costs", "To reduce project risks", "To improve project quality"],
+            "answer": "To provide a basis for measuring project performance"
+        }
+    ]
+}

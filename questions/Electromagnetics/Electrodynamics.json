@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the Lorentz force equation?",
+            "options": ["F = q(E + v × B)", "F = qE", "F = qv × B", "F = q(E - v × B)"],
+            "answer": "F = q(E + v × B)"
+        },
+        {
+            "question": "What is the unit of electric current?",
+            "options": ["Ampere", "Volt", "Ohm", "Coulomb"],
+            "answer": "Ampere"
+        },
+        {
+            "question": "What is the relationship between electric current and magnetic field?",
+            "options": ["Biot-Savart law", "Ohm's law", "Faraday's law", "Gauss's law"],
+            "answer": "Biot-Savart law"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the transfer function of a system?",
+            "options": ["A mathematical representation of the system", "A physical model of the system", "A graphical representation of the system"],
+            "answer": "A mathematical representation of the system"
+        },
+        {
+            "question": "Which of the following is a property of transfer functions?",
+            "options": ["Linearity", "Non-linearity", "Randomness"],
+            "answer": "Linearity"
+        },
+        {
+            "question": "What does the transfer function describe in a control system?",
+            "options": ["The input-output relationship", "The internal state", "The physical structure"],
+            "answer": "The input-output relationship"
+        }
+    ]
+}

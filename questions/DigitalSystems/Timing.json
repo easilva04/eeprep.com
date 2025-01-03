@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "question": "What is the propagation delay of a logic gate?",
+            "options": ["Time taken for the output to change after the input changes", "Time taken for the input to stabilize", "Time taken for the power supply to stabilize", "None of the above"],
+            "answer": "Time taken for the output to change after the input changes"
+        },
+        {
+            "question": "What is setup time in digital circuits?",
+            "options": ["Minimum time before the clock edge that data must be stable", "Minimum time after the clock edge that data must be stable", "Time taken for the clock signal to stabilize", "None of the above"],
+            "answer": "Minimum time before the clock edge that data must be stable"
+        },
+        {
+            "question": "What is hold time in digital circuits?",
+            "options": ["Minimum time before the clock edge that data must be stable", "Minimum time after the clock edge that data must be stable", "Time taken for the clock signal to stabilize", "None of the above"],
+            "answer": "Minimum time after the clock edge that data must be stable"
+        }
+    ]
+}
