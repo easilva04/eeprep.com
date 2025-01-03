@@ -2,140 +2,584 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.eeprep.com</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
         <loc>https://www.eeprep.com/index.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Home/Introduction.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Home/About.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Home/Legal.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/Math.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/Algebra.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/ComplexNumbers.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/Vectors.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/LinearAlgebra.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/Geometry.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/Calculus.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Math/ODEs.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/Circuits.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/ResistiveNetworks.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/nodeLoop.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/AC.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/Waveforms.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/Transformations.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/Circuits/TheveninNorton.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/ProbStats.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/Distributions.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/Tendencies.html</loc>
-        <lastmod>2024-12-29</lastmod>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/ExpectedValue.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Math/Discrete.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Communications/Communications.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Communications/DigitalComms.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Communications/Fourier.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Communications/Modulation.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Communications/Multiplexing.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ComputerSystems/ComputerSystems.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ComputerSystems/Interfacing.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ComputerSystems/Memory.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ComputerSystems/Microprocessors.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Controls/Controls.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Controls/BlockDiagrams.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Controls/Bode.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Controls/Performance.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Controls/Stability.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/DigitalSystems.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/Boolean.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/FlipFlops.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/Gates.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/Logic.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/Numbers.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/PLDs.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/StateMachines.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/DigitalSystems/Timing.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Economics/Economics.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Economics/Analysis.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Economics/CostEstimation.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Economics/EngineeringEcon.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Economics/Risk.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Economics/TimeValue.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ElectricalMaterials/ElectricalMaterials.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ElectricalMaterials/Electrical.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ElectricalMaterials/Materials.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ElectricalMaterials/Semiconductors.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/ElectricalMaterials/Thermal.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electromagnetics/Electromagnetics.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electromagnetics/Electrodynamics.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electromagnetics/ElectroMagnetoStatics.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electromagnetics/TransmissionLines.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electronics/Electronics.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electronics/Amplifiers.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electronics/Instrumentation.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electronics/Models.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electronics/OpAmps.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Electronics/PowerSystems.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Ethics/Ethics.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Ethics/Codes.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Ethics/IntellectualProperty.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Ethics/Safety.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/LinearSystems/LinearSystems.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/LinearSystems/FrequencyResponse.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/LinearSystems/Laplace.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/LinearSystems/Resonance.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/LinearSystems/TFs.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Networks/Networks.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Networks/Models.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Networks/NIDP.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Networks/Security.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Networks/Topologies.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Networks/Types.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Power/Power.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Power/MotorsGenerators.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Power/Theory.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Power/Transformers.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Power/TransmissionDistribution.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Signals/Signals.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Signals/Analog.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Signals/Digital.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Signals/Sampling.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/SoftwareEngineering/SoftwareEngineering.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/SoftwareEngineering/Algorithms.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/SoftwareEngineering/DataStructures.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/SoftwareEngineering/Implementation.html</loc>
+        <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>

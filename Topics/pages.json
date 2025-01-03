@@ -61,6 +61,11 @@
             "title": "Differential Equations",
             "url": "/Topics/Math/ODEs.html",
             "snippet": "Learn about differential equations and their applications in modeling and analyzing electrical systems..."
+        },
+        {
+            "title": "Discrete Mathematics",
+            "url": "/Topics/Math/Discrete.html",
+            "snippet": "Sets, combinatorics, and discrete structures..."
         }
     ],
     "Circuits": [
@@ -102,17 +107,412 @@
     ],
     "Probability & Statistics": [
         {
-            "title": "Probability & Statistics",
+            "title": "Probability & Statistics Home",
             "url": "/Topics/ProbabilityStatistics/ProbStats.html",
             "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
         },
         {
             "title": "Distributions",
             "url": "/Topics/ProbabilityStatistics/Distributions.html",
-            "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."},
+            "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."
+        },
         {
             "title": "Tendencies",
             "url": "/Topics/ProbabilityStatistics/Tendencies.html",
-            "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."}
+            "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."
+        },
+        {
+            "title": "Expected Value",
+            "url": "/Topics/ProbabilityStatistics/ExpectedValue.html",
+            "snippet": "Study expected value and its applications in probability and statistics, including in decision-making and risk analysis..."
+        }
+    ],
+    "Communications": [
+        {
+            "title": "Communications Home",
+            "url": "/Topics/Communications/Communications.html",
+            "snippet": "Overview of communications engineering..."
+        },
+        {
+            "title": "Digital Communications",
+            "url": "/Topics/Communications/DigitalComms.html",
+            "snippet": "Explore digital communication methods..."
+        },
+        {
+            "title": "Fourier Methods",
+            "url": "/Topics/Communications/Fourier.html",
+            "snippet": "Fourier analysis in communication systems..."
+        },
+        {
+            "title": "Modulation",
+            "url": "/Topics/Communications/Modulation.html",
+            "snippet": "Introduction to modulation techniques..."
+        },
+        {
+            "title": "Multiplexing",
+            "url": "/Topics/Communications/Multiplexing.html",
+            "snippet": "Combining signals for efficient transmission..."
+        }
+    ],
+    "ComputerSystems": [
+        {
+            "title": "Computer Systems Home",
+            "url": "/Topics/ComputerSystems/ComputerSystems.html",
+            "snippet": "Fundamentals of computer architecture and organization..."
+        },
+        {
+            "title": "Interfacing",
+            "url": "/Topics/ComputerSystems/Interfacing.html",
+            "snippet": "Techniques for hardware-software interfacing..."
+        },
+        {
+            "title": "Memory",
+            "url": "/Topics/ComputerSystems/Memory.html",
+            "snippet": "Memory structures and organization..."
+        },
+        {
+            "title": "Microprocessors",
+            "url": "/Topics/ComputerSystems/Microprocessors.html",
+            "snippet": "Overview of microprocessor architectures..."
+        }
+    ],
+    "Controls": [
+        {
+            "title": "Controls Home",
+            "url": "/Topics/Controls/Controls.html",
+            "snippet": "Introduction to control systems and feedback loops..."
+        },
+        {
+            "title": "Block Diagrams",
+            "url": "/Topics/Controls/BlockDiagrams.html",
+            "snippet": "Control system representation using block diagrams..."
+        },
+        {
+            "title": "Bode Plots",
+            "url": "/Topics/Controls/Bode.html",
+            "snippet": "Frequency response analysis with Bode plots..."
+        },
+        {
+            "title": "Performance",
+            "url": "/Topics/Controls/Performance.html",
+            "snippet": "Evaluating control system performance..."
+        },
+        {
+            "title": "Stability",
+            "url": "/Topics/Controls/Stability.html",
+            "snippet": "Assessing stability in closed-loop systems..."
+        }
+    ],
+    "DigitalSystems": [
+        {
+            "title": "Digital Systems Home",
+            "url": "/Topics/DigitalSystems/DigitalSystems.html",
+            "snippet": "Key concepts in digital logic and systems design..."
+        },
+        {
+            "title": "Boolean Algebra",
+            "url": "/Topics/DigitalSystems/Boolean.html",
+            "snippet": "Logic simplification using Boolean algebra..."
+        },
+        {
+            "title": "Flip-Flops",
+            "url": "/Topics/DigitalSystems/FlipFlops.html",
+            "snippet": "Sequential circuits and flip-flop types..."
+        },
+        {
+            "title": "Logic Gates",
+            "url": "/Topics/DigitalSystems/Gates.html",
+            "snippet": "Fundamental logic gate operations..."
+        },
+        {
+            "title": "Logic Concepts",
+            "url": "/Topics/DigitalSystems/Logic.html",
+            "snippet": "Advanced logic principles and syntax..."
+        },
+        {
+            "title": "Number Systems",
+            "url": "/Topics/DigitalSystems/Numbers.html",
+            "snippet": "Binary, decimal, and other representations..."
+        },
+        {
+            "title": "PLDs",
+            "url": "/Topics/DigitalSystems/PLDs.html",
+            "snippet": "Programmable logic devices overview..."
+        },
+        {
+            "title": "State Machines",
+            "url": "/Topics/DigitalSystems/StateMachines.html",
+            "snippet": "Modeling sequential logic with state machines..."
+        },
+        {
+            "title": "Timing Analysis",
+            "url": "/Topics/DigitalSystems/Timing.html",
+            "snippet": "Clocking considerations and timing constraints..."
+        }
+    ],
+    "Economics": [
+        {
+            "title": "Economics Home",
+            "url": "/Topics/Economics/Economics.html",
+            "snippet": "Economic principles relevant to engineering..."
+        },
+        {
+            "title": "Economic Analysis",
+            "url": "/Topics/Economics/Analysis.html",
+            "snippet": "Analyzing costs and benefits in engineering..."
+        },
+        {
+            "title": "Cost Estimation",
+            "url": "/Topics/Economics/CostEstimation.html",
+            "snippet": "Approaches to estimating engineering costs..."
+        },
+        {
+            "title": "Engineering Economics",
+            "url": "/Topics/Economics/EngineeringEcon.html",
+            "snippet": "Key concepts in economic decision-making..."
+        },
+        {
+            "title": "Risk Analysis",
+            "url": "/Topics/Economics/Risk.html",
+            "snippet": "Evaluating uncertainties in engineering projects..."
+        },
+        {
+            "title": "Time Value of Money",
+            "url": "/Topics/Economics/TimeValue.html",
+            "snippet": "Interest rates and present/future value concepts..."
+        }
+    ],
+    "ElectricalMaterials": [
+        {
+            "title": "Electrical Materials Home",
+            "url": "/Topics/ElectricalMaterials/ElectricalMaterials.html",
+            "snippet": "Materials science aspects important for electrical engineering..."
+        },
+        {
+            "title": "Electrical Properties",
+            "url": "/Topics/ElectricalMaterials/Electrical.html",
+            "snippet": "Core electrical properties of engineering materials..."
+        },
+        {
+            "title": "Material Fundamentals",
+            "url": "/Topics/ElectricalMaterials/Materials.html",
+            "snippet": "Composite and conductive materials overview..."
+        },
+        {
+            "title": "Semiconductors",
+            "url": "/Topics/ElectricalMaterials/Semiconductors.html",
+            "snippet": "Properties and applications of semiconductors..."
+        },
+        {
+            "title": "Thermal Properties",
+            "url": "/Topics/ElectricalMaterials/Thermal.html",
+            "snippet": "Heat transfer in electrical contexts..."
+        }
+    ],
+    "Electromagnetics": [
+        {
+            "title": "Electromagnetics Home",
+            "url": "/Topics/Electromagnetics/Electromagnetics.html",
+            "snippet": "Concepts of fields, waves, and their applications in EE..."
+        },
+        {
+            "title": "Electrodynamics",
+            "url": "/Topics/Electromagnetics/Electrodynamics.html",
+            "snippet": "Dynamic electromagnetic fields and waves..."
+        },
+        {
+            "title": "Electro/Magneto-Statics",
+            "url": "/Topics/Electromagnetics/ElectroMagnetoStatics.html",
+            "snippet": "Static electric and magnetic field analysis..."
+        },
+        {
+            "title": "Transmission Lines",
+            "url": "/Topics/Electromagnetics/TransmissionLines.html",
+            "snippet": "Modeling and analyzing transmission lines..."
+        }
+    ],
+    "Electronics": [
+        {
+            "title": "Electronics Home",
+            "url": "/Topics/Electronics/Electronics.html",
+            "snippet": "Discuss components, amplifiers, and semiconductor devices..."
+        },
+        {
+            "title": "Amplifiers",
+            "url": "/Topics/Electronics/Amplifiers.html",
+            "snippet": "Fundamentals of amplifier circuits..."
+        },
+        {
+            "title": "Instrumentation",
+            "url": "/Topics/Electronics/Instrumentation.html",
+            "snippet": "Electronic measurement and instrumentation..."
+        },
+        {
+            "title": "Device Models",
+            "url": "/Topics/Electronics/Models.html",
+            "snippet": "Mathematical models of electronic components..."
+        },
+        {
+            "title": "Operational Amplifiers",
+            "url": "/Topics/Electronics/OpAmps.html",
+            "snippet": "Ideal and real op-amp behaviors..."
+        },
+        {
+            "title": "Power Systems",
+            "url": "/Topics/Electronics/PowerSystems.html",
+            "snippet": "Electrical power in electronics applications..."
+        }
+    ],
+    "Ethics": [
+        {
+            "title": "Ethics Home",
+            "url": "/Topics/Ethics/Ethics.html",
+            "snippet": "Professional and ethical considerations in engineering..."
+        },
+        {
+            "title": "Codes of Ethics",
+            "url": "/Topics/Ethics/Codes.html",
+            "snippet": "Key organizational and professional codes..."
+        },
+        {
+            "title": "Intellectual Property",
+            "url": "/Topics/Ethics/IntellectualProperty.html",
+            "snippet": "Rights and considerations for IP in engineering..."
+        },
+        {
+            "title": "Safety Ethics",
+            "url": "/Topics/Ethics/Safety.html",
+            "snippet": "Ensuring safety through ethical practices..."
+        }
+    ],
+    "LinearSystems": [
+        {
+            "title": "Linear Systems Home",
+            "url": "/Topics/LinearSystems/LinearSystems.html",
+            "snippet": "Overview of linear systems and their analysis..."
+        },
+        {
+            "title": "Frequency Response",
+            "url": "/Topics/LinearSystems/FrequencyResponse.html",
+            "snippet": "Analyzing systems in the frequency domain..."
+        },
+        {
+            "title": "Laplace Transform",
+            "url": "/Topics/LinearSystems/Laplace.html",
+            "snippet": "Laplace techniques for system analysis..."
+        },
+        {
+            "title": "Resonance",
+            "url": "/Topics/LinearSystems/Resonance.html",
+            "snippet": "Phenomena of resonance in linear systems..."
+        },
+        {
+            "title": "Transfer Functions",
+            "url": "/Topics/LinearSystems/TFs.html",
+            "snippet": "Deriving and interpreting system transfer functions..."
+        }
+    ],
+    "Networks": [
+        {
+            "title": "Networks Home",
+            "url": "/Topics/Networks/Networks.html",
+            "snippet": "Foundations of network concepts and engineering..."
+        },
+        {
+            "title": "Network Models",
+            "url": "/Topics/Networks/Models.html",
+            "snippet": "Modeling data and service networks..."
+        },
+        {
+            "title": "NIDP",
+            "url": "/Topics/Networks/NIDP.html",
+            "snippet": "Network intrusion detection and prevention..."
+        },
+        {
+            "title": "Network Security",
+            "url": "/Topics/Networks/Security.html",
+            "snippet": "Securing computer and communication networks..."
+        },
+        {
+            "title": "Network Topologies",
+            "url": "/Topics/Networks/Topologies.html",
+            "snippet": "Common layout patterns in networking..."
+        },
+        {
+            "title": "Network Types",
+            "url": "/Topics/Networks/Types.html",
+            "snippet": "LAN, WAN, and other network classifications..."
+        }
+    ],
+    "Power": [
+        {
+            "title": "Power Home",
+            "url": "/Topics/Power/Power.html",
+            "snippet": "Key topics in power systems and distribution..."
+        },
+        {
+            "title": "Motors & Generators",
+            "url": "/Topics/Power/MotorsGenerators.html",
+            "snippet": "Principles of electric machines..."
+        },
+        {
+            "title": "Power Theory",
+            "url": "/Topics/Power/Theory.html",
+            "snippet": "Important theoretical concepts in power systems..."
+        },
+        {
+            "title": "Transformers",
+            "url": "/Topics/Power/Transformers.html",
+            "snippet": "Voltage transformation and operation..."
+        },
+        {
+            "title": "Transmission & Distribution",
+            "url": "/Topics/Power/TransmissionDistribution.html",
+            "snippet": "Delivering electric power over distances..."
+        }
+    ],
+    "Signals": [
+        {
+            "title": "Signals Home",
+            "url": "/Topics/Signals/Signals.html",
+            "snippet": "Introduction to signal processing concepts..."
+        },
+        {
+            "title": "Analog Signals",
+            "url": "/Topics/Signals/Analog.html",
+            "snippet": "Characteristics and processing of analog signals..."
+        },
+        {
+            "title": "Digital Signals",
+            "url": "/Topics/Signals/Digital.html",
+            "snippet": "Discrete-time signal representation..."
+        },
+        {
+            "title": "Sampling",
+            "url": "/Topics/Signals/Sampling.html",
+            "snippet": "Acquiring and converting continuous signals..."
+        }
+    ],
+    "SoftwareEngineering": [
+        {
+            "title": "Software Engineering Home",
+            "url": "/Topics/SoftwareEngineering/SoftwareEngineering.html",
+            "snippet": "Principles and practices in software development..."
+        },
+        {
+            "title": "Algorithms",
+            "url": "/Topics/SoftwareEngineering/Algorithms.html",
+            "snippet": "Algorithmic complexity and design strategies..."
+        },
+        {
+            "title": "Data Structures",
+            "url": "/Topics/SoftwareEngineering/DataStructures.html",
+            "snippet": "Common structures for data storage and retrieval..."
+        },
+        {
+            "title": "Implementation",
+            "url": "/Topics/SoftwareEngineering/Implementation.html",
+            "snippet": "Coding best practices and methodologies..."
+        }
     ]
 }
