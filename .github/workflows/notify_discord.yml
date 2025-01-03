@@ -1,31 +1,18 @@
-name: Notify Discord on Deployment
+name: Notify Discord on GitHub Pages Deployment
 
 on:
-  deployment:
-    types: [created]
+  push:
+    branches:
+      - gh-pages # Replace with the branch you configured for GitHub Pages
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Build
-      run: echo "Building..."
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Deploy
-      run: echo "Deploying..."
-
   notify-discord:
     runs-on: ubuntu-latest
-    needs: [build, deploy]
     steps:
-    - name: Send message to Discord
+    - name: Notify Discord
       env:
         WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       run: |
         curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "🚀 A new deployment has been triggered for the website!"}' \
+          -d '{"content": "🚀 A new deployment to GitHub Pages has been completed!"}' \
           $WEBHOOK_URL
