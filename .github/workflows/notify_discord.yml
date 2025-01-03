@@ -1,0 +1,18 @@
+name: Notify Discord on Deployment
+
+on:
+  deployment:
+    types: [created]
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send message to Discord
+      env:
+        WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "🚀 A new deployment has been triggered for the website!"}' \
+          $WEBHOOK_URL
