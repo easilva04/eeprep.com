@@ -105,9 +105,9 @@
             "snippet": "Learn about Thevenin's and Norton's theorems and their applications in simplifying and analyzing circuits..."
         }
     ],
-    "Probability & Statistics": [
+    "Statistics": [
         {
-            "title": "Probability & Statistics Home",
+            "title": "Probability Statistics Home",
             "url": "/Topics/ProbabilityStatistics/ProbStats.html",
             "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
         },
