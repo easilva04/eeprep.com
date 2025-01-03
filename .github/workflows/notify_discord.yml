@@ -3,7 +3,7 @@ name: Notify Discord on GitHub Pages Deployment
 on:
   push:
     branches:
-      - gh-pages # Replace with the branch you configured for GitHub Pages
+      - main # Replace with the branch you configured for GitHub Pages
 
 jobs:
   notify-discord:
