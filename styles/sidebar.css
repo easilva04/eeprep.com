@@ -32,6 +32,14 @@
     box-shadow: 2px 0 8px rgba(255, 255, 255, 0.1); /* Slightly grey shadow for dark mode */
 }
 
+/* Add dark mode styles for buttons */
+.sidebar.dark-mode a,
+.sidebar.dark-mode p,
+.sidebar.dark-mode button {
+    color: var(--white); /* Ensure text is visible */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Grey outline shadow */
+}
+
 .sidebar.collapsed {
     transform: translateX(-100%);
 }
@@ -112,6 +120,12 @@
     background-color: var(--grey);
 }
 
+.dropdown-menu.dark-mode a {
+    color: var(--white); /* Ensure links are visible */
+    background-color: var(--black); /* Dark background for links */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Grey outline shadow */
+}
+
 .dropdown-toggle {
     cursor: pointer;
     display: flex;
@@ -130,6 +144,12 @@
 .dropdown-toggle.active {
     background-color: var(--grey);
     box-shadow: var(--shadow-hover);
+}
+
+.dropdown-toggle.dark-mode {
+    background-color: var(--black); /* Dark background for toggle */
+    color: var(--white); /* Ensure text is visible */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Grey outline shadow */
 }
 
 .sidebar-footer p {
