@@ -8,13 +8,33 @@ class SearchEngine {
     }
 
     async initializeSearchIndex() {
-        // Initialize with some basic content
-        this.addToIndex('home', {
-            title: 'Home',
-            url: '/',
-            excerpts: ['Main page of EE Prep']
-        });
-        // Add more index entries as needed
+        try {
+            const response = await fetch('/Topics/pages.json');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const pages = await response.json();
+
+            for (const section in pages) {
+                if (Array.isArray(pages[section])) {
+                    pages[section].forEach(page => {
+                        this.addToIndex(page.title, {
+                            title: page.title,
+                            url: page.url,
+                            excerpts: [page.snippet]
+                        });
+                    });
+                } else {
+                    this.addToIndex(pages[section].title, {
+                        title: pages[section].title,
+                        url: pages[section].url,
+                        excerpts: [pages[section].snippet]
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Failed to initialize search index:', error);
+        }
         return true;
     }
 

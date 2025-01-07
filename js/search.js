@@ -40,11 +40,7 @@ class SearchEngine {
                 throw new Error(`HTTP error fetching pages.json: ${response.status}`);
             }
             const pagesData = await response.json();
-            let flattened = [];
-            for (const section in pagesData) {
-                flattened = flattened.concat(pagesData[section]);
-            }
-            return flattened;
+            return Object.values(pagesData).flat();
         } catch (error) {
             console.error('Failed to fetch pages:', error);
             return [];
@@ -52,10 +48,6 @@ class SearchEngine {
     }
 
     async fetchAllContent(pages) {
-        if (!Array.isArray(pages)) {
-            // Flatten object { Home: [...], Math: [...], ... } into an array
-            pages = Object.values(pages).reduce((all, arr) => all.concat(arr), []);
-        }
         const contentMap = new Map();
 
         // Fetch all pages concurrently
@@ -127,7 +119,6 @@ class SearchEngine {
     search(query) {
         const searchTerms = this.generateSearchTerms(query);
         const results = new Map();
-        let totalMatches = 0;
 
         searchTerms.forEach(term => {
             const matches = this.searchTerm(term);
@@ -146,11 +137,10 @@ class SearchEngine {
                 result.score += match.score;
                 match.excerpts.forEach(e => result.excerpts.add(e));
                 result.matchedTerms.add(term);
-                totalMatches++;
             });
         });
 
-        console.log(`Found ${totalMatches} total matches across ${results.size} pages`);
+        console.log(`Found ${results.size} pages matching the query`);
 
         return Array.from(results.values())
             .sort((a, b) => b.score - a.score)
@@ -190,7 +180,6 @@ class SearchEngine {
 
     searchTerm(term) {
         const results = new Map();
-        const isPhrase = term.includes(' ');
 
         this.contentMap.forEach((data, path) => {
             const content = data.content.toLowerCase();
