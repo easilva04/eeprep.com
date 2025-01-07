@@ -13,6 +13,11 @@
         </h1>
     </div>
     <div class="navbar-right">
+        <button class="home-icon" aria-label="Home">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/>
+            </svg>
+        </button>
         <div class="search-container">
             <button class="search-icon" aria-label="Search">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,3 +32,11 @@
         </div>
     </div>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const homeIcon = document.querySelector('.home-icon');
+        homeIcon.addEventListener('click', () => {
+            window.location.href = '/index.html';
+        });
+    });
+</script>
