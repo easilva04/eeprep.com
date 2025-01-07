@@ -40,6 +40,30 @@
                         pageItem.appendChild(pageLink);
                         dropdownMenu.appendChild(pageItem);
                     });
+                } else if (typeof pages[section] === 'object') {
+                    for (const subSection in pages[section]) {
+                        const subSectionItem = document.createElement('li');
+                        const subSectionLink = document.createElement('a');
+                        subSectionLink.href = '#';
+                        subSectionLink.className = 'dropdown-toggle';
+                        subSectionLink.textContent = subSection;
+                        subSectionItem.appendChild(subSectionLink);
+
+                        const subDropdownMenu = document.createElement('ul');
+                        subDropdownMenu.className = 'dropdown-menu';
+
+                        pages[section][subSection].forEach(page => {
+                            const pageItem = document.createElement('li');
+                            const pageLink = document.createElement('a');
+                            pageLink.href = page.url;
+                            pageLink.textContent = page.title;
+                            pageItem.appendChild(pageLink);
+                            subDropdownMenu.appendChild(pageItem);
+                        });
+
+                        subSectionItem.appendChild(subDropdownMenu);
+                        dropdownMenu.appendChild(subSectionItem);
+                    }
                 } else {
                     const pageItem = document.createElement('li');
                     const pageLink = document.createElement('a');
