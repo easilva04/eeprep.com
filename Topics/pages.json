@@ -1,10 +1,10 @@
 {
-    "Home": [
-        {
-            "title": "Home",
-            "url": "/index.html",
-            "snippet": "Welcome to the Electrical Engineering Review Handbook, your comprehensive resource for mastering electrical engineering concepts..."
-        },
+    "Home": {
+        "title": "Home",
+        "url": "/index.html",
+        "snippet": "Welcome to the Electrical Engineering Review Handbook, your comprehensive resource for mastering electrical engineering concepts..."
+    },
+    "Information": [
         {
             "title": "Introduction",
             "url": "/Topics/Home/Introduction.html",
@@ -68,6 +68,28 @@
             "snippet": "Sets, combinatorics, and discrete structures..."
         }
     ],
+    "Statistics": [
+        {
+            "title": "Probability Statistics Home",
+            "url": "/Topics/ProbabilityStatistics/ProbStats.html",
+            "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
+        },
+        {
+            "title": "Distributions",
+            "url": "/Topics/ProbabilityStatistics/Distributions.html",
+            "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."
+        },
+        {
+            "title": "Tendencies",
+            "url": "/Topics/ProbabilityStatistics/Tendencies.html",
+            "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."
+        },
+        {
+            "title": "Expected Value",
+            "url": "/Topics/ProbabilityStatistics/ExpectedValue.html",
+            "snippet": "Study expected value and its applications in probability and statistics, including in decision-making and risk analysis..."
+        }
+    ],
     "Linear Systems": [
         {
             "title": "Linear Systems Home",
@@ -93,6 +115,28 @@
             "title": "Transfer Functions",
             "url": "/Topics/LinearSystems/TFs.html",
             "snippet": "Deriving and interpreting system transfer functions..."
+        }
+    ],
+    "Signal Processing": [
+        {
+            "title": "Signals Home",
+            "url": "/Topics/Signals/Signals.html",
+            "snippet": "Introduction to signal processing concepts..."
+        },
+        {
+            "title": "Analog Signals",
+            "url": "/Topics/Signals/Analog.html",
+            "snippet": "Characteristics and processing of analog signals..."
+        },
+        {
+            "title": "Digital Signals",
+            "url": "/Topics/Signals/Digital.html",
+            "snippet": "Discrete-time signal representation..."
+        },
+        {
+            "title": "Sampling",
+            "url": "/Topics/Signals/Sampling.html",
+            "snippet": "Acquiring and converting continuous signals..."
         }
     ],
     "Electromagnetics": [
@@ -142,50 +186,6 @@
             "title": "Thermal Properties",
             "url": "/Topics/ElectricalMaterials/Thermal.html",
             "snippet": "Heat transfer in electrical contexts..."
-        }
-    ],
-    "Signal Processing": [
-        {
-            "title": "Signals Home",
-            "url": "/Topics/Signals/Signals.html",
-            "snippet": "Introduction to signal processing concepts..."
-        },
-        {
-            "title": "Analog Signals",
-            "url": "/Topics/Signals/Analog.html",
-            "snippet": "Characteristics and processing of analog signals..."
-        },
-        {
-            "title": "Digital Signals",
-            "url": "/Topics/Signals/Digital.html",
-            "snippet": "Discrete-time signal representation..."
-        },
-        {
-            "title": "Sampling",
-            "url": "/Topics/Signals/Sampling.html",
-            "snippet": "Acquiring and converting continuous signals..."
-        }
-    ],
-    "Statistics": [
-        {
-            "title": "Probability Statistics Home",
-            "url": "/Topics/ProbabilityStatistics/ProbStats.html",
-            "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
-        },
-        {
-            "title": "Distributions",
-            "url": "/Topics/ProbabilityStatistics/Distributions.html",
-            "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."
-        },
-        {
-            "title": "Tendencies",
-            "url": "/Topics/ProbabilityStatistics/Tendencies.html",
-            "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."
-        },
-        {
-            "title": "Expected Value",
-            "url": "/Topics/ProbabilityStatistics/ExpectedValue.html",
-            "snippet": "Study expected value and its applications in probability and statistics, including in decision-making and risk analysis..."
         }
     ],
     "Circuits": [
@@ -257,60 +257,6 @@
             "snippet": "Electrical power in electronics applications..."
         }
     ],
-    "Power Systems": [
-        {
-            "title": "Power Home",
-            "url": "/Topics/Power/Power.html",
-            "snippet": "Key topics in power systems and distribution..."
-        },
-        {
-            "title": "Motors & Generators",
-            "url": "/Topics/Power/MotorsGenerators.html",
-            "snippet": "Principles of electric machines..."
-        },
-        {
-            "title": "Power Theory",
-            "url": "/Topics/Power/Theory.html",
-            "snippet": "Important theoretical concepts in power systems..."
-        },
-        {
-            "title": "Transformers",
-            "url": "/Topics/Power/Transformers.html",
-            "snippet": "Voltage transformation and operation..."
-        },
-        {
-            "title": "Transmission & Distribution",
-            "url": "/Topics/Power/TransmissionDistribution.html",
-            "snippet": "Delivering electric power over distances..."
-        }
-    ],
-    "Control Systems": [
-        {
-            "title": "Controls Home",
-            "url": "/Topics/Controls/Controls.html",
-            "snippet": "Introduction to control systems and feedback loops..."
-        },
-        {
-            "title": "Block Diagrams",
-            "url": "/Topics/Controls/BlockDiagrams.html",
-            "snippet": "Control system representation using block diagrams..."
-        },
-        {
-            "title": "Bode Plots",
-            "url": "/Topics/Controls/Bode.html",
-            "snippet": "Frequency response analysis with Bode plots..."
-        },
-        {
-            "title": "Performance",
-            "url": "/Topics/Controls/Performance.html",
-            "snippet": "Evaluating control system performance..."
-        },
-        {
-            "title": "Stability",
-            "url": "/Topics/Controls/Stability.html",
-            "snippet": "Assessing stability in closed-loop systems..."
-        }
-    ],
     "Digital Systems": [
         {
             "title": "Digital Systems Home",
@@ -356,33 +302,6 @@
             "title": "Timing Analysis",
             "url": "/Topics/DigitalSystems/Timing.html",
             "snippet": "Clocking considerations and timing constraints..."
-        }
-    ],
-    "Communications": [
-        {
-            "title": "Communications Home",
-            "url": "/Topics/Communications/Communications.html",
-            "snippet": "Overview of communications engineering..."
-        },
-        {
-            "title": "Digital Communications",
-            "url": "/Topics/Communications/DigitalComms.html",
-            "snippet": "Explore digital communication methods..."
-        },
-        {
-            "title": "Fourier Methods",
-            "url": "/Topics/Communications/Fourier.html",
-            "snippet": "Fourier analysis in communication systems..."
-        },
-        {
-            "title": "Modulation",
-            "url": "/Topics/Communications/Modulation.html",
-            "snippet": "Introduction to modulation techniques..."
-        },
-        {
-            "title": "Multiplexing",
-            "url": "/Topics/Communications/Multiplexing.html",
-            "snippet": "Combining signals for efficient transmission..."
         }
     ],
     "Computer Systems": [
@@ -437,6 +356,87 @@
             "title": "Network Types",
             "url": "/Topics/Networks/Types.html",
             "snippet": "LAN, WAN, and other network classifications..."
+        }
+    ],
+    "Communications": [
+        {
+            "title": "Communications Home",
+            "url": "/Topics/Communications/Communications.html",
+            "snippet": "Overview of communications engineering..."
+        },
+        {
+            "title": "Digital Communications",
+            "url": "/Topics/Communications/DigitalComms.html",
+            "snippet": "Explore digital communication methods..."
+        },
+        {
+            "title": "Fourier Methods",
+            "url": "/Topics/Communications/Fourier.html",
+            "snippet": "Fourier analysis in communication systems..."
+        },
+        {
+            "title": "Modulation",
+            "url": "/Topics/Communications/Modulation.html",
+            "snippet": "Introduction to modulation techniques..."
+        },
+        {
+            "title": "Multiplexing",
+            "url": "/Topics/Communications/Multiplexing.html",
+            "snippet": "Combining signals for efficient transmission..."
+        }
+    ],
+    "Control Systems": [
+        {
+            "title": "Controls Home",
+            "url": "/Topics/Controls/Controls.html",
+            "snippet": "Introduction to control systems and feedback loops..."
+        },
+        {
+            "title": "Block Diagrams",
+            "url": "/Topics/Controls/BlockDiagrams.html",
+            "snippet": "Control system representation using block diagrams..."
+        },
+        {
+            "title": "Bode Plots",
+            "url": "/Topics/Controls/Bode.html",
+            "snippet": "Frequency response analysis with Bode plots..."
+        },
+        {
+            "title": "Performance",
+            "url": "/Topics/Controls/Performance.html",
+            "snippet": "Evaluating control system performance..."
+        },
+        {
+            "title": "Stability",
+            "url": "/Topics/Controls/Stability.html",
+            "snippet": "Assessing stability in closed-loop systems..."
+        }
+    ],
+    "Power Systems": [
+        {
+            "title": "Power Home",
+            "url": "/Topics/Power/Power.html",
+            "snippet": "Key topics in power systems and distribution..."
+        },
+        {
+            "title": "Motors & Generators",
+            "url": "/Topics/Power/MotorsGenerators.html",
+            "snippet": "Principles of electric machines..."
+        },
+        {
+            "title": "Power Theory",
+            "url": "/Topics/Power/Theory.html",
+            "snippet": "Important theoretical concepts in power systems..."
+        },
+        {
+            "title": "Transformers",
+            "url": "/Topics/Power/Transformers.html",
+            "snippet": "Voltage transformation and operation..."
+        },
+        {
+            "title": "Transmission & Distribution",
+            "url": "/Topics/Power/TransmissionDistribution.html",
+            "snippet": "Delivering electric power over distances..."
         }
     ],
     "Software Engineering": [

@@ -41,4 +41,33 @@
         position: relative;
         overflow-y: visible;
     }
+
+    .navbar {
+        padding: 0 1rem; /* Reduce padding for better fit on mobile */
+    }
+
+    .navbar-title {
+        font-size: var(--font-size-h3); /* Adjust mobile title size */
+    }
+
+    .hamburger-menu span {
+        width: 20px; /* Adjust size for better visibility */
+        height: 2px;
+    }
+
+    .search-input {
+        width: 100%; /* Full width on mobile */
+        padding: 0.5rem;
+        border: 1px solid var(--grey);
+        border-radius: var(--border-radius);
+        background-color: var(--white);
+        color: var(--black) !important;
+    }
+
+    .search-container.active .search-input {
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        color: var(--black) !important;
+    }
 }

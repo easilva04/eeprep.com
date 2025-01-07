@@ -1,48 +1,48 @@
 body.dark-mode {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: #1e1e1e; /* Softer black */
+    color: #d4d4d4; /* Softer white */
 }
 
 body.dark-mode .navbar {
-    background-color: var(--black);
-    border-bottom: 1px solid var(--grey);
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #3e3e3e; /* Softer grey */
 }
 
 body.dark-mode .hamburger-menu span {
-    background-color: var(--white);
+    background-color: #d4d4d4;
 }
 
 body.dark-mode .sidebar {
-    background-color: var(--black);
-    color: var(--white);
-    border-right: 1px solid var(--grey);
-    box-shadow: 2px 0 8px rgba(255, 255, 255, 0.2);
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-right: 1px solid #3e3e3e;
+    box-shadow: 2px 0 8px rgba(212, 212, 212, 0.2); /* Softer shadow */
 }
 
 body.dark-mode .sidebar-footer {
-    background-color: var(--black);
+    background-color: #1e1e1e;
 }
 
 body.dark-mode .dropdown-menu {
-    background-color: var(--black);
+    background-color: #1e1e1e;
 }
 
 body.dark-mode .dark-mode-toggle {
-    background-color: var(--grey);
-    color: var(--white);
+    background-color: #3e3e3e;
+    color: #d4d4d4;
 }
 
 /* LaTeX dark mode styles */
 body.dark-mode .MathJax,
 body.dark-mode .MathJax_SVG,
 body.dark-mode .tikzjax {
-    color: var(--white) !important;
+    color: #d4d4d4 !important;
 }
 
 body.dark-mode .MathJax_SVG svg,
 body.dark-mode .tikzjax svg {
-    stroke: var(--white) !important;
-    fill: var(--white) !important;
+    stroke: #d4d4d4 !important;
+    fill: #d4d4d4 !important;
 }
 
 body.dark-mode .main-content,
@@ -62,31 +62,31 @@ body.dark-mode button,
 body.dark-mode input,
 body.dark-mode select,
 body.dark-mode textarea {
-    color: var(--white);
+    color: #d4d4d4;
 }
 
-/* Ensure SVG icons switch to white in dark mode */
+/* Ensure SVG icons switch to softer white in dark mode */
 body.dark-mode .search-icon svg {
-    fill: var(--white);
+    fill: #d4d4d4;
 }
 
-/* Ensure dropdown button backgrounds remain black and text turns white in dark mode */
+/* Ensure dropdown button backgrounds remain softer black and text turns softer white in dark mode */
 body.dark-mode .dropdown-toggle,
 body.dark-mode .dropdown-menu a {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: #1e1e1e;
+    color: #d4d4d4;
 }
 
 body.dark-mode .theme-toggle {
-    color: var(--white);
-    background-color: var(--grey);
-    border-color: var(--grey);
+    color: #d4d4d4;
+    background-color: #3e3e3e;
+    border-color: #3e3e3e;
 }
 
 .theme-toggle {
-    color: var(--white);
-    background-color: var(--grey);
-    border: 1px solid var(--grey);
+    color: #d4d4d4;
+    background-color: #3e3e3e;
+    border: 1px solid #3e3e3e;
     border-radius: var(--border-radius);
     padding: 0.5rem 1rem;
     cursor: pointer;
