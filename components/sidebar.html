@@ -80,5 +80,28 @@
             console.error('Failed to load sidebar:', error);
         }
     }
-    document.addEventListener('DOMContentLoaded', loadSidebar);
+
+    function applyTheme(theme) {
+        document.body.classList.toggle('dark-mode', theme === 'dark');
+    }
+
+    function loadTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+    }
+
+    function toggleTheme() {
+        const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSidebar();
+        loadTheme();
+
+        const themeToggle = document.getElementById('dark-mode-toggle');
+        themeToggle.addEventListener('click', toggleTheme);
+    });
 </script>
