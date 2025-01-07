@@ -2,7 +2,8 @@
   - [ ] Update todo markers inside each page.
   - [ ] Fix hyperlinks within each page.
   - [ ] Put in correct order of learning.
-    - [ ] Mathematics -> Linear Systems -> Electromagnetics -> Properties of Electrical Materials -> Signal Processing -> Probability and Statistics -> Circuit Analysis -> Electronics -> Power Systems -> Control Systems -> Digital Systems -> Communications -> Computer Systems -> Computer Networks -> Software Engineering -> Engineering Economics -> Ethics and Professional Practice
+    - [x] Mathematics -> Probability and Statistics -> Linear Systems -> Signal Processing -> Electromagnetics -> Properties of Electrical Materials -> Circuit Analysis -> Electronics -> Digital Systems -> Computer Systems -> Computer Networks -> Communications -> Control Systems -> Power Systems -> Software Engineering -> Engineering Economics -> Ethics and Professional Practice
+    - [ ] Each subject needs to be put into order now
 
   - [ ] Make a logo and brand for eeprep.com
   - [ ] optimize site for SEO visibility
@@ -14,7 +15,7 @@
   - [ ] [Introduction](./Topics/Home/Introduction.html)
   - [ ] [Legal](./Topics/Home/Legal.html)
 
-  Math:
+  Mathematics:
   - [ ] [Algebra](./Topics/Math/Algebra.html)
   - [ ] [Calculus](./Topics/Math/Calculus.html)
   - [ ] [Complex Numbers](./Topics/Math/ComplexNumbers.html)
@@ -25,12 +26,24 @@
   - [ ] [Differential Equations](./Topics/Math/ODEs.html)
   - [ ] [Vectors](./Topics/Math/Vectors.html)
 
+  Statistics:
+  - [ ] [Distributions](./Topics/ProbabilityStatistics/Distributions.html)
+  - [ ] [Expected Value](./Topics/ProbabilityStatistics/ExpectedValue.html)
+  - [ ] [Probability & Statistics](./Topics/ProbabilityStatistics/ProbStats.html)
+  - [ ] [Tendencies](./Topics/ProbabilityStatistics/Tendencies.html)
+
   Linear Systems:
   - [ ] [Frequency Response](./Topics/LinearSystems/FrequencyResponse.html)
   - [ ] [Laplace Transform](./Topics/LinearSystems/Laplace.html)
   - [ ] [Linear Systems](./Topics/LinearSystems/LinearSystems.html)
   - [ ] [Resonance](./Topics/LinearSystems/Resonance.html)
   - [ ] [Transfer Functions](./Topics/LinearSystems/TFs.html)
+
+  Signal Processing:
+  - [ ] [Analog Signals](./Topics/Signals/Analog.html)
+  - [ ] [Digital Signals](./Topics/Signals/Digital.html)
+  - [ ] [Sampling](./Topics/Signals/Sampling.html)
+  - [ ] [Signals](./Topics/Signals/Signals.html)
 
   Electromagnetics:
   - [ ] [Electrodynamics](./Topics/Electromagnetics/Electrodynamics.html)
@@ -43,18 +56,6 @@
   - [ ] [Material Fundamentals](./Topics/ElectricalMaterials/Materials.html)
   - [ ] [Semiconductors](./Topics/ElectricalMaterials/Semiconductors.html)
   - [ ] [Thermal Properties](./Topics/ElectricalMaterials/Thermal.html)
-
-  Signals:
-  - [ ] [Analog Signals](./Topics/Signals/Analog.html)
-  - [ ] [Digital Signals](./Topics/Signals/Digital.html)
-  - [ ] [Sampling](./Topics/Signals/Sampling.html)
-  - [ ] [Signals](./Topics/Signals/Signals.html)
-
-  Probability and Statistics:
-  - [ ] [Distributions](./Topics/ProbabilityStatistics/Distributions.html)
-  - [ ] [Expected Value](./Topics/ProbabilityStatistics/ExpectedValue.html)
-  - [ ] [Probability & Statistics](./Topics/ProbabilityStatistics/ProbStats.html)
-  - [ ] [Tendencies](./Topics/ProbabilityStatistics/Tendencies.html)
 
   Circuits:
   - [ ] [AC](./Topics/Circuits/AC.html)
@@ -73,20 +74,6 @@
   - [ ] [Operational Amplifiers](./Topics/Electronics/OpAmps.html)
   - [ ] [Power Systems](./Topics/Electronics/PowerSystems.html)
 
-  Power:
-  - [ ] [Motors & Generators](./Topics/Power/MotorsGenerators.html)
-  - [ ] [Power](./Topics/Power/Power.html)
-  - [ ] [Power Theory](./Topics/Power/Theory.html)
-  - [ ] [Transformers](./Topics/Power/Transformers.html)
-  - [ ] [Transmission & Distribution](./Topics/Power/TransmissionDistribution.html)
-
-  Controls:
-  - [ ] [Block Diagrams](./Topics/Controls/BlockDiagrams.html)
-  - [ ] [Bode Plots](./Topics/Controls/Bode.html)
-  - [ ] [Controls](./Topics/Controls/Controls.html)
-  - [ ] [Performance](./Topics/Controls/Performance.html)
-  - [ ] [Stability](./Topics/Controls/Stability.html)
-
   Digital Systems:
   - [ ] [Boolean Algebra](./Topics/DigitalSystems/Boolean.html)
   - [ ] [Digital Systems](./Topics/DigitalSystems/DigitalSystems.html)
@@ -98,20 +85,13 @@
   - [ ] [State Machines](./Topics/DigitalSystems/StateMachines.html)
   - [ ] [Timing Analysis](./Topics/DigitalSystems/Timing.html)
 
-  Communications:
-  - [ ] [Communications](./Topics/Communications/Communications.html)
-  - [ ] [Digital Communications](./Topics/Communications/DigitalComms.html)
-  - [ ] [Fourier Methods](./Topics/Communications/Fourier.html)
-  - [ ] [Modulation](./Topics/Communications/Modulation.html)
-  - [ ] [Multiplexing](./Topics/Communications/Multiplexing.html)
-
   Computer Systems:
   - [ ] [Computer Systems](./Topics/ComputerSystems/ComputerSystems.html)
   - [ ] [Interfacing](./Topics/ComputerSystems/Interfacing.html)
   - [ ] [Memory](./Topics/ComputerSystems/Memory.html)
   - [ ] [Microprocessors](./Topics/ComputerSystems/Microprocessors.html)
 
-  Networks:
+  Computer Networks:
   - [ ] [Network Models](./Topics/Networks/Models.html)
   - [ ] [Networks](./Topics/Networks/Networks.html)
   - [ ] [NIDP](./Topics/Networks/NIDP.html)
@@ -119,20 +99,41 @@
   - [ ] [Network Topologies](./Topics/Networks/Topologies.html)
   - [ ] [Network Types](./Topics/Networks/Types.html)
 
+  Communications:
+  - [ ] [Communications](./Topics/Communications/Communications.html)
+  - [ ] [Digital Communications](./Topics/Communications/DigitalComms.html)
+  - [ ] [Fourier Methods](./Topics/Communications/Fourier.html)
+  - [ ] [Modulation](./Topics/Communications/Modulation.html)
+  - [ ] [Multiplexing](./Topics/Communications/Multiplexing.html)
+
+  Control Systems:
+  - [ ] [Block Diagrams](./Topics/Controls/BlockDiagrams.html)
+  - [ ] [Bode Plots](./Topics/Controls/Bode.html)
+  - [ ] [Controls](./Topics/Controls/Controls.html)
+  - [ ] [Performance](./Topics/Controls/Performance.html)
+  - [ ] [Stability](./Topics/Controls/Stability.html)
+
+  Power Systems:
+  - [ ] [Motors & Generators](./Topics/Power/MotorsGenerators.html)
+  - [ ] [Power](./Topics/Power/Power.html)
+  - [ ] [Power Theory](./Topics/Power/Theory.html)
+  - [ ] [Transformers](./Topics/Power/Transformers.html)
+  - [ ] [Transmission & Distribution](./Topics/Power/TransmissionDistribution.html)
+
   Software Engineering:
   - [ ] [Algorithms](./Topics/SoftwareEngineering/Algorithms.html)
   - [ ] [Data Structures](./Topics/SoftwareEngineering/DataStructures.html)
   - [ ] [Implementation](./Topics/SoftwareEngineering/Implementation.html)
   - [ ] [Software Engineering](./Topics/SoftwareEngineering/SoftwareEngineering.html)
 
-  Economics:
+  Engineering Economics:
   - [ ] [Economic Analysis](./Topics/Economics/Analysis.html)
   - [ ] [Cost Estimation](./Topics/Economics/CostEstimation.html)
   - [ ] [Engineering Economics](./Topics/Economics/EngineeringEcon.html)
   - [ ] [Risk Analysis](./Topics/Economics/Risk.html)
   - [ ] [Time Value of Money](./Topics/Economics/TimeValue.html)
 
-  Ethics:
+  Ethics and Professional Practice:
   - [ ] [Codes of Ethics](./Topics/Ethics/Codes.html)
   - [ ] [Ethics](./Topics/Ethics/Ethics.html)
   - [ ] [Intellectual Property](./Topics/Ethics/IntellectualProperty.html)

@@ -31,14 +31,23 @@
                 const dropdownMenu = document.createElement('ul');
                 dropdownMenu.className = 'dropdown-menu';
 
-                pages[section].forEach(page => {
+                if (Array.isArray(pages[section])) {
+                    pages[section].forEach(page => {
+                        const pageItem = document.createElement('li');
+                        const pageLink = document.createElement('a');
+                        pageLink.href = page.url;
+                        pageLink.textContent = page.title;
+                        pageItem.appendChild(pageLink);
+                        dropdownMenu.appendChild(pageItem);
+                    });
+                } else {
                     const pageItem = document.createElement('li');
                     const pageLink = document.createElement('a');
-                    pageLink.href = page.url;
-                    pageLink.textContent = page.title;
+                    pageLink.href = pages[section].url;
+                    pageLink.textContent = pages[section].title;
                     pageItem.appendChild(pageLink);
                     dropdownMenu.appendChild(pageItem);
-                });
+                }
 
                 sectionItem.appendChild(dropdownMenu);
                 sidebarMenu.appendChild(sectionItem);
