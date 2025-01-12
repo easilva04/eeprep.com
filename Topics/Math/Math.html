@@ -18,7 +18,7 @@
     <script src="../../js/loadSidebar.js" defer></script>
     <script src="../../js/navbar.js" defer></script>
     <script src="../../js/themeToggle.js" defer></script>
-    <script src="../../js/errorHandler.js"></script>
+    <script src="../../js/errorHandler.js" defer></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/questions.js" defer></script>
@@ -42,17 +42,17 @@
 <body>
     <div id="sidebar-container"></div>
     <div class="nav-bottom-left">
-        <!-- No previous topic -->
+        <!-- button or link to previous topic if desired -->
     </div>
     <div class="nav-bottom-right">
-        <button class="styled-button" onclick="window.location.href='ComplexNumbers.html'">Next Topic</button>
+        <!-- button or link to next topic if desired -->
     </div>
     <div class="main-content">
         <header>
-            <h1>Mathematics</h1>
+            <h1>Mathematics Overview</h1>
         </header>
         <main>
-            <section>
+            <section id="introduction">
                 <h2>Introduction</h2>
                 <p>The <strong>Mathematics</strong> section provides a comprehensive assessment of key areas in
                     engineering mathematics, ensuring a solid foundation for effective problem-solving in technical
@@ -60,22 +60,22 @@
                     topics crucial for engineers.</p>
             </section>
 
-            <section>
+            <section id="what-to-expect">
                 <h2>What to Expect</h2>
-                <ul>
-                    <li><strong>Structure of the Assessment</strong>: The section includes a mix of question formats:
-                        <ul>
+                <ol class="index">
+                    <li><strong>Structure of the Assessment</strong>:
+                        <ol>
                             <li><strong>Multiple-Choice Questions (MCQs)</strong>: Designed to test theoretical
                                 knowledge and applied problem-solving skills, these questions require selecting the
                                 correct answer from several options.</li>
                             <li><strong>Free Response Questions (FRQs)</strong>: Open-ended problems requiring
                                 step-by-step solutions, focusing on conceptual clarity and detailed calculations.</li>
-                        </ul>
+                        </ol>
                         <p>Each part incorporates a range of difficulties—easy, medium, and hard—to evaluate both depth
                             and breadth of understanding.</p>
                     </li>
                     <li><strong>Topics Covered</strong>: This section spans diverse areas of mathematics, including:
-                        <ul>
+                        <ol>
                             <li><strong>Algebra and Trigonometry</strong>: Topics such as linear equations,
                                 inequalities, and trigonometric identities form the foundation for advanced mathematics.
                             </li>
@@ -93,12 +93,12 @@
                                 eigenvectors, with a focus on applications in various fields.</li>
                             <li><strong>Vector Analysis</strong>: Includes vector operations such as dot and cross
                                 products, as well as divergence, curl, and line and surface integrals.</li>
-                        </ul>
+                        </ol>
                     </li>
-                </ul>
+                </ol>
             </section>
 
-            <section>
+            <section id="key-insights">
                 <h2>Key Insights</h2>
                 <ul>
                     <li><strong>Real-World Application</strong>: Topics are closely tied to practical engineering
@@ -112,7 +112,7 @@
                 </ul>
             </section>
 
-            <section>
+            <section id="preparation-strategy">
                 <h2>Preparation Strategy</h2>
                 <ul>
                     <li><strong>Master Fundamentals</strong>: Thoroughly review essential concepts in each mathematical
@@ -126,7 +126,7 @@
                 </ul>
             </section>
 
-            <section>
+            <section id="visual-overview">
                 <h2>Visual Overview</h2>
                 <figure>
                     <figcaption>Hierarchy of Mathematical Topics in Engineering.</figcaption>
@@ -138,11 +138,11 @@
                             <node (linear) [rectangle, draw, below of=math, xshift=3cm] {Linear Algebra};
                             <node (ode) [rectangle, draw, below of=calculus] {ODEs};
                             <node (vector) [rectangle, draw, below of=linear] {Vector Analysis};
-                            <draw[->] (math) -- (discrete);
-                            <draw[->] (math) -- (calculus);
-                            <draw[->] (math) -- (linear);
-                            <draw[->] (calculus) -- (ode);
-                            <draw[->] (linear) -- (vector);
+                            \draw[->] (math) -- (discrete);
+                            \draw[->] (math) -- (calculus);
+                            \draw[->] (math) -- (linear);
+                            \draw[->] (calculus) -- (ode);
+                            \draw[->] (linear) -- (vector);
                         \end{tikzpicture}
                     </script>
                 </figure>
@@ -154,7 +154,6 @@
             </section>
         </main>
     </div>
-
 </body>
 
 </html>

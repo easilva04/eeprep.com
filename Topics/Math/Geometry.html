@@ -17,20 +17,20 @@
     <script src="../../js/loadSidebar.js" defer></script>
     <script src="../../js/navbar.js" defer></script>
     <script src="../../js/themeToggle.js" defer></script>
-    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/errorHandler.js" defer></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/questions.js" defer></script>
     
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-09JTZCW5JJ');
-</script>
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
 </head>
 
 <body>
@@ -46,57 +46,50 @@
             <h1>Analytic Geometry</h1>
         </header>
         <main>
-            <section>
-                <p>Analytic geometry bridges algebra and geometry, providing a systematic way to study shapes and their
-                    properties using the Cartesian coordinate system. It serves as a foundation for advanced topics in
-                    mathematics, engineering, and physics.</p>
-            </section>
-
-            <section>
+            <section id="core-concepts">
                 <h3>Core Concepts</h3>
-                <ul>
+                <ol class="index">
                     <li><strong>Points and Distances</strong>:
-                        <ul>
-                            <li>Distance formula: \[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]</li>
-                            <li>Midpoint formula: \[M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\]</li>
-                        </ul>
+                        <ol>
+                            <li>Distance formula: \[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]. This formula calculates the distance between two points in a plane.</li>
+                            <li>Midpoint formula: \[M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\]. This formula finds the midpoint of a line segment connecting two points.</li>
+                        </ol>
                     </li>
                     <li><strong>Lines and Slopes</strong>:
-                        <ul>
-                            <li>Slope formula: \[m = \frac{y_2 - y_1}{x_2 - x_1}\]</li>
-                            <li>Equation of a line: \[y = mx + b\] (slope-intercept form)</li>
-                        </ul>
+                        <ol>
+                            <li>Slope formula: \[m = \frac{y_2 - y_1}{x_2 - x_1}\]. The slope measures the steepness of a line.</li>
+                            <li>Equation of a line: \[y = mx + b\] (slope-intercept form). This equation represents a straight line in the plane.</li>
+                        </ol>
                     </li>
                     <li><strong>Circles</strong>:
-                        <ul>
-                            <li>Standard equation: \[(x - h)^2 + (y - k)^2 = r^2\]</li>
-                            <li>Applications in modeling wave fronts and circular motion.</li>
-                        </ul>
+                        <ol>
+                            <li>Standard equation: \[(x - h)^2 + (y - k)^2 = r^2\]. This equation represents a circle with center \((h, k)\) and radius \(r\).</li>
+                            <li>Applications in modeling wave fronts and circular motion. Circles are used to model various physical phenomena, such as waves and orbits.</li>
+                        </ol>
                     </li>
                     <li><strong>Conic Sections</strong>:
-                        <ul>
-                            <li>Parabolas: \[y^2 = 4px\] (focus-directrix form)</li>
-                            <li>Ellipses: \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\]</li>
-                            <li>Hyperbolas: \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\]</li>
-                        </ul>
+                        <ol>
+                            <li>Parabolas: \[y^2 = 4px\] (focus-directrix form). Parabolas are used in the design of satellite dishes and reflectors.</li>
+                            <li>Ellipses: \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\]. Ellipses describe planetary orbits and optical properties of lenses.</li>
+                            <li>Hyperbolas: \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\]. Hyperbolas are used in navigation systems and the design of certain types of antennas.</li>
+                        </ol>
                     </li>
-                </ul>
+                </ol>
             </section>
 
-            <section>
+            <section id="applications-in-engineering">
                 <h3>Applications in Engineering</h3>
-                <ul>
-                    <li><strong>Structural Analysis</strong>: Using geometric principles to model stress and strain in beams
-                        and frameworks.</li>
-                    <li><strong>Robotics</strong>: Calculating paths and motions using coordinate geometry.</li>
-                    <li><strong>Optics</strong>: Designing lenses and reflectors based on conic sections.</li>
-                </ul>
+                <ol class="index">
+                    <li><strong>Structural Analysis</strong>: Using geometric principles to model stress and strain in beams and frameworks. Analytic geometry helps in understanding how forces are distributed in structures.</li>
+                    <li><strong>Robotics</strong>: Calculating paths and motions using coordinate geometry. Robots use geometric principles to navigate and manipulate objects.</li>
+                    <li><strong>Optics</strong>: Designing lenses and reflectors based on conic sections. The shapes of lenses and mirrors are designed using the properties of conic sections to focus light.</li>
+                </ol>
             </section>
 
-            <section>
+            <section id="visual-representations">
                 <h3>Visual Representations</h3>
                 <div class="flex-container">
-                    <figure class="figure-style">
+                    <figure class="flex-figure">
                         <figcaption>Illustration of a circle with radius and tangent.</figcaption>
                         <script type="text/tikz">
                             \begin{tikzpicture}[scale=0.9]
@@ -111,7 +104,7 @@
                         </script>
                     </figure>
 
-                    <figure class="figure-flex">
+                    <figure class="flex-figure">
                         <figcaption>Examples of geometric shapes: circle and ellipse.</figcaption>
                         <script type="text/tikz">
                             \begin{tikzpicture}[scale=0.9]
@@ -130,7 +123,7 @@
                 </div>
             </section>
 
-            <section></section>
+            <section id="questions">
                 <h3>Questions</h3>
                 <div id="questions-container"></div>
                 <button id="check-answers" class="styled-button">Check Answers</button>
@@ -140,7 +133,6 @@
         </main>
     </div>
 
-    <script src="../../js/questions.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.body.setAttribute('data-topic', 'Math/Geometry');

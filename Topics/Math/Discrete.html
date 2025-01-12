@@ -17,7 +17,7 @@
     <script src="../../js/loadSidebar.js" defer></script>
     <script src="../../js/navbar.js" defer></script>
     <script src="../../js/themeToggle.js" defer></script>
-    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/errorHandler.js" defer></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/questions.js" defer></script>
@@ -42,54 +42,55 @@
         <!-- no next topic -->
     </div>
     <div class="main-content">
-        <h1>Discrete Mathematics</h1>
+        <header>
+            <h1>Discrete Mathematics</h1>
+        </header>
         <main>
-            <section>
-                <h2>Core Concepts</h2>
-                <ul>
+            <section id="core-concepts">
+                <h3>Core Concepts</h3>
+                <ol class="index">
                     <li><strong>Logic and Propositional Calculus</strong>:
-                        <ul>
-                            <li>Truth tables and logical equivalences.</li>
-                            <li>Implications, negations, and quantifiers.</li>
-                            <li>Applications in digital circuit design and automated reasoning.</li>
-                        </ul>
+                        <ol>
+                            <li>Truth tables and logical equivalences. Truth tables are used to determine the validity of logical statements.</li>
+                            <li>Implications, negations, and quantifiers. These are fundamental concepts in formal logic and reasoning.</li>
+                            <li>Applications in digital circuit design and automated reasoning. Logic is used to design circuits and develop algorithms for automated systems.</li>
+                        </ol>
                     </li>
                     <li><strong>Set Theory</strong>:
-                        <ul>
-                            <li>Operations like union, intersection, and complement.</li>
-                            <li>Cartesian products and power sets.</li>
-                            <li>Venn diagrams for visualizing relationships.</li>
-                        </ul>
+                        <ol>
+                            <li>Operations like union, intersection, and complement. These operations are used to combine and compare sets.</li>
+                            <li>Cartesian products and power sets. Cartesian products represent all possible pairs of elements from two sets, and power sets represent all subsets of a set.</li>
+                            <li>Venn diagrams for visualizing relationships. Venn diagrams are used to illustrate the relationships between different sets.</li>
+                        </ol>
                     </li>
                     <li><strong>Graph Theory</strong>:
-                        <ul>
-                            <li>Concepts of vertices, edges, paths, and cycles.</li>
-                            <li>Special types of graphs: trees, bipartite graphs, and complete graphs.</li>
-                            <li>Applications in network design and shortest path algorithms.</li>
-                        </ul>
+                        <ol>
+                            <li>Concepts of vertices, edges, paths, and cycles. Graphs are used to model relationships and connections between objects.</li>
+                            <li>Special types of graphs: trees, bipartite graphs, and complete graphs. These graphs have specific properties and are used in various applications.</li>
+                            <li>Applications in network design and shortest path algorithms. Graph theory is used to design efficient networks and find optimal paths.</li>
+                        </ol>
                     </li>
                     <li><strong>Combinatorics</strong>:
-                        <ul>
-                            <li>Permutations and combinations.</li>
-                            <li>Principles of inclusion-exclusion and pigeonhole principle.</li>
-                            <li>Counting problems in algorithm analysis and resource allocation.</li>
-                        </ul>
+                        <ol>
+                            <li>Permutations and combinations. These concepts are used to count the number of ways to arrange or select objects.</li>
+                            <li>Principles of inclusion-exclusion and pigeonhole principle. These principles are used to solve complex counting problems.</li>
+                            <li>Counting problems in algorithm analysis and resource allocation. Combinatorics is used to analyze the efficiency of algorithms and allocate resources effectively.</li>
+                        </ol>
                     </li>
-                </ul>
+                </ol>
             </section>
 
-            <section>
-                <h2>Applications in Engineering</h2>
-                <ul>
-                    <li><strong>Algorithm Design</strong>: Creating efficient algorithms using graph theory and combinatorial
-                        optimization.</li>
-                    <li><strong>Cryptography</strong>: Applying number theory and combinatorics for secure communication.</li>
-                    <li><strong>Network Analysis</strong>: Modeling and optimizing computer and communication networks.</li>
-                </ul>
+            <section id="applications-in-engineering">
+                <h3>Applications in Engineering</h3>
+                <ol class="index">
+                    <li><strong>Algorithm Design</strong>: Creating efficient algorithms using graph theory and combinatorial optimization. Algorithms are designed to solve problems efficiently using mathematical techniques.</li>
+                    <li><strong>Cryptography</strong>: Applying number theory and combinatorics for secure communication. Cryptographic algorithms use mathematical principles to ensure data security.</li>
+                    <li><strong>Network Analysis</strong>: Modeling and optimizing computer and communication networks. Discrete mathematics is used to design and analyze networks for optimal performance.</li>
+                </ol>
             </section>
 
-            <section>
-                <h2>Visual Representations</h2>
+            <section id="visual-representations">
+                <h3>Visual Representations</h3>
                 <div class="flex-container">
                     <figure class="flex-figure">
                         <figcaption>Example of a graph with vertices and edges.</figcaption>

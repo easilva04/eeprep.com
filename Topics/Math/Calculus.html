@@ -17,7 +17,7 @@
     <script src="../../js/loadSidebar.js" defer></script>
     <script src="../../js/navbar.js" defer></script>
     <script src="../../js/themeToggle.js" defer></script>
-    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/errorHandler.js" defer></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/questions.js" defer></script>
@@ -46,64 +46,49 @@
             <h1>Calculus Overview</h1>
         </header>
         <main>
-            <section>
-                <p>Calculus is the mathematical study of change, providing essential tools for understanding and modeling
-                    dynamic systems in engineering, physics, and other sciences. It encompasses differential, integral,
-                    single-variable, and multivariable calculus, forming the backbone of many engineering analyses.</p>
-            </section>
-
-            <section>
+            <section id="core-concepts">
                 <h3>Core Concepts</h3>
-                <ul>
+                <ol class="index">
                     <li><strong>Differential Calculus</strong>:
-                        <ul>
-                            <li>Derivatives: Measuring rates of change, with applications in optimization and motion
-                                analysis.
-                            </li>
-                            <li>Rules of differentiation: Power rule, product rule, quotient rule, and chain rule.</li>
-                            <li>Applications: Tangent lines, maxima and minima, and related rates problems.</li>
-                        </ul>
+                        <ol>
+                            <li>Derivatives: Measuring rates of change, with applications in optimization and motion analysis. The derivative of a function \(f(x)\) at a point \(x\) is defined as the limit: \[ f'(x) = \lim_{{h \to 0}} \frac{f(x+h) - f(x)}{h} \]</li>
+                            <li>Rules of differentiation: Power rule, product rule, quotient rule, and chain rule. These rules simplify the process of finding derivatives of complex functions.</li>
+                            <li>Applications: Tangent lines, maxima and minima, and related rates problems. For example, finding the maximum or minimum value of a function involves setting its derivative to zero and solving for the critical points.</li>
+                        </ol>
                     </li>
                     <li><strong>Integral Calculus</strong>:
-                        <ul>
-                            <li>Indefinite integrals: Antiderivatives and integration techniques (e.g., substitution,
-                                integration by parts).</li>
-                            <li>Definite integrals: Calculating areas under curves and solving accumulation problems.</li>
-                            <li>Applications: Computing areas, volumes, and work.</li>
-                        </ul>
+                        <ol>
+                            <li>Indefinite integrals: Antiderivatives and integration techniques (e.g., substitution, integration by parts). The indefinite integral of a function \(f(x)\) is the family of functions \(F(x)\) such that \(F'(x) = f(x)\).</li>
+                            <li>Definite integrals: Calculating areas under curves and solving accumulation problems. The definite integral of \(f(x)\) from \(a\) to \(b\) is given by: \[ \int_{a}^{b} f(x) \, dx \]</li>
+                            <li>Applications: Computing areas, volumes, and work. For example, the area under a curve \(y = f(x)\) from \(x = a\) to \(x = b\) is found using the definite integral.</li>
+                        </ol>
                     </li>
                     <li><strong>Multivariable Calculus</strong>:
-                        <ul>
-                            <li>Partial derivatives: Analyzing functions of multiple variables.</li>
-                            <li>Gradient, divergence, and curl: Tools for vector calculus in 3D space.</li>
-                            <li>Applications: Optimization with constraints, flux, and field analysis.</li>
-                        </ul>
+                        <ol>
+                            <li>Partial derivatives: Analyzing functions of multiple variables. The partial derivative of a function \(f(x, y)\) with respect to \(x\) is given by: \[ \frac{\partial f}{\partial x} = \lim_{{h \to 0}} \frac{f(x+h, y) - f(x, y)}{h} \]</li>
+                            <li>Gradient, divergence, and curl: Tools for vector calculus in 3D space. The gradient of a scalar field \(f(x, y, z)\) is a vector field given by: \[ \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) \]</li>
+                            <li>Applications: Optimization with constraints, flux, and field analysis. For example, the method of Lagrange multipliers is used to find the maximum or minimum of a function subject to constraints.</li>
+                        </ol>
                     </li>
-                </ul>
+                </ol>
             </section>
 
-            <section>
+            <section id="applications-in-engineering">
                 <h3>Applications in Engineering</h3>
-                <ul>
-                    <li><strong>Structural Analysis</strong>: Computing stresses and deformations in beams and materials.
-                    </li>
-                    <li><strong>Fluid Dynamics</strong>: Modeling flow rates and changes in fluid systems using differential
-                        equations.</li>
-                    <li><strong>Thermodynamics</strong>: Analyzing heat transfer and energy transformations with integrals
-                        and
-                        partial derivatives.</li>
-                </ul>
+                <ol class="index">
+                    <li><strong>Structural Analysis</strong>: Computing stresses and deformations in beams and materials. Calculus is used to derive equations that describe the behavior of structures under load.</li>
+                    <li><strong>Fluid Dynamics</strong>: Modeling flow rates and changes in fluid systems using differential equations. The Navier-Stokes equations, which describe the motion of fluid substances, are a set of nonlinear partial differential equations.</li>
+                    <li><strong>Thermodynamics</strong>: Analyzing heat transfer and energy transformations with integrals and partial derivatives. Calculus is used to model the transfer of heat and the behavior of thermodynamic systems.</li>
+                </ol>
             </section>
 
-            <section>
-                <h3>Mathematical Representation</h3>
+            <section id="visual-representations">
+                <h3>Visual Representations</h3>
                 <div class="flex-container">
                     <div class="flex-item">
                         <p>
                             Here is the LaTeX representation of the function and its tangent line:
-                            \[
-                            f(x) = x^2 \quad \text{and its tangent line at } x = a \text{ is } y = f(a) + f'(a)(x - a)
-                            \]
+                            \[ f(x) = x^2 \quad \text{and its tangent line at } x = a \text{ is } y = f(a) + f'(a)(x - a) \]
                         </p>
                     </div>
                     <figure class="flex-item">
@@ -114,13 +99,13 @@
                                 \draw[blue,thick,domain=-2:2,samples=100] plot (\x,{(\x)^2}) node[right] {$f(x) = x^2$};
                                 \draw[red,thick,domain=0:2] plot (\x,{2*\x - 1}) node[below right] {Tangent at $x=1$};
                                 \filldraw[black] (1,1) circle (2pt) node[above left] {$(1,1)$};
-                            \end{tikzpicture}
+                            </end{tikzpicture}
                         </script>
                     </figure>
                 </div>
             </section>
 
-            <section>
+            <section id="questions">
                 <h3>Questions</h3>
                 <div id="questions-container"></div>
                 <button id="check-answers" class="styled-button">Check Answers</button>

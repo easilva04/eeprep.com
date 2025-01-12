@@ -353,7 +353,7 @@ body.dark-mode .theme-toggle {
 /* Dark mode styles for the button */
 body.dark-mode .styled-button {
     background-color: var(--white);
-    color: var(--black);
+    color: var (--black);
 }
 
 body.dark-mode .styled-button:hover {
@@ -666,3 +666,5 @@ ol.index ol > li:before {
     font-weight: bold;
     margin-right: 0.5rem;
 }
+
+/* ...existing code... */

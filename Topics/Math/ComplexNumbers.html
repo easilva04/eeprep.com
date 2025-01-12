@@ -1,112 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Detailed review of Complex Numbers for Electrical Engineering students. Understand key concepts, polar form, and visual representations.">
+        <meta name="keywords" content="Complex Numbers, Electrical Engineering, Imaginary Unit, Polar Form, AC Circuit Analysis, Signal Processing">
+        <meta name="author" content="Eddie">
+        <meta name="publisher" content="EEPrep">
+        <title>EE Review - Complex Numbers</title>
+        <link rel="stylesheet" href="../../styles/main.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Detailed review of Complex Numbers for Electrical Engineering students. Understand key concepts, polar form, and visual representations.">
-    <meta name="keywords" content="Complex Numbers, Electrical Engineering, Imaginary Unit, Polar Form, AC Circuit Analysis, Signal Processing">
-    <meta name="author" content="Eddie">
-    <meta name="publisher" content="EEPrep">
-    <title>EE Review - Complex Numbers</title>
-    <link rel="stylesheet" href="../../styles/main.css">
+        <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+        <script src="../../js/loadSidebar.js" defer></script>
+        <script src="../../js/navbar.js" defer></script>
+        <script src="../../js/themeToggle.js" defer></script>
+        <script src="../../js/errorHandler.js" defer></script>
+        <script src="../../js/service-worker.js" defer></script>
+        <script src="../../js/config.js"></script>
+        <script src="../../js/questions.js" defer></script>
+        
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
-    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
-    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-    <script src="../../js/loadSidebar.js" defer></script>
-    <script src="../../js/navbar.js" defer></script>
-    <script src="../../js/themeToggle.js" defer></script>
-    <script src="../../js/errorHandler.js" ></script>
-    <script src="../../js/service-worker.js" defer></script>
-    <script src="../../js/config.js"></script>
-    <script src="../../js/questions.js" defer></script>
-    
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+            gtag('config', 'G-09JTZCW5JJ');
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.body.setAttribute('data-topic', 'Math/ComplexNumbers');
+            });
+        </script>
+    </head>
+    <body>
+        <div id="sidebar-container"></div>
 
-  gtag('config', 'G-09JTZCW5JJ');
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.body.setAttribute('data-topic', 'Math/ComplexNumbers');
-    });
-</script>
-</head>
+        <div class="nav-bottom-left">
+            <button class="styled-button" onclick="window.location.href='Math.html'">Previous Topic</button>
+        </div>
+        <div class="nav-bottom-right">
+            <button class="styled-button" onclick="window.location.href='Vectors.html'">Next Topic</button>
+        </div>
 
-<body>
-    <div class="topborder"></div>
-    <div id="sidebar-container"></div>
+        <div class="main-content">
+            <header>
+                <h1>Complex Numbers</h1>
+            </header>
+            <main>
+                <section id="core-concepts">
+                    <h3>Core Concepts</h3>
+                    <ol class="index">
+                        <li><strong>Definition</strong>:
+                            <ol>
+                                <li>A complex number is expressed as: \[ z = a + jb \]</li>
+                                <li>where:
+                                    <ul>
+                                        <li>\(a\) is the real part</li>
+                                        <li>\(b\) is the imaginary part</li>
+                                        <li>\(j\) is the imaginary unit where \(j^2 = -1\)</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </li>
+                        <li><strong>Polar Form</strong>:
+                            <ol>
+                                <li>Complex numbers can be written in polar form: \[ z = r\angle\theta = r(\cos\theta + j\sin\theta) = re^{j\theta} \]</li>
+                                <li>where:
+                                    <ul>
+                                        <li>\(r = \sqrt{a^2 + b^2}\) (magnitude)</li>
+                                        <li>\(\theta = \tan^{-1}(\frac{b}{a})\) (phase angle)</li>
+                                    </ul>
+                                </li>
+                                <li>The polar form is particularly useful in multiplying and dividing complex numbers. For example, the product of two complex numbers in polar form is given by: \[ z_1 \cdot z_2 = r_1 r_2 \angle (\theta_1 + \theta_2) \]</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </section>
 
-    <div class="nav-bottom-left">
-        <button class="styled-button" onclick="window.location.href='Math.html'">Previous Topic</button>
-    </div>
-    <div class="nav-bottom-right">
-        <button class="styled-button" onclick="window.location.href='Vectors.html'">Next Topic</button>
-    </div>
+                <section id="applications-in-engineering">
+                    <h3>Applications in Engineering</h3>
+                    <ol class="index">
+                        <li><strong>AC Circuit Analysis</strong>: Complex numbers are used to represent impedances and phasors in AC circuits. The impedance of a circuit element can be expressed as a complex number, and phasor analysis simplifies the calculation of voltages and currents.</li>
+                        <li><strong>Signal Processing</strong>: Complex numbers are used in the analysis and design of filters and communication systems. The Fourier transform, which converts a time-domain signal into its frequency components, uses complex numbers.</li>
+                        <li><strong>Control Systems</strong>: Complex numbers are used to analyze the stability and response of control systems. The poles and zeros of a transfer function are represented as complex numbers in the s-plane.</li>
+                    </ol>
+                </section>
 
-    <div class="main-content">
-        <header>
-            <h1>Complex Numbers</h1>
-        </header>
-        <main>
-            <section>
-                <p>Complex numbers are fundamental in electrical engineering, especially in AC circuit analysis and signal
-                    processing. The imaginary unit is typically denoted as \(j\) instead of \(i\) to avoid confusion with
-                    current.</p>
+                <section id="visual-representations">
+                    <h3>Visual Representations</h3>
+                    <figure>
+                        <figcaption>Complex number represented in the complex plane.</figcaption>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}
+                                <draw[->] (-3,0) -- (3,0) node[right] {Re};
+                                <draw[->] (0,-3) -- (0,3) node[above] {Im};
+                                <coordinate (P) at (2,1.5);
+                                <draw[->, thick, blue] (0,0) -- (P) node[above right] {$z = a + jb$};
+                                <draw[dashed] (2,0) -- (P) -- (0,1.5);
+                                <node[below] at (2,0) {$a$};
+                                <node[left] at (0,1.5) {$b$};
+                                <draw (0,0) ++(0.5,0) arc (0:36.87:0.5cm);
+                                <node at (0.8,0.2) {$\theta$};
+                            \end{tikzpicture}
+                        </script>
+                    </figure>
+                </section>
 
-                <h3>Key Concepts</h3>
-                <p>A complex number is expressed as:</p>
-                <p>\[ z = a + jb \]</p>
-                <p>where:</p>
-                <ul>
-                    <li>\(a\) is the real part</li>
-                    <li>\(b\) is the imaginary part</li>
-                    <li>\(j\) is the imaginary unit where \(j^2 = -1\)</li>
-                </ul>
-
-                <h3>Polar Form</h3>
-                <p>Complex numbers can be written in polar form:</p>
-                <p>\[ z = r\angle\theta = r(\cos\theta + j\sin\theta) = re^{j\theta} \]</p>
-                <p>where:</p>
-                <ul>
-                    <li>\(r = \sqrt{a^2 + b^2}\) (magnitude)</li>
-                    <li>\(\theta = \tan^{-1}(\frac{b}{a})\) (phase angle)</li>
-                </ul>
-
-                <h3>Visual Representations</h3>
-                <figure>
-                    <figcaption>Complex number represented in the complex plane.</figcaption>
-                    <script type="text/tikz">
-                        \begin{tikzpicture}
-                            \draw[->] (-3,0) -- (3,0) node[right] {Re};
-                            \draw[->] (0,-3) -- (0,3) node[above] {Im};
-                            \coordinate (P) at (2,1.5);
-                            \draw[->, thick, blue] (0,0) -- (P) node[above right] {$z = a + jb$};
-                            \draw[dashed] (2,0) -- (P) -- (0,1.5);
-                            \node[below] at (2,0) {$a$};
-                            \node[left] at (0,1.5) {$b$};
-                            \draw (0,0) ++(0.5,0) arc (0:36.87:0.5cm);
-                            \node at (0.8,0.2) {$\theta$};
-                        \end{tikzpicture>
-                    </script>
-                </figure>
-
-                <h3>Questions</h3>
-                <div id="questions-container"></div>
-                <button id="check-answers" class="styled-button">Check Answers</button>
-                <button id="new-questions" class="styled-button">New Questions</button>
-                <div id="results"></div>
+                <section id="questions">
+                    <h3>Questions</h3>
+                    <div id="questions-container"></div>
+                    <button id="check-answers" class="styled-button">Check Answers</button>
+                    <button id="new-questions" class="styled-button">New Questions</button>
+                    <div id="results"></div>
+                </section>
                 <script>
                     MathJax.typesetPromise();
                 </script>
-            </section>
-        </main>
-    </div>
-</body>
-
+            </main>
+        </div>
+    </body>
 </html>
