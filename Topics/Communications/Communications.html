@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://www.eeprep.com/images/template-og-image.jpg">
     <meta property="og:image:alt" content="EE Review - Electrical Engineering Template">
     <meta name="robots" content="index, follow">
-    <title>EE Review - Template</title> <!-- TODO: Update Title -->
+    <title>Communications Systems - EE Review</title>
     <link rel="stylesheet" href="../../styles/main.css">
 
     <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
@@ -55,25 +55,33 @@
     </script>
 </head>
 
-<body>
+<body data-topic="Communications/Communications">
     <div id="sidebar-container"></div>
     <div class="nav-bottom-left">
-        <button class="styled-button" onclick="window.location.href='PREVIOUS.html'">Previous Topic</button>
-        <!-- TODO: Update Previous Topic Link -->
+        <button class="styled-button" onclick="window.location.href='../index.html'">Previous Topic</button>
     </div>
     <div class="nav-bottom-right">
-        <button class="styled-button" onclick="window.location.href='NEXT.html'">Next Topic</button>
-        <!-- TODO: Update Next Topic Link -->
+        <button class="styled-button" onclick="window.location.href='Modulation.html'">Next Topic</button>
     </div>
     <div class="main-content">
         <header>
-            <h1>TEMPLATE</h1> <!-- TODO: Change header text -->
-            <img src="C:\Users\eddie\OneDrive\Documents\Websites\eeprep.com\assets\eeprep.png"
-                alt="Electrical Engineering Review Template"> <!-- TODO: Update image source and alt text -->
+            <h1>Communications Systems</h1>
+            <img src="../../assets/eeprep.png" alt="Communications Systems">
         </header>
         <main>
-            <!-- TODO: Insert content here -->
+            <div class="content">
+                <!-- Add your Communications content here -->
+            </div>
 
+            <h3>Practice Questions</h3>
+            <div id="questions-container"></div>
+            <button id="check-answers" class="styled-button">Check Answers</button>
+            <button id="new-questions" class="styled-button">New Questions</button>
+            <div id="results"></div>
+            <script src="../../js/questions.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => initQuestions('Communications/Communications'));
+            </script>
         </main>
     </div>
 

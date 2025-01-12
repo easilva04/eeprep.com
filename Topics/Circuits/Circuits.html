@@ -21,6 +21,7 @@
     <script src="../../js/errorHandler.js"></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
+    <script src="../../js/questions.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
@@ -33,7 +34,7 @@
     </script>
 </head>
 
-<body>
+<body onload="initQuestions('Circuits/Circuits')" data-topic="Circuits/Circuits">
     <div class="topborder"></div>
     <div id="sidebar-container" role="complementary"></div>
     <div class="nav-bottom-left">
@@ -179,7 +180,13 @@
                 <p><a href="https://www.falstad.com/circuit/">Interactive Circuit Simulator</a></p>
                 <iframe width="100%" height="500px" src="https://www.falstad.com/circuit/circuitjs.html"></iframe>
             </section>
-            
+            <section>
+                <h3>Questions</h3>
+                <div id="questions-container"></div>
+                <button id="check-answers" class="styled-button">Check Answers</button>
+                <button id="new-questions" class="styled-button">New Questions</button>
+                <div id="results"></div>
+            </section>
         </main>
     </div>
 </body>

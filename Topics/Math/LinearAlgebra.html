@@ -19,6 +19,7 @@
     <script src="../../js/errorHandler.js"></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
+    <script src="../../js/questions.js" defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
@@ -28,6 +29,11 @@
         gtag('js', new Date());
 
         gtag('config', 'G-09JTZCW5JJ');
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.setAttribute('data-topic', 'Math/LinearAlgebra');
+        });
     </script>
 </head>
 
@@ -133,75 +139,6 @@
                 <button id="check-answers" class="styled-button">Check Answers</button>
                 <button id="new-questions" class="styled-button">New Questions</button>
                 <div id="results"></div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        let questions = [];
-
-                        function loadQuestions() {
-                            fetch('../../questions/Math/LinearAlgebra.json')
-                                .then(response => response.json())
-                                .then(data => {
-                                    questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
-                                    displayQuestions();
-                                })
-                                .catch(error => console.error('Error loading questions:', error));
-                        }
-
-                        function displayQuestions() {
-                            const questionsContainer = document.getElementById('questions-container');
-                            questionsContainer.innerHTML = '';
-                            questions.forEach((question, index) => {
-                                const questionDiv = document.createElement('div');
-                                questionDiv.classList.add('question');
-
-                                const questionTitle = document.createElement('p');
-                                questionTitle.innerHTML = `${index + 1}. ${question.question}`;
-                                questionDiv.appendChild(questionTitle);
-
-                                question.options.forEach(option => {
-                                    const optionLabel = document.createElement('label');
-                                    optionLabel.innerHTML = `
-                                        <input type="radio" name="question${index}" value="${option}">
-                                        ${option}
-                                    `;
-                                    questionDiv.appendChild(optionLabel);
-                                    questionDiv.appendChild(document.createElement('br'));
-                                });
-
-                                questionsContainer.appendChild(questionDiv);
-                            });
-
-                            MathJax.typesetPromise([questionsContainer]);
-                        }
-
-                        document.getElementById('check-answers').addEventListener('click', () => {
-                            let score = 0;
-                            questions.forEach((question, index) => {
-                                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-                                const correctAnswer = question.answer;
-                                if (selectedOption) {
-                                    if (selectedOption.value === correctAnswer) {
-                                        score++;
-                                        selectedOption.parentElement.style.color = 'green';
-                                    } else {
-                                        selectedOption.parentElement.style.color = 'red';
-                                    }
-                                }
-                            });
-
-                            const resultsDiv = document.getElementById('results');
-                            resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
-                            MathJax.typesetPromise([resultsDiv]);
-                        });
-
-                        document.getElementById('new-questions').addEventListener('click', () => {
-                            loadQuestions();
-                            document.getElementById('results').innerHTML = '';
-                        });
-
-                        loadQuestions();
-                    });
-                </script>
             </section>
         </main>
     </div>

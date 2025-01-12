@@ -53,9 +53,10 @@
         }]
     }
     </script>
+    <script src="../../js/questions.js" defer></script>
 </head>
 
-<body>
+<body data-topic="Ethics/Ethics">
     <div id="sidebar-container"></div>
     <div class="nav-bottom-left">
         <button class="styled-button" onclick="window.location.href='PREVIOUS.html'">Previous Topic</button>
@@ -68,12 +69,19 @@
     <div class="main-content">
         <header>
             <h1>TEMPLATE</h1> <!-- TODO: Change header text -->
-            <img src="C:\Users\eddie\OneDrive\Documents\Websites\eeprep.com\assets\eeprep.png"
+            <img src=""
                 alt="Electrical Engineering Review Template"> <!-- TODO: Update image source and alt text -->
         </header>
         <main>
             <!-- TODO: Insert content here -->
-
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const topic = document.body.getAttribute('data-topic');
+                    if (topic) {
+                        initQuestions(topic);
+                    }
+                });
+            </script>
         </main>
     </div>
 

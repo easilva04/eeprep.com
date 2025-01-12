@@ -28,6 +28,7 @@
     <script src="../../js/errorHandler.js"></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
+    <script src="../../js/questions.js" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -55,7 +56,7 @@
     </script>
 </head>
 
-<body>
+<body data-topic="Electronics/OpAmps">
     <div id="sidebar-container"></div>
     <div class="nav-bottom-left">
         <button class="styled-button" onclick="window.location.href='PREVIOUS.html'">Previous Topic</button>
@@ -68,7 +69,7 @@
     <div class="main-content">
         <header>
             <h1>TEMPLATE</h1> <!-- TODO: Change header text -->
-            <img src="C:\Users\eddie\OneDrive\Documents\Websites\eeprep.com\assets\eeprep.png"
+            <img src=""
                 alt="Electrical Engineering Review Template"> <!-- TODO: Update image source and alt text -->
         </header>
         <main>
@@ -81,78 +82,10 @@
             <div id="results"></div>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
-                    let questions = [];
-
-                    function loadQuestions() {
-                        fetch('../../questions/Electronics/OpAmps.json') // Updated path
-                            .then(response => response.json())
-                            .then(data => {
-                                questions = data.questions.sort(() => Math.random() - 0.5).slice(0, 10);
-                                displayQuestions();
-                            })
-                            .catch(error => console.error('Error loading questions:', error));
+                    const topic = document.body.getAttribute('data-topic');
+                    if (topic) {
+                        initQuestions(topic);
                     }
-
-                    function displayQuestions() {
-                        const questionsContainer = document.getElementById('questions-container');
-                        questionsContainer.innerHTML = '';
-                        questions.forEach((question, index) => {
-                            const questionDiv = document.createElement('div');
-                            questionDiv.classList.add('question');
-
-                            const questionTitle = document.createElement('p');
-                            questionTitle.innerHTML = `${index + 1}. ${question.question}`;
-                            questionDiv.appendChild(questionTitle);
-
-                            question.options.forEach(option => {
-                                const optionLabel = document.createElement('label');
-                                optionLabel.innerHTML = `
-                                    <input type="radio" name="question${index}" value="${option}">
-                                    ${option}
-                                `;
-                                questionDiv.appendChild(optionLabel);
-                                questionDiv.appendChild(document.createElement('br'));
-                            });
-
-                            questionsContainer.appendChild(questionDiv);
-                        });
-                        MathJax.typesetPromise().then(() => {
-                            if (window.tikzjax) {
-                                tikzjax.processMathJaxElements();
-                            }
-                        });
-                    }
-
-                    document.getElementById('check-answers').addEventListener('click', () => {
-                        let score = 0;
-                        questions.forEach((question, index) => {
-                            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-                            const correctAnswer = question.answer;
-                            if (selectedOption) {
-                                if (selectedOption.value === correctAnswer) {
-                                    score++;
-                                    selectedOption.parentElement.style.color = 'green';
-                                } else {
-                                    selectedOption.parentElement.style.color = 'red';
-                                }
-                            }
-                        });
-                        const resultsDiv = document.getElementById('results');
-                        resultsDiv.innerHTML = `You scored ${score} out of ${questions.length}`;
-                        MathJax.typesetPromise([resultsDiv]);
-                    });
-
-                    document.getElementById('new-questions').addEventListener('click', () => {
-                        loadQuestions();
-                        document.getElementById('results').innerHTML = '';
-                    });
-
-                    document.getElementById('new-questions').addEventListener('click', () => {
-                        loadQuestions();
-                        document.getElementById('results').innerHTML = '';
-                    });
-
-                    loadQuestions();
                 });
             </script>
         </main>
