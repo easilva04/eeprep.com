@@ -27,12 +27,10 @@
     flex-direction: column;
 }
 
-/* Add this new rule for dark mode */
 .sidebar.dark-mode {
     box-shadow: 2px 0 8px rgba(255, 255, 255, 0.1); /* Slightly grey shadow for dark mode */
 }
 
-/* Add dark mode styles for buttons */
 .sidebar.dark-mode a,
 .sidebar.dark-mode p,
 .sidebar.dark-mode button {
@@ -47,10 +45,10 @@
 .sidebar-content {
     flex: 1 1 auto;
     overflow-y: auto;
-    padding: 1rem;
+    padding: 1.5rem; /* More consistent spacing */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Cleaner alignment for content */
     width: 100%;
     min-height: 0;
 }
@@ -171,4 +169,23 @@
     text-align: center;
     font-size: var(--font-size-text);
     font-weight: 500;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tabs button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--grey);
+    background-color: var(--off-white);
+    color: var(--black);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.tabs button.active {
+    background-color: var(--grey);
 }

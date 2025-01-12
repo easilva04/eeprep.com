@@ -10,27 +10,25 @@
     <meta name="publisher" content="EEPrep">
     <title>EE Review - Algebra</title>
     <link rel="stylesheet" href="../../styles/main.css">
-
     <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
     <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script src="../../js/loadSidebar.js" defer></script>
     <script src="../../js/navbar.js" defer></script>
     <script src="../../js/themeToggle.js" defer></script>
-    <script src="../../js/errorHandler.js" ></script>
+    <script src="../../js/errorHandler.js"></script>
     <script src="../../js/service-worker.js" defer></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/questions.js" defer></script>
     
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-09JTZCW5JJ');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
 </head>
 
 <body>
@@ -47,51 +45,58 @@
         </header>
         <main>
             <section>
-                <p>Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. It
-                    is a unifying thread of almost all of mathematics and includes everything from solving elementary
-                    equations to studying abstractions such as groups, rings, and fields.</p>
+                <p>Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. It is a unifying thread of almost all of mathematics and includes everything from solving elementary equations to studying abstractions such as groups, rings, and fields.</p>
             </section>
 
             <section>
                 <h3>Core Concepts</h3>
-                <ul>
+                <ol class="index">
                     <li><strong>Linear Equations</strong>:
-                        <ul>
+                        <ol>
                             <li>Solving single-variable equations: \(ax + b = 0\)</li>
-                            <li>Systems of linear equations: Using methods such as substitution, elimination, and matrix
-                                operations.</li>
-                        </ul>
+                            <li>Systems of linear equations: Using methods such as substitution, elimination, and matrix operations.</li>
+                            <li>Slope-Intercept Form: \( y = mx + b \)</li>
+                            <li>Point-Slope Form: \( y - y_1 = m(x - x_1) \)</li>
+                            <li>Standard Form: \( Ax + By = C \)</li>
+                        </ol>
                     </li>
                     <li><strong>Quadratic Equations</strong>:
-                        <ul>
+                        <ol>
                             <li>Standard form: \(ax^2 + bx + c = 0\)</li>
                             <li>Solution techniques: Factoring, completing the square, and the quadratic formula.</li>
-                        </ul>
+                            <li>Factored Form: \( a(x - r_1)(x - r_2) = 0 \)</li>
+                            <li>Vertex Form: \( y = a(x - h)^2 + k \)</li>
+                            <li>Quadratic Formula: \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)</li>
+                        </ol>
                     </li>
                     <li><strong>Inequalities</strong>:
-                        <ul>
+                        <ol>
                             <li>Solving linear and quadratic inequalities.</li>
                             <li>Graphical representation of solutions.</li>
-                        </ul>
+                            <li>Linear: \( ax + b > c \) or \( ax + b < c \)</li>
+                            <li>Absolute Value Inequalities: \( |x| < a \rightarrow -a < x < a \)</li>
+                            <li>Absolute Value Inequalities: \( |x| > a \rightarrow x < -a \text{ or } x > a \)</li>
+                        </ol>
                     </li>
                     <li><strong>Polynomials</strong>:
-                        <ul>
+                        <ol>
                             <li>Operations: Addition, subtraction, multiplication, and division.</li>
                             <li>Factoring techniques and theorems.</li>
-                        </ul>
+                            <li>Sum of Cubes: \( a^3 + b^3 = (a + b)(a^2 - ab + b^2) \)</li>
+                            <li>Difference of Cubes: \( a^3 - b^3 = (a - b)(a^2 + ab + b^2) \)</li>
+                            <li>Difference of Squares: \( a^2 - b^2 = (a - b)(a + b) \)</li>
+                        </ol>
                     </li>
-                </ul>
+                </ol>
             </section>
 
             <section>
                 <h3>Applications in Engineering</h3>
-                <ul>
+                <ol class="index">
                     <li><strong>Control Systems</strong>: Designing and analyzing system stability and response.</li>
-                    <li><strong>Signal Processing</strong>: Analyzing and manipulating signals using algebraic techniques.
-                    </li>
-                    <li><strong>Structural Analysis</strong>: Solving equations related to stress and strain in materials.
-                    </li>
-                </ul>
+                    <li><strong>Signal Processing</strong>: Analyzing and manipulating signals using algebraic techniques.</li>
+                    <li><strong>Structural Analysis</strong>: Solving equations related to stress and strain in materials.</li>
+                </ol>
             </section>
 
             <section>
@@ -106,10 +111,103 @@
                                 \draw[->] (0,-1) -- (0,5) node[above left] {$y$};
                                 % Quadratic function
                                 \draw[thick,blue,domain=-2:2,samples=100] plot (\x,{(\x)*(\x) - 1}) node[right] {$y = x^2 - 1$};
-                            \end{tikzpicture}
+                            </end{tikzpicture>
                         </script>
                     </figure>
                 </div>
+            </section>
+
+            <section>
+                <h3>Advanced Topics</h3>
+                <ul>
+                    <li><strong>Exponential and Logarithmic Functions</strong>:
+                        <ul>
+                            <li>Properties and graphs of exponential functions.</li>
+                            <li>Solving exponential equations.</li>
+                            <li>Properties and graphs of logarithmic functions.</li>
+                            <li>Solving logarithmic equations.</li>
+                            <li>Exponents: \( a^m \cdot a^n = a^{m+n}, \quad (a^m)^n = a^{mn}, \quad a^0 = 1 \)</li>
+                            <li>Logarithms: \( \log_b(xy) = \log_b(x) + \log_b(y), \quad \log_b\!\bigl(\frac{x}{y}\bigr) = \log_b(x) - \log_b(y) \)</li>
+                            <li>Change of Base: \( \log_b(x) = \frac{\log(x)}{\log(b)} \)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Complex Numbers</strong>:
+                        <ul>
+                            <li>Definition and arithmetic of complex numbers.</li>
+                            <li>Polar form and Euler's formula.</li>
+                            <li>Applications in engineering.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Matrices and Determinants</strong>:
+                        <ul>
+                            <li>Matrix operations: Addition, subtraction, and multiplication.</li>
+                            <li>Determinants and their properties.</li>
+                            <li>Applications in solving systems of equations.</li>
+                            <li>Systems of Equations: Substitution and Elimination Methods</li>
+                            <li>Matrix Representation: \( Ax = b \rightarrow x = A^{-1} b \) (for invertible A)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Examples and Practice Problems</h3>
+                <ul>
+                    <li><strong>Example 1: Solving a Linear Equation</strong>
+                        <p>Solve \(3x + 5 = 11\).</p>
+                        <p>Solution: Subtract 5 from both sides to get \(3x = 6\). Then divide by 3 to get \(x = 2\).</p>
+                    </li>
+                    <li><strong>Example 2: Solving a Quadratic Equation</strong>
+                        <p>Solve \(x^2 - 4x + 4 = 0\).</p>
+                        <p>Solution: Factor to get \((x - 2)^2 = 0\). Thus, \(x = 2\).</p>
+                    </li>
+                    <li><strong>Practice Problem 1</strong>
+                        <p>Solve \(2x - 3 = 7\).</p>
+                    </li>
+                    <li><strong>Practice Problem 2</strong>
+                        <p>Solve \(x^2 + 6x + 9 = 0\).</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Additional Resources</h3>
+                <ul>
+                    <li><a href="https://www.khanacademy.org/math/algebra">Khan Academy: Algebra</a></li>
+                    <li><a href="https://www.coursera.org/courses?query=algebra">Coursera: Algebra Courses</a></li>
+                    <li><a href="https://www.edx.org/learn/algebra">edX: Algebra Courses</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Radical Expressions</h3>
+                <ul>
+                    <li>\( \sqrt{a^2} = |a| \)</li>
+                    <li>Rationalize denominators using conjugates</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Rational Expressions</h3>
+                <ul>
+                    <li>Find the LCD to simplify</li>
+                    <li>\( \frac{a/b}{c/d} = \frac{a}{b} \cdot \frac{d}{c} \)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Distance and Midpoint</h3>
+                <ul>
+                    <li>Distance: \( d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \)</li>
+                    <li>Midpoint: \( M = \Bigl(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\Bigr) \)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Absolute Value Equations</h3>
+                <ul>
+                    <li>\( |x| = a \rightarrow x = a \text{ or } x = -a \)</li>
+                </ul>
             </section>
 
             <section>
@@ -126,7 +224,6 @@
             </script>
         </main>
     </div>
-    
 </body>
 
 </html>

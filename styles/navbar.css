@@ -9,14 +9,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center; /* Ensure items are centered vertically */
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     z-index: 1100;
 }
 
 .navbar-left {
     display: flex;
     align-items: center; /* Ensure items are centered vertically */
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .navbar-title {
@@ -62,6 +62,7 @@
 .navbar-right {
     display: flex;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .search-container {

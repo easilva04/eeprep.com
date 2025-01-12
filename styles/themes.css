@@ -3,48 +3,18 @@ body.dark-mode {
     color: #d4d4d4; /* Softer white */
 }
 
-body.dark-mode .navbar {
-    background-color: #1e1e1e;
-    border-bottom: 1px solid #3e3e3e; /* Softer grey */
-}
-
-body.dark-mode .hamburger-menu span {
-    background-color: #d4d4d4;
-}
-
-body.dark-mode .sidebar {
-    background-color: #1e1e1e;
-    color: #d4d4d4;
-    border-right: 1px solid #3e3e3e;
-    box-shadow: 2px 0 8px rgba(212, 212, 212, 0.2); /* Softer shadow */
-}
-
-body.dark-mode .sidebar-footer {
-    background-color: #1e1e1e;
-}
-
+body.dark-mode .navbar,
+body.dark-mode .sidebar,
+body.dark-mode .sidebar-footer,
 body.dark-mode .dropdown-menu {
     background-color: #1e1e1e;
+    border-color: #3e3e3e; /* Softer grey */
 }
 
-body.dark-mode .dark-mode-toggle {
-    background-color: #3e3e3e;
-    color: #d4d4d4;
-}
-
-/* LaTeX dark mode styles */
+body.dark-mode .hamburger-menu span,
 body.dark-mode .MathJax,
 body.dark-mode .MathJax_SVG,
-body.dark-mode .tikzjax {
-    color: #d4d4d4 !important;
-}
-
-body.dark-mode .MathJax_SVG svg,
-body.dark-mode .tikzjax svg {
-    stroke: #d4d4d4 !important;
-    fill: #d4d4d4 !important;
-}
-
+body.dark-mode .tikzjax,
 body.dark-mode .main-content,
 body.dark-mode header,
 body.dark-mode section,
@@ -61,24 +31,28 @@ body.dark-mode a,
 body.dark-mode button,
 body.dark-mode input,
 body.dark-mode select,
-body.dark-mode textarea {
+body.dark-mode textarea,
+body.dark-mode .theme-toggle {
     color: #d4d4d4;
 }
 
-/* Ensure SVG icons switch to softer white in dark mode */
+body.dark-mode .MathJax_SVG svg,
+body.dark-mode .tikzjax svg,
 body.dark-mode .search-icon svg {
-    fill: #d4d4d4;
+    stroke: #d4d4d4 !important;
+    fill: #d4d4d4 !important;
 }
 
-/* Ensure dropdown button backgrounds remain softer black and text turns softer white in dark mode */
+body.dark-mode .sidebar {
+    box-shadow: 2px 0 8px rgba(212, 212, 212, 0.2); /* Softer shadow */
+}
+
 body.dark-mode .dropdown-toggle,
 body.dark-mode .dropdown-menu a {
     background-color: #1e1e1e;
-    color: #d4d4d4;
 }
 
 body.dark-mode .theme-toggle {
-    color: #d4d4d4;
     background-color: #3e3e3e;
     border-color: #3e3e3e;
 }

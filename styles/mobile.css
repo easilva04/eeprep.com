@@ -11,6 +11,8 @@
 
     .main-content {
         padding: 1.5rem;
+        margin: 1rem auto;
+        padding: 1.5rem 1rem;
     }
 
     .title-full {
@@ -69,5 +71,27 @@
         opacity: 1;
         visibility: visible;
         color: var(--black) !important;
+    }
+
+    /* Tabs styling for mobile */
+    .tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .tabs button {
+        padding: 0.5rem;
+        border: none;
+        border-radius: var(--border-radius);
+        background-color: var(--grey);
+        color: var(--white);
+        font-size: var(--font-size-text);
+        width: 100%;
+    }
+
+    .tabs button.active {
+        background-color: var(--black);
     }
 }
