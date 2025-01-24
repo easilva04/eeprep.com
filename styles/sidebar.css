@@ -17,7 +17,7 @@
     height: calc(100vh - var(--navbar-height));
     background-color: var(--off-white);
     color: var(--black);
-    overflow-y: auto;
+    overflow-y: auto; /* Ensure sidebar is scrollable */
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     transition: transform 0.1s ease;
@@ -94,11 +94,13 @@
     background-color: var(--off-white);
     text-align: center; /* Center text within the dropdown menu */
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1); /* Add shadow on the left side */
+    display: none; /* Hide dropdown by default */
 }
 
 .dropdown-menu.active {
     max-height: 500px; /* Adjust as needed for the content */
     transition: max-height 0.5s ease-in;
+    display: block; /* Show dropdown when active */
 }
 
 .dropdown-menu a {

@@ -27,7 +27,7 @@
         transition: transform 0.2s ease;
         will-change: transform;
         height: calc(100% - var(--navbar-height));
-        overflow: hidden;
+        overflow: auto; /* Ensure sidebar is scrollable on mobile */
     }
 
     .sidebar-content {
