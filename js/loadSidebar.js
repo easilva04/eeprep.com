@@ -28,30 +28,54 @@ document.addEventListener('DOMContentLoaded', async () => {
         const sidebarMenu = sidebar.querySelector('#sidebar-menu');
         if (!sidebarMenu) throw new Error('Sidebar menu element not found');
 
-        // Generate menu items in the order specified in pages.json
-        for (const section of Object.keys(pages)) {
-            const sectionItem = document.createElement('li');
-            const sectionLink = document.createElement('a');
-            sectionLink.href = '#';
-            sectionLink.className = 'dropdown-toggle';
-            sectionLink.textContent = section;
-            sectionItem.appendChild(sectionLink);
+        // Use an array to maintain order of sections
+        const sections = [
+            'Information',
+            'Mathematics',
+            'Statistics',
+            'Linear Systems',
+            'Signal Processing',
+            'Electromagnetics',
+            'Electrical Materials',
+            'Circuits',
+            'Electronics',
+            'Digital Systems',
+            'Computer Systems',
+            'Computer Networks',
+            'Communications',
+            'Control Systems',
+            'Power Systems',
+            'Software Engineering',
+            'Engineering Economics',
+            'Ethics and Professional Practice'
+        ];
 
-            const dropdownMenu = document.createElement('ul');
-            dropdownMenu.className = 'dropdown-menu';
+        // Generate menu items in specified order
+        sections.forEach(section => {
+            if (pages[section]) {
+                const sectionItem = document.createElement('li');
+                const sectionLink = document.createElement('a');
+                sectionLink.href = '#';
+                sectionLink.className = 'dropdown-toggle';
+                sectionLink.textContent = section;
+                sectionItem.appendChild(sectionLink);
 
-            pages[section].forEach(page => {
-                const pageItem = document.createElement('li');
-                const pageLink = document.createElement('a');
-                pageLink.href = page.url;
-                pageLink.textContent = page.title;
-                pageItem.appendChild(pageLink);
-                dropdownMenu.appendChild(pageItem);
-            });
+                const dropdownMenu = document.createElement('ul');
+                dropdownMenu.className = 'dropdown-menu';
 
-            sectionItem.appendChild(dropdownMenu);
-            sidebarMenu.appendChild(sectionItem);
-        }
+                pages[section].forEach(page => {
+                    const pageItem = document.createElement('li');
+                    const pageLink = document.createElement('a');
+                    pageLink.href = page.url;
+                    pageLink.textContent = page.title;
+                    pageItem.appendChild(pageLink);
+                    dropdownMenu.appendChild(pageItem);
+                });
+
+                sectionItem.appendChild(dropdownMenu);
+                sidebarMenu.appendChild(sectionItem);
+            }
+        });
 
         // Setup dropdown toggles
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
