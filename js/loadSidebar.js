@@ -29,22 +29,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!sidebarMenu) throw new Error('Sidebar menu element not found');
 
         // Generate menu items
-        const mathPages = pages['Math'];
+        const mathPages = pages['Mathematics'];
         if (mathPages) {
-            // Create the top-level 'Math' dropdown
+            // Create the top-level 'Mathematics' dropdown
             const mathItem = document.createElement('li');
             const mathLink = document.createElement('a');
             mathLink.href = '#';
             mathLink.className = 'dropdown-toggle';
-            mathLink.textContent = 'Math';
+            mathLink.textContent = 'Mathematics';
             mathItem.appendChild(mathLink);
 
             const mathDropdown = document.createElement('ul');
             mathDropdown.className = 'dropdown-menu';
 
             // Separate out "Calculus" pages
-            const calculusPages = mathPages.filter(p => p.title?.startsWith('Calculus/'));
-            const otherMathPages = mathPages.filter(p => !p.title?.startsWith('Calculus/'));
+            const calculusPages = mathPages.find(p => p.title === 'Calculus');
+            const otherMathPages = mathPages.filter(p => p.title !== 'Calculus');
 
             // Populate non-Calculus pages
             otherMathPages.forEach(page => {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             // Create a sub-dropdown for Calculus
-            if (calculusPages.length > 0) {
+            if (calculusPages && calculusPages.dropdown) {
                 const calcItem = document.createElement('li');
                 const calcLink = document.createElement('a');
                 calcLink.href = '#';
@@ -68,11 +68,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const calcDropdown = document.createElement('ul');
                 calcDropdown.className = 'dropdown-menu';
 
-                calculusPages.forEach(page => {
+                calculusPages.dropdown.forEach(page => {
                     const pageItem = document.createElement('li');
                     const pageLink = document.createElement('a');
                     pageLink.href = page.url;
-                    pageLink.textContent = page.title.replace('Calculus/', '');
+                    pageLink.textContent = page.title;
                     pageItem.appendChild(pageLink);
                     calcDropdown.appendChild(pageItem);
                 });
@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             mathItem.appendChild(mathDropdown);
             sidebarMenu.appendChild(mathItem);
 
-            // Remove 'Math' from the main loop
-            delete pages['Math'];
+            // Remove 'Mathematics' from the main loop
+            delete pages['Mathematics'];
         }
 
         for (const section in pages) {
@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 const menu = toggle.nextElementSibling;
-                // Remove inline maxHeight handling:
                 menu.classList.toggle('active');
                 toggle.classList.toggle('active');
             });

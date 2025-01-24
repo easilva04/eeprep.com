@@ -98,6 +98,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.eeprep.com/Topics/Math/Discrete.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.eeprep.com/Topics/Circuits/Circuits.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
