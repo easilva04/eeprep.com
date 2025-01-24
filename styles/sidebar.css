@@ -95,11 +95,13 @@
     text-align: center; /* Center text within the dropdown menu */
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1); /* Add shadow on the left side */
     display: none; /* Hide dropdown by default */
+    position: relative; /* Ensures custom stacking if needed */
+    z-index: 9999;      /* Renders dropdown above other elements */
 }
 
 .dropdown-menu.active {
-    max-height: 500px; /* Adjust as needed for the content */
-    transition: max-height 0.5s ease-in;
+    max-height: none;   /* No limit on dropdown height */
+    overflow: visible;  /* Allow full expansion */
     display: block; /* Show dropdown when active */
     overflow-y: auto; /* Ensure dropdown is scrollable */
 }

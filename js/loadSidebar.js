@@ -57,11 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 const menu = toggle.nextElementSibling;
-                if (menu.classList.contains('active')) {
-                    menu.style.maxHeight = '0';
-                } else {
-                    menu.style.maxHeight = `${menu.scrollHeight}px`;
-                }
+                // Remove inline maxHeight handling:
                 menu.classList.toggle('active');
                 toggle.classList.toggle('active');
             });
