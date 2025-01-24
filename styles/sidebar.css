@@ -102,23 +102,20 @@
 
 /* Dropdown styles */
 .dropdown-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    max-height: none; /* Allow full expansion */
+    overflow: visible; /* Ensure dropdown is not cut off */
     width: 100%;
     background-color: var(--off-white);
     text-align: center; /* Center text within the dropdown menu */
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1); /* Add shadow on the left side */
     display: none; /* Hide dropdown by default */
     position: relative; /* Ensures custom stacking if needed */
-    z-index: 9999;      /* Renders dropdown above other elements */
+    z-index: 9999; /* Renders dropdown above other elements */
 }
 
 .dropdown-menu.active {
-    max-height: none;   /* No limit on dropdown height */
-    overflow: visible;  /* Allow full expansion */
     display: block; /* Show dropdown when active */
-    overflow-y: auto; /* Ensure dropdown is scrollable */
+    overflow-y: auto; /* Ensure dropdown is scrollable if needed */
 }
 
 .dropdown-menu a {

@@ -35,8 +35,8 @@
     }
 
     .dropdown-menu {
-        max-height: none;
-        overflow-y: visible;
+        max-height: none; /* Allow full expansion */
+        overflow: visible; /* Ensure dropdown is not cut off */
     }
 
     .dropdown-menu.active {
