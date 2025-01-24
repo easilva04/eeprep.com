@@ -85,6 +85,21 @@
     align-items: center; /* Center text vertically */
 }
 
+.sidebar button {
+    background-color: var(--grey);
+    color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar button:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
 /* Dropdown styles */
 .dropdown-menu {
     max-height: 0;

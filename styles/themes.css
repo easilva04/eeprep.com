@@ -57,6 +57,21 @@ body.dark-mode .theme-toggle {
     border-color: #3e3e3e;
 }
 
+body.dark-mode button {
+    background-color: #3e3e3e;
+    color: #d4d4d4;
+    border: 1px solid #3e3e3e;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode button:hover {
+    background-color: #5e5e5e;
+    color: #ffffff;
+}
+
 .theme-toggle {
     color: #d4d4d4;
     background-color: #3e3e3e;

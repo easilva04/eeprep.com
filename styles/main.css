@@ -668,3 +668,18 @@ ol.index ol > li:before {
 }
 
 /* ...existing code... */
+
+button {
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: var(--grey);
+    color: var(--white);
+}
