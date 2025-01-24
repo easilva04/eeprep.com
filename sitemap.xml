@@ -68,7 +68,25 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/Calculus.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Calculus/Calculus.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Math/Calculus/Calculus1.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Math/Calculus/Calculus2.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Math/Calculus/Calculus3.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

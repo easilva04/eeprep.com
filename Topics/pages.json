@@ -49,8 +49,23 @@
         },
         {
             "title": "Calculus",
-            "url": "/Topics/Math/Calculus.html",
+            "url": "/Topics/Math/Calculus/Calculus.html",
             "snippet": "Master calculus concepts that are fundamental to analyzing and solving electrical engineering problems..."
+        },
+        {
+            "title": "Calculus 1",
+            "url": "/Topics/Math/Calculus/Calculus1.html",
+            "snippet": "Master the basics of differential and integral calculus, including limits, derivatives, and integrals..."
+        },
+        {
+            "title": "Calculus 2",
+            "url": "/Topics/Math/Calculus/Calculus2.html",
+            "snippet": "Dive deeper into integral calculus, series, and sequences, with applications in engineering..."
+        },
+        {
+            "title": "Calculus 3",
+            "url": "/Topics/Math/Calculus/Calculus3.html",
+            "snippet": "Explore multivariable calculus, including partial derivatives, multiple integrals, and vector calculus..."
         },
         {
             "title": "Differential Equations",
