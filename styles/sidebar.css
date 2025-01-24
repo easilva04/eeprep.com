@@ -101,6 +101,7 @@
     max-height: 500px; /* Adjust as needed for the content */
     transition: max-height 0.5s ease-in;
     display: block; /* Show dropdown when active */
+    overflow-y: auto; /* Ensure dropdown is scrollable */
 }
 
 .dropdown-menu a {
