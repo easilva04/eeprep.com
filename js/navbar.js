@@ -54,6 +54,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         navbarContainer.innerHTML = await response.text();
         document.body.prepend(navbarContainer.firstChild);
 
+        // Setup hamburger to toggle sidebar
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const sidebar = document.getElementById('sidebar-container');
+        if (hamburgerBtn && sidebar) {
+            hamburgerBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+        }
+
         // Setup basic search icon functionality
         const searchIcon = document.querySelector('.search-icon');
         const searchContainer = document.querySelector('.search-container');
