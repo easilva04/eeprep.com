@@ -57,12 +57,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   function attachDropdownListeners() {
+    //log message
     console.log("Attaching dropdown listeners...");
+    //get all the containers and close them
     document.querySelectorAll(".dropdown-container").forEach(container => {
       container.classList.remove("show");
     });
+    //get all the main buttons and allow them to be open and closed on cliick
     const dropdownButtons = document.querySelectorAll(".dropdown-btn");
-    console.log("Dropdown Buttons Found ->", dropdownButtons); // Debugging output
   
     dropdownButtons.forEach(button => {
       button.addEventListener("click", function () {
