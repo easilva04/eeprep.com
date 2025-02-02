@@ -1,7 +1,7 @@
 /* ...existing code... */
 
 /* Dynamic sidebar styles */
-.sidebar-list {
+#sidebar-container {
   margin: 0;
   padding: 0;
   width: 200px;
@@ -11,12 +11,46 @@
   overflow: auto;
 }
 
+.main-content {
+  margin-left: 200px; /* Same width as sidebar */
+  padding: 20px;
+}
 
-div.content {
+
+/* Dropdown button */
+.dropdown-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #ddd;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* Style when button is hovered */
+.dropdown-btn:hover {
+  background-color: #ccc;
+}
+
+/* Initially hide the dropdown container */
+.dropdown-container {
+  display: none;
+  padding-left: 15px;
+  background-color: #eaeaea;
+}
+
+/* Show dropdown when active */
+.dropdown-container.show {
+  display: block;
+}
+
+/* body.content {
   margin-left: 200px;
   padding: 1px 16px;
   height: 1000px;
-}
+} */
 
 /* .sidebar-container {
   position: fixed;
@@ -62,6 +96,6 @@ div.content {
   list-style: none;
   padding-left: 15px;
   margin: 0;
-} */
+} 
 
 /* ...existing code... */

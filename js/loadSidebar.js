@@ -12,10 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       // Automatically add "show" class to all dropdown containers
       document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
-      // Optionally disable click toggling:
-      // initDropdowns();
-      // After sidebar is built, attach hamburger listener:
-      initHamburger();
+      //Function to make the stuff collpase
+      attachDropdownListeners();
     })
     .catch(error => console.error('Error loading pages:', error));
 
@@ -57,14 +55,25 @@ document.addEventListener("DOMContentLoaded", function () {
     return html;
   }
 
-  // Removed toggle functionality since the sidebar should always be expanded
-  // function initDropdowns() { ... }
 
-  function initHamburger() {
-    console.log("hamburger element:", document.getElementById('hamburgerMenu'));
-    const hamburger = document.getElementById('hamburgerMenu');
-    hamburger.addEventListener('click', () => {
-      document.getElementById('sidebar').classList.toggle('open');
+  function attachDropdownListeners() {
+    console.log("Attaching dropdown listeners...");
+    document.querySelectorAll(".dropdown-container").forEach(container => {
+      container.classList.remove("show");
+    });
+    const dropdownButtons = document.querySelectorAll(".dropdown-btn");
+    console.log("Dropdown Buttons Found ->", dropdownButtons); // Debugging output
+  
+    dropdownButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const dropdownContainer = this.nextElementSibling;
+  
+        if (dropdownContainer) {
+          dropdownContainer.classList.toggle("show");
+        }
+      });
     });
   }
 });
+
+
