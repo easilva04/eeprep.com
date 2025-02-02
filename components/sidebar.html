@@ -1,84 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sidebar</title>
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="/styles/sidebar.css">
 </head>
 <body>
-	<div id="sidebar-container" class="sidebar">
-		<!-- Dark mode toggle button added -->
-		<button id="dark-mode-toggle">Dark</button>
-		<!-- New search input for filtering sidebar links -->
-		<input type="text" id="sidebar-search" placeholder="Search...">
-		<ul id="sidebar-list">
-			<!-- Sidebar content will be loaded here -->
-		</ul>
-	</div>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			// Helper function for creating page links
-			function createPageLink(page) {
-				const li = document.createElement('li');
-				li.innerHTML = `<a href="${page.url}">${page.title}</a>`;
-				return li;
-			}
-			console.log('Fetching pages.json...');
-			fetch('/Topics/pages.json')
-			.then(res => res.json())
-			.then(data => {
-				console.log('Data loaded:', data);
-				const sidebar = document.getElementById('sidebar-list');
-				Object.keys(data).forEach(category => {
-					const catItem = document.createElement('li');
-					catItem.classList.add('category');
-					// Create category header with toggle functionality
-					const header = document.createElement('div');
-					header.innerHTML = `<strong class="category-header">${category}</strong>`;
-					header.addEventListener('click', () => {
-						catItem.classList.toggle('collapsed');
-					});
-					catItem.appendChild(header);
-					const nestedList = document.createElement('ul');
-					const content = data[category];
-					if(Array.isArray(content)) {
-						// Category directly holds pages
-						content.forEach(page => {
-							nestedList.appendChild(createPageLink(page));
-						});
-					} else if(typeof content === 'object') {
-						// Category holds subcategories
-						Object.keys(content).forEach(subCat => {
-							const subCatItem = document.createElement('li');
-							subCatItem.classList.add('subcategory');
-							const subHeader = document.createElement('div');
-							subHeader.innerHTML = `<em class="category-header">${subCat}</em>`;
-							subHeader.addEventListener('click', () => {
-								subCatItem.classList.toggle('collapsed');
-							});
-							subCatItem.appendChild(subHeader);
-							const subNested = document.createElement('ul');
-							content[subCat].forEach(page => {
-								subNested.appendChild(createPageLink(page));
-							});
-							subCatItem.appendChild(subNested);
-							nestedList.appendChild(subCatItem);
-						});
-					}
-					catItem.appendChild(nestedList);
-					sidebar.appendChild(catItem);
-				});
-				// Implement search/filter functionality
-				const searchInput = document.getElementById('sidebar-search');
-				searchInput.addEventListener('input', function() {
-					const filter = this.value.toLowerCase();
-					const links = sidebar.getElementsByTagName('a');
-					for (let i = 0; i < links.length; i++) {
-						const txtValue = links[i].textContent || links[i].innerText;
-						links[i].parentElement.style.display = txtValue.toLowerCase().includes(filter) ? '' : 'none';
-					}
-				});
-			})
-			.catch(err => console.error('Error loading pages.json', err));
-		});
-	</script>
+    <div id="sidebar-container" class="sidebar">
+        <button id="dark-mode-toggle">Dark</button>
+        <input type="text" id="sidebar-search" placeholder="Search...">
+        <nav id="sidebar-nav"></nav>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.getElementById('sidebar-nav');
+            
+            function createMenuItem(item) {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.textContent = item.title;
+                li.appendChild(a);
+                return li;
+            }
+
+            function createCategory(title, items, isSubcategory = false) {
+                const section = document.createElement('div');
+                section.className = isSubcategory ? 'subcategory collapsed' : 'category collapsed'; // Add collapsed by default
+                
+                const header = document.createElement('div');
+                header.className = 'category-header';
+                header.textContent = title;
+                
+                const content = document.createElement('ul');
+                content.className = 'menu-items';
+                
+                header.addEventListener('click', () => {
+                    section.classList.toggle('collapsed');
+                });
+
+                section.appendChild(header);
+                section.appendChild(content);
+                
+                if (Array.isArray(items)) {
+                    items.forEach(item => {
+                        content.appendChild(createMenuItem(item));
+                    });
+                } else {
+                    Object.entries(items).forEach(([subTitle, subItems]) => {
+                        content.appendChild(createCategory(subTitle, subItems, true));
+                    });
+                }
+                
+                return section;
+            }
+
+            function implementSearch(searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const filter = this.value.toLowerCase();
+                    const links = nav.getElementsByTagName('a');
+                    
+                    Array.from(links).forEach(link => {
+                        const li = link.parentElement;
+                        const txtValue = link.textContent || link.innerText;
+                        const matches = txtValue.toLowerCase().includes(filter);
+                        
+                        li.style.display = matches ? '' : 'none';
+                        
+                        // Show parent categories if child matches
+                        let parent = li.parentElement;
+                        while (parent && !parent.matches('nav')) {
+                            if (matches) {
+                                parent.style.display = '';
+                                if (parent.classList.contains('collapsed')) {
+                                    parent.classList.remove('collapsed');
+                                }
+                            }
+                            parent = parent.parentElement;
+                        }
+                    });
+                });
+            }
+
+            fetch('/Topics/pages.json')
+                .then(response => response.json())
+                .then(data => {
+                    Object.entries(data).forEach(([category, items]) => {
+                        nav.appendChild(createCategory(category, items));
+                    });
+                    
+                    // Initialize search
+                    const searchInput = document.getElementById('sidebar-search');
+                    implementSearch(searchInput);
+                })
+                .catch(error => console.error('Error loading sidebar:', error));
+        });
+    </script>
 </body>
 </html>

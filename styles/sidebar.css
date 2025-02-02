@@ -206,3 +206,70 @@
 .tabs button.active {
     background-color: var(--grey);
 }
+
+/* Menu structure styles */
+.category, .subcategory {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-header {
+    cursor: pointer;
+    padding: 8px 12px;
+    display: block;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
+}
+
+.category-header:hover {
+    background-color: var(--grey-light);
+}
+
+.dark-mode .category-header:hover {
+    background-color: var(--grey-dark);
+}
+
+.collapsed > ul {
+    display: none;
+}
+
+#sidebar-search {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 8px 12px;
+    border: 1px solid var(--grey);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-text);
+}
+
+.menu-items {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.menu-items li {
+    margin: 0.25rem 0;
+}
+
+.menu-items a {
+    display: block;
+    padding: 6px 12px;
+    color: var(--black);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
+}
+
+.menu-items a:hover {
+    background-color: var(--grey-light);
+}
+
+.dark-mode .menu-items a {
+    color: var(--white);
+}
+
+.dark-mode .menu-items a:hover {
+    background-color: var(--grey-dark);
+}
