@@ -54,15 +54,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         navbarContainer.innerHTML = await response.text();
         document.body.prepend(navbarContainer.firstChild);
 
-        // Setup hamburger menu functionality
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const sidebar = document.querySelector('.sidebar');
-
-        hamburgerMenu.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-            hamburgerMenu.classList.toggle('active');
-        });
-
         // Setup basic search icon functionality
         const searchIcon = document.querySelector('.search-icon');
         const searchContainer = document.querySelector('.search-container');
