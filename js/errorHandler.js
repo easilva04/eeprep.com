@@ -36,8 +36,8 @@ window.handleError = handleError;
 
 window.onload = async () => {
     try {
-        // ...existing code...
-        await error();
+        // ...existing initialization code...
+        // Removed erroneous call: await error();
     } catch (error) {
         WasmErrorHandler.handleRuntimeError(error, {
             location: 'window.onload',
@@ -46,16 +46,18 @@ window.onload = async () => {
     }
 };
 
-// Wrap the existing t function
-const originalT = t;
-t = async function(...args) {
-    try {
-        return await originalT.apply(this, args);
-    } catch (error) {
-        WasmErrorHandler.handleRuntimeError(error, {
-            function: 't',
-            arguments: args
-        });
-        throw error; // Re-throw to maintain original behavior
-    }
-};
+// Only wrap t if defined
+if (typeof t !== 'undefined') {
+  const originalT = t;
+  t = async function(...args) {
+      try {
+          return await originalT.apply(this, args);
+      } catch (error) {
+          WasmErrorHandler.handleRuntimeError(error, {
+              function: 't',
+              arguments: args
+          });
+          throw error; // Re-throw to maintain original behavior
+      }
+  };
+}

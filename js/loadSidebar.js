@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch('Topics/pages.json')
     .then(response => response.json())
     .then(data => {
-      // Target the inner menu container instead of the whole sidebar
-      const menuContainer = document.getElementById('sidebar-menu');
+      // Try to target the inner menu container; if not found, use the sidebar container
+      const menuContainer = document.getElementById('sidebar-menu') || document.getElementById('sidebar-container');
       if (menuContainer) {
         menuContainer.innerHTML = buildMenu(data);
       } else {
-        console.error("Sidebar menu container not found")
+        console.error("Sidebar menu container not found");
       }
       // Automatically add "show" class to all dropdown containers
       document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
