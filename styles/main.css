@@ -68,7 +68,6 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     margin: 0;
-    padding: var(--navbar-height) 10% 0 10%;
 }
 
 .main-content {
