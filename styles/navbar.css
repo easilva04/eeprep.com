@@ -41,23 +41,6 @@
     font-family: var(--font-family);
 }
 
-.hamburger-menu {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.hamburger-menu span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--black);
-    transition: all 0.3s ease;
-}
 
 .navbar-right {
     display: flex;
