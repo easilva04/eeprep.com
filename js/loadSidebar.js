@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Load pages.json and build the menu
-  fetch('./Topics/pages.json') // changed relative path
+  fetch('Topics/pages.json') // changed relative path
     .then(response => response.json())
     .then(data => {
-      
+      console.log("Sidebar data loaded:", document.getElementById('sidebar-container'));
       const sidebar = document.getElementById('sidebar-container');
       if (sidebar){
       sidebar.innerHTML = buildMenu(data);

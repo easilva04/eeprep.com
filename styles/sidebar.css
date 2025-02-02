@@ -1,5 +1,7 @@
 /* ...existing code... */
 
+
+
 /* Dynamic sidebar styles */
 #sidebar-container {
   margin: 0;
@@ -9,11 +11,7 @@
   position: fixed;
   height: 100%;
   overflow: auto;
-  transform: translateX(-200px); /* hidden by default */
-  transition: transform 0.3s ease;
-}
-#sidebar-container.open {
-  transform: translateX(0); /* visible when open */
+  
 }
 .sidebar-list{
   list-style-type: none;
