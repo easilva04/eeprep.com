@@ -37,11 +37,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Setup hamburger menu functionality
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         const sidebar = document.querySelector('.sidebar');
-
-        hamburgerMenu.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-            hamburgerMenu.classList.toggle('active');
-        });
+        if (hamburgerMenu && sidebar) {  // Added check
+            hamburgerMenu.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+                hamburgerMenu.classList.toggle('active');
+            });
+        } else {
+            console.error("Hamburger menu or sidebar not found");
+        }
 
         // Setup basic search icon functionality
         const searchIcon = document.querySelector('.search-icon');

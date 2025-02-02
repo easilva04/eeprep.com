@@ -37,7 +37,7 @@ window.handleError = handleError;
 window.onload = async () => {
     try {
         // ...existing code...
-        await t();
+        await error();
     } catch (error) {
         WasmErrorHandler.handleRuntimeError(error, {
             location: 'window.onload',

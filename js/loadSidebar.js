@@ -3,16 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch('Topics/pages.json')
     .then(response => response.json())
     .then(data => {
-      
-      const sidebar = document.getElementById('sidebar-container');
-      if (sidebar){
-      sidebar.innerHTML = buildMenu(data);
+      // Target the inner menu container instead of the whole sidebar
+      const menuContainer = document.getElementById('sidebar-menu');
+      if (menuContainer) {
+        menuContainer.innerHTML = buildMenu(data);
       } else {
-        console.error("Sidebar not found")
+        console.error("Sidebar menu container not found")
       }
       // Automatically add "show" class to all dropdown containers
       document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
-      //Function to make the stuff collpase
       attachDropdownListeners();
     })
     .catch(error => console.error('Error loading pages:', error));

@@ -30,10 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleButton = document.querySelector('.theme-toggle');
 
     function updateButtonText() {
-        if (document.body.classList.contains('dark-mode')) {
-            themeToggleButton.textContent = 'Light Mode';
-        } else {
-            themeToggleButton.textContent = 'Dark Mode';
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        if (toggleButton) {  // Added check
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
         }
     }
 
