@@ -52,8 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownButtons.forEach(btn => {
       btn.addEventListener("click", function () {
         this.classList.toggle("active");
-        const dropdownContainer = this.nextElementSibling;
-        dropdownContainer.style.display = dropdownContainer.style.display === "block" ? "none" : "block";
+        this.nextElementSibling.classList.toggle("show");
       });
     });
   }
