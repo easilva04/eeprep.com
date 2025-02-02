@@ -35,16 +35,13 @@
 }
 
 .dropdown-container {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
+  /* Remove collapsing behavior */
+  max-height: none;
+  overflow: visible;
+  transition: none;
   list-style: none;
   padding-left: 15px;
   margin: 0;
-}
-
-.dropdown-container.show {
-  max-height: 1000px; /* Large enough to show content */
 }
 
 /* ...existing code... */

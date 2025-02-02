@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       const sidebar = document.getElementById('sidebar');
       sidebar.innerHTML = buildMenu(data);
-      initDropdowns();
+      // Automatically add "show" class to all dropdown containers
+      document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
+      // Optionally disable click toggling:
+      // initDropdowns();
     })
     .catch(error => console.error('Error loading pages:', error));
 
@@ -47,13 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return html;
   }
 
-  function initDropdowns() {
-    const dropdownButtons = document.querySelectorAll(".dropdown-btn");
-    dropdownButtons.forEach(btn => {
-      btn.addEventListener("click", function () {
-        this.classList.toggle("active");
-        this.nextElementSibling.classList.toggle("show");
-      });
-    });
-  }
+  // Removed toggle functionality since the sidebar should always be expanded
+  // function initDropdowns() { ... }
 });
