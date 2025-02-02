@@ -4,9 +4,11 @@ if (localStorage.getItem('dark-mode') === 'enabled' ||
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const sidebarContainer = document.createElement('div');
-    sidebarContainer.className = 'sidebar-container';
-    document.body.appendChild(sidebarContainer);
+    const sidebarContainer = document.getElementById('sidebar-container');
+    if (!sidebarContainer) {
+        console.error('Error loading sidebar: Sidebar container element not found');
+        return;
+    }
 
     const sidebar = document.createElement('div');
     sidebar.id = 'sidebar-container';

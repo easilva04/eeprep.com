@@ -148,6 +148,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
+        // Ensure the search element exists and that search term is a string before calling toLowerCase
+        const searchElement = document.getElementById('navbar-search');
+        if (searchElement) {
+            const searchTerm = searchElement.value || '';
+            if (typeof searchTerm === 'string' && searchTerm.toLowerCase) {
+                // initialize search index...
+            }
+        }
+
     } catch (error) {
         console.error('Error loading navbar:', error);
     }

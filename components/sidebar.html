@@ -12,67 +12,71 @@
 		</ul>
 	</div>
 	<script>
-		// Helper function for creating page links
-		function createPageLink(page) {
-			const li = document.createElement('li');
-			li.innerHTML = `<a href="${page.url}">${page.title}</a>`;
-			return li;
-		}
-		fetch('/Topics/pages.json')
-		.then(res => res.json())
-		.then(data => {
-			const sidebar = document.getElementById('sidebar-list');
-			Object.keys(data).forEach(category => {
-				const catItem = document.createElement('li');
-				catItem.classList.add('category');
-				// Create category header with toggle functionality
-				const header = document.createElement('div');
-				header.innerHTML = `<strong class="category-header">${category}</strong>`;
-				header.addEventListener('click', () => {
-					catItem.classList.toggle('collapsed');
+		document.addEventListener('DOMContentLoaded', function() {
+			// Helper function for creating page links
+			function createPageLink(page) {
+				const li = document.createElement('li');
+				li.innerHTML = `<a href="${page.url}">${page.title}</a>`;
+				return li;
+			}
+			console.log('Fetching pages.json...');
+			fetch('/Topics/pages.json')
+			.then(res => res.json())
+			.then(data => {
+				console.log('Data loaded:', data);
+				const sidebar = document.getElementById('sidebar-list');
+				Object.keys(data).forEach(category => {
+					const catItem = document.createElement('li');
+					catItem.classList.add('category');
+					// Create category header with toggle functionality
+					const header = document.createElement('div');
+					header.innerHTML = `<strong class="category-header">${category}</strong>`;
+					header.addEventListener('click', () => {
+						catItem.classList.toggle('collapsed');
+					});
+					catItem.appendChild(header);
+					const nestedList = document.createElement('ul');
+					const content = data[category];
+					if(Array.isArray(content)) {
+						// Category directly holds pages
+						content.forEach(page => {
+							nestedList.appendChild(createPageLink(page));
+						});
+					} else if(typeof content === 'object') {
+						// Category holds subcategories
+						Object.keys(content).forEach(subCat => {
+							const subCatItem = document.createElement('li');
+							subCatItem.classList.add('subcategory');
+							const subHeader = document.createElement('div');
+							subHeader.innerHTML = `<em class="category-header">${subCat}</em>`;
+							subHeader.addEventListener('click', () => {
+								subCatItem.classList.toggle('collapsed');
+							});
+							subCatItem.appendChild(subHeader);
+							const subNested = document.createElement('ul');
+							content[subCat].forEach(page => {
+								subNested.appendChild(createPageLink(page));
+							});
+							subCatItem.appendChild(subNested);
+							nestedList.appendChild(subCatItem);
+						});
+					}
+					catItem.appendChild(nestedList);
+					sidebar.appendChild(catItem);
 				});
-				catItem.appendChild(header);
-				const nestedList = document.createElement('ul');
-				const content = data[category];
-				if(Array.isArray(content)) {
-					// Category directly holds pages
-					content.forEach(page => {
-						nestedList.appendChild(createPageLink(page));
-					});
-				} else if(typeof content === 'object') {
-					// Category holds subcategories
-					Object.keys(content).forEach(subCat => {
-						const subCatItem = document.createElement('li');
-						subCatItem.classList.add('subcategory');
-						const subHeader = document.createElement('div');
-						subHeader.innerHTML = `<em class="category-header">${subCat}</em>`;
-						subHeader.addEventListener('click', () => {
-							subCatItem.classList.toggle('collapsed');
-						});
-						subCatItem.appendChild(subHeader);
-						const subNested = document.createElement('ul');
-						content[subCat].forEach(page => {
-							subNested.appendChild(createPageLink(page));
-						});
-						subCatItem.appendChild(subNested);
-						nestedList.appendChild(subCatItem);
-					});
-				}
-				catItem.appendChild(nestedList);
-				sidebar.appendChild(catItem);
-			});
-			// Implement search/filter functionality
-			const searchInput = document.getElementById('sidebar-search');
-			searchInput.addEventListener('input', function() {
-				const filter = this.value.toLowerCase();
-				const links = sidebar.getElementsByTagName('a');
-				for (let i = 0; i < links.length; i++) {
-					const txtValue = links[i].textContent || links[i].innerText;
-					links[i].parentElement.style.display = txtValue.toLowerCase().includes(filter) ? '' : 'none';
-				}
-			});
-		})
-		.catch(err => console.error('Error loading pages.json', err));
+				// Implement search/filter functionality
+				const searchInput = document.getElementById('sidebar-search');
+				searchInput.addEventListener('input', function() {
+					const filter = this.value.toLowerCase();
+					const links = sidebar.getElementsByTagName('a');
+					for (let i = 0; i < links.length; i++) {
+						const txtValue = links[i].textContent || links[i].innerText;
+						links[i].parentElement.style.display = txtValue.toLowerCase().includes(filter) ? '' : 'none';
+					}
+				});
+			})
+			.catch(err => console.error('Error loading pages.json', err));
+		});
 	</script>
 </body>
 </html>

@@ -29,7 +29,10 @@ class WasmErrorHandler {
     }
 }
 
-export default WasmErrorHandler;
+function handleError(error) {
+    console.error('Error:', error);
+}
+window.handleError = handleError;
 
 window.onload = async () => {
     try {

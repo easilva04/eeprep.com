@@ -47,3 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateButtonText();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButton = document.getElementById('theme-toggle');
+  if (toggleButton) {
+    toggleButton.textContent = 'Toggle Theme';
+    // ...rest of theme toggle logic...
+  }
+});
