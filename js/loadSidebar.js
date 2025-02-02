@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       menuContainer.innerHTML = buildMenu(data);
-      // Automatically add "show" class to all dropdown containers
-      document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
+      // Commented out forcing dropdowns to show:
+      // document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
       attachDropdownListeners();
     })
     .catch(error => console.error('Error loading pages:', error));
