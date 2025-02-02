@@ -13,7 +13,8 @@
 <script>
     async function loadSidebar() {
         try {
-            const response = await fetch('/Topics/pages.json');
+            // Updated fetch URL to a relative path
+            const response = await fetch('Topics/pages.json');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -80,6 +81,17 @@
             console.error('Failed to load sidebar:', error);
         }
     }
+
+    // Added dropdown toggle event listener
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('dropdown-toggle')) {
+            e.preventDefault();
+            const menu = e.target.nextElementSibling;
+            if (menu && menu.classList.contains('dropdown-menu')) {
+                menu.classList.toggle('show');
+            }
+        }
+    });
 
     function applyTheme(theme) {
         document.body.classList.toggle('dark-mode', theme === 'dark');
