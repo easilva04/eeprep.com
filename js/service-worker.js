@@ -2,6 +2,7 @@ const CACHE_NAME = 'site-cache-v2'; // Increment version number
 const FILES_TO_CACHE = [
     '/',                       // Root
     '/index.html',             // Main page
+    '/offline.html',           // Added offline fallback page
     '/css/styles.css',         // CSS file
     '/js/search.js',           // Search JS file
     '/js/service-worker.js',   // Service Worker JS file
@@ -25,11 +26,15 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Activate the Service Worker
+// Activate the Service Worker and enable navigation preload
 self.addEventListener('activate', (event) => {
     console.log('Service Worker activating.');
     event.waitUntil(
-        caches.keys().then((keyList) => {
+        (async () => {
+            if (self.registration.navigationPreload) {
+                await self.registration.navigationPreload.enable();
+            }
+            const keyList = await caches.keys();
             return Promise.all(
                 keyList.map((key) => {
                     if (key !== CACHE_NAME) {
@@ -38,26 +43,34 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        }).catch((error) => {
-            console.error('Failed to remove old caches during activate:', error);
-        })
+        })().catch((error) => console.error('Activation error:', error))
     );
 });
 
-// Fetch files from cache or network
+// Fetch files from cache or network with navigation preload and offline fallback
 self.addEventListener('fetch', (event) => {
-    console.log('Fetching:', event.request.url);
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request).then((networkResponse) => {
-                if (networkResponse.status === 404) {
-                    return caches.match('/404.md');
+    if (event.request.mode === 'navigate') {
+        // For navigation requests, try preload, then network, then offline fallback.
+        event.respondWith(
+            (async () => {
+                try {
+                    const preloadResponse = await event.preloadResponse;
+                    if (preloadResponse) return preloadResponse;
+                    const networkResponse = await fetch(event.request);
+                    return networkResponse;
+                } catch (error) {
+                    console.error('Fetch failed; returning offline page instead.', error);
+                    const cache = await caches.open(CACHE_NAME);
+                    return await cache.match('/offline.html');
                 }
-                return networkResponse;
-            });
-        }).catch((error) => {
-            console.error('Fetch failed; returning offline page instead.', error);
-            return caches.match('/404.md');
-        })
-    );
+            })()
+        );
+    } else {
+        // For non-navigation requests, serve from cache first.
+        event.respondWith(
+            caches.match(event.request)
+                .then((response) => response || fetch(event.request))
+                .catch((error) => console.error('Fetch error for non-navigation request:', error))
+        );
+    }
 });

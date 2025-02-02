@@ -37,7 +37,7 @@ window.handleError = handleError;
 window.onload = async () => {
     try {
         // ...existing initialization code...
-        // Removed erroneous call: await error();
+        // Removed erroneous call that attempted "await error()"
     } catch (error) {
         WasmErrorHandler.handleRuntimeError(error, {
             location: 'window.onload',
@@ -46,10 +46,10 @@ window.onload = async () => {
     }
 };
 
-// Only wrap t if defined
-if (typeof t !== 'undefined') {
-  const originalT = t;
-  t = async function(...args) {
+// Only wrap t if it exists on window
+if (typeof window.t !== 'undefined') {
+  const originalT = window.t;
+  window.t = async function(...args) {
       try {
           return await originalT.apply(this, args);
       } catch (error) {
