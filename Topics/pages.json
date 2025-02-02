@@ -17,45 +17,40 @@
         }
     ],
     "Mathematics": {
-        "General": [
+        "Fundamentals": [
             {
                 "title": "Math Home",
-                "url": "/Topics/Math/Math.html",
+                "url": "/Topics/Math/Fundamentals/Math.html",
                 "snippet": "Explore the mathematical foundations necessary for electrical engineering, including algebra, calculus, and more..."
             },
             {
                 "title": "Algebra",
-                "url": "/Topics/Math/Algebra.html",
+                "url": "/Topics/Math/Fundamentals/Algebra.html",
                 "snippet": "Review key algebraic concepts and techniques that are essential for solving electrical engineering problems..."
             },
             {
                 "title": "Complex Numbers",
-                "url": "/Topics/Math/ComplexNumbers.html",
+                "url": "/Topics/Math/Fundamentals/ComplexNumbers.html",
                 "snippet": "Understand the role of complex numbers in electrical engineering, including their use in AC circuit analysis..."
             },
             {
                 "title": "Vectors",
-                "url": "/Topics/Math/Vectors.html",
+                "url": "/Topics/Math/Fundamentals/Vectors.html",
                 "snippet": "Learn about vector mathematics and its applications in electrical engineering, such as in electromagnetics..."
             },
             {
                 "title": "Linear Algebra",
-                "url": "/Topics/Math/LinearAlgebra.html",
+                "url": "/Topics/Math/Fundamentals/LinearAlgebra.html",
                 "snippet": "Study linear algebra concepts that are crucial for understanding systems of equations and transformations in engineering..."
             },
             {
                 "title": "Geometry",
-                "url": "/Topics/Math/Geometry.html",
+                "url": "/Topics/Math/Fundamentals/Geometry.html",
                 "snippet": "Review geometric principles and their applications in electrical engineering, including coordinate systems and transformations..."
             },
             {
-                "title": "Differential Equations",
-                "url": "/Topics/Math/ODEs.html",
-                "snippet": "Learn about differential equations and their applications in modeling and analyzing electrical systems..."
-            },
-            {
                 "title": "Discrete Mathematics",
-                "url": "/Topics/Math/Discrete.html",
+                "url": "/Topics/Math/Fundamentals/Discrete.html",
                 "snippet": "Sets, combinatorics, and discrete structures..."
             }
         ],
@@ -79,27 +74,32 @@
                 "title": "Calculus 3",
                 "url": "/Topics/Math/Calculus/Calculus3.html",
                 "snippet": "Explore multivariable calculus, including partial derivatives, multiple integrals, and vector calculus..."
+            },
+            {
+                "title": "Differential Equations",
+                "url": "/Topics/Math/Calculus/ODEs.html",
+                "snippet": "Learn about differential equations and their applications in modeling and analyzing electrical systems..."
             }
         ],
         "Statistics": [
             {
                 "title": "Probability Statistics Home",
-                "url": "/Topics/ProbabilityStatistics/ProbStats.html",
+                "url": "/Topics/Math/Statistics/ProbStats.html",
                 "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
             },
             {
                 "title": "Distributions",
-                "url": "/Topics/ProbabilityStatistics/Distributions.html",
+                "url": "/Topics/Math/Statistics/Distributions.html",
                 "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."
             },
             {
                 "title": "Tendencies",
-                "url": "/Topics/ProbabilityStatistics/Tendencies.html",
+                "url": "/Topics/Math/Statistics/Tendencies.html",
                 "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."
             },
             {
                 "title": "Expected Value",
-                "url": "/Topics/ProbabilityStatistics/ExpectedValue.html",
+                "url": "/Topics/Math/Statistics/ExpectedValue.html",
                 "snippet": "Study expected value and its applications in probability and statistics, including in decision-making and risk analysis..."
             }
         ]

@@ -13,7 +13,7 @@
 <script>
     async function loadSidebar() {
         try {
-            const response = await fetch('/Topics/pages.json');
+            const response = await fetch('../Topics/pages.json');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -98,7 +98,17 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        loadSidebar();
+        loadSidebar().then(() => {
+            document.querySelectorAll('.dropdown-toggle').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    if (submenu) {
+                        submenu.classList.toggle('open');
+                    }
+                });
+            });
+        });
         loadTheme();
 
         const themeToggle = document.getElementById('dark-mode-toggle');
