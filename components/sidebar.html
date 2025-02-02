@@ -9,15 +9,15 @@
         <p>For the aspiring Engineer</p>
     </div>
 </div>
+
 <script src="js/themeToggle.js"></script>
 <script>
     async function loadSidebar() {
         try {
-            const response = await fetch('../Topics/pages.json');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            const response = await fetch('/Topics/pages.json');
+            if (!response.ok) throw new Error('Network response was not ok');
             const pages = await response.json();
+            console.log('Sidebar pages data:', pages);
             const sidebarMenu = document.getElementById('sidebar-menu');
 
             for (const section in pages) {
@@ -32,16 +32,27 @@
                 dropdownMenu.className = 'dropdown-menu';
 
                 if (Array.isArray(pages[section])) {
-                    pages[section].forEach(page => {
-                        const pageItem = document.createElement('li');
-                        const pageLink = document.createElement('a');
-                        pageLink.href = page.url;
-                        pageLink.textContent = page.title;
-                        pageItem.appendChild(pageLink);
-                        dropdownMenu.appendChild(pageItem);
-                    });
+                    if (pages[section].length > 0) {
+                        pages[section].forEach(page => {
+                            const pageItem = document.createElement('li');
+                            const pageLink = document.createElement('a');
+                            const pageTitle = page.title || (page.snippet ? page.snippet.slice(0,30) + '...' : 'Untitled');
+                            const pageURL = page.url || '#';
+                            pageLink.href = pageURL;
+                            pageLink.textContent = pageTitle;
+                            pageItem.appendChild(pageLink);
+                            dropdownMenu.appendChild(pageItem);
+                        });
+                    } else {
+                        // Show message if the array is empty
+                        const emptyItem = document.createElement('li');
+                        emptyItem.textContent = 'No content available';
+                        dropdownMenu.appendChild(emptyItem);
+                    }
                 } else if (typeof pages[section] === 'object') {
+                    let hasSubContent = false;
                     for (const subSection in pages[section]) {
+                        hasSubContent = true;
                         const subSectionItem = document.createElement('li');
                         const subSectionLink = document.createElement('a');
                         subSectionLink.href = '#';
@@ -52,23 +63,37 @@
                         const subDropdownMenu = document.createElement('ul');
                         subDropdownMenu.className = 'dropdown-menu';
 
-                        pages[section][subSection].forEach(page => {
-                            const pageItem = document.createElement('li');
-                            const pageLink = document.createElement('a');
-                            pageLink.href = page.url;
-                            pageLink.textContent = page.title;
-                            pageItem.appendChild(pageLink);
-                            subDropdownMenu.appendChild(pageItem);
-                        });
-
+                        if (Array.isArray(pages[section][subSection]) && pages[section][subSection].length > 0) {
+                            pages[section][subSection].forEach(page => {
+                                const pageItem = document.createElement('li');
+                                const pageLink = document.createElement('a');
+                                const pageTitle = page.title || (page.snippet ? page.snippet.slice(0,30) + '...' : 'Untitled');
+                                const pageURL = page.url || '#';
+                                pageLink.href = pageURL;
+                                pageLink.textContent = pageTitle;
+                                pageItem.appendChild(pageLink);
+                                subDropdownMenu.appendChild(pageItem);
+                            });
+                        } else {
+                            const emptySub = document.createElement('li');
+                            emptySub.textContent = 'No content available';
+                            subDropdownMenu.appendChild(emptySub);
+                        }
                         subSectionItem.appendChild(subDropdownMenu);
                         dropdownMenu.appendChild(subSectionItem);
+                    }
+                    if (!hasSubContent) {
+                        const emptyItem = document.createElement('li');
+                        emptyItem.textContent = 'No content available';
+                        dropdownMenu.appendChild(emptyItem);
                     }
                 } else {
                     const pageItem = document.createElement('li');
                     const pageLink = document.createElement('a');
-                    pageLink.href = pages[section].url;
-                    pageLink.textContent = pages[section].title;
+                    const pageTitle = pages[section].title || (pages[section].snippet ? pages[section].snippet.slice(0,30) + '...' : 'Untitled');
+                    const pageURL = pages[section].url || '#';
+                    pageLink.href = pageURL;
+                    pageLink.textContent = pageTitle;
                     pageItem.appendChild(pageLink);
                     dropdownMenu.appendChild(pageItem);
                 }
@@ -78,6 +103,8 @@
             }
         } catch (error) {
             console.error('Failed to load sidebar:', error);
+            const sidebarMenu = document.getElementById('sidebar-menu');
+            sidebarMenu.innerHTML = '<li>Error loading sidebar content. Please try refreshing the page.</li>';
         }
     }
 
@@ -104,7 +131,7 @@
                     e.preventDefault();
                     const submenu = this.nextElementSibling;
                     if (submenu) {
-                        submenu.classList.toggle('open');
+                        submenu.classList.toggle('active'); // Changed from "open" to "active"
                     }
                 });
             });
