@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Load pages.json and build the menu
-  fetch('Topics/pages.json')
+  fetch('./Topics/pages.json') // changed relative path
     .then(response => response.json())
     .then(data => {
       

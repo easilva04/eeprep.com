@@ -5,7 +5,7 @@ const FILES_TO_CACHE = [
     '/css/styles.css',         // CSS file
     '/js/search.js',           // Search JS file
     '/js/service-worker.js',   // Service Worker JS file
-    '/components/sidebar.html',// Sidebar content cache added
+    '/components/loadSidebar.html',// Sidebar content cache added
     'https://cdn.jsdelivr.net/npm/marked/marked.min.js', // External JS library
     'https://polyfill.io/v3/polyfill.min.js?features=es6', // Polyfill
     'https://tikzjax.com/v1/tikzjax.js',                // TikZJax
