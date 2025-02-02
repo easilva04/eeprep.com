@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
       // Optionally disable click toggling:
       // initDropdowns();
+      // After sidebar is built, attach hamburger listener:
+      initHamburger();
     })
     .catch(error => console.error('Error loading pages:', error));
 
@@ -52,4 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Removed toggle functionality since the sidebar should always be expanded
   // function initDropdowns() { ... }
+
+  function initHamburger() {
+    const hamburger = document.getElementById('hamburgerMenu');
+    hamburger.addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('open');
+    });
+  }
 });
