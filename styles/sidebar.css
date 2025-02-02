@@ -115,4 +115,12 @@
   } 
   
   /* ...existing code... */
-  
+
+/* Sidebar toggle styles */
+.sidebar {
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+.sidebar.collapsed {
+    transform: translateX(-220px); /* Adjust value to fully hide sidebar */
+}
