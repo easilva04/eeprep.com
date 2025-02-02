@@ -114,13 +114,17 @@
     margin: 0;
   } 
   
-  /* ...existing code... */
+
+
 
 /* Sidebar toggle styles */
 .sidebar {
     transform: translateX(0);
     transition: transform 0.3s ease;
+    background-color: #000; /* Higher contrast background */
+    color: #fff;            /* Higher contrast text */
+    width: 20%;             /* Use a percentage of the page */
 }
 .sidebar.collapsed {
-    transform: translateX(-220px); /* Adjust value to fully hide sidebar */
+    transform: translateX(-100%); /* Fully collapse sidebar using percentage */
 }

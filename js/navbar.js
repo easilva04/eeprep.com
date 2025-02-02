@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Setup hamburger menu functionality
         const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const sidebar = document.querySelector('.sidebar');
+        // Use the #sidebar-container to target the sidebar injected in index.html
+        const sidebar = document.getElementById('sidebar-container');
         if (hamburgerMenu && sidebar) {  // Added check
             hamburgerMenu.addEventListener('click', () => {
                 sidebar.classList.toggle('collapsed');
