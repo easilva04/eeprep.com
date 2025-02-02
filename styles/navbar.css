@@ -4,19 +4,19 @@
     left: 0;
     right: 0;
     height: var(--navbar-height);
-    background-color: rgba(255, 255, 255, 0.8); /* Updated for translucency */
+    background-color: var(--off-white);
     box-shadow: var(--shadow-md);
     display: flex;
     justify-content: space-between;
     align-items: center; /* Ensure items are centered vertically */
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     z-index: 1100;
 }
 
 .navbar-left {
     display: flex;
     align-items: center; /* Ensure items are centered vertically */
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .navbar-title {
@@ -41,11 +41,27 @@
     font-family: var(--font-family);
 }
 
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--black);
+    transition: all 0.3s ease;
+}
 
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
 }
 
 .search-container {

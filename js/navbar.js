@@ -8,33 +8,13 @@ class SearchEngine {
     }
 
     async initializeSearchIndex() {
-        try {
-            const response = await fetch('/Topics/pages.json');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const pages = await response.json();
-
-            for (const section in pages) {
-                if (Array.isArray(pages[section])) {
-                    pages[section].forEach(page => {
-                        this.addToIndex(page.title, {
-                            title: page.title,
-                            url: page.url,
-                            excerpts: [page.snippet]
-                        });
-                    });
-                } else {
-                    this.addToIndex(pages[section].title, {
-                        title: pages[section].title,
-                        url: pages[section].url,
-                        excerpts: [pages[section].snippet]
-                    });
-                }
-            }
-        } catch (error) {
-            console.error('Failed to initialize search index:', error);
-        }
+        // Initialize with some basic content
+        this.addToIndex('home', {
+            title: 'Home',
+            url: '/',
+            excerpts: ['Main page of EE Prep']
+        });
+        // Add more index entries as needed
         return true;
     }
 
@@ -54,14 +34,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         navbarContainer.innerHTML = await response.text();
         document.body.prepend(navbarContainer.firstChild);
 
-        // Setup hamburger to toggle sidebar
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const sidebar = document.getElementById('sidebar-container');
-        if (hamburgerBtn && sidebar) {
-            hamburgerBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('open');
-            });
-        }
+        // Setup hamburger menu functionality
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            hamburgerMenu.classList.toggle('active');
+        });
 
         // Setup basic search icon functionality
         const searchIcon = document.querySelector('.search-icon');
@@ -147,15 +127,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 dropdown.classList.remove('active');
             }
         });
-
-        // Ensure the search element exists and that search term is a string before calling toLowerCase
-        const searchElement = document.getElementById('navbar-search');
-        if (searchElement) {
-            const searchTerm = searchElement.value || '';
-            if (typeof searchTerm === 'string' && searchTerm.toLowerCase) {
-                // initialize search index...
-            }
-        }
 
     } catch (error) {
         console.error('Error loading navbar:', error);
