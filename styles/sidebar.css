@@ -1,68 +1,73 @@
 /* ...existing code... */
 
-
-
 /* Dynamic sidebar styles */
 #sidebar-container {
     margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
+    padding: 1%;
+    width: 15%;
+    background-color: #f0f0f0;
     position: fixed;
-    height: 100%;
+    height: calc(100% - var(--navbar-height, 60px)); /* Adjust height accordingly */
     overflow: auto;
-    
-  }
-  .sidebar-list{
+    flex-direction: column;
+    top: var(--navbar-height, 60px); /* Set top offset; default to 60px if --navbar-height not defined */
+    z-index: 900; /* Ensure it sits below the navbar (navbar usually z-index: 1100) */
+}
+.sidebar-list{
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .main-content {
-    margin-left: 200px; /* Same width as sidebar */
-    padding: 20px;
-  }
-  
-  
-  /* Dropdown button */
-  .dropdown-btn {
-    width: 100%;
+}
+
+/* Ensure the main content takes available space */
+.sidebar-content {
+    flex: 1;
+}
+
+/* Sticky footer styles */
+.sidebar-footer {
+    margin-top: auto;
     padding: 10px;
-    background-color: #ddd;
+    background-color: #111; /* Optional: contrasting background */
+    color: #fff;
+}
+
+/* Dropdown button */
+.dropdown-btn {
+    width: 85%;
+    padding: 10px;
     border: none;
     text-align: left;
     cursor: pointer;
     font-size: 16px;
     transition: 0.3s;
     border-radius: 8px; /* Adjust this value for more/less rounding */
-    background-color: #ddd; /* Optional: A light background */
     padding: 10px 15px;
     margin: 5px; /* Adds spacing around buttons */
     border: none;
     cursor: pointer;
     
-  }
-  
-  /* Style when button is hovered */
-  .dropdown-btn:hover {
+}
+
+/* Style when button is hovered */
+.dropdown-btn:hover {
     background-color: #ccc;
-  }
-  
-  /* Initially hide the dropdown container */
-  .dropdown-container {
+}
+
+/* Initially hide the dropdown container */
+.dropdown-container {
     display: none;
     padding-left: 15px;
     background-color: #eaeaea;
     list-style-type: none
-  }
-  
-  /* Show dropdown when active */
-  .dropdown-container.show {
+}
+
+/* Show dropdown when active */
+.dropdown-container.show {
     display: block;
-  }
-  
-  /* body.content {
+}
+
+/* body.content {
     margin-left: 200px;
     padding: 1px 16px;
     height: 1000px;
