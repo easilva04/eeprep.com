@@ -2,12 +2,23 @@
 
 /* Dynamic sidebar styles */
 .sidebar-list {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
 }
 
-#sidebar {
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* .sidebar-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -23,9 +34,9 @@
 
 #sidebar.open {
   transform: translateX(0);
-}
+} */
 
-.dropdown-btn {
+/* .dropdown-btn {
   background: none;
   border: none;
   color: inherit;
@@ -36,21 +47,21 @@
   cursor: pointer;
   outline: none;
   transition: background 0.3s;
-}
+} */
 
-.dropdown-btn:hover,
+/* .dropdown-btn:hover,
 .dropdown-btn.active {
   background-color: #34495e;
-}
+} */
 
-.dropdown-container {
+/* .dropdown-container { */
   /* Remove collapsing behavior */
-  max-height: none;
+  /* max-height: none;
   overflow: visible;
   transition: none;
   list-style: none;
   padding-left: 15px;
   margin: 0;
-}
+} */
 
 /* ...existing code... */

@@ -3,8 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch('Topics/pages.json')
     .then(response => response.json())
     .then(data => {
-      const sidebar = document.getElementById('sidebar');
+      
+      const sidebar = document.getElementById('sidebar-container');
+      if (sidebar){
       sidebar.innerHTML = buildMenu(data);
+      } else {
+        console.error("Sidebar not found")
+      }
       // Automatically add "show" class to all dropdown containers
       document.querySelectorAll(".dropdown-container").forEach(container => container.classList.add("show"));
       // Optionally disable click toggling:
@@ -56,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // function initDropdowns() { ... }
 
   function initHamburger() {
+    console.log("hamburger element:", document.getElementById('hamburgerMenu'));
     const hamburger = document.getElementById('hamburgerMenu');
     hamburger.addEventListener('click', () => {
       document.getElementById('sidebar').classList.toggle('open');
