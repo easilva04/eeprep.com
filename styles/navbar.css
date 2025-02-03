@@ -159,6 +159,17 @@ body.dark-mode .search-icon svg {
     
     .title-mobile {
         display: block;
-        font-size: var(--font-size-h3); /* Adjust mobile title size */
+        font-size: 1.8rem; /* Increased mobile title font */
+    }
+    
+    /* Increase padding for navbar-right for easier tapping */
+    .navbar-right {
+        padding: 0 1rem;
+    }
+    
+    /* Adjust search input and icons for mobile usability */
+    .search-input {
+        padding: 0.75rem;
+        font-size: 1rem;
     }
 }

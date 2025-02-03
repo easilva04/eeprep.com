@@ -7,6 +7,7 @@
 @media (max-width: 768px) {
     body {
         padding: var(--navbar-height) 2% 0 2%;
+        font-size: 1.1rem; /* Increase overall font size for better readability */
     }
 
     .main-content {
@@ -21,6 +22,7 @@
     
     .title-mobile {
         display: block;
+        font-size: 1.8rem; /* Larger mobile title for clarity */
     }
 
     .sidebar {
@@ -37,6 +39,9 @@
     .dropdown-menu {
         max-height: none; /* Allow full expansion */
         overflow: visible; /* Ensure dropdown is not cut off */
+        font-size: 1.1rem; /* Improve dropdown font size */
+        padding: 1rem; /* Improve dropdown padding */
+        border-radius: 8px; /* Improve dropdown border radius */
     }
 
     .dropdown-menu.active {
@@ -45,7 +50,7 @@
     }
 
     .navbar {
-        padding: 0 1rem; /* Reduce padding for better fit on mobile */
+        padding: 1rem; /* Enhance navbar spacing and tap areas */
     }
 
     .navbar-title {
@@ -53,8 +58,8 @@
     }
 
     .hamburger-menu span {
-        width: 20px; /* Adjust size for better visibility */
-        height: 2px;
+        width: 30px; /* increased tap target width */
+        height: 3px; /* thicker bar */
     }
 
     .search-input {
@@ -95,12 +100,12 @@
         background-color: var(--black);
     }
 
-    button {
+    button, .dropdown-btn {
         background-color: var(--grey);
         color: var(--white);
         border: 1px solid var(--grey);
         border-radius: var(--border-radius);
-        padding: 0.5rem 1rem;
+        padding: 0.75rem 1rem; /* Adjust button tap area */
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
     }
