@@ -51,6 +51,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("Sidebar already present");
         }
 
+        // Ensure sidebar is collapsed on non-index pages
+        if (window.location.pathname !== '/' && !window.location.pathname.endsWith('/index.html')) {
+            if (sidebar && !sidebar.classList.contains('collapsed')) {
+                sidebar.classList.add('collapsed');
+                if (hamburgerMenu) {
+                    hamburgerMenu.classList.remove('active');
+                }
+            }
+        }
+
         // Setup hamburger menu functionality with toggle system
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         if (hamburgerMenu && sidebar) {
