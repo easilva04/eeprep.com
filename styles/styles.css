@@ -1,43 +1,39 @@
-/* Form container */
 form#contactForm {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9
 }
 
-/* Form fields */
-form#contactForm input[type="text"],
-form#contactForm input[type="email"],
+form#contactForm input[type=email],
+form#contactForm input[type=text],
 form#contactForm textarea {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
-/* Submit button */
-form#contactForm button[type="submit"] {
+form#contactForm button[type=submit] {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 16px
 }
 
-form#contactForm button[type="submit"]:hover {
-    background-color: #0056b3;
+form#contactForm button[type=submit]:hover {
+    background-color: #0056b3
 }
 
-/* Loading state */
-form#contactForm button[type="submit"]:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+form#contactForm button[type=submit]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed
 }

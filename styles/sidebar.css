@@ -1,133 +1,67 @@
-/* ...existing code... */
-
-/* Dynamic sidebar styles */
 #sidebar-container {
-    margin: 0;
-    padding: 1%;
-    width: 15%;
-    background-color: #f0f0f0;
-    position: fixed;
-    height: calc(100% - var(--navbar-height, 60px)); /* Adjust height accordingly */
-    overflow: auto;
-    flex-direction: column;
-    top: var(--navbar-height, 60px); /* Set top offset; default to 60px if --navbar-height not defined */
-    z-index: 900; /* Ensure it sits below the navbar (navbar usually z-index: 1100) */
-    border: 2px solid black; /* Add a black outline */
-}
-.sidebar-list{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  margin: 0;
+  padding: 1%;
+  width: 15%;
+  background-color: #f0f0f0;
+  position: fixed;
+  height: calc(100% - var(--navbar-height, 60px));
+  overflow: auto;
+  flex-direction: column;
+  top: var(--navbar-height, 60px);
+  z-index: 900;
+  border: none;
+  box-shadow: var(--shadow-md)
 }
 
-/* Ensure the main content takes available space */
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0
+}
+
 .sidebar-content {
-    flex: 1;
+  flex: 1
 }
 
-/* Sticky footer styles */
 .sidebar-footer {
-    margin-top: auto;
-    padding: 10px;
-    background-color: #111; /* Optional: contrasting background */
-    color: #fff;
+  margin-top: auto;
+  padding: 10px;
+  background-color: #111;
+  color: #fff
 }
 
-/* Dropdown button */
 .dropdown-btn {
-    width: 85%;
-    padding: 10px;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-    border-radius: 8px; /* Adjust this value for more/less rounding */
-    padding: 10px 15px;
-    margin: 5px; /* Adds spacing around buttons */
-    border: none;
-    cursor: pointer;
-    
+  width: 85%;
+  padding: 10px 15px;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  transition: .3s;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer
 }
 
-/* Style when button is hovered */
 .dropdown-btn:hover {
-    background-color: #ccc;
+  background-color: #ccc
 }
 
-/* Initially hide the dropdown container */
 .dropdown-container {
-    display: none;
-    padding-left: 15px;
-    background-color: #eaeaea;
-    list-style-type: none
+  display: none;
+  padding-left: 15px;
+  background-color: #eaeaea;
+  list-style-type: none
 }
 
-/* Show dropdown when active */
 .dropdown-container.show {
-    display: block;
+  display: block
 }
 
-/* body.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-  } */
-  
-  /* .sidebar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translateX(-250px);
-    transition: transform 0.3s ease;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding: 20px;
-    width: 250px;
-    height: 100vh;
-    overflow-y: auto;
-  }
-  
-  #sidebar.open {
-    transform: translateX(0);
-  } */
-  
-  /* .dropdown-btn {
-    background: none;
-    border: none;
-    color: inherit;
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    transition: background 0.3s;
-  } */
-  
-  /* .dropdown-btn:hover,
-  .dropdown-btn.active {
-    background-color: #34495e;
-  } */
-  
-  /* .dropdown-container { */
-    /* Remove collapsing behavior */
-    /* max-height: none;
-    overflow: visible;
-    transition: none;
-    list-style: none;
-    padding-left: 15px;
-    margin: 0;
-  } 
-  
-
-
-
-/* Sidebar toggle styles */
 .sidebar {
-    transition: transform 0.3s ease;
-    transform: translateY(0);
+  transition: transform .3s;
+  transform: translateY(0)
 }
+
 .sidebar.collapsed {
-    transform: translateY(-100%);
+  transform: translateY(-100%)
 }
