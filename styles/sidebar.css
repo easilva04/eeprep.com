@@ -12,6 +12,7 @@
     flex-direction: column;
     top: var(--navbar-height, 60px); /* Set top offset; default to 60px if --navbar-height not defined */
     z-index: 900; /* Ensure it sits below the navbar (navbar usually z-index: 1100) */
+    border: 2px solid black; /* Add a black outline */
 }
 .sidebar-list{
     list-style-type: none;
@@ -124,12 +125,12 @@
 
 /* Sidebar toggle styles */
 .sidebar {
-    transform: translateX(0);
+    transform: translateY(0); /* Updated for vertical sliding */
     transition: transform 0.3s ease;
     background-color: #000; /* Higher contrast background */
     color: #fff;            /* Higher contrast text */
     width: 20%;             /* Use a percentage of the page */
 }
 .sidebar.collapsed {
-    transform: translateX(-100%); /* Fully collapse sidebar using percentage */
+    transform: translateY(-100%); /* Fully collapse sidebar using vertical sliding */
 }
