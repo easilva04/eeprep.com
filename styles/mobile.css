@@ -30,6 +30,7 @@
         will-change: transform;
         height: calc(100% - var(--navbar-height));
         overflow: auto; /* Ensure sidebar is scrollable on mobile */
+        width: 100%; /* Ensure a good sidebar width on mobile */
     }
 
     .sidebar-content {
@@ -113,5 +114,41 @@
     button:hover {
         background-color: var(--black);
         color: var(--white);
+    }
+
+    /* Override sidebar styles for full-screen display */
+    #sidebar-container {
+        top: 0;               /* Remove navbar offset */
+        left: 0;
+        width: 100vw;         /* Full viewport width */
+        height: 100vh;        /* Full viewport height */
+        z-index: 2000;        /* Bring sidebar to front */
+        padding: 1rem;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 100%;
+        /* Remove any transform to ensure full display */
+        transform: translateY(0);
+    }
+
+    /* Force full-screen sidebar container */
+    #sidebar-container {
+        position: fixed !important;
+        top: var(--navbar-height) !important; /* Ensure it starts below the navbar */
+        left: 0 !important;
+        width: 100vw !important;
+        height: calc(100vh - var(--navbar-height)) !important; /* Use remaining viewport height */
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 2000;
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 100%;
+        transform: none;
     }
 }
