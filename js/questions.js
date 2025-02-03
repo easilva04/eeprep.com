@@ -90,9 +90,18 @@ function initQuestions(topic) {
     checkButton.addEventListener('click', checkAnswers);
     newButton.addEventListener('click', loadAndDisplay);
     loadAndDisplay();
+
+    const questionElement = document.getElementById('question-container');
+    if (!questionElement) {
+        console.error('question-container element not found');
+        return; // Exit early if the element is missing
+    }
+    // Now safe to add event listener
+    questionElement.addEventListener('click', function(e) {
+        // ...existing event handling...
+    });
 }
 
-// Ensure initQuestions is called with the correct topic
 document.addEventListener('DOMContentLoaded', () => {
     const topic = document.body.getAttribute('data-topic');
     if (topic) {

@@ -48,29 +48,19 @@ self.addEventListener('activate', (event) => {
 });
 
 // Fetch files from cache or network with navigation preload and offline fallback
-self.addEventListener('fetch', (event) => {
-    if (event.request.mode === 'navigate') {
-        // For navigation requests, try preload, then network, then offline fallback.
-        event.respondWith(
-            (async () => {
-                try {
-                    const preloadResponse = await event.preloadResponse;
-                    if (preloadResponse) return preloadResponse;
-                    const networkResponse = await fetch(event.request);
-                    return networkResponse;
-                } catch (error) {
-                    console.error('Fetch failed; returning offline page instead.', error);
-                    const cache = await caches.open(CACHE_NAME);
-                    return await cache.match('/offline.html');
-                }
-            })()
-        );
-    } else {
-        // For non-navigation requests, serve from cache first.
-        event.respondWith(
-            caches.match(event.request)
-                .then((response) => response || fetch(event.request))
-                .catch((error) => console.error('Fetch error for non-navigation request:', error))
-        );
+self.addEventListener('fetch', event => {
+  // Use respondWith to wait for the preloadResponse (if available) or fallback to a network fetch.
+  event.respondWith((async () => {
+    try {
+      const preloadResponse = await event.preloadResponse;
+      if (preloadResponse) return preloadResponse;
+    } catch (e) {
+      console.error('Preload failed:', e);
     }
+    return fetch(event.request);
+  })());
+  // Use waitUntil to let the preload promise settle
+  event.waitUntil((async () => {
+    try { await event.preloadResponse; } catch (e) { /* swallow errors */ }
+  })());
 });

@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Load pages.json and build the menu
-  fetch('Topics/pages.json')
-    .then(response => response.json())
+  // Load pages.json using an absolute URL and checking for a valid response
+  fetch(new URL('/Topics/pages.json', window.location.origin))
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
       let menuContainer = document.getElementById('sidebar-menu');
       if (!menuContainer) {
@@ -64,21 +69,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   function attachDropdownListeners() {
-    //log message
     console.log("Attaching dropdown listeners...");
-    //get all the containers and close them
+    /* Close all dropdown containers initially */
     document.querySelectorAll(".dropdown-container").forEach(container => {
       container.classList.remove("show");
     });
-    //get all the main buttons and allow them to be open and closed on cliick
     const dropdownButtons = document.querySelectorAll(".dropdown-btn");
-  
+
     dropdownButtons.forEach(button => {
-      button.addEventListener("click", function () {
+      button.addEventListener("click", function (e) {
         const dropdownContainer = this.nextElementSibling;
-  
-        if (dropdownContainer) {
+        if (dropdownContainer && dropdownContainer.classList.contains("dropdown-container")) {
           dropdownContainer.classList.toggle("show");
+        } else {
+          // Always collapse the sidebar on any view when a page link button is clicked
+          const sidebar = document.getElementById('sidebar-container');
+          if (sidebar) {
+            sidebar.classList.add("collapsed");
+          }
         }
       });
     });

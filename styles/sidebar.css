@@ -125,12 +125,9 @@
 
 /* Sidebar toggle styles */
 .sidebar {
-    transform: translateY(0); /* Updated for vertical sliding */
     transition: transform 0.3s ease;
-    background-color: #000; /* Higher contrast background */
-    color: #fff;            /* Higher contrast text */
-    width: 20%;             /* Use a percentage of the page */
+    transform: translateY(0);
 }
 .sidebar.collapsed {
-    transform: translateY(-100%); /* Fully collapse sidebar using vertical sliding */
+    transform: translateY(-100%);
 }

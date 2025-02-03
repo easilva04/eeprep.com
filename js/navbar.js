@@ -33,19 +33,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         navbarContainer.innerHTML = await response.text();
         document.body.prepend(navbarContainer.firstChild);
+        console.log("Navbar injected");
 
-        // Setup hamburger menu functionality
+        // Ensure sidebar exists: if not, fetch and insert it using an absolute URL
+        let sidebar = document.getElementById('sidebar-container');
+        if (!sidebar) {
+            console.log("Sidebar not found, attempting to inject sidebar");
+            const sidebarResponse = await fetch(new URL('/components/sidebar.html', window.location.origin));
+            if (!sidebarResponse.ok) throw new Error(`HTTP error! status: ${sidebarResponse.status}`);
+            const sidebarHTML = await sidebarResponse.text();
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = sidebarHTML;
+            document.body.insertAdjacentElement('afterbegin', wrapper.firstChild);
+            sidebar = document.getElementById('sidebar-container');
+            console.log("Sidebar injected");
+        } else {
+            console.log("Sidebar already present");
+        }
+
+        // Setup hamburger menu functionality with toggle system
         const hamburgerMenu = document.querySelector('.hamburger-menu');
-        // Use the #sidebar-container to target the sidebar injected in index.html
-        const sidebar = document.getElementById('sidebar-container');
-        if (hamburgerMenu && sidebar) {  // Added check
-            hamburgerMenu.addEventListener('click', () => {
-                sidebar.classList.toggle('collapsed');
-                hamburgerMenu.classList.toggle('active');
+        if (hamburgerMenu && sidebar) {
+            hamburgerMenu.addEventListener('click', function () {
+                const isCollapsed = sidebar.classList.toggle('collapsed');
+                // When sidebar is not collapsed (open), mark hamburger as active
+                hamburgerMenu.classList.toggle('active', !isCollapsed);
             });
         } else {
             console.error("Hamburger menu or sidebar not found");
         }
+
+        // Add Escape key listener to close sidebar if open
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                if (sidebar && !sidebar.classList.contains('collapsed')) {
+                    sidebar.classList.add('collapsed');
+                    if (hamburgerMenu) {
+                        hamburgerMenu.classList.remove('active');
+                    }
+                }
+            }
+        });
 
         // Setup basic search icon functionality
         const searchIcon = document.querySelector('.search-icon');
