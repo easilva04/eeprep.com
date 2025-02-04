@@ -3,6 +3,7 @@
 @import url(sidebar.css);
 @import url(themes.css);
 @import url(styles.css);
+@import url(footer.css);
 
 *,
 .dark-mode-toggle,
@@ -113,7 +114,7 @@ h4 {
 body {
     line-height: 1.6;
     display: flex;
-    position: auto;
+    flex-direction: column; /* added */
     min-height: 100vh;
     justify-content: flex-start;
     align-items: flex-start;
@@ -124,7 +125,8 @@ body {
 .main-content {
     padding: 2rem;
     max-width: 90%;
-    margin: 1.5rem auto
+    margin: 1.5rem auto;
+    flex: 1; /* added */
 }
 
 #search-input,
