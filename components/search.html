@@ -14,8 +14,13 @@
 
 <body>
     <div class="topborder"></div>
-        <!-- Updated sidebar container with collapsed class -->
-    <div id="sidebar-container" class="sidebar collapsed"></div>
+    <!-- Include the navbar -->
+    <div id="navbar-placeholder"></div>
+    
+    <!-- Properly include the sidebar -->
+    <div id="sidebar-container" class="sidebar collapsed">
+        <!-- The sidebar content will be loaded via JavaScript -->
+    </div>
 
     <div class="main-content">
         <header>
@@ -125,10 +130,29 @@
         document.addEventListener('DOMContentLoaded', initSearch);
     </script>
 
+    <!-- Load the navbar and footer components -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load navbar
+            fetch('../components/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+                
+            // Load footer
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+
     <!-- Load other scripts -->
     <script src="../js/navbar.js"></script>
     <script src="../js/loadSidebar.js"></script>
     <script src="../js/themeToggle.js"></script>
-        <div id="footer-placeholder"></div>
-    </body>
+    <div id="footer-placeholder"></div>
+</body>
 </html>
