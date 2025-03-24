@@ -478,10 +478,6 @@ if (typeof window !== 'undefined') {
     setupRecaptchaOnForms();
 }
 
-// ====================================================================
-// START OF SITE.JS CODE
-// ====================================================================
-
 /**
  * Main site functionality for EEPrep
  * Ensures all components work together properly
@@ -572,6 +568,23 @@ function fixSidebarCollapse() {
             }
         });
     }
+    
+    // Fix direct navigation in collapsed mode
+    const sidebarLinks = document.querySelectorAll('.sidebar-link:not(.dropdown-toggle)');
+    sidebarLinks.forEach(link => {
+        // Remove existing event listener by cloning
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+        
+        // Add new event listener that checks for collapsed state
+        newLink.addEventListener('click', function(e) {
+            // For links in collapsed mode on desktop, just navigate directly
+            if (window.innerWidth >= 768 && sidebar.classList.contains('collapsed')) {
+                console.log('Direct navigation in collapsed mode');
+                // Let default navigation occur
+            }
+        });
+    });
     
     // Update toggle icon
     function updateToggleIcon(isCollapsed) {
@@ -743,3 +756,109 @@ document.addEventListener('click', function(e) {
     }
 });
 
+
+/**
+ * Asset Debugger - Helps identify and fix asset loading issues
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Asset debugger running...');
+    
+    // Check for logo element
+    const logoElement = document.getElementById('sidebar-logo');
+    if (logoElement) {
+        console.log('Logo element found with src:', logoElement.src);
+        
+        // Verify all possible image paths
+        const basePath = getBasePath();
+        const possiblePaths = [
+            `${basePath}/Info/Config/Assets/images/eeprep.png`,
+            `${basePath}/Assets/images/eeprep.png`,
+            `${basePath}/images/eeprep.png`,
+            `${basePath}/eeprep.png`,
+            '/Info/Config/Assets/images/eeprep.png',
+            '/Assets/images/eeprep.png',
+            '/images/eeprep.png',
+            '/eeprep.png'
+        ];
+        
+        console.log('Possible image paths:');
+        possiblePaths.forEach(path => {
+            const img = new Image();
+            img.onload = () => console.log(`✓ Image exists at: ${path}`);
+            img.onerror = () => console.log(`✗ Image NOT found at: ${path}`);
+            img.src = path;
+        });
+    } else {
+        console.error('Logo element not found!');
+    }
+    
+    // Verify toggle button
+    const toggleButton = document.getElementById('toggle-sidebar');
+    if (toggleButton) {
+        console.log('Toggle button found:', toggleButton);
+        console.log('Toggle button html:', toggleButton.innerHTML);
+        console.log('Toggle button visibility:', getComputedStyle(toggleButton).display);
+        
+        // Add a test click handler
+        toggleButton.addEventListener('click', function() {
+            console.log('Debug: Toggle button clicked');
+        });
+    } else {
+        console.error('Toggle button not found!');
+    }
+    
+    // Verify mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    if (mobileToggle) {
+        console.log('Mobile toggle button found:', mobileToggle);
+        console.log('Mobile toggle html:', mobileToggle.innerHTML);
+        console.log('Mobile toggle visibility:', getComputedStyle(mobileToggle).display);
+        
+        // Add a test click handler
+        mobileToggle.addEventListener('click', function() {
+            console.log('Debug: Mobile toggle clicked');
+        });
+    } else {
+        console.error('Mobile toggle button not found!');
+    }
+    
+    // Check sidebar status
+    const sidebar = document.getElementById('sidebar-container');
+    if (sidebar) {
+        console.log('Sidebar found with classes:', sidebar.className);
+        console.log('Sidebar computed style transform:', getComputedStyle(sidebar).transform);
+        console.log('Sidebar width:', getComputedStyle(sidebar).width);
+    } else {
+        console.error('Sidebar not found!');
+    }
+});
+
+// Helper function that gives more details about path resolution
+function getBasePath() {
+    const pathSegments = window.location.pathname.split('/').filter(segment => segment !== '');
+    
+    console.log('Current pathname:', window.location.pathname);
+    console.log('Path segments:', pathSegments);
+    
+    // Handle root path
+    if (pathSegments.length === 0 || 
+        (pathSegments.length === 1 && (pathSegments[0] === 'index.html' || pathSegments[0] === ''))) {
+        console.log('Detected root path, returning empty base path');
+        return '';
+    }
+    
+    // Calculate relative path to root
+    let basePath = '';
+    for (let i = 0; i < pathSegments.length; i++) {
+        if (i === pathSegments.length - 1 && pathSegments[i].includes('.')) {
+            console.log('Skipping filename:', pathSegments[i]);
+            continue; // Skip filename
+        }
+        basePath += '../';
+    }
+    
+    const result = basePath === '' ? '' : basePath.slice(0, -1);
+    console.log('Calculated base path:', result);
+    return result;
+}

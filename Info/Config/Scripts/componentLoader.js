@@ -165,261 +165,403 @@ function getBasePath() {
     return basePath === '' ? '' : basePath.slice(0, -1);
 }
 
-// Function to initialize sidebar behavior
+// Function to initialize sidebar behavior - fixed for proper visibility
 function initializeSidebar() {
-    console.log('Initializing sidebar behavior');
+    console.log('Initializing sidebar behavior with improved collapse system');
     
-    // Toggle sidebar visibility
+    const sidebar = document.getElementById('sidebar-container');
     const toggleButton = document.getElementById('toggle-sidebar');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    
+    if (!sidebar) {
+        console.warn('Sidebar container not found, skipping sidebar initialization');
+        return;
+    }
+    
+    // Initialize sidebar based on screen size and stored preference
+    const isMobile = window.innerWidth < 768;
+    
+    if (!isMobile) {
+        // On desktop, check for stored collapsed state
+        const sidebarState = localStorage.getItem('sidebar-collapsed');
+        
+        // IMPORTANT: Remove inline transform that might be preventing proper display
+        sidebar.style.transform = '';
+        
+        if (sidebarState === 'true') {
+            sidebar.classList.add('collapsed');
+        } else {
+            sidebar.classList.remove('collapsed');
+        }
+        updateToggleIcon(sidebar.classList.contains('collapsed'));
+    } else {
+        // On mobile, always start with sidebar hidden
+        sidebar.classList.remove('collapsed'); // Remove collapsed state on mobile
+        sidebar.classList.remove('active');    // Start with sidebar hidden
+        
+        // Add swipe indicator if it doesn't exist
+        if (!document.querySelector('.swipe-indicator')) {
+            const swipeIndicator = document.createElement('div');
+            swipeIndicator.className = 'swipe-indicator';
+            document.body.appendChild(swipeIndicator);
+            
+            // Make swipe indicator clickable to open sidebar
+            swipeIndicator.addEventListener('click', function() {
+                sidebar.classList.add('active');
+                if (sidebarOverlay) sidebarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+    }
+    
+    // Toggle sidebar visibility with desktop/mobile awareness
     if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar-container');
-            if (sidebar) {
+        console.log('Setting up toggle button listener');
+        // Remove any existing listeners by cloning
+        const newToggleButton = toggleButton.cloneNode(true);
+        toggleButton.parentNode.replaceChild(newToggleButton, toggleButton);
+        
+        newToggleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Toggle button clicked');
+            
+            if (isMobile) {
+                // On mobile, toggle active state
+                sidebar.classList.toggle('active');
+                if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+            } else {
+                // On desktop, toggle collapsed state but keep visible
                 sidebar.classList.toggle('collapsed');
-                
-                // Don't toggle active class on desktop
-                if (window.innerWidth < 768 && !sidebar.classList.contains('active')) {
-                    sidebar.classList.add('active');
-                }
-                
-                // Update button icon based on state
-                if (sidebar.classList.contains('collapsed')) {
-                    // On desktop the button will be hidden by CSS
-                    // On mobile we update the icon
-                    toggleButton.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    `;
-                } else {
-                    toggleButton.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="19" y1="12" x2="5" y2="12"></line>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                    `;
-                }
-                
-                // Save collapsed state to localStorage only on desktop
-                if (window.innerWidth >= 768) {
-                    localStorage.setItem('sidebar-collapsed', sidebar.classList.contains('collapsed'));
-                    
-                    // Ensure proper styling for toggle button on desktop
-                    if (sidebar.classList.contains('collapsed')) {
-                        toggleButton.style.opacity = '0';
-                        toggleButton.style.visibility = 'hidden';
-                    } else {
-                        toggleButton.style.opacity = '1';
-                        toggleButton.style.visibility = 'visible';
-                    }
-                }
-                
-                console.log('Sidebar toggled:', sidebar.classList.contains('collapsed') ? 'collapsed' : 'expanded');
+                const isCollapsed = sidebar.classList.contains('collapsed');
+                localStorage.setItem('sidebar-collapsed', isCollapsed);
+                updateToggleIcon(isCollapsed);
+                console.log('Sidebar collapsed state:', isCollapsed);
             }
         });
     }
     
     // Mobile menu toggle with improved behavior
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-    
     if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar-container');
-            if (sidebar) {
-                sidebar.classList.toggle('active');
-                
-                // Toggle body scroll
-                if (sidebar.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-                
-                if (sidebarOverlay) {
-                    sidebarOverlay.classList.toggle('active');
-                }
-                console.log('Mobile sidebar toggled:', sidebar.classList.contains('active') ? 'active' : 'inactive');
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Mobile menu toggle clicked');
+            sidebar.classList.toggle('active');
+            console.log('Active class toggled:', sidebar.classList.contains('active'));
+            
+            if (sidebarOverlay) {
+                sidebarOverlay.classList.toggle('active');
             }
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
         });
     }
     
     // Close sidebar when clicking overlay
     if (sidebarOverlay) {
         sidebarOverlay.addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar-container');
-            if (sidebar) {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     }
-    
-    // Close sidebar when pressing Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const sidebar = document.getElementById('sidebar-container');
-            if (sidebar && sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-                if (sidebarOverlay) {
-                    sidebarOverlay.classList.remove('active');
-                }
-                document.body.style.overflow = '';
-            }
-        }
-    });
 
-    // Handle dropdowns in sidebar
+    // Function to toggle dropdown state
+    function toggleDropdown(item) {
+        const wasActive = item.classList.contains('active');
+        
+        // Close other dropdowns first
+        dropdownToggles.forEach(otherToggle => {
+            const otherItem = otherToggle.closest('.sidebar-item');
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // Toggle this dropdown
+        item.classList.toggle('active', !wasActive);
+    }
+    
+    // Make topic links open sidebar on mobile but navigate directly in collapsed mode on desktop
+    const topicLinks = document.querySelectorAll('.sidebar-link:not(.dropdown-toggle)');
+    topicLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar-container');
+            const isCollapsed = sidebar.classList.contains('collapsed');
+            const isMobile = window.innerWidth < 768;
+            
+            // On mobile with closed sidebar, open sidebar first
+            if (isMobile && !sidebar.classList.contains('active')) {
+                e.preventDefault();
+                sidebar.classList.add('active');
+                if (sidebarOverlay) sidebarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Navigate after a slight delay
+                const href = this.getAttribute('href');
+                if (href) {
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                }
+            }
+            // In collapsed mode on desktop, just navigate directly
+            else if (!isMobile && isCollapsed) {
+                // Let the default navigation happen
+                // Don't prevent default - this allows normal navigation
+                console.log('Navigating directly in collapsed mode');
+            }
+        });
+    });
+    
+    // Fix dropdown toggles to not expand in collapsed mode on desktop
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
+            const sidebar = document.getElementById('sidebar-container');
+            const isCollapsed = sidebar.classList.contains('collapsed');
+            const isMobile = window.innerWidth < 768;
             const item = this.closest('.sidebar-item');
-            item.classList.toggle('active');
             
-            // Close other dropdowns
-            if (item.classList.contains('active')) {
-                dropdownToggles.forEach(otherToggle => {
-                    const otherItem = otherToggle.closest('.sidebar-item');
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-            }
-        });
-    });
-    
-    // Search functionality
-    const searchInput = document.getElementById('sidebar-search-input');
-    const searchButton = document.getElementById('search-button');
-    const searchOverlay = document.getElementById('search-overlay');
-    const searchClose = document.getElementById('search-close');
-    
-    if (searchInput && searchButton && searchOverlay) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch(this.value);
-            }
-        });
-        
-        searchButton.addEventListener('click', function() {
-            performSearch(searchInput.value);
-        });
-        
-        if (searchClose) {
-            searchClose.addEventListener('click', function() {
-                searchOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-    }
-    
-    function performSearch(query) {
-        if (!query.trim()) return;
-        
-        const searchOverlay = document.getElementById('search-overlay');
-        const searchResultsDropdown = document.getElementById('search-results-dropdown');
-        
-        if (searchOverlay) {
-            searchOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            
-            // If we have search results dropdown, clear it
-            if (searchResultsDropdown) {
-                searchResultsDropdown.innerHTML = '<div class="search-result"><p>Searching...</p></div>';
-            }
-            
-            // Initialize search results
-            // This would normally call a search function to populate results
-            console.log('Performing search for:', query);
-        }
-    }
-    
-    // Set current year in footer
-    const yearElements = document.querySelectorAll('#current-year, #footer-year');
-    yearElements.forEach(el => {
-        if (el) el.textContent = new Date().getFullYear();
-    });
-    
-    // Initialize theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            if (window.toggleTheme) {
-                window.toggleTheme();
-            } else {
-                document.body.classList.toggle('dark-mode');
-                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-            }
-            console.log('Theme toggled to:', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-        });
-    }
-    
-    // Apply stored theme if available
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-}
-
-// Handle window resize - Improved to manage responsive behavior properly
-window.addEventListener('resize', debounce(function() {
-    // Adjust sidebar based on screen size
-    const sidebar = document.getElementById('sidebar-container');
-    const toggleButton = document.getElementById('toggle-sidebar');
-    
-    if (sidebar) {
-        if (window.innerWidth < 768) {
-            // On mobile
-            if (sidebar.classList.contains('collapsed') && !sidebar.classList.contains('active')) {
-                // When transitioning to mobile, ensure collapsed sidebar is hidden if not active
+            // On mobile with closed sidebar, open sidebar first
+            if (isMobile && !sidebar.classList.contains('active')) {
+                sidebar.classList.add('active');
+                if (sidebarOverlay) sidebarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Slight delay to allow sidebar animation to complete
+                setTimeout(() => {
+                    toggleDropdown(item);
+                }, 300);
+            } 
+            // In collapsed mode on desktop, expand sidebar first, then show dropdown
+            else if (!isMobile && isCollapsed) {
                 sidebar.classList.remove('collapsed');
+                localStorage.setItem('sidebar-collapsed', false);
+                updateToggleIcon(false);
+                
+                // Slight delay to allow sidebar animation to complete
+                setTimeout(() => {
+                    toggleDropdown(item);
+                }, 300);
             }
-            
-            // Ensure toggle button is visible on mobile
-            if (toggleButton) {
-                toggleButton.style.opacity = '1';
-                toggleButton.style.visibility = 'visible';
+            else {
+                toggleDropdown(item);
             }
-        } else {
-            // On desktop
-            const overlay = document.getElementById('sidebar-overlay');
-            if (overlay) {
-                overlay.classList.remove('active');
+        });
+    });
+    
+    // Improved touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartTime = 0;
+    let touchEndTime = 0;
+    
+    // Track touch start position and time
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartTime = new Date().getTime();
+    }, { passive: true });
+    
+    // Handle touch move for instant feedback
+    document.addEventListener('touchmove', function(e) {
+        if (!isMobile) return;
+        
+        // Only respond to touches starting from edge
+        if (touchStartX > 30) return;
+        
+        const currentX = e.changedTouches[0].screenX;
+        const diff = currentX - touchStartX;
+        
+        // If swiping from left edge and sidebar is not active
+        if (diff > 30 && touchStartX < 30 && !sidebar.classList.contains('active')) {
+            // Show visual indicator of swipe progress
+            const swipeProgress = Math.min(diff / 150, 1); // 150px for full open
+            sidebar.style.transform = `translateX(${-100 + (swipeProgress * 100)}%)`;
+            if (sidebarOverlay) {
+                sidebarOverlay.style.opacity = swipeProgress * 0.5;
+                sidebarOverlay.style.display = 'block';
+            }
+        }
+    }, { passive: true });
+    
+    // Handle touch end with velocity detection
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndTime = new Date().getTime();
+        
+        // Calculate swipe speed (pixels per millisecond)
+        const swipeDistance = touchEndX - touchStartX;
+        const swipeTime = touchEndTime - touchStartTime;
+        const swipeSpeed = Math.abs(swipeDistance) / swipeTime;
+        
+        // Reset any temporary transform styles
+        sidebar.style.transform = '';
+        if (sidebarOverlay) {
+            sidebarOverlay.style.opacity = '';
+        }
+        
+        handleSwipe(swipeDistance, swipeSpeed);
+    }, { passive: true });
+    
+    // Process the swipe gesture with enhanced detection
+    function handleSwipe(swipeDistance, swipeSpeed) {
+        const swipeThreshold = 70; // Minimum distance for swipe
+        const edgeThreshold = 30;  // Distance from edge to start swipe
+        const speedThreshold = 0.2; // Speed threshold for quick swipes (pixels per ms)
+        
+        if (!isMobile) return;
+        
+        // If sidebar is open, right to left swipe (close sidebar)
+        // Either a long swipe or a quick flick will work
+        if ((swipeDistance < -swipeThreshold || (swipeDistance < 0 && swipeSpeed > speedThreshold)) 
+            && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+            if (sidebarOverlay) {
+                sidebarOverlay.classList.remove('active');
+                sidebarOverlay.style.display = '';
             }
             document.body.style.overflow = '';
-            
-            // Respect saved collapsed state on desktop
-            const sidebarState = localStorage.getItem('sidebar-collapsed');
-            if (sidebarState === 'true') {
-                sidebar.classList.add('collapsed');
-                // Also hide toggle button on desktop when collapsed
-                if (toggleButton) {
-                    toggleButton.style.opacity = '0';
-                    toggleButton.style.visibility = 'hidden';
-                }
-            } else if (sidebarState === 'false') {
-                sidebar.classList.remove('collapsed');
-                // Show toggle button when expanded
-                if (toggleButton) {
-                    toggleButton.style.opacity = '1';
-                    toggleButton.style.visibility = 'visible';
-                }
+        }
+        
+        // If sidebar is closed, left to right swipe from edge (open sidebar)
+        // Either a long swipe or a quick flick will work
+        if ((swipeDistance > swipeThreshold || (swipeDistance > 0 && swipeSpeed > speedThreshold)) 
+            && touchStartX < edgeThreshold && !sidebar.classList.contains('active')) {
+            sidebar.classList.add('active');
+            if (sidebarOverlay) {
+                sidebarOverlay.classList.add('active');
+                sidebarOverlay.style.display = '';
             }
+            document.body.style.overflow = 'hidden';
         }
     }
-}, 250));
+    
+    // Close sidebar when pressing Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Update toggle button icon based on sidebar state
+    function updateToggleIcon(isCollapsed) {
+        const toggleButton = document.getElementById('toggle-sidebar');
+        if (!toggleButton) return;
+        
+        console.log('Updating toggle icon to', isCollapsed ? 'collapsed' : 'expanded');
+        
+        // Use arrows that indicate the action that will happen when clicked
+        toggleButton.innerHTML = isCollapsed ? 
+            // Arrow pointing right (will open sidebar)
+            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>` : 
+            // Arrow pointing left (will collapse sidebar)
+            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>`;
+    }
+    
+    // Enhanced window resize handler - fixed for better behavior
+    window.addEventListener('resize', debounce(function() {
+        const currentIsMobile = window.innerWidth < 768;
+        
+        // On transition to desktop
+        if (!currentIsMobile) {
+            // Ensure sidebar is visible
+            const sidebarState = localStorage.getItem('sidebar-collapsed') === 'true';
+            sidebar.classList.toggle('collapsed', sidebarState);
+            sidebar.classList.remove('active');
+            sidebar.style.transform = ''; // Remove any inline transform
+            
+            if (sidebarOverlay) {
+                sidebarOverlay.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+            updateToggleIcon(sidebarState);
+        } 
+        // On transition to mobile
+        else if (currentIsMobile && sidebar.style.transform === '') {
+            sidebar.classList.remove('collapsed');
+            sidebar.classList.remove('active');
+            
+            if (sidebarOverlay) {
+                sidebarOverlay.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        }
+    }, 200));
+    
+    console.log('Sidebar initialization complete');
+}
 
-// Set logo source based on current path
+// Set logo source based on current path - with improved sizing
 function setLogoSource() {
     const basePath = getBasePath();
     const logoElement = document.getElementById('sidebar-logo');
+    
     if (logoElement) {
-        logoElement.src = `${basePath}/Info/Config/Assets/images/eeprep.png`;
-        logoElement.onload = () => console.log('Logo loaded successfully');
-        logoElement.onerror = () => console.error('Failed to load logo');
+        // Set fixed dimensions to prevent layout shift
+        logoElement.width = 32;
+        logoElement.height = 32;
+        logoElement.style.minWidth = '32px';
+        logoElement.style.minHeight = '32px';
+        
+        const logoPath = `${basePath}/Info/Config/Assets/images/eeprep.png`;
+        console.log('Setting logo path to:', logoPath);
+        
+        logoElement.src = logoPath;
+        logoElement.onload = () => {
+            console.log('Logo loaded successfully');
+            // Ensure dimensions after load
+            logoElement.width = 32;
+            logoElement.height = 32;
+        };
+        logoElement.onerror = (e) => {
+            console.error('Failed to load logo from:', logoPath);
+            
+            // Try alternative paths
+            const altPaths = [
+                `${basePath}/Assets/images/eeprep.png`,
+                `${basePath}/images/eeprep.png`,
+                `${basePath}/eeprep.png`
+            ];
+            
+            // Try to locate the image in one of the alternative paths
+            let pathIndex = 0;
+            const tryNextPath = () => {
+                if (pathIndex < altPaths.length) {
+                    console.log('Trying alternative path:', altPaths[pathIndex]);
+                    logoElement.src = altPaths[pathIndex];
+                    pathIndex++;
+                } else {
+                    // If all paths fail, use a fallback text
+                    console.log('All image paths failed, using text fallback');
+                    logoElement.style.display = 'none';
+                    const logoContainer = logoElement.closest('.logo-container');
+                    if (logoContainer && !logoContainer.querySelector('.logo-fallback')) {
+                        const fallback = document.createElement('div');
+                        fallback.className = 'logo-fallback';
+                        fallback.textContent = 'EE';
+                        logoContainer.prepend(fallback);
+                    }
+                }
+            };
+            
+            logoElement.onerror = tryNextPath;
+            tryNextPath();
+        };
     } else {
         console.warn('Sidebar logo element not found');
     }
