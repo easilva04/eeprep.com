@@ -8,7 +8,7 @@
     <meta name="description"
         content="EEPrep - Your comprehensive resource for electrical engineering review materials, practice problems, and exam preparation for students and professionals.">
     <meta name="keywords"
-        content="Electrical Engineering review, EE Exam Preparation, Circuit Analysis, Power Systems, Control Systems, Signal Processing, Electronics, Electromagnetics, Engineering Practice Problems, NCEES FE Exam, PE Exam">
+        content="Electrical Engineering review, EE Exam Preparation, Circuit Analysis, Power Systems, Control Systems, Signal Processing, Electronics, Electromagnetics, Engineering Practice Problems">
     <meta name="author" content="EEPrep Team">
     <link rel="canonical" href="https://www.eeprep.com/">
     <meta property="og:title" content="EEPrep | Electrical Engineering Review & Practice">
@@ -21,15 +21,21 @@
     <meta name="robots" content="index, follow">
     <title>EEPrep | Electrical Engineering Review & Practice Resources</title>
     <link rel="icon" href="Info/Config/Assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Load stylesheets in the correct order -->
     <link rel="stylesheet" href="Info/Config/Styles/main.css">
-    <link rel="stylesheet" href="Info/Config/Styles/responsive.css">
     <link rel="stylesheet" href="Info/Config/Styles/themes.css">
-
-    <!-- Essential libraries for mathematical content -->
-    <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
-    <script src="https://tikzjax.com/v1/tikzjax.js" defer></script>
-    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
-
+    <link rel="stylesheet" href="Info/Config/Styles/responsive.css">
+    
+    <!-- Site functionality scripts - load in proper order -->
+    <script src="Info/Config/Scripts/themeToggle.js"></script>
+    <script src="Info/Config/Scripts/componentLoader.js"></script>
+    <script src="Info/Config/Scripts/search.js" defer></script>
+    
+    <!-- Additional scripts based on page needs -->
+    <script src="Info/Config/Scripts/questions.js" defer></script>
+    <script src="Info/Config/Scripts/backend.js" defer></script>
+    
     <!-- Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
     <script>
@@ -38,37 +44,11 @@
         gtag('js', new Date());
         gtag('config', 'G-09JTZCW5JJ');
     </script>
-    
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lfz5aYqAAAAACkJOdjWglWew8_dIBATX-Wc-Rm1"></script>
-    
-    <!-- Site functionality scripts - load componentLoader first -->
-    <script src="Info/Config/Scripts/componentLoader.js" defer></script>
-    <script src="Info/Config/Scripts/themeToggle.js" defer></script>
-    <script src="Info/Config/Scripts/search.js" defer></script>
-    <script src="Info/Config/Scripts/questions.js" defer></script>
-    <script src="Info/Config/Scripts/backend.js" defer></script>
-
-    <!-- Structured data for better SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "EEPrep",
-        "url": "https://www.eeprep.com/",
-        "description": "Comprehensive electrical engineering review materials with practice problems",
-        "publisher": {
-            "@type": "Organization",
-            "name": "EEPrep",
-            "logo": "https://www.eeprep.com/images/logo.png"
-        }
-    }
-    </script>
 </head>
 
-<body>
-    <!-- Updated sidebar container with collapsed class - contains both navigation and footer -->
-    <div id="sidebar-container" class="sidebar collapsed"></div>
+<body class="theme-transition">
+    <!-- Sidebar with proper class - not collapsed by default on home page -->
+    <div id="sidebar-container" class="sidebar"></div>
     
     <div class="main-content">
         <header>
@@ -85,14 +65,58 @@
                 <h2>About EEPrep</h2>
                 <p>EEPrep is designed to help electrical engineering students and professionals master key concepts through interactive learning materials. Our resources include comprehensive topic reviews, visual explanations, and practice problems aligned with industry standards and professional exam requirements.</p>
             </section>
+            
+            <!-- Topic grid for quick access -->
+            <section class="topics-preview">
+                <h2>Popular Topics</h2>
+                <div class="topic-grid">
+                    <div class="topic-card">
+                        <a href="Topics/Circuits/Circuits.html">Circuits</a>
+                    </div>
+                    <div class="topic-card">
+                        <a href="Topics/Electronics/Electronics.html">Electronics</a>
+                    </div>
+                    <div class="topic-card">
+                        <a href="Topics/Power/Power.html">Power</a>
+                    </div>
+                    <div class="topic-card">
+                        <a href="Topics/Controls/Controls.html">Controls</a>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="Topics/Topics.html" class="styled-button">View All Topics</a>
+                </div>
+            </section>
+            
+            <!-- Contact form section with proper wrapper -->
+            <section class="contact-section">
+                <h2>Contact Us</h2>
+                <div class="form-container">
+                    <iframe width="100%" height="500px" src="https://forms.office.com/r/Vax9yj2ZXx?embed=true" frameborder="0"
+                    marginwidth="0" marginheight="0" style="border: none; max-width:100%;" allowfullscreen
+                    webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+                </div>
+            </section>
         </main>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; padding: 10px;">
-        <iframe width="100%" height="100%" src="https://forms.office.com/r/Vax9yj2ZXx?embed=true" frameborder="0"
-        marginwidth="0" marginheight="0" style="border: none; max-width:640px; max-height:480px" allowfullscreen
-        webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
-    </div>
-    <!-- Footer is now part of navigation component -->
+    
+    <!-- Error message display for debugging -->
+    <div id="error-display" style="display: none; position: fixed; bottom: 0; right: 0; background: #ff5555; color: white; padding: 10px; max-width: 80%; z-index: 9999;"></div>
+    
+    <script>
+        // Better error handling
+        window.addEventListener('error', function(event) {
+            console.error('Global error caught:', event.error);
+            const errorDisplay = document.getElementById('error-display');
+            if (errorDisplay) {
+                errorDisplay.textContent = `Error: ${event.error.message}`;
+                errorDisplay.style.display = 'block';
+                setTimeout(() => {
+                    errorDisplay.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
 </body>
 
 </html>

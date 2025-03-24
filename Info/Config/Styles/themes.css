@@ -58,7 +58,7 @@ body.dark-mode .tikzjax svg {
 
 /* Dark Mode UI Elements */
 body.dark-mode .sidebar {
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .theme-toggle {
@@ -71,13 +71,15 @@ body.dark-mode button {
     border: none;
     border-radius: var(--border-radius);
     color: #e0e0e0;
-    padding: .5rem 1rem;
+    padding: .75rem 1rem;
     cursor: pointer;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+    transition: all 0.3s ease;
 }
 
 body.dark-mode button:hover {
     background-color: #4e4e4e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Dark Mode Form Elements */
@@ -101,65 +103,98 @@ body.dark-mode mark {
 body.dark-mode .search-dropdown {
     background: var(--black);
     border-color: var(--grey-medium);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .search-dropdown-item {
     background-color: var(--black);
     border-bottom: 1px solid var(--grey-medium);
+    padding: 10px 15px;
+    transition: background-color 0.2s ease;
 }
 
 body.dark-mode .search-dropdown-item h4 {
     color: var(--white);
+    margin-bottom: 5px;
 }
 
 body.dark-mode .search-dropdown-item p {
     color: var(--grey-dark);
+    font-size: 0.9em;
+    margin: 0;
 }
 
 body.dark-mode .search-dropdown-item:hover {
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(255, 255, 255, .15);
 }
 
 body.dark-mode .matched-term {
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(255, 255, 255, .2);
+    padding: 0 3px;
+    border-radius: 3px;
 }
 
 /* Dark Mode Search Results */
 body.dark-mode .search-result-item {
     background-color: var(--black);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .search-result-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .search-excerpt {
     color: silver;
+    font-size: 0.9em;
+    line-height: 1.6;
 }
 
 body.dark-mode .search-excerpt mark {
     color: var(--white);
     background-color: rgba(255, 255, 0, .2);
+    padding: 0 3px;
+    border-radius: 3px;
 }
 
 /* Dark Mode Contact Form */
 body.dark-mode .contact-form {
     background: var(--black);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-mode .form-status.success {
     background-color: rgba(212, 237, 218, .1);
     color: #98c9a3;
     border-color: #98c9a3;
+    padding: 10px 15px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
 }
 
 body.dark-mode .form-status.error {
     background-color: rgba(248, 215, 218, .1);
     color: #e6a5a5;
     border-color: #e6a5a5;
+    padding: 10px 15px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
 }
 
 /* Theme Toggle Button */
 .theme-toggle,
 body.dark-mode button {
     color: #e0e0e0;
-    padding: .5rem 1rem;
+    padding: .75rem 1rem;
     cursor: pointer;
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
@@ -169,6 +204,19 @@ body.dark-mode button {
     border: none;
     border-radius: var(--border-radius);
     color: var(--text-primary);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle svg {
+    margin-right: 8px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 /* Modern theme system for eeprep.com */
@@ -179,6 +227,24 @@ body.dark-mode button {
                 color 0.2s ease,
                 border-color 0.2s ease,
                 box-shadow 0.2s ease;
+}
+
+/* Theme Transition - improved smoothness */
+.theme-transition * {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+}
+
+/* Better theme toggle visualization */
+.theme-toggle-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem;
 }
 
 /* Dark Mode Colors - monochrome off-black */
@@ -238,6 +304,7 @@ body.dark-mode .dropdown-container {
 body.dark-mode .navbar.scrolled {
     background-color: rgba(32, 32, 32, 0.95);
     backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-mode .hamburger-menu span {
@@ -247,10 +314,14 @@ body.dark-mode .hamburger-menu span {
 body.dark-mode .search-input {
     background-color: var(--grey-200);
     color: var(--text-primary);
+    border: 1px solid var(--grey-300);
+    border-radius: var(--border-radius-sm);
+    padding: 10px 15px;
 }
 
 body.dark-mode .dropdown-btn:hover {
     background-color: var(--grey-200);
+    transform: translateX(5px);
 }
 
 body.dark-mode .search-dropdown-item {
@@ -278,6 +349,8 @@ body.dark-mode select {
     background-color: var(--grey-200);
     border-color: var(--grey-300);
     color: var(--text-primary);
+    border-radius: var(--border-radius-sm);
+    padding: 12px 15px;
 }
 
 body.dark-mode input:focus,
@@ -285,6 +358,7 @@ body.dark-mode textarea:focus,
 body.dark-mode select:focus {
     border-color: var(--grey-500);
     box-shadow: var(--shadow-focus);
+    outline: none;
 }
 
 /* Dark mode code and pre blocks */
@@ -292,6 +366,14 @@ body.dark-mode code,
 body.dark-mode pre {
     background-color: var(--grey-200);
     color: var(--grey-800);
+    border-radius: var(--border-radius-sm);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body.dark-mode pre {
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Dark mode SVG and icons */
@@ -322,6 +404,8 @@ body.dark-mode .tikzjax svg {
 body.dark-mode mark {
     background-color: rgba(160, 160, 160, 0.2);
     color: inherit;
+    padding: 0 3px;
+    border-radius: 3px;
 }
 
 /* Theme styles for EE Prep */
@@ -345,6 +429,13 @@ body.dark-mode mark {
     --footer-bg: #2c3e50;
     --footer-text: #ecf0f1;
     --code-bg: #f1f1f1;
+    
+    /* UI friendly variables */
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --transition-speed: 0.3s;
 }
 
 /* Dark Theme */
@@ -366,6 +457,10 @@ body.dark-mode mark {
     --footer-bg: #0d1520;
     --footer-text: #ecf0f1;
     --code-bg: #333;
+    
+    /* Dark mode-specific shadows */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* High Contrast Theme */
@@ -387,6 +482,12 @@ body.dark-mode mark {
     --footer-bg: #000000;
     --footer-text: #ffffff;
     --code-bg: #000000;
+    
+    /* High contrast borders */
+    --border-radius: 0;
+    --border-radius-sm: 0;
+    --box-shadow: none;
+    --box-shadow-hover: none;
 }
 
 /* Monochrome Theme (Black & White) */
@@ -434,36 +535,46 @@ body.dark-mode mark {
 /* Theme-specific overrides */
 [data-theme="dark"] code {
     color: #e83e8c;
+    background-color: rgba(232, 62, 140, 0.1);
+    padding: 2px 5px;
 }
 
 [data-theme="dark"] pre {
     border: 1px solid var(--border-color);
+    background-color: #2a2a2a;
 }
 
 [data-theme="high-contrast"] a {
     text-decoration: underline;
+    font-weight: bold;
 }
 
 [data-theme="high-contrast"] .styled-button,
 [data-theme="high-contrast"] .theme-toggle-btn {
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 [data-theme="high-contrast"] .sidebar-menu a:hover {
     background-color: var(--primary-color);
     color: #000000;
+    border-left: 4px solid #ffffff;
+    padding-left: 12px;
 }
 
 /* Monochrome theme overrides */
 [data-theme="monochrome"] code,
 [data-theme="monochrome-dark"] code {
     border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2px 5px;
 }
 
 [data-theme="monochrome"] a,
 [data-theme="monochrome-dark"] a {
     text-decoration: underline;
+    font-weight: 500;
 }
 
 [data-theme="monochrome"] .styled-button,
@@ -471,15 +582,76 @@ body.dark-mode mark {
 [data-theme="monochrome-dark"] .styled-button,
 [data-theme="monochrome-dark"] .theme-toggle-btn {
     border: 1px solid var(--border-color);
+    font-weight: 500;
 }
 
 [data-theme="monochrome"] .sidebar-menu a:hover,
 [data-theme="monochrome-dark"] .sidebar-menu a:hover {
     background-color: var(--accent-color);
     color: var(--sidebar-text);
+    transform: translateX(5px);
 }
 
 [data-theme="monochrome"] .card,
 [data-theme="monochrome-dark"] .card {
     border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+[data-theme="monochrome"] .card:hover,
+[data-theme="monochrome-dark"] .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme switcher UI improvements */
+.theme-selector {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+.theme-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.theme-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.theme-option:hover {
+    transform: scale(1.1);
+}
+
+.theme-option.active {
+    border: 2px solid var(--accent-color);
+}
+
+.theme-option[data-theme="default"] {
+    background: linear-gradient(135deg, #f8f9fa 50%, #3498db 50%);
+}
+
+.theme-option[data-theme="dark"] {
+    background: linear-gradient(135deg, #1a1a1a 50%, #4da6ff 50%);
+}
+
+.theme-option[data-theme="high-contrast"] {
+    background: linear-gradient(135deg, #000000 50%, #ffff00 50%);
+}
+
+.theme-option[data-theme="monochrome"] {
+    background: linear-gradient(135deg, #F5F5F5 50%, #333333 50%);
+}
+
+.theme-option[data-theme="monochrome-dark"] {
+    background: linear-gradient(135deg, #111111 50%, #AAAAAA 50%);
 }

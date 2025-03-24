@@ -13,6 +13,8 @@ img, video {
 @media (min-width: 1200px) {
     .main-content {
         max-width: 1140px;
+        margin: 0 auto;
+        margin-left: 280px;
     }
     
     body.sidebar-open {
@@ -30,12 +32,25 @@ img, video {
     .navbar {
         padding: 0 var(--spacing-xxl);
     }
+    
+    /* Improved reading experience for large screens */
+    p, li {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+    
+    .main-content {
+        max-width: calc(100% - 280px);
+        padding: 2.5rem 3rem;
+    }
 }
 
 /* Large screens (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199px) {
     .main-content {
         max-width: 960px;
+        margin: 0 auto;
+        margin-left: 280px;
     }
     
     .navbar {
@@ -71,6 +86,8 @@ img, video {
     #sidebar-container {
         width: 280px;
         transform: translateX(-100%);
+        z-index: 1050;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     
     #sidebar-container.active {
@@ -85,6 +102,114 @@ img, video {
     .search-container.active .search-input {
         width: 180px;
     }
+    
+    .search-container.active .search-input-container {
+        width: 250px;
+    }
+    
+    /* Fix for improved touch targets on tablets */
+    .sidebar-menu a, 
+    .dropdown-toggle,
+    button, 
+    .btn,
+    .options label {
+        padding: 12px;
+        min-height: 44px;
+    }
+    
+    .sidebar {
+        width: 250px;
+        min-width: 250px;
+    }
+    
+    .sidebar.collapsed {
+        width: 70px;
+        min-width: 70px;
+    }
+    
+    .main-content {
+        margin-left: 250px;
+        max-width: calc(100% - 250px);
+        padding: 2rem;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 70px;
+        max-width: calc(100% - 70px);
+    }
+}
+
+/* Fixed Media Queries for Sidebar Collapse */
+@media (min-width: 768px) {
+    .sidebar {
+        transform: translateX(0); /* Always visible on desktop */
+        width: 280px;
+        min-width: 280px;
+    }
+    
+    .sidebar.collapsed {
+        width: 80px;
+        min-width: 80px;
+        transform: translateX(0) !important; /* Force visible when collapsed on desktop */
+    }
+    
+    .sidebar.collapsed .sidebar-title,
+    .sidebar.collapsed .sidebar-search input,
+    .sidebar.collapsed .sidebar-link span,
+    .sidebar.collapsed .dropdown-toggle::after,
+    .sidebar.collapsed .sidebar-footer {
+        opacity: 0;
+        width: 0;
+        overflow: hidden;
+    }
+    
+    .main-content {
+        margin-left: 280px;
+        max-width: calc(100% - 280px);
+        transition: margin-left 0.3s ease, max-width 0.3s ease;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 80px;
+        max-width: calc(100% - 80px);
+    }
+}
+
+/* Mobile styles - sidebar is hidden by default, not collapsed */
+@media (max-width: 767px) {
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        transform: translateX(-100%); /* Completely hide on mobile by default */
+        z-index: 1050;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* When active (showing), sidebar is fully visible */
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Ensure collapsed sidebar on mobile still takes full width when shown */
+    .sidebar.collapsed {
+        width: 280px;
+        min-width: 280px;
+    }
+    
+    /* When not active, ensure sidebar is fully hidden regardless of collapsed state */
+    .sidebar:not(.active) {
+        transform: translateX(-100%) !important;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 0;
+        max-width: 100%;
+    }
 }
 
 /* Small screens optimization */
@@ -93,6 +218,8 @@ img, video {
     .main-content {
         border-radius: var(--border-radius-sm);
         box-shadow: var(--shadow-sm);
+        margin-left: 0;
+        padding: 1.5rem;
     }
     
     /* Reduce animations on small screens for better performance */
@@ -104,6 +231,216 @@ img, video {
     img {
         max-width: 100%;
         height: auto;
+    }
+    
+    /* Mobile navigation improvements */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar.collapsed {
+        width: 100%;
+    }
+    
+    .sidebar-header {
+        padding: 1rem;
+    }
+    
+    /* Bottom sticky navigation for mobile */
+    .mobile-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--sidebar-bg);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--sidebar-text);
+        font-size: 0.8rem;
+    }
+    
+    .mobile-nav-item svg {
+        margin-bottom: 5px;
+        width: 24px;
+        height: 24px;
+    }
+    
+    /* Fix for footer on mobile */
+    .site-footer {
+        margin-bottom: 60px; /* Space for mobile nav */
+    }
+    
+    /* Navbar adjustments for mobile */
+    .navbar {
+        padding: 0.5rem 1rem;
+        height: 50px;
+    }
+    
+    .title-full {
+        display: none;
+    }
+    
+    .title-mobile {
+        display: block;
+    }
+    
+    /* Mobile search improvements - FIXED to prevent layout shifts */
+    .search-container.active .search-input-container {
+        width: 250px;
+        right: 0;
+        max-width: calc(100vw - 20px);
+    }
+    
+    .search-dropdown {
+        max-height: 250px;
+    }
+    
+    /* Mobile search improvements */
+    .search-overlay-content {
+        width: 95%;
+        padding: 15px;
+        margin-top: 60px;
+    }
+    
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        margin-top: 60px; /* Space for mobile header */
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    
+    /* Show mobile header */
+    .mobile-header {
+        display: flex;
+        height: 60px;
+    }
+    
+    /* Add overlay when sidebar is open */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    /* Improved mobile sidebar behavior */
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        z-index: 1050;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Ensure main content takes full width on mobile */
+    .main-content {
+        margin-left: 0;
+        margin-top: 60px; /* Space for mobile header */
+        max-width: 100%;
+        padding: 1.25rem;
+    }
+    
+    /* Make mobile header more ChatGPT-like */
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    /* Improved mobile menu animation */
+    .mobile-menu-toggle span {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .sidebar.active ~ .mobile-header .mobile-menu-toggle span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .sidebar.active ~ .mobile-header .mobile-menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .sidebar.active ~ .mobile-header .mobile-menu-toggle span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Full-width cards on mobile */
+    .card {
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
+
+/* Mobile styles - hide sidebar by default */
+@media (max-width: 767px) {
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        transform: translateX(-100%); /* Hidden by default on mobile */
+        z-index: 1050;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0); /* Show when active */
+    }
+    
+    .main-content {
+        margin-left: 0;
+        margin-top: 60px; /* Space for mobile header */
+        max-width: 100%;
+        padding: 1.5rem;
     }
 }
 
@@ -168,6 +505,16 @@ img, video {
     
     footer {
         padding: var(--spacing-lg);
+    }
+    
+    /* Improved card layout for mobile landscape */
+    .card {
+        padding: 1.25rem;
+    }
+    
+    /* Better form handling */
+    input, select, textarea {
+        padding: 12px;
     }
 }
 
@@ -245,12 +592,25 @@ img, video {
         width: 120px;
     }
     
+    /* FIXED search positioning for small screens */
+    .search-container.active .search-input-container {
+        width: 220px;
+        right: 0;
+    }
+    
     .search-dropdown {
+        max-height: 200px;
         width: 100%;
         right: 0;
         left: 0;
         position: fixed;
         top: var(--navbar-height);
+    }
+    
+    .search-overlay-content {
+        width: 95%;
+        padding: 12px;
+        margin-top: 50px;
     }
     
     footer {
@@ -262,18 +622,66 @@ img, video {
     button, .btn {
         padding: var(--spacing-xs) var(--spacing-md);
         font-size: var(--font-size-sm);
+        width: 100%;
+        margin-bottom: 10px;
+        min-height: 44px; /* Better touch targets */
     }
     
     /* Mobile-optimized forms */
     input, select, textarea {
         font-size: var(--font-size-base);
         padding: var(--spacing-sm);
+        min-height: 44px;
     }
     
     /* Adjust dropdown items for touch */
     .dropdown-btn {
         padding: var(--spacing-md) var(--spacing-sm);
         min-height: 44px; /* Better for touch targets */
+    }
+    
+    /* Improved question display on mobile */
+    .question {
+        padding: 1rem;
+    }
+    
+    .options label {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-sm);
+    }
+    
+    .options input[type="radio"] {
+        margin-right: 10px;
+    }
+    
+    /* Card adjustments for mobile */
+    .card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix navigation buttons on mobile */
+    .nav-bottom-left, .nav-bottom-right {
+        position: static;
+        margin: 1rem 0;
+        display: block;
+        text-align: center;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .sidebar {
+        width: 85%;
+        min-width: 0;
+    }
+    
+    .search-overlay-content {
+        width: 95%;
+        margin-top: 70px;
     }
 }
 
@@ -286,6 +694,19 @@ img, video {
     .search-container.active .search-input {
         width: 100px;
     }
+    
+    /* Extra small screen optimizations */
+    .card, .question {
+        padding: 0.75rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
 }
 
 /* Landscape orientation specific styles */
@@ -297,6 +718,16 @@ img, video {
     .dropdown-container.show {
         max-height: 150px;
         overflow-y: auto;
+    }
+    
+    /* Improve layout in landscape */
+    .main-content {
+        padding-bottom: 80px;
+    }
+    
+    .mobile-nav {
+        height: 50px;
+        padding: 5px 0;
     }
 }
 
@@ -380,6 +811,15 @@ img, video {
     
     .sidebar-content {
         display: none;
+        padding: 1rem;
+        max-height: 70vh;
+        overflow-y: auto;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from { max-height: 0; opacity: 0; }
+        to { max-height: 70vh; opacity: 1; }
     }
     
     .sidebar:not(.collapsed) .sidebar-content {
@@ -398,23 +838,47 @@ img, video {
     .nav-bottom-left, .nav-bottom-right {
         position: static;
         margin-top: 1rem;
+        margin-bottom: 1rem;
         text-align: center;
+        display: block;
+        width: 100%;
     }
     
-    .nav-bottom-left {
-        margin-bottom: 0.5rem;
+    .nav-bottom-left .styled-button,
+    .nav-bottom-right .styled-button {
+        width: 100%;
+        display: block;
     }
     
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
     
     h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Mobile menu toggle button */
+    .menu-toggle {
+        display: block;
+        background: transparent;
+        border: none;
+        color: var(--sidebar-text);
         font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+    
+    /* Touch-friendly sidebar menu */
+    .sidebar-menu a, 
+    .sidebar-menu .dropdown-toggle {
+        padding: 12px;
+        margin-bottom: 8px;
+        background-color: rgba(255, 255, 255, 0.05);
     }
 }
 
@@ -422,10 +886,27 @@ img, video {
 @media (min-width: 769px) and (max-width: 1024px) {
     .main-content {
         padding: 1.5rem;
+        margin-left: 250px;
+    }
+    
+    .sidebar {
+        width: 250px;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 60px;
     }
     
     .footer-section {
         min-width: 150px;
+    }
+    
+    .nav-bottom-left {
+        left: 260px;
+    }
+    
+    .search-container.active .search-input-container {
+        width: 250px;
     }
 }
 
@@ -433,6 +914,11 @@ img, video {
 @media (min-width: 1025px) {
     .main-content {
         padding: 2rem 3rem;
+    }
+    
+    /* Smooth scrolling for anchor links */
+    html {
+        scroll-behavior: smooth;
     }
 }
 

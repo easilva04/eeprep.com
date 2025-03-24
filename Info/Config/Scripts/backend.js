@@ -478,3 +478,268 @@ if (typeof window !== 'undefined') {
     setupRecaptchaOnForms();
 }
 
+// ====================================================================
+// START OF SITE.JS CODE
+// ====================================================================
+
+/**
+ * Main site functionality for EEPrep
+ * Ensures all components work together properly
+ */
+
+// Execute when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing site functionality');
+    
+    // Fix sidebar collapse behavior
+    fixSidebarCollapse();
+    
+    // Add topic card hover effects
+    enhanceTopicCards();
+    
+    // Add active class to current page in sidebar
+    highlightCurrentPage();
+    
+    // Initialize scroll effects
+    initScrollEffects();
+    
+    // Load MathJax properly
+    initializeMathJax();
+});
+
+/**
+ * Fix sidebar collapse behavior to ensure it works properly
+ */
+function fixSidebarCollapse() {
+    const sidebar = document.getElementById('sidebar-container');
+    if (!sidebar) return;
+    
+    // Ensure correct initial state - don't manipulate inline transform styles
+    if (window.innerWidth < 768) {
+        // On mobile, sidebar should be hidden by default but not collapsed
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.remove('active');
+    } else {
+        // On desktop, check localStorage for collapse preference
+        const sidebarState = localStorage.getItem('sidebar-collapsed');
+        if (sidebarState === 'true') {
+            sidebar.classList.add('collapsed');
+        } else if (sidebarState === 'false') {
+            sidebar.classList.remove('collapsed');
+        }
+        // Otherwise use the default class state from HTML
+    }
+    
+    // Ensure sidebar buttons work
+    const toggleButton = document.getElementById('toggle-sidebar');
+    if (toggleButton) {
+        // Remove existing event listener if present by cloning
+        const newToggleButton = toggleButton.cloneNode(true);
+        toggleButton.parentNode.replaceChild(newToggleButton, toggleButton);
+        
+        // Add new event listener
+        newToggleButton.addEventListener('click', function() {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.toggle('collapsed');
+                
+                // Save preference to localStorage
+                localStorage.setItem('sidebar-collapsed', sidebar.classList.contains('collapsed'));
+                console.log('Sidebar toggled to:', sidebar.classList.contains('collapsed') ? 'collapsed' : 'expanded');
+                
+                // Update button icon
+                updateToggleIcon(sidebar.classList.contains('collapsed'));
+            }
+        });
+    }
+    
+    // Update mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    if (mobileToggle) {
+        // Remove existing event listener if present by cloning
+        const newMobileToggle = mobileToggle.cloneNode(true);
+        mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+        
+        // Add new event listener
+        newMobileToggle.addEventListener('click', function() {
+            if (window.innerWidth < 768) {
+                sidebar.classList.toggle('active');
+                const overlay = document.getElementById('sidebar-overlay');
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+                console.log('Mobile sidebar toggled:', sidebar.classList.contains('active') ? 'active' : 'inactive');
+            }
+        });
+    }
+    
+    // Update toggle icon
+    function updateToggleIcon(isCollapsed) {
+        const toggleButton = document.getElementById('toggle-sidebar');
+        if (!toggleButton) return;
+        
+        toggleButton.innerHTML = isCollapsed ? 
+            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>` : 
+            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>`;
+    }
+}
+
+/**
+ * Enhance topic cards with better hover effects
+ */
+function enhanceTopicCards() {
+    const topicCards = document.querySelectorAll('.topic-card');
+    
+    topicCards.forEach(card => {
+        // Add hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = 'var(--box-shadow-hover)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'var(--box-shadow)';
+        });
+        
+        // Add click effect for better mobile experience
+        card.addEventListener('click', function(e) {
+            // Only apply if we're clicking the card itself, not a link inside it
+            if (e.target === this) {
+                const link = this.querySelector('a');
+                if (link) {
+                    link.click();
+                }
+            }
+        });
+    });
+}
+
+/**
+ * Highlight the current page in the sidebar navigation
+ */
+function highlightCurrentPage() {
+    // Get current page path
+    const currentPath = window.location.pathname;
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    
+    sidebarLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && (currentPath.endsWith(href) || currentPath.includes(href))) {
+            link.classList.add('active');
+            
+            // If in dropdown, expand it
+            const dropdownItem = link.closest('.sidebar-item');
+            if (dropdownItem && dropdownItem.querySelector('.dropdown-toggle')) {
+                dropdownItem.classList.add('active');
+            }
+        }
+    });
+}
+
+/**
+ * Initialize scroll effects like scroll-to-top button
+ */
+function initScrollEffects() {
+    // Create scroll-to-top button if it doesn't exist
+    if (!document.querySelector('.scroll-top')) {
+        const scrollTopButton = document.createElement('button');
+        scrollTopButton.className = 'scroll-top';
+        scrollTopButton.setAttribute('aria-label', 'Scroll to top');
+        scrollTopButton.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+        `;
+        document.body.appendChild(scrollTopButton);
+        
+        // Add click event
+        scrollTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Show/hide scroll button based on scroll position
+    const scrollTopButton = document.querySelector('.scroll-top');
+    if (scrollTopButton) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
+            }
+        });
+    }
+}
+
+/**
+ * Initialize MathJax properly
+ */
+function initializeMathJax() {
+    if (typeof MathJax !== 'undefined') {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+}
+
+// Debounce function to limit how often a function can run
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}
+
+// Handle window resize - FIXED to manage responsive behavior properly
+window.addEventListener('resize', debounce(function() {
+    // Adjust sidebar based on screen size
+    const sidebar = document.getElementById('sidebar-container');
+    if (sidebar) {
+        if (window.innerWidth < 768) {
+            // On mobile
+            if (!sidebar.classList.contains('active')) {
+                // On mobile, don't use collapsed class
+                sidebar.classList.remove('collapsed');
+            }
+        } else {
+            // On desktop
+            const overlay = document.getElementById('sidebar-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+            
+            // Respect saved collapsed state
+            const sidebarState = localStorage.getItem('sidebar-collapsed');
+            if (sidebarState === 'true') {
+                sidebar.classList.add('collapsed');
+            } else if (sidebarState === 'false') {
+                sidebar.classList.remove('collapsed');
+            }
+        }
+    }
+}, 250));
+
+// Fix common link issues
+document.addEventListener('click', function(e) {
+    // Ensure all navigation links use navigateRelative when appropriate
+    if (e.target.tagName === 'A' && !e.target.getAttribute('href').startsWith('http')) {
+        const href = e.target.getAttribute('href');
+        // Skip links with # (anchors) or javascript:
+        if (href && !href.startsWith('#') && !href.startsWith('javascript:') && typeof navigateRelative === 'function') {
+            e.preventDefault();
+            navigateRelative(href);
+        }
+    }
+});
+

@@ -1,149 +1,152 @@
-<!-- Navbar Component -->
-<nav class="navbar">
-    <div class="navbar-left">
-        <button class="hamburger-menu" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <h1 class="navbar-title">
-            <a href="/index.html">
-                <span class="title-full">Electrical Engineering Preparation</span>
-                <span class="title-mobile">EE Prep</span>
-            </a>
-        </h1>
-    </div>
-    <div class="navbar-right">
-        <div class="search-container">
-            <button class="search-icon" id="search-button" aria-label="Search">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M15.5 14H14.71L14.43 13.73C15.63 12.33 16.25 10.42 15.91 8.39C15.43 5.61 13.12 3.39 10.32 3.05C6.09 2.56 2.56 6.09 3.05 10.32C3.39 13.12 5.61 15.43 8.39 15.91C10.42 16.25 12.33 15.63 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9 14C6.79 14 5 12.21 5 10C5 7.79 6.79 6 9 6C11.21 6 13 7.79 13 10C13 12.21 11.21 14 9 14Z"
-                        fill="currentColor" />
-                </svg>
-            </button>
-            <input type="text" class="search-input" id="navbar-search-input" placeholder="Search...">
-            <div class="search-suggestions"></div>
-            <div class="search-dropdown"></div>
-        </div>
-    </div>
-</nav>
-
-<!-- Sidebar Component -->
-<div id="sidebar-container" class="sidebar collapsed">
-    <div class="sidebar-inner">
-        <div class="sidebar-header">
+<!-- ChatGPT-style Sidebar Inner Content -->
+<div class="sidebar-inner">
+    <div class="sidebar-header">
+        <div class="logo-container">
             <img src="#" alt="EE Prep Logo" class="sidebar-logo" id="sidebar-logo">
-            <button id="toggle-sidebar" aria-label="Toggle sidebar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+            <h1 class="sidebar-title">EE Prep</h1>
+        </div>
+        <button id="toggle-sidebar" class="sidebar-toggle" aria-label="Toggle sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Search component in sidebar (ChatGPT-like) -->
+    <div class="sidebar-search">
+        <div class="search-container">
+            <input type="text" id="sidebar-search-input" placeholder="Search..." aria-label="Search">
+            <button class="search-icon" id="search-button" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.63 12.33 16.25 10.42 15.91 8.39C15.43 5.61 13.12 3.39 10.32 3.05C6.09 2.56 2.56 6.09 3.05 10.32C3.39 13.12 5.61 15.43 8.39 15.91C10.42 16.25 12.33 15.63 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9 14C6.79 14 5 12.21 5 10C5 7.79 6.79 6 9 6C11.21 6 13 7.79 13 10C13 12.21 11.21 14 9 14Z" fill="currentColor" />
                 </svg>
             </button>
         </div>
-        
-        <nav class="sidebar-nav">
-            <ul>
-                <li><a href="#" class="nav-link" onclick="navigateRelative('index.html')">Home</a></li>
-                <li>
-                    <a href="#" class="nav-link dropdown-toggle">Topics</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" onclick="navigateRelative('Topics/Circuits/Circuits.html')">Circuits</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Communications/Communications.html')">Communications</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/ComputerSystems/ComputerSystems.html')">Computer Systems</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Controls/Controls.html')">Controls</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/DigitalSystems/DigitalSystems.html')">Digital Systems</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Economics/EngineeringEcon.html')">Economics</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/ElectricalMaterials/Materials.html')">Electrical Materials</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Electromagnetics/Electromagnetics.html')">Electromagnetics</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Electronics/Electronics.html')">Electronics</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Ethics/Ethics.html')">Ethics</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/LinearSystems/LinearSystems.html')">Linear Systems</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Math/Fundamentals/Math.html')">Math</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Networks/Networks.html')">Networks</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Power/Power.html')">Power</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/Signals/Signals.html')">Signals</a></li>
-                        <li><a href="#" onclick="navigateRelative('Topics/SoftwareEngineering/SoftwareEngineering.html')">Software Engineering</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" class="nav-link" onclick="navigateRelative('about.html')">About</a></li>
-                <li><a href="#" class="nav-link" onclick="navigateRelative('contact.html')">Contact</a></li>
-            </ul>
-        </nav>
-        
-        <div class="sidebar-search" id="search-container">
-            <input type="text" id="search-input" placeholder="Search...">
-            <div id="search-results" class="search-results"></div>
-        </div>
-        
-        <div class="theme-controls">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
-        </div>
-        
-        <!-- Footer content integrated into navigation -->
-        <div class="sidebar-footer">
-            <p>&copy; <span id="current-year"></span> EEPrep</p>
-            <div class="sidebar-footer-links">
-                <a href="#" onclick="navigateRelative('privacy.html')">Privacy</a>
-                <a href="#" onclick="navigateRelative('terms.html')">Terms</a>
-            </div>
+    </div>
+    
+    <!-- Improved navigation menu -->
+    <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item">
+                <a href="/" class="sidebar-link" onclick="navigateRelative('index.html'); return false;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link dropdown-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    <span>Topics</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="Topics/Circuits/Circuits.html" onclick="navigateRelative('Topics/Circuits/Circuits.html'); return false;">Circuits</a></li>
+                    <li><a href="Topics/Communications/Communications.html" onclick="navigateRelative('Topics/Communications/Communications.html'); return false;">Communications</a></li>
+                    <li><a href="Topics/ComputerSystems/ComputerSystems.html" onclick="navigateRelative('Topics/ComputerSystems/ComputerSystems.html'); return false;">Computer Systems</a></li>
+                    <li><a href="Topics/Controls/Controls.html" onclick="navigateRelative('Topics/Controls/Controls.html'); return false;">Controls</a></li>
+                    <li><a href="Topics/DigitalSystems/DigitalSystems.html" onclick="navigateRelative('Topics/DigitalSystems/DigitalSystems.html'); return false;">Digital Systems</a></li>
+                    <li><a href="Topics/Economics/EngineeringEcon.html" onclick="navigateRelative('Topics/Economics/EngineeringEcon.html'); return false;">Economics</a></li>
+                    <li><a href="Topics/ElectricalMaterials/Materials.html" onclick="navigateRelative('Topics/ElectricalMaterials/Materials.html'); return false;">Electrical Materials</a></li>
+                    <li><a href="Topics/Electromagnetics/Electromagnetics.html" onclick="navigateRelative('Topics/Electromagnetics/Electromagnetics.html'); return false;">Electromagnetics</a></li>
+                    <li><a href="Topics/Electronics/Electronics.html" onclick="navigateRelative('Topics/Electronics/Electronics.html'); return false;">Electronics</a></li>
+                    <li><a href="Topics/Ethics/Ethics.html" onclick="navigateRelative('Topics/Ethics/Ethics.html'); return false;">Ethics</a></li>
+                    <li><a href="Topics/LinearSystems/LinearSystems.html" onclick="navigateRelative('Topics/LinearSystems/LinearSystems.html'); return false;">Linear Systems</a></li>
+                    <li><a href="Topics/Math/Fundamentals/Math.html" onclick="navigateRelative('Topics/Math/Fundamentals/Math.html'); return false;">Math</a></li>
+                    <li><a href="Topics/Networks/Networks.html" onclick="navigateRelative('Topics/Networks/Networks.html'); return false;">Networks</a></li>
+                    <li><a href="Topics/Power/Power.html" onclick="navigateRelative('Topics/Power/Power.html'); return false;">Power</a></li>
+                    <li><a href="Topics/Signals/Signals.html" onclick="navigateRelative('Topics/Signals/Signals.html'); return false;">Signals</a></li>
+                    <li><a href="Topics/SoftwareEngineering/SoftwareEngineering.html" onclick="navigateRelative('Topics/SoftwareEngineering/SoftwareEngineering.html'); return false;">Software Engineering</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a href="/practice.html" class="sidebar-link" onclick="navigateRelative('practice.html'); return false;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    <span>Practice Problems</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="/about.html" class="sidebar-link" onclick="navigateRelative('about.html'); return false;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <span>About</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="/contact.html" class="sidebar-link" onclick="navigateRelative('contact.html'); return false;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Theme toggle -->
+    <div class="theme-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span>Toggle Dark Mode</span>
+        </button>
+    </div>
+    
+    <!-- Footer content -->
+    <div class="sidebar-footer">
+        <p>&copy; <span id="current-year">2023</span> EEPrep</p>
+        <div class="sidebar-footer-links">
+            <a href="/privacy.html" onclick="navigateRelative('privacy.html'); return false;">Privacy</a>
+            <a href="/terms.html" onclick="navigateRelative('terms.html'); return false;">Terms</a>
         </div>
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="../js/themeToggle.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Navbar search functionality
-        const searchInput = document.getElementById('navbar-search-input');
-        const searchButton = document.getElementById('search-button');
-        
-        function performSearch() {
-            const query = searchInput.value.trim();
-            if (query) {
-                window.location.href = `/components/search.html?q=${encodeURIComponent(query)}`;
-            }
-        }
-        
-        searchButton.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
+<!-- Search overlay -->
+<div id="search-overlay" class="search-overlay">
+    <div class="search-overlay-content">
+        <div class="search-overlay-header">
+            <h3>Search Results</h3>
+            <button id="search-close" aria-label="Close search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        <div id="search-results-dropdown" class="search-dropdown"></div>
+    </div>
+</div>
 
-        // Footer year update
-        document.getElementById('current-year') && 
-        (document.getElementById('current-year').textContent = new Date().getFullYear());
-    });
+<!-- Mobile Header -->
+<div class="mobile-header">
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <h1 class="mobile-title">EE Prep</h1>
+    <div class="mobile-actions">
+        <button id="mobile-search-toggle" aria-label="Search" class="mobile-action-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 14H14.71L14.43 13.73C15.63 12.33 16.25 10.42 15.91 8.39C15.43 5.61 13.12 3.39 10.32 3.05C6.09 2.56 2.56 6.09 3.05 10.32C3.39 13.12 5.61 15.43 8.39 15.91C10.42 16.25 12.33 15.63 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9 14C6.79 14 5 12.21 5 10C5 7.79 6.79 6 9 6C11.21 6 13 7.79 13 10C13 12.21 11.21 14 9 14Z" fill="currentColor" />
+            </svg>
+        </button>
+    </div>
+</div>
 
-    // Set current year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Set logo source based on current path
-    function setLogoSource() {
-        const basePath = getBasePath();
-        const logoElement = document.getElementById('sidebar-logo');
-        if (logoElement) {
-            logoElement.src = `${basePath}/Info/Config/Assets/images/eeprep.png`;
-        }
-    }
-    
-    // Helper function to handle relative navigation from any page depth
-    function navigateRelative(targetPath) {
-        // Get the current path and calculate the relative path to root
-        const basePath = getBasePath();
-        
-        // Navigate to the target path from the calculated base
-        window.location.href = basePath + targetPath;
-        return false; // Prevent default link behavior
-    }
-    
-    // Initialize logo after sidebar is loaded
-    setLogoSource();
-</script>
+<!-- Add overlay for mobile sidebar -->
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
