@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <!-- TODO: Update description with specific topic information -->
     <meta name="description"
         content="Comprehensive electrical engineering review materials with practice problems, visual explanations, and exam preparation resources for students and professionals.">
@@ -50,10 +51,10 @@
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js?render=6Lfz5aYqAAAAACkJOdjWglWew8_dIBATX-Wc-Rm1"></script>
     
-    <!-- Site functionality scripts -->
+    <!-- Site functionality scripts - load componentLoader first -->
     <script src="../../Info/Config/Scripts/componentLoader.js" defer></script>
-    <script src="../../Info/Config/Scripts/search.js" defer></script>
     <script src="../../Info/Config/Scripts/themeToggle.js" defer></script>
+    <script src="../../Info/Config/Scripts/search.js" defer></script>
     <script src="../../Info/Config/Scripts/questions.js" defer></script>
     <script src="../../Info/Config/Scripts/backend.js" defer></script>
 
@@ -90,7 +91,7 @@
 <!-- TODO: Update data-topic attribute with the actual topic name for question generation -->
 
 <body data-topic="TOPIC_NAME">
-    <!-- Updated sidebar container with collapsed class -->
+    <!-- Updated sidebar container with collapsed class - contains both navigation and footer -->
     <div id="sidebar-container" class="sidebar collapsed"></div>
     <div class="nav-bottom-left">
         <button class="styled-button" onclick="window.location.href='PREVIOUS.html'">Previous Topic</button>
@@ -116,8 +117,7 @@
             <!-- Question handling is now done by questions.js using the data-topic attribute -->
         </main>
     </div>
-
-    <div id="footer-placeholder"></div>
+    <!-- Footer is now part of navigation component -->
 </body>
 
 </html>

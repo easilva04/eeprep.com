@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <meta name="description"
         content="EEPrep - Your comprehensive resource for electrical engineering review materials, practice problems, and exam preparation for students and professionals.">
     <meta name="keywords"
@@ -19,10 +20,10 @@
     <meta property="og:image:alt" content="EEPrep - Electrical Engineering Review Resources">
     <meta name="robots" content="index, follow">
     <title>EEPrep | Electrical Engineering Review & Practice Resources</title>
-    <link rel="icon" href="../../Info/Config/Assets/images/favicon.ico" type="image/ico">
-    <link rel="stylesheet" href="../../Info/Config/Styles/main.css">
-    <link rel="stylesheet" href="../../Info/Config/Styles/responsive.css">
-    <link rel="stylesheet" href="../../Info/Config/Styles/themes.css">
+    <link rel="icon" href="Info/Config/Assets/images/favicon.ico" type="image/ico">
+    <link rel="stylesheet" href="Info/Config/Styles/main.css">
+    <link rel="stylesheet" href="Info/Config/Styles/responsive.css">
+    <link rel="stylesheet" href="Info/Config/Styles/themes.css">
 
     <!-- Essential libraries for mathematical content -->
     <link rel="stylesheet" href="https://tikzjax.com/v1/tikzjax.css">
@@ -41,12 +42,12 @@
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js?render=6Lfz5aYqAAAAACkJOdjWglWew8_dIBATX-Wc-Rm1"></script>
     
-    <!-- Site functionality scripts -->
-    <script src="../../Info/Config/Scripts/componentLoader.js" defer></script>
-    <script src="../../Info/Config/Scripts/search.js" defer></script>
-    <script src="../../Info/Config/Scripts/themeToggle.js" defer></script>
-    <script src="../../Info/Config/Scripts/questions.js" defer></script>
-    <script src="../../Info/Config/Scripts/backend.js" defer></script>
+    <!-- Site functionality scripts - load componentLoader first -->
+    <script src="Info/Config/Scripts/componentLoader.js" defer></script>
+    <script src="Info/Config/Scripts/themeToggle.js" defer></script>
+    <script src="Info/Config/Scripts/search.js" defer></script>
+    <script src="Info/Config/Scripts/questions.js" defer></script>
+    <script src="Info/Config/Scripts/backend.js" defer></script>
 
     <!-- Structured data for better SEO -->
     <script type="application/ld+json">
@@ -66,7 +67,7 @@
 </head>
 
 <body>
-    <!-- Updated sidebar container with collapsed class -->
+    <!-- Updated sidebar container with collapsed class - contains both navigation and footer -->
     <div id="sidebar-container" class="sidebar collapsed"></div>
     
     <div class="main-content">
@@ -91,7 +92,7 @@
         marginwidth="0" marginheight="0" style="border: none; max-width:640px; max-height:480px" allowfullscreen
         webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
     </div>
-    <div id="footer-placeholder"></div>
+    <!-- Footer is now part of navigation component -->
 </body>
 
 </html>

@@ -31,60 +31,69 @@
 
 <!-- Sidebar Component -->
 <div id="sidebar-container" class="sidebar collapsed">
-    <div class="sidebar-header">
-        <img src="/Info/Config/Assets/images/eeprep.png" alt="EEPrep Logo" class="sidebar-logo">
-        <h2>EE Prep</h2>
-        <button id="toggle-sidebar" class="toggle-btn">≡</button>
-    </div>
-    <div class="sidebar-content">
-        <ul class="sidebar-menu">
-            <li><a href="/index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Topics</a>
-                <div class="dropdown-content">
-                    <a href="/Topics/Circuits/Circuits.html">Circuits</a>
-                    <a href="/Topics/Communications/Communications.html">Communications</a>
-                    <a href="/Topics/ComputerSystems/ComputerSystems.html">Computer Systems</a>
-                    <a href="/Topics/Controls/Controls.html">Controls</a>
-                    <a href="/Topics/DigitalSystems/DigitalSystems.html">Digital Systems</a>
-                    <a href="/Topics/Economics/EngineeringEcon.html">Economics</a>
-                    <a href="/Topics/ElectricalMaterials/Materials.html">Electrical Materials</a>
-                    <a href="/Topics/Electromagnetics/Electromagnetics.html">Electromagnetics</a>
-                    <a href="/Topics/Electronics/Electronics.html">Electronics</a>
-                    <a href="/Topics/Ethics/Ethics.html">Ethics</a>
-                    <a href="/Topics/LinearSystems/LinearSystems.html">Linear Systems</a>
-                    <a href="/Topics/Math/Fundamentals/Math.html">Mathematics</a>
-                    <a href="/Topics/Networks/Networks.html">Networks</a>
-                    <a href="/Topics/Power/Power.html">Power</a>
-                    <a href="/Topics/Signals/Signals.html">Signals</a>
-                    <a href="/Topics/SoftwareEngineering/SoftwareEngineering.html">Software Engineering</a>
-                </div>
-            </li>
-            <li><a href="/Topics/Topics.html">All Topics</a></li>
-            <li><a href="/Topics/Home/About.html">About</a></li>
-            <li id="theme-toggle-container">
-                <button id="theme-toggle" class="theme-toggle-btn">Toggle Theme</button>
-            </li>
-        </ul>
-        <div id="search-container"></div>
-    </div>
-    <div class="sidebar-footer">
-        <button id="dark-mode-toggle" class="theme-toggle">Dark Mode</button>
-        <p>For the aspiring Engineer</p>
-    </div>
-</div>
-
-<!-- Footer Component -->
-<footer>
-    <div class="footer-content">
-        <p><em>For the aspiring engineer</em>.</p>
-        <div class="footer-links">
-            <a href="/about.html">About</a> | 
-            <a href="/contact.html">Contact</a> | 
-            <a href="/privacy.html">Privacy Policy</a>
+    <div class="sidebar-inner">
+        <div class="sidebar-header">
+            <img src="#" alt="EE Prep Logo" class="sidebar-logo" id="sidebar-logo">
+            <button id="toggle-sidebar" aria-label="Toggle sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="nav-link" onclick="navigateRelative('index.html')">Home</a></li>
+                <li>
+                    <a href="#" class="nav-link dropdown-toggle">Topics</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="navigateRelative('Topics/Circuits/Circuits.html')">Circuits</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Communications/Communications.html')">Communications</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/ComputerSystems/ComputerSystems.html')">Computer Systems</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Controls/Controls.html')">Controls</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/DigitalSystems/DigitalSystems.html')">Digital Systems</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Economics/EngineeringEcon.html')">Economics</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/ElectricalMaterials/Materials.html')">Electrical Materials</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Electromagnetics/Electromagnetics.html')">Electromagnetics</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Electronics/Electronics.html')">Electronics</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Ethics/Ethics.html')">Ethics</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/LinearSystems/LinearSystems.html')">Linear Systems</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Math/Fundamentals/Math.html')">Math</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Networks/Networks.html')">Networks</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Power/Power.html')">Power</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/Signals/Signals.html')">Signals</a></li>
+                        <li><a href="#" onclick="navigateRelative('Topics/SoftwareEngineering/SoftwareEngineering.html')">Software Engineering</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link" onclick="navigateRelative('about.html')">About</a></li>
+                <li><a href="#" class="nav-link" onclick="navigateRelative('contact.html')">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-search" id="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <div id="search-results" class="search-results"></div>
+        </div>
+        
+        <div class="theme-controls">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Footer content integrated into navigation -->
+        <div class="sidebar-footer">
+            <p>&copy; <span id="current-year"></span> EEPrep</p>
+            <div class="sidebar-footer-links">
+                <a href="#" onclick="navigateRelative('privacy.html')">Privacy</a>
+                <a href="#" onclick="navigateRelative('terms.html')">Terms</a>
+            </div>
         </div>
     </div>
-</footer>
+</div>
 
 <!-- Scripts -->
 <script src="../js/themeToggle.js"></script>
@@ -112,4 +121,29 @@
         document.getElementById('current-year') && 
         (document.getElementById('current-year').textContent = new Date().getFullYear());
     });
+
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Set logo source based on current path
+    function setLogoSource() {
+        const basePath = getBasePath();
+        const logoElement = document.getElementById('sidebar-logo');
+        if (logoElement) {
+            logoElement.src = `${basePath}/Info/Config/Assets/images/eeprep.png`;
+        }
+    }
+    
+    // Helper function to handle relative navigation from any page depth
+    function navigateRelative(targetPath) {
+        // Get the current path and calculate the relative path to root
+        const basePath = getBasePath();
+        
+        // Navigate to the target path from the calculated base
+        window.location.href = basePath + targetPath;
+        return false; // Prevent default link behavior
+    }
+    
+    // Initialize logo after sidebar is loaded
+    setLogoSource();
 </script>

@@ -21,7 +21,18 @@ function loadQuestions(topic) {
         `;
     }
     
-    return fetch(`../../questions/${topic}.json`)
+    // Get base path to handle various page depths
+    const pathSegments = window.location.pathname.split('/').filter(segment => segment !== '');
+    let basePath = '';
+    
+    // Calculate path to root
+    if (pathSegments.length > 1) {
+        for (let i = 0; i < pathSegments.length - 1; i++) {
+            basePath += '../';
+        }
+    }
+    
+    return fetch(`${basePath}Questions/${topic}.json`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);

@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Topics</title>
+    <meta name="theme-color" content="#ffffff">
+    <title>Topics | EEPrep</title>
+    <meta name="description" content="Explore electrical engineering topics for review and practice at EEPrep.">
     <link rel="stylesheet" href="../Info/Config/Styles/main.css">
     <link rel="stylesheet" href="../Info/Config/Styles/responsive.css">
     <link rel="stylesheet" href="../Info/Config/Styles/themes.css">
     <link rel="icon" href="../Info/Config/Assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Load scripts in proper order for dependencies -->
     <script src="../Info/Config/Scripts/componentLoader.js" defer></script>
     <script src="../Info/Config/Scripts/themeToggle.js" defer></script>
     <script src="../Info/Config/Scripts/search.js" defer></script>
     <script src="../Info/Config/Scripts/backend.js" defer></script>
+    
+    <!-- Analytics -->
     <script src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -19,34 +25,73 @@
         gtag('js', new Date());
         gtag('config', 'G-09JTZCW5JJ');
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lfz5aYqAAAAACkJOdjWglWew8_dIBATX-Wc-Rm1"></script>
     
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lfz5aYqAAAAACkJOdjWglWew8_dIBATX-Wc-Rm1"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
+    <!-- Sidebar navigation with integrated footer -->
+    <div id="sidebar-container" class="sidebar collapsed"></div>
+    
+    <div class="main-content">
+        <header>
             <h1>Topics</h1>
-        </div>
-    </header>
-    <div class="container">
-        <ul>
-            <li><a href="Circuits/Circuits.html">Circuits</a></li>
-            <li><a href="Communications/Communications.html">Communications</a></li>
-            <li><a href="ComputerSystems/ComputerSystems.html">Computer Systems</a></li>
-            <li><a href="Controls/Controls.html">Controls</a></li>
-            <li><a href="DigitalSystems/DigitalSystems.html">Digital Systems</a></li>
-            <li><a href="Economics/EngineeringEcon.html">Economics</a></li>
-            <li><a href="ElectricalMaterials/Materials.html">Electrical Materials</a></li>
-            <li><a href="Electromagnetics/Electromagnetics.html">Electromagnetics</a></li>
-            <li><a href="Electronics/Electronics.html">Electronics</a></li>
-            <li><a href="Ethics/Ethics.html">Ethics</a></li>
-            <li><a href="LinearSystems/LinearSystems.html">Linear Systems</a></li>
-            <li><a href="Math/Fundamentals/Math.html">Math</a></li>
-            <li><a href="Networks/Networks.html">Networks</a></li>
-            <li><a href="Power/Power.html">Power</a></li>
-            <li><a href="Signals/Signals.html">Signals</a></li>
-            <li><a href="SoftwareEngineering/SoftwareEngineering.html">Software Engineering</a></li>
-        </ul>
+        </header>
+        
+        <main>
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <a href="Circuits/Circuits.html">Circuits</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Communications/Communications.html">Communications</a>
+                </div>
+                <div class="topic-card">
+                    <a href="ComputerSystems/ComputerSystems.html">Computer Systems</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Controls/Controls.html">Controls</a>
+                </div>
+                <div class="topic-card">
+                    <a href="DigitalSystems/DigitalSystems.html">Digital Systems</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Economics/EngineeringEcon.html">Economics</a>
+                </div>
+                <div class="topic-card">
+                    <a href="ElectricalMaterials/Materials.html">Electrical Materials</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Electromagnetics/Electromagnetics.html">Electromagnetics</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Electronics/Electronics.html">Electronics</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Ethics/Ethics.html">Ethics</a>
+                </div>
+                <div class="topic-card">
+                    <a href="LinearSystems/LinearSystems.html">Linear Systems</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Math/Fundamentals/Math.html">Math</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Networks/Networks.html">Networks</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Power/Power.html">Power</a>
+                </div>
+                <div class="topic-card">
+                    <a href="Signals/Signals.html">Signals</a>
+                </div>
+                <div class="topic-card">
+                    <a href="SoftwareEngineering/SoftwareEngineering.html">Software Engineering</a>
+                </div>
+            </div>
+        </main>
     </div>
+    
+    <!-- Footer is now part of navigation component -->
 </body>
 </html>
