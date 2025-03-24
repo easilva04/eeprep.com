@@ -32,6 +32,56 @@ const NEVER_CACHE_ROUTES = [
     '/admin'
 ];
 
+// Define site-wide structured data for SEO
+const WEBSITE_SCHEMA = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "EE Preparation - Home",
+    "url": "https://www.eeprep.com/",
+    "description": "Electrical Engineering Preparation Handbook for students and professionals.",
+    "author": {
+        "@type": "Organization",
+        "name": "EEPrep Team"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "EEPrep Team"
+    },
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.eeprep.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+};
+
+// Function to inject schema.org data into pages if needed
+function injectSchemaData() {
+    // Check if we're in a browser context
+    if (typeof document !== 'undefined') {
+        // Only inject if it doesn't already exist
+        if (!document.querySelector('script[type="application/ld+json"]#website-schema')) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.id = 'website-schema';
+            script.textContent = JSON.stringify(WEBSITE_SCHEMA);
+            document.head.appendChild(script);
+            console.log('[Schema] Injected WebSite schema');
+        }
+    }
+}
+
+// Call this function when appropriate (if in browser context)
+if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', injectSchemaData);
+}
+
+// Export schema for use in other scripts
+if (typeof module !== 'undefined') {
+    module.exports = {
+        WEBSITE_SCHEMA
+    };
+}
+
 // Install the Service Worker with improved logging
 self.addEventListener('install', (event) => {
     console.log('[Service Worker] Installing...');
@@ -358,4 +408,73 @@ self.addEventListener('error', (event) => {
         colno: event.colno
     });
 });
+
+// Function to verify reCAPTCHA token for forms
+async function verifyRecaptcha(formElement) {
+    if (typeof grecaptcha === 'undefined') {
+        console.error('[reCAPTCHA] grecaptcha not loaded');
+        return false;
+    }
+    
+    try {
+        const token = await grecaptcha.execute('6Lfz5aYqAAAAACkJOdjWglWew8_dIBATX-Wc-Rm1', {action: 'submit'});
+        
+        // Create hidden input for token if it doesn't exist
+        let tokenInput = formElement.querySelector('input[name="g-recaptcha-response"]');
+        if (!tokenInput) {
+            tokenInput = document.createElement('input');
+            tokenInput.type = 'hidden';
+            tokenInput.name = 'g-recaptcha-response';
+            formElement.appendChild(tokenInput);
+        }
+        
+        // Update token value
+        tokenInput.value = token;
+        
+        // For debugging
+        console.log('[reCAPTCHA] Token obtained');
+        return true;
+    } catch (error) {
+        console.error('[reCAPTCHA] Error obtaining token:', error);
+        return false;
+    }
+}
+
+// Helper to attach reCAPTCHA to all forms
+function setupRecaptchaOnForms() {
+    if (typeof document !== 'undefined') {
+        document.addEventListener('DOMContentLoaded', () => {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', async (event) => {
+                    // Prevent default form submission
+                    event.preventDefault();
+                    
+                    // Verify reCAPTCHA
+                    const isVerified = await verifyRecaptcha(form);
+                    
+                    if (isVerified) {
+                        // Submit the form if verification passes
+                        form.submit();
+                    } else {
+                        // Show error message
+                        const errorMsg = document.createElement('p');
+                        errorMsg.className = 'error-message';
+                        errorMsg.textContent = 'reCAPTCHA verification failed. Please try again.';
+                        form.appendChild(errorMsg);
+                        
+                        // Auto-remove after 5 seconds
+                        setTimeout(() => errorMsg.remove(), 5000);
+                    }
+                });
+            });
+        });
+    }
+}
+
+// Initialize reCAPTCHA on forms when in browser context
+if (typeof window !== 'undefined') {
+    setupRecaptchaOnForms();
+}
 
