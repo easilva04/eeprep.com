@@ -17,12 +17,14 @@ const FILES_TO_CACHE = [
 self.addEventListener('install', (event) => {
     console.log('Service Worker installing.');
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            console.log('Caching files...');
-            return cache.addAll(FILES_TO_CACHE);
-        }).catch((error) => {
-            console.error('Failed to cache files during install:', error);
-        })
+        caches.open(CACHE_NAME)
+            .then((cache) => {
+                console.log('Caching files...');
+                return cache.addAll(FILES_TO_CACHE);
+            })
+            .catch((error) => {
+                console.error('Failed to cache files during install:', error);
+            })
     );
 });
 
@@ -47,20 +49,38 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch files from cache or network with navigation preload and offline fallback
+// Improved fetch event handler with better caching strategy
 self.addEventListener('fetch', event => {
-  // Use respondWith to wait for the preloadResponse (if available) or fallback to a network fetch.
-  event.respondWith((async () => {
-    try {
-      const preloadResponse = await event.preloadResponse;
-      if (preloadResponse) return preloadResponse;
-    } catch (e) {
-      console.error('Preload failed:', e);
-    }
-    return fetch(event.request);
-  })());
-  // Use waitUntil to let the preload promise settle
-  event.waitUntil((async () => {
-    try { await event.preloadResponse; } catch (e) { /* swallow errors */ }
-  })());
+    event.respondWith(
+        (async () => {
+            try {
+                // Try to use preloaded response first
+                const preloadResponse = await event.preloadResponse;
+                if (preloadResponse) return preloadResponse;
+                
+                // Then check the cache
+                const cachedResponse = await caches.match(event.request);
+                if (cachedResponse) return cachedResponse;
+                
+                // If not in cache, fetch from network
+                const networkResponse = await fetch(event.request);
+                
+                // Cache successful GET responses
+                if (networkResponse.ok && event.request.method === 'GET') {
+                    const cache = await caches.open(CACHE_NAME);
+                    cache.put(event.request, networkResponse.clone());
+                }
+                
+                return networkResponse;
+            } catch (error) {
+                console.error('Fetch error:', error);
+                // For navigation requests, return the offline page
+                if (event.request.mode === 'navigate') {
+                    const cache = await caches.open(CACHE_NAME);
+                    return await cache.match('/offline.html');
+                }
+                throw error;
+            }
+        })()
+    );
 });

@@ -1,18 +1,17 @@
-class WasmErrorHandler {
-    static handleRuntimeError(error, errorInfo) {
-        console.error('Wasm Runtime Error:', {
-            message: error.message,
-            stack: error.stack,
-            errorInfo
-        });
-
-        // Custom error reporting logic
-        if (error.message.includes('unreachable')) {
-            console.warn('Detected unreachable code execution in WebAssembly module');
+class ErrorHandler {
+    static logEndpoint = '/log';
+    
+    static logError(error, context = {}) {
+        console.error('Error:', error, context);
+        
+        // Send error to server if in production environment
+        if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            this.sendErrorToServer(error, context);
         }
-
-        // Send error details to a remote logging server
-        fetch('/log', {
+    }
+    
+    static sendErrorToServer(error, context) {
+        fetch(this.logEndpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,42 +21,55 @@ class WasmErrorHandler {
                     message: error.message,
                     stack: error.stack
                 },
-                errorInfo,
-                timestamp: new Date().toISOString()
+                context,
+                timestamp: new Date().toISOString(),
+                url: window.location.href,
+                userAgent: navigator.userAgent
             })
-        }).catch(console.error);
+        }).catch(e => console.warn('Failed to send error report:', e));
     }
-}
-
-function handleError(error) {
-    console.error('Error:', error);
-}
-window.handleError = handleError;
-
-window.onload = async () => {
-    try {
-        // ...existing initialization code...
-        // Removed erroneous call that attempted "await error()"
-    } catch (error) {
-        WasmErrorHandler.handleRuntimeError(error, {
-            location: 'window.onload',
-            timestamp: new Date().toISOString()
+    
+    static handleWasmError(error, errorInfo) {
+        this.logError(error, {
+            type: 'wasm',
+            ...errorInfo
         });
+        
+        if (error.message.includes('unreachable')) {
+            console.warn('Detected unreachable code execution in WebAssembly module');
+        }
     }
-};
-
-// Only wrap t if it exists on window
-if (typeof window.t !== 'undefined') {
-  const originalT = window.t;
-  window.t = async function(...args) {
-      try {
-          return await originalT.apply(this, args);
-      } catch (error) {
-          WasmErrorHandler.handleRuntimeError(error, {
-              function: 't',
-              arguments: args
-          });
-          throw error; // Re-throw to maintain original behavior
-      }
-  };
+    
+    static wrapFunction(fn, context) {
+        return async function(...args) {
+            try {
+                return await fn.apply(this, args);
+            } catch (error) {
+                ErrorHandler.logError(error, {
+                    function: context,
+                    arguments: args
+                });
+                throw error; // Re-throw to maintain original behavior
+            }
+        };
+    }
 }
+
+// Global error handler
+window.handleError = (error) => ErrorHandler.logError(error);
+
+// Initialize error handlers
+window.onload = () => {
+    window.onerror = (message, source, lineno, colno, error) => {
+        ErrorHandler.logError(error || new Error(message), {
+            source, lineno, colno
+        });
+    };
+    
+    // Only wrap functions if they exist
+    ['t'].forEach(fnName => {
+        if (typeof window[fnName] === 'function') {
+            window[fnName] = ErrorHandler.wrapFunction(window[fnName], fnName);
+        }
+    });
+};

@@ -17,6 +17,7 @@ function toggleTheme() {
 document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
 
+    // Handle dropdown toggles
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
         toggle.addEventListener('click', () => {
             const menu = toggle.nextElementSibling;
@@ -27,30 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const themeToggleButton = document.querySelector('.theme-toggle');
-
-    function updateButtonText() {
-        const toggleButton = document.getElementById('dark-mode-toggle');
-        if (toggleButton) {  // Added check
-            toggleButton.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    // Handle theme toggle functionality
+    function updateButtonText(button) {
+        if (button) {
+            button.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
         }
     }
 
-    const toggleButton = document.getElementById('dark-mode-toggle');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
+    // Support multiple possible theme toggle button IDs
+    const toggleButtons = ['dark-mode-toggle', 'theme-toggle'].map(id => document.getElementById(id)).filter(Boolean);
+    
+    toggleButtons.forEach(button => {
+        updateButtonText(button);
+        button.addEventListener('click', () => {
             toggleTheme();
-            updateButtonText();
+            updateButtonText(button);
         });
-    }
-
-    updateButtonText();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const toggleButton = document.getElementById('theme-toggle');
-  if (toggleButton) {
-    toggleButton.textContent = 'Toggle Theme';
-    // ...rest of theme toggle logic...
-  }
+    });
 });
