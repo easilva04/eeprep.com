@@ -1,0 +1,485 @@
+/* Theme styles for eeprep.com */
+/* Contains styling for monochrome light/dark themes */
+
+/* Dark Mode Base */
+body.dark-mode,
+body.dark-mode .dropdown-menu a,
+body.dark-mode .dropdown-toggle {
+    background-color: #222222;
+}
+
+body.dark-mode {
+    color: #e0e0e0;
+}
+
+/* Dark Mode Components */
+body.dark-mode .dropdown-menu,
+body.dark-mode .navbar,
+body.dark-mode .sidebar,
+body.dark-mode .sidebar-footer,
+body.dark-mode .main-content,
+body.dark-mode footer {
+    background-color: #2a2a2a;
+    border-color: #3a3a3a;
+}
+
+/* Dark Mode Text */
+body.dark-mode .MathJax,
+body.dark-mode .MathJax_SVG,
+body.dark-mode .hamburger-menu span,
+body.dark-mode .theme-toggle,
+body.dark-mode .tikzjax,
+body.dark-mode a,
+body.dark-mode button,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode header,
+body.dark-mode input,
+body.dark-mode li,
+body.dark-mode p,
+body.dark-mode section,
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode ul {
+    color: #e0e0e0;
+}
+
+/* Dark Mode SVG */
+body.dark-mode .MathJax_SVG svg,
+body.dark-mode .search-icon svg,
+body.dark-mode .tikzjax svg {
+    stroke: #e0e0e0 !important;
+    fill: #e0e0e0 !important;
+}
+
+/* Dark Mode UI Elements */
+body.dark-mode .sidebar {
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .theme-toggle {
+    background-color: #3e3e3e;
+    border: none;
+}
+
+body.dark-mode button {
+    background-color: #3e3e3e;
+    border: none;
+    border-radius: var(--border-radius);
+    color: #e0e0e0;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+body.dark-mode button:hover {
+    background-color: #4e4e4e;
+}
+
+/* Dark Mode Form Elements */
+body.dark-mode #search-input {
+    background-color: var(--white);
+    border-color: var(--grey-medium);
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode #search-button {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+body.dark-mode mark {
+    background-color: rgba(255, 255, 0, .2);
+    color: inherit;
+}
+
+/* Dark Mode Search */
+body.dark-mode .search-dropdown {
+    background: var(--black);
+    border-color: var(--grey-medium);
+}
+
+body.dark-mode .search-dropdown-item {
+    background-color: var(--black);
+    border-bottom: 1px solid var(--grey-medium);
+}
+
+body.dark-mode .search-dropdown-item h4 {
+    color: var(--white);
+}
+
+body.dark-mode .search-dropdown-item p {
+    color: var(--grey-dark);
+}
+
+body.dark-mode .search-dropdown-item:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+body.dark-mode .matched-term {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+/* Dark Mode Search Results */
+body.dark-mode .search-result-item {
+    background-color: var(--black);
+}
+
+body.dark-mode .search-excerpt {
+    color: silver;
+}
+
+body.dark-mode .search-excerpt mark {
+    color: var(--white);
+    background-color: rgba(255, 255, 0, .2);
+}
+
+/* Dark Mode Contact Form */
+body.dark-mode .contact-form {
+    background: var(--black);
+}
+
+body.dark-mode .form-status.success {
+    background-color: rgba(212, 237, 218, .1);
+    color: #98c9a3;
+    border-color: #98c9a3;
+}
+
+body.dark-mode .form-status.error {
+    background-color: rgba(248, 215, 218, .1);
+    color: #e6a5a5;
+    border-color: #e6a5a5;
+}
+
+/* Theme Toggle Button */
+.theme-toggle,
+body.dark-mode button {
+    color: #e0e0e0;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.theme-toggle {
+    background-color: var(--grey-light);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+}
+
+/* Modern theme system for eeprep.com */
+
+/* Theme Transition - optimized */
+.theme-transition {
+    transition: background-color 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Dark Mode Colors - monochrome off-black */
+body.dark-mode {
+    --primary: #909090;
+    --primary-dark: #808080;
+    --secondary: #A0A0A0;
+    --accent: #B0B0B0;
+    --success: #909090;
+    --warning: #A0A0A0;
+    --danger: #CF6679;
+    --info: #A0A0A0;
+    
+    /* Neutral colors - dark mode */
+    --white: #202020;
+    --off-white: #181818;
+    --grey-100: #252525;
+    --grey-200: #303030;
+    --grey-300: #404040;
+    --grey-400: #505050;
+    --grey-500: #707070;
+    --grey-600: #909090;
+    --grey-700: #B0B0B0;
+    --grey-800: #D0D0D0;
+    --grey-900: #E0E0E0;
+    --black: #F2F2F2;
+    
+    /* Text colors - dark mode */
+    --text-primary: #E0E0E0;
+    --text-secondary: #B0B0B0;
+    --text-muted: #909090;
+    --text-light: #303030;
+    
+    /* Shadow tweaks for dark mode - more subtle */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 6px 10px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 15px 20px rgba(0, 0, 0, 0.45);
+    --shadow-focus: 0 0 0 3px rgba(128, 128, 128, 0.3);
+    
+    /* Body background */
+    background-color: var(--off-white);
+    color: var(--text-primary);
+}
+
+/* Dark Mode Specific Component Styles - simplified */
+body.dark-mode .navbar,
+body.dark-mode .main-content,
+body.dark-mode #sidebar-container,
+body.dark-mode footer,
+body.dark-mode .search-dropdown,
+body.dark-mode .dropdown-container {
+    background-color: var(--white);
+    border-color: var(--grey-300);
+}
+
+body.dark-mode .navbar.scrolled {
+    background-color: rgba(32, 32, 32, 0.95);
+    backdrop-filter: blur(8px);
+}
+
+body.dark-mode .hamburger-menu span {
+    background-color: var(--text-primary);
+}
+
+body.dark-mode .search-input {
+    background-color: var(--grey-200);
+    color: var(--text-primary);
+}
+
+body.dark-mode .dropdown-btn:hover {
+    background-color: var(--grey-200);
+}
+
+body.dark-mode .search-dropdown-item {
+    border-bottom-color: var(--grey-300);
+}
+
+body.dark-mode .search-dropdown-item:hover,
+body.dark-mode .search-dropdown-item.selected {
+    background-color: var(--grey-200);
+}
+
+body.dark-mode .theme-toggle {
+    background-color: var(--grey-300);
+    color: var(--text-primary);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: var(--grey-400);
+}
+
+/* Dark mode form elements - refined */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: var(--grey-200);
+    border-color: var(--grey-300);
+    color: var(--text-primary);
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: var(--grey-500);
+    box-shadow: var(--shadow-focus);
+}
+
+/* Dark mode code and pre blocks */
+body.dark-mode code,
+body.dark-mode pre {
+    background-color: var(--grey-200);
+    color: var(--grey-800);
+}
+
+/* Dark mode SVG and icons */
+body.dark-mode svg {
+    fill: var(--text-primary);
+}
+
+/* Dark mode highlight in search */
+body.dark-mode .highlight {
+    background-color: rgba(128, 128, 128, 0.2);
+    padding: 0 0.2em;
+    border-radius: 2px;
+}
+
+/* Dark mode MathJax and TikzJax */
+body.dark-mode .MathJax,
+body.dark-mode .MathJax_SVG,
+body.dark-mode .tikzjax {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .MathJax_SVG svg,
+body.dark-mode .tikzjax svg {
+    fill: var(--text-primary) !important;
+}
+
+/* Dark mode mark */
+body.dark-mode mark {
+    background-color: rgba(160, 160, 160, 0.2);
+    color: inherit;
+}
+
+/* Theme styles for EE Prep */
+
+/* Light Theme (Default) */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --sidebar-bg: #2c3e50;
+    --sidebar-text: #ecf0f1;
+    --border-color: #ddd;
+    --success-color: #27ae60;
+    --error-color: #e74c3c;
+    --warning-color: #f1c40f;
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --card-bg: #fff;
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+    --code-bg: #f1f1f1;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-color: #4da6ff;
+    --secondary-color: #3498db;
+    --accent-color: #f7cb4d;
+    --text-color: #ecf0f1;
+    --background-color: #1a1a1a;
+    --sidebar-bg: #0d1520;
+    --sidebar-text: #ecf0f1;
+    --border-color: #444;
+    --success-color: #2ecc71;
+    --error-color: #ff6b6b;
+    --warning-color: #ffd966;
+    --button-bg: #3498db;
+    --button-hover: #4da6ff;
+    --card-bg: #2c2c2c;
+    --footer-bg: #0d1520;
+    --footer-text: #ecf0f1;
+    --code-bg: #333;
+}
+
+/* High Contrast Theme */
+[data-theme="high-contrast"] {
+    --primary-color: #ffff00;
+    --secondary-color: #00ff00;
+    --accent-color: #ff00ff;
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --sidebar-bg: #000000;
+    --sidebar-text: #ffffff;
+    --border-color: #ffffff;
+    --success-color: #00ff00;
+    --error-color: #ff0000;
+    --warning-color: #ffff00;
+    --button-bg: #ffff00;
+    --button-hover: #ffffff;
+    --card-bg: #000000;
+    --footer-bg: #000000;
+    --footer-text: #ffffff;
+    --code-bg: #000000;
+}
+
+/* Monochrome Theme (Black & White) */
+[data-theme="monochrome"] {
+    --primary-color: #333333;
+    --secondary-color: #555555;
+    --accent-color: #000000;
+    --text-color: #222222;
+    --background-color: #F5F5F5;
+    --sidebar-bg: #222222;
+    --sidebar-text: #F5F5F5;
+    --border-color: #DDDDDD;
+    --success-color: #444444;
+    --error-color: #111111;
+    --warning-color: #888888;
+    --button-bg: #333333;
+    --button-hover: #111111;
+    --card-bg: #FFFFFF;
+    --footer-bg: #222222;
+    --footer-text: #F5F5F5;
+    --code-bg: #EBEBEB;
+}
+
+/* Monochrome Dark Theme (Off-Black) */
+[data-theme="monochrome-dark"] {
+    --primary-color: #AAAAAA;
+    --secondary-color: #888888;
+    --accent-color: #FFFFFF;
+    --text-color: #EBEBEB;
+    --background-color: #111111;
+    --sidebar-bg: #000000;
+    --sidebar-text: #EBEBEB;
+    --border-color: #444444;
+    --success-color: #BBBBBB;
+    --error-color: #EEEEEE;
+    --warning-color: #777777;
+    --button-bg: #333333;
+    --button-hover: #555555;
+    --card-bg: #222222;
+    --footer-bg: #000000;
+    --footer-text: #EBEBEB;
+    --code-bg: #2A2A2A;
+}
+
+/* Theme-specific overrides */
+[data-theme="dark"] code {
+    color: #e83e8c;
+}
+
+[data-theme="dark"] pre {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="high-contrast"] a {
+    text-decoration: underline;
+}
+
+[data-theme="high-contrast"] .styled-button,
+[data-theme="high-contrast"] .theme-toggle-btn {
+    border: 2px solid var(--primary-color);
+    font-weight: bold;
+}
+
+[data-theme="high-contrast"] .sidebar-menu a:hover {
+    background-color: var(--primary-color);
+    color: #000000;
+}
+
+/* Monochrome theme overrides */
+[data-theme="monochrome"] code,
+[data-theme="monochrome-dark"] code {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="monochrome"] a,
+[data-theme="monochrome-dark"] a {
+    text-decoration: underline;
+}
+
+[data-theme="monochrome"] .styled-button,
+[data-theme="monochrome"] .theme-toggle-btn,
+[data-theme="monochrome-dark"] .styled-button,
+[data-theme="monochrome-dark"] .theme-toggle-btn {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="monochrome"] .sidebar-menu a:hover,
+[data-theme="monochrome-dark"] .sidebar-menu a:hover {
+    background-color: var(--accent-color);
+    color: var(--sidebar-text);
+}
+
+[data-theme="monochrome"] .card,
+[data-theme="monochrome-dark"] .card {
+    border: 1px solid var(--border-color);
+}

@@ -32,51 +32,45 @@
         <priority>0.5</priority>
     </url>
 
-    <!-- Mathematics > General -->
+    <!-- Mathematics > Fundamentals -->
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/Math.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/Math.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/Algebra.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/Algebra.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/ComplexNumbers.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/ComplexNumbers.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/Vectors.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/Vectors.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/LinearAlgebra.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/LinearAlgebra.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/Geometry.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/Geometry.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/Math/ODEs.html</loc>
-        <lastmod>2025-01-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.eeprep.com/Topics/Math/Discrete.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Fundamentals/Discrete.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -107,28 +101,34 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://www.eeprep.com/Topics/Math/Calculus/ODEs.html</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-    <!-- Statistics -->
+    <!-- Mathematics > Statistics -->
     <url>
-        <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/ProbStats.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Statistics/ProbStats.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/Distributions.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Statistics/Distributions.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/Tendencies.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Statistics/Tendencies.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.eeprep.com/Topics/ProbabilityStatistics/ExpectedValue.html</loc>
+        <loc>https://www.eeprep.com/Topics/Math/Statistics/ExpectedValue.html</loc>
         <lastmod>2025-01-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

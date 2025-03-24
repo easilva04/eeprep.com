@@ -1,0 +1,115 @@
+<!-- Navbar Component -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <button class="hamburger-menu" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1 class="navbar-title">
+            <a href="/index.html">
+                <span class="title-full">Electrical Engineering Preparation</span>
+                <span class="title-mobile">EE Prep</span>
+            </a>
+        </h1>
+    </div>
+    <div class="navbar-right">
+        <div class="search-container">
+            <button class="search-icon" id="search-button" aria-label="Search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.5 14H14.71L14.43 13.73C15.63 12.33 16.25 10.42 15.91 8.39C15.43 5.61 13.12 3.39 10.32 3.05C6.09 2.56 2.56 6.09 3.05 10.32C3.39 13.12 5.61 15.43 8.39 15.91C10.42 16.25 12.33 15.63 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9 14C6.79 14 5 12.21 5 10C5 7.79 6.79 6 9 6C11.21 6 13 7.79 13 10C13 12.21 11.21 14 9 14Z"
+                        fill="currentColor" />
+                </svg>
+            </button>
+            <input type="text" class="search-input" id="navbar-search-input" placeholder="Search...">
+            <div class="search-suggestions"></div>
+            <div class="search-dropdown"></div>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar Component -->
+<div id="sidebar-container" class="sidebar collapsed">
+    <div class="sidebar-header">
+        <img src="/Info/Config/Assets/images/eeprep.png" alt="EEPrep Logo" class="sidebar-logo">
+        <h2>EE Prep</h2>
+        <button id="toggle-sidebar" class="toggle-btn">≡</button>
+    </div>
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <li><a href="/index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Topics</a>
+                <div class="dropdown-content">
+                    <a href="/Topics/Circuits/Circuits.html">Circuits</a>
+                    <a href="/Topics/Communications/Communications.html">Communications</a>
+                    <a href="/Topics/ComputerSystems/ComputerSystems.html">Computer Systems</a>
+                    <a href="/Topics/Controls/Controls.html">Controls</a>
+                    <a href="/Topics/DigitalSystems/DigitalSystems.html">Digital Systems</a>
+                    <a href="/Topics/Economics/EngineeringEcon.html">Economics</a>
+                    <a href="/Topics/ElectricalMaterials/Materials.html">Electrical Materials</a>
+                    <a href="/Topics/Electromagnetics/Electromagnetics.html">Electromagnetics</a>
+                    <a href="/Topics/Electronics/Electronics.html">Electronics</a>
+                    <a href="/Topics/Ethics/Ethics.html">Ethics</a>
+                    <a href="/Topics/LinearSystems/LinearSystems.html">Linear Systems</a>
+                    <a href="/Topics/Math/Fundamentals/Math.html">Mathematics</a>
+                    <a href="/Topics/Networks/Networks.html">Networks</a>
+                    <a href="/Topics/Power/Power.html">Power</a>
+                    <a href="/Topics/Signals/Signals.html">Signals</a>
+                    <a href="/Topics/SoftwareEngineering/SoftwareEngineering.html">Software Engineering</a>
+                </div>
+            </li>
+            <li><a href="/Topics/Topics.html">All Topics</a></li>
+            <li><a href="/Topics/Home/About.html">About</a></li>
+            <li id="theme-toggle-container">
+                <button id="theme-toggle" class="theme-toggle-btn">Toggle Theme</button>
+            </li>
+        </ul>
+        <div id="search-container"></div>
+    </div>
+    <div class="sidebar-footer">
+        <button id="dark-mode-toggle" class="theme-toggle">Dark Mode</button>
+        <p>For the aspiring Engineer</p>
+    </div>
+</div>
+
+<!-- Footer Component -->
+<footer>
+    <div class="footer-content">
+        <p><em>For the aspiring engineer</em>.</p>
+        <div class="footer-links">
+            <a href="/about.html">About</a> | 
+            <a href="/contact.html">Contact</a> | 
+            <a href="/privacy.html">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/themeToggle.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navbar search functionality
+        const searchInput = document.getElementById('navbar-search-input');
+        const searchButton = document.getElementById('search-button');
+        
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (query) {
+                window.location.href = `/components/search.html?q=${encodeURIComponent(query)}`;
+            }
+        }
+        
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Footer year update
+        document.getElementById('current-year') && 
+        (document.getElementById('current-year').textContent = new Date().getFullYear());
+    });
+</script>
