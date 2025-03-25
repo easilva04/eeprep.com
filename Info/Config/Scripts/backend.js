@@ -54,19 +54,14 @@ const WEBSITE_SCHEMA = {
     }
 };
 
-// Function to inject schema.org data into pages if needed
+// Function to inject schema.org data into pages
 function injectSchemaData() {
-    // Check if we're in a browser context
-    if (typeof document !== 'undefined') {
-        // Only inject if it doesn't already exist
-        if (!document.querySelector('script[type="application/ld+json"]#website-schema')) {
-            const script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.id = 'website-schema';
-            script.textContent = JSON.stringify(WEBSITE_SCHEMA);
-            document.head.appendChild(script);
-            console.log('[Schema] Injected WebSite schema');
-        }
+    if (typeof document !== 'undefined' && !document.querySelector('script[type="application/ld+json"]#website-schema')) {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = 'website-schema';
+        script.textContent = JSON.stringify(WEBSITE_SCHEMA);
+        document.head.appendChild(script);
     }
 }
 
@@ -340,6 +335,7 @@ self.addEventListener('message', event => {
     }
 });
 
+// Error handling class
 class ErrorHandler {
     static logEndpoint = '/log';
     
@@ -369,17 +365,6 @@ class ErrorHandler {
                 userAgent: self.navigator ? self.navigator.userAgent : 'Unknown'
             })
         }).catch(e => console.warn('Failed to send error report:', e));
-    }
-    
-    static handleWasmError(error, errorInfo) {
-        this.logError(error, {
-            type: 'wasm',
-            ...errorInfo
-        });
-        
-        if (error.message.includes('unreachable')) {
-            console.warn('Detected unreachable code execution in WebAssembly module');
-        }
     }
     
     static wrapFunction(fn, context) {
@@ -430,9 +415,6 @@ async function verifyRecaptcha(formElement) {
         
         // Update token value
         tokenInput.value = token;
-        
-        // For debugging
-        console.log('[reCAPTCHA] Token obtained');
         return true;
     } catch (error) {
         console.error('[reCAPTCHA] Error obtaining token:', error);
@@ -448,14 +430,12 @@ function setupRecaptchaOnForms() {
             
             forms.forEach(form => {
                 form.addEventListener('submit', async (event) => {
-                    // Prevent default form submission
                     event.preventDefault();
                     
                     // Verify reCAPTCHA
                     const isVerified = await verifyRecaptcha(form);
                     
                     if (isVerified) {
-                        // Submit the form if verification passes
                         form.submit();
                     } else {
                         // Show error message
@@ -478,231 +458,6 @@ if (typeof window !== 'undefined') {
     setupRecaptchaOnForms();
 }
 
-/**
- * Main site functionality for EEPrep
- * Ensures all components work together properly
- */
-
-// Execute when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing site functionality');
-    
-    // Fix sidebar collapse behavior
-    fixSidebarCollapse();
-    
-    // Add topic card hover effects
-    enhanceTopicCards();
-    
-    // Add active class to current page in sidebar
-    highlightCurrentPage();
-    
-    // Initialize scroll effects
-    initScrollEffects();
-    
-    // Load MathJax properly
-    initializeMathJax();
-});
-
-/**
- * Fix sidebar collapse behavior to ensure it works properly
- */
-function fixSidebarCollapse() {
-    const sidebar = document.getElementById('sidebar-container');
-    if (!sidebar) return;
-    
-    // Ensure correct initial state - don't manipulate inline transform styles
-    if (window.innerWidth < 768) {
-        // On mobile, sidebar should be hidden by default but not collapsed
-        sidebar.classList.remove('collapsed');
-        sidebar.classList.remove('active');
-    } else {
-        // On desktop, check localStorage for collapse preference
-        const sidebarState = localStorage.getItem('sidebar-collapsed');
-        if (sidebarState === 'true') {
-            sidebar.classList.add('collapsed');
-        } else if (sidebarState === 'false') {
-            sidebar.classList.remove('collapsed');
-        }
-        // Otherwise use the default class state from HTML
-    }
-    
-    // Ensure sidebar buttons work
-    const toggleButton = document.getElementById('toggle-sidebar');
-    if (toggleButton) {
-        // Remove existing event listener if present by cloning
-        const newToggleButton = toggleButton.cloneNode(true);
-        toggleButton.parentNode.replaceChild(newToggleButton, toggleButton);
-        
-        // Add new event listener
-        newToggleButton.addEventListener('click', function() {
-            if (window.innerWidth >= 768) {
-                sidebar.classList.toggle('collapsed');
-                
-                // Save preference to localStorage
-                localStorage.setItem('sidebar-collapsed', sidebar.classList.contains('collapsed'));
-                console.log('Sidebar toggled to:', sidebar.classList.contains('collapsed') ? 'collapsed' : 'expanded');
-                
-                // Update button icon
-                updateToggleIcon(sidebar.classList.contains('collapsed'));
-            }
-        });
-    }
-    
-    // Update mobile menu toggle
-    const mobileToggle = document.getElementById('mobile-menu-toggle');
-    if (mobileToggle) {
-        // Remove existing event listener if present by cloning
-        const newMobileToggle = mobileToggle.cloneNode(true);
-        mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
-        
-        // Add new event listener
-        newMobileToggle.addEventListener('click', function() {
-            if (window.innerWidth < 768) {
-                sidebar.classList.toggle('active');
-                const overlay = document.getElementById('sidebar-overlay');
-                if (overlay) {
-                    overlay.classList.toggle('active');
-                }
-                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-                console.log('Mobile sidebar toggled:', sidebar.classList.contains('active') ? 'active' : 'inactive');
-            }
-        });
-    }
-    
-    // Fix direct navigation in collapsed mode
-    const sidebarLinks = document.querySelectorAll('.sidebar-link:not(.dropdown-toggle)');
-    sidebarLinks.forEach(link => {
-        // Remove existing event listener by cloning
-        const newLink = link.cloneNode(true);
-        link.parentNode.replaceChild(newLink, link);
-        
-        // Add new event listener that checks for collapsed state
-        newLink.addEventListener('click', function(e) {
-            // For links in collapsed mode on desktop, just navigate directly
-            if (window.innerWidth >= 768 && sidebar.classList.contains('collapsed')) {
-                console.log('Direct navigation in collapsed mode');
-                // Let default navigation occur
-            }
-        });
-    });
-    
-    // Update toggle icon
-    function updateToggleIcon(isCollapsed) {
-        const toggleButton = document.getElementById('toggle-sidebar');
-        if (!toggleButton) return;
-        
-        toggleButton.innerHTML = isCollapsed ? 
-            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>` : 
-            `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>`;
-    }
-}
-
-/**
- * Enhance topic cards with better hover effects
- */
-function enhanceTopicCards() {
-    const topicCards = document.querySelectorAll('.topic-card');
-    
-    topicCards.forEach(card => {
-        // Add hover effect
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = 'var(--box-shadow-hover)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = 'var(--box-shadow)';
-        });
-        
-        // Add click effect for better mobile experience
-        card.addEventListener('click', function(e) {
-            // Only apply if we're clicking the card itself, not a link inside it
-            if (e.target === this) {
-                const link = this.querySelector('a');
-                if (link) {
-                    link.click();
-                }
-            }
-        });
-    });
-}
-
-/**
- * Highlight the current page in the sidebar navigation
- */
-function highlightCurrentPage() {
-    // Get current page path
-    const currentPath = window.location.pathname;
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
-    
-    sidebarLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && (currentPath.endsWith(href) || currentPath.includes(href))) {
-            link.classList.add('active');
-            
-            // If in dropdown, expand it
-            const dropdownItem = link.closest('.sidebar-item');
-            if (dropdownItem && dropdownItem.querySelector('.dropdown-toggle')) {
-                dropdownItem.classList.add('active');
-            }
-        }
-    });
-}
-
-/**
- * Initialize scroll effects like scroll-to-top button
- */
-function initScrollEffects() {
-    // Create scroll-to-top button if it doesn't exist
-    if (!document.querySelector('.scroll-top')) {
-        const scrollTopButton = document.createElement('button');
-        scrollTopButton.className = 'scroll-top';
-        scrollTopButton.setAttribute('aria-label', 'Scroll to top');
-        scrollTopButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 19V5M5 12l7-7 7 7"/>
-            </svg>
-        `;
-        document.body.appendChild(scrollTopButton);
-        
-        // Add click event
-        scrollTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-    
-    // Show/hide scroll button based on scroll position
-    const scrollTopButton = document.querySelector('.scroll-top');
-    if (scrollTopButton) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                scrollTopButton.classList.add('visible');
-            } else {
-                scrollTopButton.classList.remove('visible');
-            }
-        });
-    }
-}
-
-/**
- * Initialize MathJax properly
- */
-function initializeMathJax() {
-    if (typeof MathJax !== 'undefined') {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-    }
-}
-
 // Debounce function to limit how often a function can run
 function debounce(func, wait) {
     let timeout;
@@ -713,152 +468,59 @@ function debounce(func, wait) {
     };
 }
 
-// Handle window resize - FIXED to manage responsive behavior properly
-window.addEventListener('resize', debounce(function() {
-    // Adjust sidebar based on screen size
-    const sidebar = document.getElementById('sidebar-container');
-    if (sidebar) {
-        if (window.innerWidth < 768) {
-            // On mobile
-            if (!sidebar.classList.contains('active')) {
-                // On mobile, don't use collapsed class
-                sidebar.classList.remove('collapsed');
-            }
-        } else {
-            // On desktop
+// Add keyboard navigation support
+function setupKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        // Escape key to close sidebar on mobile
+        if (e.key === 'Escape') {
+            const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('sidebar-overlay');
-            if (overlay) {
-                overlay.classList.remove('active');
-            }
-            document.body.style.overflow = '';
             
-            // Respect saved collapsed state
-            const sidebarState = localStorage.getItem('sidebar-collapsed');
-            if (sidebarState === 'true') {
-                sidebar.classList.add('collapsed');
-            } else if (sidebarState === 'false') {
-                sidebar.classList.remove('collapsed');
+            if (sidebar && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Close any search dropdown if open
+            const searchContainer = document.querySelector('.search-container.active');
+            if (searchContainer) {
+                searchContainer.classList.remove('active');
             }
         }
-    }
-}, 250));
-
-// Fix common link issues
-document.addEventListener('click', function(e) {
-    // Ensure all navigation links use navigateRelative when appropriate
-    if (e.target.tagName === 'A' && !e.target.getAttribute('href').startsWith('http')) {
-        const href = e.target.getAttribute('href');
-        // Skip links with # (anchors) or javascript:
-        if (href && !href.startsWith('#') && !href.startsWith('javascript:') && typeof navigateRelative === 'function') {
+        
+        // Shift+/ for search
+        if (e.key === '?' && e.shiftKey) {
+            const searchInput = document.querySelector('.sidebar-search input') || 
+                               document.querySelector('.search-container input');
+            
+            if (searchInput) {
+                searchInput.focus();
+                e.preventDefault();
+            }
+        }
+        
+        // Alt+S to toggle sidebar
+        if (e.key === 's' && e.altKey) {
             e.preventDefault();
-            navigateRelative(href);
+            if (typeof toggleSidebar === 'function') {
+                toggleSidebar();
+            }
         }
-    }
-});
-
-
-/**
- * Asset Debugger - Helps identify and fix asset loading issues
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Asset debugger running...');
-    
-    // Check for logo element
-    const logoElement = document.getElementById('sidebar-logo');
-    if (logoElement) {
-        console.log('Logo element found with src:', logoElement.src);
         
-        // Verify all possible image paths
-        const basePath = getBasePath();
-        const possiblePaths = [
-            `${basePath}/Info/Config/Assets/images/eeprep.png`,
-            `${basePath}/Assets/images/eeprep.png`,
-            `${basePath}/images/eeprep.png`,
-            `${basePath}/eeprep.png`,
-            '/Info/Config/Assets/images/eeprep.png',
-            '/Assets/images/eeprep.png',
-            '/images/eeprep.png',
-            '/eeprep.png'
-        ];
-        
-        console.log('Possible image paths:');
-        possiblePaths.forEach(path => {
-            const img = new Image();
-            img.onload = () => console.log(`✓ Image exists at: ${path}`);
-            img.onerror = () => console.log(`✗ Image NOT found at: ${path}`);
-            img.src = path;
-        });
-    } else {
-        console.error('Logo element not found!');
-    }
-    
-    // Verify toggle button
-    const toggleButton = document.getElementById('toggle-sidebar');
-    if (toggleButton) {
-        console.log('Toggle button found:', toggleButton);
-        console.log('Toggle button html:', toggleButton.innerHTML);
-        console.log('Toggle button visibility:', getComputedStyle(toggleButton).display);
-        
-        // Add a test click handler
-        toggleButton.addEventListener('click', function() {
-            console.log('Debug: Toggle button clicked');
-        });
-    } else {
-        console.error('Toggle button not found!');
-    }
-    
-    // Verify mobile menu toggle
-    const mobileToggle = document.getElementById('mobile-menu-toggle');
-    if (mobileToggle) {
-        console.log('Mobile toggle button found:', mobileToggle);
-        console.log('Mobile toggle html:', mobileToggle.innerHTML);
-        console.log('Mobile toggle visibility:', getComputedStyle(mobileToggle).display);
-        
-        // Add a test click handler
-        mobileToggle.addEventListener('click', function() {
-            console.log('Debug: Mobile toggle clicked');
-        });
-    } else {
-        console.error('Mobile toggle button not found!');
-    }
-    
-    // Check sidebar status
-    const sidebar = document.getElementById('sidebar-container');
-    if (sidebar) {
-        console.log('Sidebar found with classes:', sidebar.className);
-        console.log('Sidebar computed style transform:', getComputedStyle(sidebar).transform);
-        console.log('Sidebar width:', getComputedStyle(sidebar).width);
-    } else {
-        console.error('Sidebar not found!');
-    }
-});
-
-// Helper function that gives more details about path resolution
-function getBasePath() {
-    const pathSegments = window.location.pathname.split('/').filter(segment => segment !== '');
-    
-    console.log('Current pathname:', window.location.pathname);
-    console.log('Path segments:', pathSegments);
-    
-    // Handle root path
-    if (pathSegments.length === 0 || 
-        (pathSegments.length === 1 && (pathSegments[0] === 'index.html' || pathSegments[0] === ''))) {
-        console.log('Detected root path, returning empty base path');
-        return '';
-    }
-    
-    // Calculate relative path to root
-    let basePath = '';
-    for (let i = 0; i < pathSegments.length; i++) {
-        if (i === pathSegments.length - 1 && pathSegments[i].includes('.')) {
-            console.log('Skipping filename:', pathSegments[i]);
-            continue; // Skip filename
+        // Alt+D to toggle dark mode
+        if (e.key === 'd' && e.altKey) {
+            e.preventDefault();
+            if (typeof toggleTheme === 'function') {
+                toggleTheme();
+            }
         }
-        basePath += '../';
-    }
-    
-    const result = basePath === '' ? '' : basePath.slice(0, -1);
-    console.log('Calculated base path:', result);
-    return result;
+    });
+}
+
+// Export necessary functions for global use
+if (typeof window !== 'undefined') {
+    window.setupKeyboardNavigation = setupKeyboardNavigation;
+    window.debounce = debounce;
+    window.verifyRecaptcha = verifyRecaptcha;
 }

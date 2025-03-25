@@ -1,19 +1,178 @@
 /**
- * Search functionality for EEPrep
- * Handles searching content and displaying results
+ * Unified Search Module for EEPrep
+ * Handles both search UI and functionality
  */
+document.addEventListener('DOMContentLoaded', function() {
+    initSearchUI();
+});
 
+function initSearchUI() {
+    const searchContainer = document.querySelector('.search-container');
+    const searchButton = document.querySelector('.search-icon');
+    const searchInput = document.querySelector('.search-input');
+    const searchClose = document.querySelector('.search-close');
+    const searchResultsDropdown = document.querySelector('.search-results-dropdown');
+    
+    if (!searchContainer || !searchButton) {
+        return;
+    }
+    
+    // Toggle search input visibility when icon is clicked
+    searchButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        searchContainer.classList.add('active');
+        if (searchInput) {
+            searchInput.focus();
+        }
+    });
+    
+    // Close search when close button is clicked
+    if (searchClose) {
+        searchClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchContainer.classList.remove('active');
+            if (searchInput) searchInput.value = '';
+            if (searchResultsDropdown) {
+                searchResultsDropdown.innerHTML = '';
+                searchResultsDropdown.classList.remove('show');
+            }
+        });
+    }
+    
+    // Handle click outside to close search
+    document.addEventListener('click', function(event) {
+        if (searchContainer && !searchContainer.contains(event.target)) {
+            searchContainer.classList.remove('active');
+            if (searchResultsDropdown) {
+                searchResultsDropdown.classList.remove('show');
+            }
+        }
+    });
+    
+    // Handle search input
+    if (searchInput && searchResultsDropdown) {
+        let searchTimeout;
+        
+        // Create a SearchEngine instance
+        const searchEngine = new SearchEngine();
+        
+        // Get base path
+        const basePath = getBasePath();
+        
+        // Initialize the search index
+        searchEngine.initializeSearchIndex(`${basePath}/Topics/pages.json`)
+            .catch(error => console.error('Failed to load search index:', error));
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            
+            const query = this.value.trim();
+            if (query.length < 2) {
+                searchResultsDropdown.innerHTML = '';
+                searchResultsDropdown.classList.remove('show');
+                return;
+            }
+            
+            // Debounce search to avoid excessive processing
+            searchTimeout = setTimeout(() => {
+                if (!searchEngine.isIndexLoaded) {
+                    searchResultsDropdown.innerHTML = '<div class="search-message">Loading search data...</div>';
+                    searchResultsDropdown.classList.add('show');
+                    return;
+                }
+                
+                const results = searchEngine.search(query);
+                
+                if (results.length === 0) {
+                    searchResultsDropdown.innerHTML = '<div class="search-message">No results found</div>';
+                } else {
+                    searchResultsDropdown.innerHTML = results
+                        .slice(0, 5) // Limit to 5 results for dropdown
+                        .map(result => {
+                            return `
+                            <div class="search-result-item" data-url="${result.url}">
+                                <div class="search-result-title">${result.title}</div>
+                                ${result.excerpts.length > 0 ? 
+                                    `<div class="search-result-excerpt">${result.excerpts[0]}</div>` : ''}
+                            </div>`;
+                        })
+                        .join('') + 
+                        (results.length > 5 ? 
+                            `<div class="search-result-more" data-query="${query}">
+                                View all ${results.length} results
+                            </div>` : '');
+                }
+                
+                searchResultsDropdown.classList.add('show');
+                
+                // Add click handlers to results
+                const resultItems = searchResultsDropdown.querySelectorAll('.search-result-item');
+                resultItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const url = this.getAttribute('data-url');
+                        if (url) {
+                            window.location.href = `${basePath}${url.startsWith('/') ? '' : '/'}${url}`;
+                        }
+                    });
+                });
+                
+                // Add handler for "view all results"
+                const viewAllElem = searchResultsDropdown.querySelector('.search-result-more');
+                if (viewAllElem) {
+                    viewAllElem.addEventListener('click', function() {
+                        const query = this.getAttribute('data-query');
+                        window.location.href = `${basePath}/search.html?q=${encodeURIComponent(query)}`;
+                    });
+                }
+            }, 300);
+        });
+        
+        // Handle Enter key in search input
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.trim();
+                if (query.length > 1) {
+                    // Navigate to search page with query
+                    window.location.href = `${basePath}/search.html?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    }
+}
+
+// Helper function to get base path for URLs
+function getBasePath() {
+    const pathSegments = window.location.pathname.split('/').filter(segment => segment !== '');
+    
+    // Handle root path
+    if (pathSegments.length === 0 || 
+        (pathSegments.length === 1 && (pathSegments[0] === 'index.html' || pathSegments[0] === ''))) {
+        return '';
+    }
+    
+    // Calculate relative path to root
+    let basePath = '';
+    for (let i = 0; i < pathSegments.length; i++) {
+        if (i === pathSegments.length - 1 && pathSegments[i].includes('.')) {
+            continue; // Skip filename
+        }
+        basePath += '../';
+    }
+    
+    return basePath === '' ? '' : basePath.slice(0, -1);
+}
+
+/**
+ * Search engine class that handles indexing and searching
+ */
 class SearchEngine {
     constructor() {
         this.searchIndex = [];
         this.isIndexLoaded = false;
     }
 
-    /**
-     * Initialize search index from JSON file
-     * @param {string} indexUrl - URL to the search index JSON file
-     * @returns {Promise} - Promise that resolves when index is loaded
-     */
+    // Initialize search index from JSON file
     initializeSearchIndex(indexUrl) {
         return new Promise((resolve, reject) => {
             fetch(indexUrl)
@@ -36,7 +195,6 @@ class SearchEngine {
                     }
                     
                     this.isIndexLoaded = true;
-                    console.log('Search index loaded with', this.searchIndex.length, 'pages');
                     resolve(this.searchIndex);
                 })
                 .catch(error => {
@@ -46,14 +204,9 @@ class SearchEngine {
         });
     }
 
-    /**
-     * Perform search against the index
-     * @param {string} query - The search query
-     * @returns {Array} - Array of search results
-     */
+    // Perform search against the index
     search(query) {
         if (!this.isIndexLoaded || !this.searchIndex.length) {
-            console.warn('Search index not loaded');
             return [];
         }
         
@@ -64,7 +217,7 @@ class SearchEngine {
         const terms = query.toLowerCase().split(/\s+/).filter(term => term.length > 1);
         if (terms.length === 0) return [];
         
-        const results = this.searchIndex
+        return this.searchIndex
             .filter(page => {
                 const titleLower = (page.title || '').toLowerCase();
                 const contentLower = (page.content || '').toLowerCase();
@@ -89,32 +242,18 @@ class SearchEngine {
                 return bContentMatches - aContentMatches;
             })
             .map(page => {
-                // Extract matched terms
-                const matchedTerms = terms.filter(term => 
-                    (page.title || '').toLowerCase().includes(term) || 
-                    (page.content || '').toLowerCase().includes(term)
-                );
-                
                 // Create excerpts with context around matches
                 const excerpts = this.generateExcerpts(page.content, terms);
                 
                 return {
                     title: page.title || 'Untitled Page',
                     url: page.url || '#',
-                    matchedTerms: matchedTerms,
                     excerpts: excerpts
                 };
             });
-            
-        return results;
     }
     
-    /**
-     * Generate text excerpts with context around matched terms
-     * @param {string} content - The content to extract excerpts from
-     * @param {Array} terms - Search terms to highlight
-     * @returns {Array} - Array of excerpt strings
-     */
+    // Generate text excerpts with context around matched terms
     generateExcerpts(content, terms) {
         if (!content) return [];
         
@@ -151,12 +290,7 @@ class SearchEngine {
         return [...new Set(excerpts)];
     }
     
-    /**
-     * Highlight search terms in text
-     * @param {string} text - Text to highlight terms in
-     * @param {Array} terms - Terms to highlight
-     * @returns {string} - Text with highlighted terms
-     */
+    // Highlight search terms in text
     highlightText(text, terms) {
         if (!text) return '';
         
@@ -172,20 +306,12 @@ class SearchEngine {
         return safeText;
     }
     
-    /**
-     * Escape special characters in string for regex
-     * @param {string} string - String to escape
-     * @returns {string} - Escaped string
-     */
+    // Escape special characters in string for regex
     escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
     
-    /**
-     * Escape HTML to prevent XSS
-     * @param {string} html - String potentially containing HTML
-     * @returns {string} - Escaped string
-     */
+    // Escape HTML to prevent XSS
     escapeHTML(html) {
         const div = document.createElement('div');
         div.textContent = html;
@@ -193,11 +319,7 @@ class SearchEngine {
     }
 }
 
-// Create global instance
+// Make SearchEngine class available globally
 window.SearchEngine = SearchEngine;
-
-// Initialize search functionality when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // If initializeSearch is called externally, leave it to be handled by the component
-    console.log('Search script loaded');
-});
+window.initSearchUI = initSearchUI;
+window.getBasePath = getBasePath;

@@ -24,35 +24,22 @@
     
     <!-- Load stylesheets in the correct order -->
     <link rel="stylesheet" href="Info/Config/Styles/main.css">
-    <link rel="stylesheet" href="Info/Config/Styles/themes.css">
     <link rel="stylesheet" href="Info/Config/Styles/responsive.css">
-    
-    <!-- Site functionality scripts - load in proper order -->
-    <script src="Info/Config/Scripts/themeToggle.js"></script>
-    <script src="Info/Config/Scripts/componentLoader.js"></script>
-    <script src="Info/Config/Scripts/search.js" defer></script>
-    
-    <!-- Additional scripts based on page needs -->
-    <script src="Info/Config/Scripts/questions.js" defer></script>
-    <script src="Info/Config/Scripts/backend.js" defer></script>
-    
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-09JTZCW5JJ');
-    </script>
 </head>
 
 <body class="theme-transition">
-    <!-- Sidebar with proper class - not collapsed by default on home page -->
-    <div id="sidebar-container" class="sidebar"></div>
+    <!-- Sidebar Container -->
+    <div id="sidebar-container" class="sidebar">
+        <!-- Sidebar content will be loaded here -->
+    </div>
     
+    <!-- Sidebar Overlay for Mobile -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    
+    <!-- Main Content -->
     <div class="main-content">
         <header>
-            <h1>Welcome to EEPrep</h1>
+            <h1>Welcome to your Electrical Engineering Preperation guide</h1>
         </header>
         <main>
             <section class="hero-section">
@@ -81,18 +68,68 @@
     <!-- Error message display for debugging -->
     <div id="error-display" style="display: none; position: fixed; bottom: 0; right: 0; background: #ff5555; color: white; padding: 10px; max-width: 80%; z-index: 9999;"></div>
     
+    <!-- Scripts - Removed sidebar.js, functionality integrated into componentLoader.js -->
+    <script src="Info/Config/Scripts/componentLoader.js"></script>
+    <script src="Info/Config/Scripts/themeToggle.js"></script>
+    <script src="Info/Config/Scripts/search.js"></script>
+    <script src="Info/Config/Scripts/questions.js" defer></script>
+    <script src="Info/Config/Scripts/backend.js" defer></script>
+    
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
     <script>
-        // Better error handling
-        window.addEventListener('error', function(event) {
-            console.error('Global error caught:', event.error);
-            const errorDisplay = document.getElementById('error-display');
-            if (errorDisplay) {
-                errorDisplay.textContent = `Error: ${event.error.message}`;
-                errorDisplay.style.display = 'block';
-                setTimeout(() => {
-                    errorDisplay.style.display = 'none';
-                }, 5000);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-09JTZCW5JJ');
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            const yearElements = document.querySelectorAll('#current-year');
+            if (yearElements.length > 0) {
+                const currentYear = new Date().getFullYear();
+                yearElements.forEach(el => {
+                    el.textContent = currentYear;
+                });
             }
+            
+            // Debug helpers for sidebar and theme toggle
+            console.log("Checking sidebar toggle function:", typeof window.toggleSidebar === 'function');
+            console.log("Checking theme toggle function:", typeof window.toggleTheme === 'function');
+            
+            // Add global click handlers as a fallback
+            document.addEventListener('click', function(e) {
+                // Check for theme toggle button click
+                if (e.target.closest('#theme-toggle')) {
+                    console.log('Theme toggle clicked via event delegation');
+                    if (typeof window.toggleTheme === 'function') {
+                        window.toggleTheme();
+                    }
+                }
+                
+                // Check for sidebar toggle button clicks
+                if (e.target.closest('#sidebar-toggle') || e.target.closest('#sidebar-toggle-btn') || e.target.closest('#mobile-menu-toggle')) {
+                    console.log('Sidebar toggle clicked via event delegation');
+                    if (typeof window.toggleSidebar === 'function') {
+                        window.toggleSidebar(e.target.closest('#mobile-menu-toggle') ? true : false);
+                    }
+                }
+            });
+            
+            // Better error handling
+            window.addEventListener('error', function(event) {
+                console.error('Global error caught:', event.error);
+                const errorDisplay = document.getElementById('error-display');
+                if (errorDisplay) {
+                    errorDisplay.textContent = `Error: ${event.error.message}`;
+                    errorDisplay.style.display = 'block';
+                    setTimeout(() => {
+                        errorDisplay.style.display = 'none';
+                    }, 5000);
+                }
+            });
         });
     </script>
 </body>
