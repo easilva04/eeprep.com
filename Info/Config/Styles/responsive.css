@@ -44,13 +44,17 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     height: 100vh; 
     width: 280px;
     transform: translateX(0);
-    transition: transform 0.3s var(--bounce-timing);
+    transition: transform 0.3s var(--bounce-timing), width 0.3s var(--bounce-timing);
     z-index: 1000;
     background: var(--sidebar-bg); 
     color: var(--sidebar-text);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     scrollbar-width: thin;
+}
+
+body.sidebar-collapsed .sidebar {
+    transform: translateX(-100%);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -213,7 +217,7 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     z-index: 999;
@@ -372,6 +376,47 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     background: var(--card-bg);
 }
 
+/* Enhanced sidebar toggle functionality */
+.sidebar-toggle {
+    position: fixed;
+    left: 260px;
+    top: 20px; /* Fixed position at the top */
+    width: 40px; /* Increased size */
+    height: 40px; /* Increased size */
+    background: #ecc94b; /* Changed to accent color for visibility */
+    color: #1a365d; /* Darker text color for contrast */
+    border: 2px solid #1a365d; /* Added border for visibility */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1010; /* Increased z-index to be above everything */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    transition: all 0.3s var(--bounce-timing);
+    animation: pulse 2s infinite; /* Added pulsing animation to draw attention */
+}
+
+body.sidebar-collapsed .sidebar-toggle {
+    left: 20px; /* Moved further right when sidebar is collapsed */
+}
+
+.sidebar-toggle i {
+    font-size: 18px; /* Larger icon */
+}
+
+.sidebar-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Add a pulse animation for the toggle button */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 /* Media queries for responsive design */
 @media (max-width: 1024px) {
     .main-content {
@@ -382,7 +427,21 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     
     /* Hide sidebar toggle on mobile, use mobile-nav-toggle instead */
     .sidebar-toggle {
-        display: none;
+        display: block; /* Always show toggle button */
+        top: 20px; /* Keep it at the top */
+        left: 20px; /* Position it on the left side */
+        width: 48px; /* Even larger on mobile */
+        height: 48px; /* Even larger on mobile */
+        z-index: 1010;
+        border: 3px solid #1a365d; /* Thicker border */
+    }
+    
+    body.sidebar-collapsed .sidebar-toggle {
+        left: 20px;
+    }
+    
+    .sidebar-toggle i {
+        font-size: 20px; /* Larger icon on mobile */
     }
     
     .sidebar {
@@ -393,6 +452,10 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     
     .sidebar.active {
         transform: translateX(0);
+    }
+    
+    body.sidebar-collapsed .sidebar {
+        transform: translateX(-100%);
     }
     
     /* On mobile, the sidebar should overlay content */
@@ -408,6 +471,28 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     
     .mobile-nav-toggle {
         display: flex;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: white;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .mobile-nav-toggle:hover {
+        transform: scale(1.05);
+    }
+    
+    .mobile-nav-toggle:active {
+        transform: scale(0.95);
     }
     
     body.sidebar-open {

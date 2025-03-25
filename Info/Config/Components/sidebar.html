@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <div class="logo-container">
             <div class="modern-logo">
-                <img src="file:eeprep.png" alt="EE Prep Logo">
+                <img src="Info/Config/Assets/images/eeprep.png" alt="EE Prep Logo">
             </div>
             <h2 class="sidebar-title">EE Prep</h2>
         </div>
@@ -61,13 +61,13 @@
     </div>
 </div>
 
-<!-- Add sidebar toggle button -->
+<!-- Add sidebar toggle button with improved visibility -->
 <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
     <i class="fas fa-chevron-left"></i>
 </button>
 
 <script>
-    // Add event listener for sidebar close button
+    // Sidebar close button (mobile)
     const closeButton = document.querySelector('.sidebar-close');
     if (closeButton) {
         closeButton.addEventListener('click', () => {
@@ -85,29 +85,55 @@
         });
     }
     
-    // Add sidebar toggle functionality
+    // Sidebar toggle (desktop) - improved implementation
     const sidebarToggle = document.getElementById('sidebar-toggle');
     if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', () => {
-            document.body.classList.toggle('sidebar-collapsed');
-            
-            // Update the toggle icon
+        // Update icon based on current state
+        function updateToggleIcon() {
             const icon = sidebarToggle.querySelector('i');
             if (document.body.classList.contains('sidebar-collapsed')) {
                 icon.className = 'fas fa-chevron-right';
+                sidebarToggle.setAttribute('title', 'Expand sidebar');
             } else {
                 icon.className = 'fas fa-chevron-left';
+                sidebarToggle.setAttribute('title', 'Collapse sidebar');
             }
+        }
+        
+        // Initialize icon
+        updateToggleIcon();
+        
+        // Add click handler with improved functionality
+        sidebarToggle.addEventListener('click', () => {
+            console.log('Sidebar toggle clicked'); // Debug logging
+            
+            // Toggle the collapsed state
+            document.body.classList.toggle('sidebar-collapsed');
+            
+            // If sidebar was collapsed, make sure it's now visible
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                if (!document.body.classList.contains('sidebar-collapsed')) {
+                    console.log('Making sidebar visible'); // Debug logging
+                    sidebar.classList.add('active');
+                } else {
+                    console.log('Hiding sidebar'); // Debug logging
+                }
+            }
+            
+            updateToggleIcon();
             
             // Store preference
             localStorage.setItem('sidebar-collapsed', 
                 document.body.classList.contains('sidebar-collapsed'));
         });
         
-        // Check if sidebar was previously collapsed
-        if (localStorage.getItem('sidebar-collapsed') === 'true') {
-            document.body.classList.add('sidebar-collapsed');
-            sidebarToggle.querySelector('i').className = 'fas fa-chevron-right';
-        }
+        // Make button more noticeable with additional effect
+        setTimeout(() => {
+            sidebarToggle.classList.add('attention');
+            setTimeout(() => {
+                sidebarToggle.classList.remove('attention');
+            }, 2000);
+        }, 1000);
     }
 </script>

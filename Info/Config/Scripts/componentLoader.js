@@ -112,18 +112,22 @@ function setupMobileNavigation() {
         
         if (!sidebar || !overlay) return;
         
-        // Add toggle functionality
+        // Improved mobile toggle functionality
         toggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            document.body.classList.toggle('sidebar-open');
-            overlay.classList.toggle('active');
+            const isActive = sidebar.classList.contains('active');
             
-            // Update icon
-            const icon = toggle.querySelector('i');
-            if (sidebar.classList.contains('active')) {
-                icon.className = 'fas fa-times';
+            if (isActive) {
+                // Close sidebar
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+                toggle.querySelector('i').className = 'fas fa-bars';
             } else {
-                icon.className = 'fas fa-bars';
+                // Open sidebar
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.classList.add('sidebar-open');
+                toggle.querySelector('i').className = 'fas fa-times';
             }
         });
         

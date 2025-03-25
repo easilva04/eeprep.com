@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics - EE Prep</title>
+    <link rel="stylesheet" href="Info/Config/Styles/main.css">
+    <link rel="stylesheet" href="Info/Config/Styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Info/Config/Scripts/componentLoader.js"></script>
+    <script src="Info/Config/Scripts/themeToggle.js"></script>
+    <script src="Info/Config/Scripts/search.js"></script>
+</head>
+
+<body class="theme-transition">
+    <!-- Navigation components will be loaded here -->
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Topic Categories</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Topics</span>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Choose a Subject Area</h2>
+                <p class="section-subtitle">Select a category to see available learning materials</p>
+            </div>
+
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Mathematics</h3>
+                    <p>Differential equations, linear algebra, complex analysis and other math topics for electrical engineering.</p>
+                    <a href="./Topics/Math/Math.html" class="btn btn-outline">View Materials</a>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Circuit Analysis</h3>
+                    <p>Circuit fundamentals, network theorems, AC analysis, resonance, and filters.</p>
+                    <a href="./Topics/Circuits/Circuits.html" class="btn btn-outline">View Materials</a>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3>Electronics</h3>
+                    <p>Semiconductor devices, diodes, transistors, amplifiers, and electronic circuits.</p>
+                    <a href="./Topics/Electronics/Electronics.html" class="btn btn-outline">View Materials</a>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-digital-tachograph"></i>
+                    </div>
+                    <h3>Digital Systems</h3>
+                    <p>Boolean algebra, digital logic, sequential circuits, and computer architecture.</p>
+                    <a href="./Topics/DigitalSystems/DigitalSystems.html" class="btn btn-outline">View Materials</a>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Electromagnetic Fields</h3>
+                    <p>Electrostatics, magnetostatics, Maxwell's equations, and wave propagation.</p>
+                    <a href="./Topics/EM/EM.html" class="btn btn-outline">View Materials</a>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Signals and Systems</h3>
+                    <p>Continuous and discrete-time signals, system properties, Fourier and Laplace transforms.</p>
+                    <a href="./Topics/Signals/Signals.html" class="btn btn-outline">View Materials</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="content-section alt-section">
+            <div class="section-header centered">
+                <h2>Not Sure Where to Start?</h2>
+            </div>
+            <div class="content centered">
+                <p>If you're new to electrical engineering, we recommend starting with Circuit Analysis basics. If you need to brush up on math first, check out the Mathematics section.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="./Topics/Circuits/intro.html" class="btn btn-primary">Circuit Fundamentals</a>
+                    <a href="./Topics/Math/Math.html" class="btn btn-outline" style="margin-left: 1rem;">Math Review</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Register service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('Info/Config/Scripts/backend.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

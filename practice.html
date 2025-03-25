@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Problems - EE Prep</title>
+    <link rel="stylesheet" href="Info/Config/Styles/main.css">
+    <link rel="stylesheet" href="Info/Config/Styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Info/Config/Scripts/componentLoader.js"></script>
+    <script src="Info/Config/Scripts/themeToggle.js"></script>
+    <script src="Info/Config/Scripts/search.js"></script>
+    <script src="Info/Config/Scripts/questions.js"></script>
+</head>
+
+<body class="theme-transition" data-topic="general">
+    <!-- Navigation components will be loaded here -->
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Practice Problems</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Practice</span>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Practice Topic Selection</h2>
+            </div>
+            
+            <div class="topic-selector">
+                <p>Choose a topic to practice with randomly generated problems:</p>
+                <div class="topic-buttons">
+                    <button class="topic-btn" data-topic="general">General</button>
+                    <button class="topic-btn" data-topic="circuits">Circuits</button>
+                    <button class="topic-btn" data-topic="digital">Digital Systems</button>
+                    <button class="topic-btn" data-topic="electronics">Electronics</button>
+                    <button class="topic-btn" data-topic="emfields">EM Fields</button>
+                    <button class="topic-btn" data-topic="signals">Signals</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questions-container">
+                <!-- Questions will be dynamically loaded here -->
+                <div class="start-message">
+                    <p>Select a topic above to start practicing or use the default "General" questions.</p>
+                </div>
+            </div>
+            
+            <div id="results" class="results-container"></div>
+            
+            <div class="action-buttons">
+                <button id="check-answers" class="btn btn-primary">Check Answers</button>
+                <button id="new-questions" class="btn btn-outline">New Questions</button>
+            </div>
+        </div>
+
+        <section class="content-section alt-section">
+            <div class="section-header centered">
+                <h2>Practice Tips</h2>
+            </div>
+            <div class="content">
+                <ul class="tips-list">
+                    <li><strong>Consistent Practice:</strong> Regular practice helps reinforce concepts and improve retention.</li>
+                    <li><strong>Check Your Work:</strong> After submitting answers, review the explanations for questions you got wrong.</li>
+                    <li><strong>Take Notes:</strong> Write down key concepts that are giving you trouble for later review.</li>
+                    <li><strong>Variety:</strong> Practice different types of problems to develop a well-rounded understanding.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Register service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('Info/Config/Scripts/backend.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <script>
+        // Topic selector functionality
+        document.querySelectorAll('.topic-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active topic
+                document.querySelectorAll('.topic-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Set topic and reload questions
+                const topic = button.dataset.topic;
+                document.body.setAttribute('data-topic', topic);
+                initQuestions(topic);
+            });
+        });
+        
+        // Highlight the default topic button
+        document.querySelector('.topic-btn[data-topic="general"]').classList.add('active');
+    </script>
+</body>
+</html>
