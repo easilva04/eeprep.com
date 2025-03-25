@@ -1,0 +1,113 @@
+<div class="sidebar-inner">
+    <div class="sidebar-header">
+        <div class="logo-container">
+            <div class="modern-logo">
+                <img src="file:eeprep.png" alt="EE Prep Logo">
+            </div>
+            <h2 class="sidebar-title">EE Prep</h2>
+        </div>
+        <button class="sidebar-close hidden-desktop" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <div class="sidebar-search">
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="Search topics..." aria-label="Search">
+            <button class="search-button" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="search-results-dropdown"></div>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item">
+                <a href="index.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="Topics.html" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    <span>Topics</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="practice.html" class="sidebar-link">
+                    <i class="fas fa-tasks"></i>
+                    <span>Practice</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="about.html" class="sidebar-link">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <span>Toggle Theme</span>
+        </button>
+        <div class="sidebar-info">
+            <small>&copy; 2023 EE Prep</small>
+        </div>
+    </div>
+</div>
+
+<!-- Add sidebar toggle button -->
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+    <i class="fas fa-chevron-left"></i>
+</button>
+
+<script>
+    // Add event listener for sidebar close button
+    const closeButton = document.querySelector('.sidebar-close');
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            if (sidebar) sidebar.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+            document.body.classList.remove('sidebar-open');
+            
+            // Find and update the mobile toggle button icon
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            if (mobileToggle && mobileToggle.querySelector('i')) {
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    }
+    
+    // Add sidebar toggle functionality
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', () => {
+            document.body.classList.toggle('sidebar-collapsed');
+            
+            // Update the toggle icon
+            const icon = sidebarToggle.querySelector('i');
+            if (document.body.classList.contains('sidebar-collapsed')) {
+                icon.className = 'fas fa-chevron-right';
+            } else {
+                icon.className = 'fas fa-chevron-left';
+            }
+            
+            // Store preference
+            localStorage.setItem('sidebar-collapsed', 
+                document.body.classList.contains('sidebar-collapsed'));
+        });
+        
+        // Check if sidebar was previously collapsed
+        if (localStorage.getItem('sidebar-collapsed') === 'true') {
+            document.body.classList.add('sidebar-collapsed');
+            sidebarToggle.querySelector('i').className = 'fas fa-chevron-right';
+        }
+    }
+</script>

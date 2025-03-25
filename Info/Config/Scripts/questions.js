@@ -1,432 +1,399 @@
+/**
+ * Enhanced Questions System for EEPrep
+ * Modern implementation with better error handling and user experience
+ */
 let currentQuestions = [];
-let currentIndex = 0;
 let userAnswers = [];
 let questionsPerPage = 5;
-let animating = false;
-
-function loadQuestions(topic) {
-    // Validate topic parameter
-    if (!topic) {
-        return Promise.reject(new Error("No topic specified"));
-    }
-    
-    // Show loading indicator
-    const container = document.getElementById('questions-container');
-    if (container) {
-        container.innerHTML = `
-            <div class="loading-indicator">
-                <div class="spinner"></div>
-                <p>Loading questions for ${topic}...</p>
-            </div>
-        `;
-    }
-    
-    // Get base path to handle various page depths
-    const pathSegments = window.location.pathname.split('/').filter(segment => segment !== '');
-    let basePath = '';
-    
-    // Calculate path to root
-    if (pathSegments.length > 1) {
-        for (let i = 0; i < pathSegments.length - 1; i++) {
-            basePath += '../';
-        }
-    }
-    
-    return fetch(`${basePath}Questions/${topic}.json`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (!data.questions || !Array.isArray(data.questions)) {
-                throw new Error('Invalid question format');
-            }
-            return data.questions;
-        })
-        .catch(error => {
-            console.error(`Failed to load questions for ${topic}:`, error);
-            // Return a special error object that can be detected later
-            return { error: error.message || 'Failed to load questions' };
-        });
-}
-
-function displayQuestions(questions, startIndex = 0) {
-    const container = document.getElementById('questions-container');
-    if (!container) return;
-    
-    // Clear existing questions with a fade-out effect
-    container.style.opacity = '0';
-    
-    setTimeout(() => {
-        container.innerHTML = '';
-        const endIndex = Math.min(startIndex + questionsPerPage, questions.length);
-        
-        // Add progress indicator
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        progressBar.innerHTML = `
-            <div class="progress-indicator" style="width: ${(endIndex / questions.length) * 100}%"></div>
-            <div class="progress-text">Question ${startIndex + 1} - ${endIndex} of ${questions.length}</div>
-        `;
-        container.appendChild(progressBar);
-        
-        // Add questions for this page
-        for (let i = startIndex; i < endIndex; i++) {
-            const question = questions[i];
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'question';
-            questionDiv.setAttribute('data-index', i);
-            questionDiv.tabIndex = 0; // Make focusable for keyboard navigation
-            
-            // Add the selected answer if available
-            const selectedAnswer = userAnswers[i] || '';
-            
-            questionDiv.innerHTML = `
-                <p class="question-number">Question ${i + 1}</p>
-                <p class="question-text">${question.question}</p>
-                <div class="options-container">
-                    ${question.options.map(option => `
-                        <label class="option-label ${selectedAnswer === option ? 'selected' : ''}">
-                            <input type="radio" name="question${i}" value="${option}" ${selectedAnswer === option ? 'checked' : ''}>
-                            <span class="radio-custom"></span>
-                            <span class="option-text">${option}</span>
-                        </label>
-                    `).join('')}
-                </div>
-            `;
-            container.appendChild(questionDiv);
-            
-            // Add event listeners for each option
-            const optionLabels = questionDiv.querySelectorAll('.option-label');
-            optionLabels.forEach(label => {
-                label.addEventListener('click', function() {
-                    // Remove selected class from all options
-                    optionLabels.forEach(l => l.classList.remove('selected'));
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
-                    
-                    // Save the answer
-                    const input = this.querySelector('input');
-                    if (input) {
-                        userAnswers[i] = input.value;
-                        
-                        // Show feedback message
-                        showFeedback("Answer saved");
-                    }
-                });
-            });
-        }
-        
-        // Add pagination controls if needed
-        if (questions.length > questionsPerPage) {
-            const paginationDiv = document.createElement('div');
-            paginationDiv.className = 'pagination-controls';
-            
-            // Previous button
-            if (startIndex > 0) {
-                const prevButton = document.createElement('button');
-                prevButton.className = 'pagination-button prev';
-                prevButton.innerHTML = '<span>&#8592;</span> Previous';
-                prevButton.addEventListener('click', () => {
-                    if (!animating) {
-                        navigateQuestions(Math.max(0, startIndex - questionsPerPage));
-                    }
-                });
-                paginationDiv.appendChild(prevButton);
-            }
-            
-            // Next button
-            if (endIndex < questions.length) {
-                const nextButton = document.createElement('button');
-                nextButton.className = 'pagination-button next';
-                nextButton.innerHTML = 'Next <span>&#8594;</span>';
-                nextButton.addEventListener('click', () => {
-                    if (!animating) {
-                        navigateQuestions(endIndex);
-                    }
-                });
-                paginationDiv.appendChild(nextButton);
-            }
-            
-            container.appendChild(paginationDiv);
-        }
-        
-        // Fade in the new questions
-        setTimeout(() => {
-            container.style.opacity = '1';
-            
-            // Render math expressions if present
-            if (window.MathJax) {
-                MathJax.typesetPromise().then(() => {
-                    if (window.tikzjax) {
-                        tikzjax.processMathJaxElements();
-                    }
-                });
-            }
-        }, 50);
-    }, 300); // Matches the CSS transition time
-}
-
-function navigateQuestions(newIndex) {
-    if (animating) return;
-    animating = true;
-    
-    const container = document.getElementById('questions-container');
-    container.style.opacity = '0';
-    
-    setTimeout(() => {
-        currentIndex = newIndex;
-        displayQuestions(currentQuestions, currentIndex);
-        animating = false;
-    }, 300);
-}
-
-function showFeedback(message, isError = false) {
-    // Create or get existing feedback element
-    let feedbackElement = document.getElementById('feedback-message');
-    if (!feedbackElement) {
-        feedbackElement = document.createElement('div');
-        feedbackElement.id = 'feedback-message';
-        document.body.appendChild(feedbackElement);
-    }
-    
-    // Set message and styling
-    feedbackElement.textContent = message;
-    feedbackElement.className = isError ? 'error' : 'success';
-    feedbackElement.style.opacity = '1';
-    
-    // Hide after 2 seconds
-    setTimeout(() => {
-        feedbackElement.style.opacity = '0';
-    }, 2000);
-}
-
-function checkAnswers() {
-    let score = 0;
-    let unansweredCount = 0;
-    const results = document.getElementById('results');
-    
-    results.innerHTML = '<h3>Checking your answers...</h3>';
-    results.classList.add('checking');
-    
-    setTimeout(() => {
-        const feedback = [];
-        
-        currentQuestions.forEach((question, index) => {
-            const userAnswer = userAnswers[index];
-            
-            if (!userAnswer) {
-                unansweredCount++;
-            } else if (userAnswer === question.answer) {
-                score++;
-                feedback.push(`<div class="feedback-item correct">
-                    <span class="question-number">Q${index + 1}:</span> 
-                    <span class="feedback-icon">✓</span> 
-                    <span class="feedback-text">Correct! You answered: ${userAnswer}</span>
-                </div>`);
-            } else {
-                feedback.push(`<div class="feedback-item incorrect">
-                    <span class="question-number">Q${index + 1}:</span> 
-                    <span class="feedback-icon">✗</span> 
-                    <span class="feedback-text">Incorrect. You answered: ${userAnswer}</span>
-                    <span class="correct-answer">Correct answer: ${question.answer}</span>
-                </div>`);
-            }
-        });
-        
-        const percentage = Math.round((score / currentQuestions.length) * 100);
-        let resultMessage = '';
-        
-        if (percentage >= 90) {
-            resultMessage = 'Excellent! You have a strong understanding of the topic.';
-        } else if (percentage >= 70) {
-            resultMessage = 'Good job! Keep practicing to improve further.';
-        } else if (percentage >= 50) {
-            resultMessage = 'You\'re on the right track. More practice will help.';
-        } else {
-            resultMessage = 'Keep studying. You\'ll get better with practice.';
-        }
-        
-        const warningMessage = unansweredCount > 0 ? 
-            `<div class="warning">You left ${unansweredCount} question${unansweredCount > 1 ? 's' : ''} unanswered.</div>` : '';
-        
-        results.innerHTML = `
-            <div class="results-summary">
-                <h3>Your Score: ${score} out of ${currentQuestions.length} (${percentage}%)</h3>
-                <div class="score-bar">
-                    <div class="score-indicator" style="width: ${percentage}%"></div>
-                </div>
-                <p class="results-message">${resultMessage}</p>
-                ${warningMessage}
-            </div>
-            <div class="feedback-list">
-                <h4>Question Feedback:</h4>
-                ${feedback.join('')}
-            </div>
-            <button id="try-again" class="retry-button">Try Again</button>
-        `;
-        
-        results.classList.remove('checking');
-        results.classList.add('visible');
-        
-        document.getElementById('try-again').addEventListener('click', () => {
-            loadNewQuestions();
-            results.classList.remove('visible');
-        });
-        
-        // Scroll to results
-        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        
-        // Render math if needed
-        if (window.MathJax) {
-            MathJax.typesetPromise([results]);
-        }
-    }, 800);
-}
-
-function loadNewQuestions() {
-    const topic = document.body.getAttribute('data-topic');
-    if (!topic) {
-        console.error('No topic attribute found on body element');
-        document.getElementById('questions-container').innerHTML = 
-            '<p class="error">No topic specified. Please try again later.</p>';
-        return;
-    }
-    
-    const loadingIndicator = document.createElement('div');
-    loadingIndicator.className = 'loading-indicator';
-    loadingIndicator.innerHTML = `
-        <div class="spinner"></div>
-        <p>Loading questions...</p>
-    `;
-    document.getElementById('questions-container').innerHTML = '';
-    document.getElementById('questions-container').appendChild(loadingIndicator);
-    
-    loadQuestions(topic)
-        .then(questions => {
-            // Check if we received an error object
-            if (questions && questions.error) {
-                throw new Error(questions.error);
-            }
-            
-            // Ensure questions is an array
-            if (!Array.isArray(questions) || questions.length === 0) {
-                throw new Error('No questions available');
-            }
-            
-            // Reset state
-            currentQuestions = questions
-                .sort(() => Math.random() - 0.5)
-                .slice(0, 10);
-            currentIndex = 0;
-            userAnswers = new Array(currentQuestions.length).fill('');
-            
-            displayQuestions(currentQuestions);
-            document.getElementById('results').innerHTML = '';
-            document.getElementById('results').className = 'results';
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('questions-container').innerHTML = 
-                `<p class="error">Failed to load questions: ${error.message}. Please try again later.</p>`;
-        });
-}
-
-function initQuestions(topic) {
-    try {
-        const checkButton = document.getElementById('check-answers');
-        const newButton = document.getElementById('new-questions');
-        
-        if (checkButton) {
-            checkButton.addEventListener('click', checkAnswers);
-        } else {
-            console.warn('Check answers button not found');
-        }
-        
-        if (newButton) {
-            newButton.addEventListener('click', loadNewQuestions);
-        } else {
-            console.warn('New questions button not found');
-        }
-        
-        loadNewQuestions();
-        
-        // Add keyboard navigation support
-        document.addEventListener('keydown', function(e) {
-            // Navigation between questions with arrow keys
-            if (e.key === 'ArrowRight') {
-                const nextButton = document.querySelector('.pagination-button.next');
-                if (nextButton) nextButton.click();
-            } else if (e.key === 'ArrowLeft') {
-                const prevButton = document.querySelector('.pagination-button.prev');
-                if (prevButton) prevButton.click();
-            }
-            
-            // Check answers with Enter when focused on check button
-            if (e.key === 'Enter' && document.activeElement === checkButton) {
-                checkAnswers();
-            }
-        });
-    } catch (error) {
-        console.error('Error initializing questions:', error);
-        const container = document.getElementById('questions-container');
-        if (container) {
-            container.innerHTML = '<p class="error">An error occurred while initializing questions. Please reload the page.</p>';
-        }
-    }
-    
-    // Responsive adjustment for smaller screens
-    function adjustQuestionsPerPage() {
-        if (window.innerWidth < 768) {
-            questionsPerPage = 1;
-        } else {
-            questionsPerPage = 5;
-        }
-        
-        if (currentQuestions.length > 0) {
-            displayQuestions(currentQuestions, currentIndex);
-        }
-    }
-    
-    // Initial check and listen for resize
-    adjustQuestionsPerPage();
-    window.addEventListener('resize', adjustQuestionsPerPage);
-}
+let currentTopicId = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const topic = document.body.getAttribute('data-topic');
+    // Get topic from data attribute or URL parameter
+    const topic = document.body.getAttribute('data-topic') || 
+                  getURLParameter('topic') || 
+                  'general';
+    
     if (topic) {
         initQuestions(topic);
     }
     
-    // Responsive adjustment for smaller screens
-    function adjustQuestionsPerPage() {
-        if (window.innerWidth < 768) {
-            questionsPerPage = 1;
-        } else {
-            questionsPerPage = 5;
-        }
-        
-        if (currentQuestions.length > 0) {
-            displayQuestions(currentQuestions, currentIndex);
-        }
-    }
-    
-    // Initial check and listen for resize
-    adjustQuestionsPerPage();
-    window.addEventListener('resize', adjustQuestionsPerPage);
+    // Setup event listeners
+    setupEventListeners();
 });
 
-// Add error recovery
-window.addEventListener('error', (event) => {
-    if (event.message && event.message.includes('questions')) {
-        console.error('Caught questions error:', event);
-        const container = document.getElementById('questions-container');
-        if (container) {
-            container.innerHTML = '<p class="error">An error occurred. Please reload the page to try again.</p>';
-        }
-        return true; // Prevent the error from bubbling up
+/**
+ * Initialize the questions system with a specific topic
+ */
+function initQuestions(topic) {
+    currentTopicId = topic;
+    
+    // Show loading state
+    showLoadingState();
+    
+    // Load questions from API or JSON file
+    loadQuestions(topic)
+        .then(questions => {
+            if (!questions || questions.length === 0) {
+                showError("No questions available for this topic");
+                return;
+            }
+            
+            // Store questions and shuffle them
+            currentQuestions = shuffleArray(questions);
+            
+            // Reset user answers
+            userAnswers = Array(currentQuestions.length).fill(null);
+            
+            // Display questions
+            displayQuestions(currentQuestions);
+            
+            // Hide loading state
+            hideLoadingState();
+        })
+        .catch(error => {
+            console.error("Error loading questions:", error);
+            showError("Failed to load questions. Please try again later.");
+            hideLoadingState();
+        });
+}
+
+/**
+ * Load questions from the server
+ */
+function loadQuestions(topic) {
+    return fetch(`../Questions/${topic}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load questions: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => data.questions || [])
+        .catch(error => {
+            console.error("Error fetching questions:", error);
+            // Try fallback to general questions if specific topic fails
+            if (topic !== 'general') {
+                console.log("Attempting to load general questions as fallback");
+                return loadQuestions('general');
+            }
+            throw error;
+        });
+}
+
+/**
+ * Display questions in the container with modern UI
+ */
+function displayQuestions(questions, startIndex = 0) {
+    const container = document.getElementById('questions-container');
+    if (!container) return;
+    
+    // Clear container
+    container.innerHTML = '';
+    
+    // Get subset of questions for current page
+    const pageQuestions = questions.slice(startIndex, startIndex + questionsPerPage);
+    
+    // Generate HTML for each question
+    pageQuestions.forEach((question, index) => {
+        const questionIndex = startIndex + index;
+        const questionElement = createQuestionElement(question, questionIndex);
+        container.appendChild(questionElement);
+    });
+    
+    // Add fade-in animation
+    container.querySelectorAll('.question-item').forEach((item, i) => {
+        item.style.animationDelay = `${i * 0.1}s`;
+    });
+    
+    // Update pagination if needed
+    if (questions.length > questionsPerPage) {
+        updatePagination(startIndex, questions.length);
     }
-});
+}
+
+/**
+ * Create a question element with options
+ */
+function createQuestionElement(question, index) {
+    const questionDiv = document.createElement('div');
+    questionDiv.className = 'question-item fade-in';
+    questionDiv.dataset.questionIndex = index;
+    
+    let optionsHtml = '';
+    if (question.options && question.options.length) {
+        optionsHtml = `
+            <div class="question-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="option-item">
+                        <label class="option-label">
+                            <input type="radio" name="question-${index}" value="${optIndex}" data-index="${optIndex}">
+                            <span class="option-text">${option}</span>
+                        </label>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    questionDiv.innerHTML = `
+        <div class="question-header">
+            <span class="question-number">Q${index + 1}</span>
+            <span class="question-text">${question.question}</span>
+        </div>
+        ${optionsHtml}
+        <div class="question-feedback" id="feedback-${index}"></div>
+    `;
+    
+    // Add event listeners to radio buttons
+    const radioButtons = questionDiv.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            userAnswers[index] = parseInt(e.target.dataset.index);
+        });
+    });
+    
+    return questionDiv;
+}
+
+/**
+ * Update pagination controls
+ */
+function updatePagination(currentStart, totalQuestions) {
+    const paginationContainer = document.getElementById('pagination') || createPaginationContainer();
+    const totalPages = Math.ceil(totalQuestions / questionsPerPage);
+    const currentPage = Math.floor(currentStart / questionsPerPage) + 1;
+    
+    paginationContainer.innerHTML = `
+        <button class="pagination-button" data-action="prev" ${currentPage === 1 ? 'disabled' : ''}>
+            <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        <span class="pagination-info">${currentPage} of ${totalPages}</span>
+        <button class="pagination-button" data-action="next" ${currentPage === totalPages ? 'disabled' : ''}>
+            Next <i class="fas fa-chevron-right"></i>
+        </button>
+    `;
+    
+    // Add event listeners to pagination buttons
+    paginationContainer.querySelector('[data-action="prev"]').addEventListener('click', () => {
+        if (currentPage > 1) {
+            displayQuestions(currentQuestions, (currentPage - 2) * questionsPerPage);
+        }
+    });
+    
+    paginationContainer.querySelector('[data-action="next"]').addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            displayQuestions(currentQuestions, currentPage * questionsPerPage);
+        }
+    });
+    
+    return paginationContainer;
+}
+
+/**
+ * Create pagination container if it doesn't exist
+ */
+function createPaginationContainer() {
+    const container = document.getElementById('questions-container').parentNode;
+    const paginationContainer = document.createElement('div');
+    paginationContainer.id = 'pagination';
+    paginationContainer.className = 'pagination-container';
+    container.insertBefore(paginationContainer, document.getElementById('results'));
+    return paginationContainer;
+}
+
+/**
+ * Check user answers against correct answers
+ */
+function checkAnswers() {
+    let correctCount = 0;
+    let attemptedCount = 0;
+    
+    // Get visible questions based on pagination
+    const visibleQuestionElements = document.querySelectorAll('.question-item');
+    
+    visibleQuestionElements.forEach(questionElement => {
+        const index = parseInt(questionElement.dataset.questionIndex);
+        const userAnswer = userAnswers[index];
+        const correctAnswer = currentQuestions[index].answer;
+        const feedbackElement = document.getElementById(`feedback-${index}`);
+        
+        if (userAnswer !== null) {
+            attemptedCount++;
+            
+            if (userAnswer === correctAnswer) {
+                correctCount++;
+                feedbackElement.innerHTML = `<div class="feedback correct"><i class="fas fa-check-circle"></i> Correct!</div>`;
+                feedbackElement.style.display = 'block';
+            } else {
+                feedbackElement.innerHTML = `
+                    <div class="feedback incorrect">
+                        <i class="fas fa-times-circle"></i> Incorrect
+                        <div class="correct-answer">
+                            Correct answer: ${currentQuestions[index].options[correctAnswer]}
+                        </div>
+                    </div>
+                `;
+                feedbackElement.style.display = 'block';
+            }
+        } else {
+            feedbackElement.innerHTML = `<div class="feedback unanswered"><i class="fas fa-exclamation-circle"></i> Not answered</div>`;
+            feedbackElement.style.display = 'block';
+        }
+    });
+    
+    // Show results
+    displayResults(correctCount, attemptedCount, visibleQuestionElements.length);
+}
+
+/**
+ * Display results summary
+ */
+function displayResults(correct, attempted, total) {
+    const resultsContainer = document.getElementById('results');
+    if (!resultsContainer) return;
+    
+    resultsContainer.innerHTML = `
+        <div class="results-summary">
+            <h4>Results</h4>
+            <div class="results-stats">
+                <div class="result-stat">
+                    <span class="stat-value">${correct}</span>
+                    <span class="stat-label">Correct</span>
+                </div>
+                <div class="result-stat">
+                    <span class="stat-value">${attempted}</span>
+                    <span class="stat-label">Attempted</span>
+                </div>
+                <div class="result-stat">
+                    <span class="stat-value">${total}</span>
+                    <span class="stat-label">Total</span>
+                </div>
+            </div>
+            ${attempted > 0 ? `
+                <div class="results-percentage">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: ${Math.round((correct / attempted) * 100)}%"></div>
+                    </div>
+                    <div class="percentage-text">${Math.round((correct / attempted) * 100)}%</div>
+                </div>
+            ` : ''}
+            <div class="results-message">
+                ${getMessage(correct, attempted, total)}
+            </div>
+        </div>
+    `;
+    
+    resultsContainer.classList.add('show');
+    
+    // Scroll to results
+    resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/**
+ * Get appropriate message based on performance
+ */
+function getMessage(correct, attempted, total) {
+    if (attempted === 0) return "Please attempt some questions before checking answers.";
+    
+    const percentage = Math.round((correct / attempted) * 100);
+    
+    if (percentage >= 90) return "Excellent work! You've mastered this topic.";
+    else if (percentage >= 70) return "Great job! You have a good understanding of the material.";
+    else if (percentage >= 50) return "Good effort! Keep practicing to improve further.";
+    else return "Keep studying and try again. You'll improve with practice.";
+}
+
+/**
+ * Generate new set of questions
+ */
+function generateNewQuestions() {
+    if (currentTopicId) {
+        // Reload with new questions
+        initQuestions(currentTopicId);
+        
+        // Clear results
+        const resultsContainer = document.getElementById('results');
+        if (resultsContainer) {
+            resultsContainer.classList.remove('show');
+        }
+    }
+}
+
+/**
+ * Setup event listeners for the question system
+ */
+function setupEventListeners() {
+    // Check answers button
+    const checkAnswersBtn = document.getElementById('check-answers');
+    if (checkAnswersBtn) {
+        checkAnswersBtn.addEventListener('click', checkAnswers);
+    }
+    
+    // New questions button
+    const newQuestionsBtn = document.getElementById('new-questions');
+    if (newQuestionsBtn) {
+        newQuestionsBtn.addEventListener('click', generateNewQuestions);
+    }
+}
+
+/**
+ * Show loading state while fetching questions
+ */
+function showLoadingState() {
+    const container = document.getElementById('questions-container');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="loading-questions">
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+            <p>Loading questions...</p>
+        </div>
+    `;
+}
+
+/**
+ * Hide loading state
+ */
+function hideLoadingState() {
+    // Loading state will be replaced when displaying questions
+}
+
+/**
+ * Show error message
+ */
+function showError(message) {
+    const container = document.getElementById('questions-container');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>${message}</p>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+    `;
+}
+
+/**
+ * Shuffle array using Fisher-Yates algorithm
+ */
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
+
+/**
+ * Helper function to get URL parameters
+ */
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}

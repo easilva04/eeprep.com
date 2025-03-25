@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- PAGE_TITLE --> - EEPrep</title>
+    <meta name="description" content="<!-- PAGE_DESCRIPTION -->">
+    
+    <!-- Path Resolution System -->
+    <script>
+        // Determine the correct path to root based on current location
+        function getBasePath() {
+            const currentPath = window.location.pathname;
+            const pathSegments = currentPath.split('/').filter(Boolean);
+            
+            // Find the position of 'eeprep.com' in the path
+            const eeprepIndex = pathSegments.findIndex(segment => 
+                segment.toLowerCase() === 'eeprep.com');
+            
+            if (eeprepIndex === -1) {
+                // If we can't find eeprep.com, use a relative path
+                return '..';
+            }
+            
+            // Count how many directories we are below eeprep.com
+            const levelsBelow = pathSegments.length - (eeprepIndex + 1);
+            
+            // Create the appropriate path to return to root
+            return levelsBelow === 0 ? '.' : '../'.repeat(levelsBelow).slice(0, -1);
+        }
+        
+        // Store the base path for use throughout the document
+        const BASE_PATH = getBasePath();
+    </script>
+    
+    <!-- Favicon -->
+    <script>
+        document.write(`<link rel="icon" href="${BASE_PATH}/Config/Assets/images/favicon.ico">`);
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Main stylesheet -->
+    <script>
+        document.write(`<link rel="stylesheet" href="${BASE_PATH}/Config/Styles/main.css">`);
+    </script>
+    
+    <!-- Preload important assets -->
+    <script>
+        document.write(`<link rel="preload" href="${BASE_PATH}/Config/Assets/images/eeprep.png" as="image">`);
+    </script>
+    
+    <!-- Additional page-specific styles or meta tags can be added here -->
+</head>
+<body class="theme-transition">
+    <!-- Header container -->
+    <div id="header-container"></div>
+    
+    <!-- Sidebar container -->
+    <div id="sidebar-container"></div>
+    
+    <div class="main-content">
+        <div class="page-header">
+            <h1><!-- PAGE_TITLE --></h1>
+            <div class="breadcrumbs">
+                <script>
+                    document.write(`<a href="${BASE_PATH}/index.html">Home</a> / <!-- ADDITIONAL_BREADCRUMBS -->`);
+                </script>
+            </div>
+        </div>
+        
+        <main>
+            <!-- MAIN_CONTENT -->
+            <div class="card">
+                <h2><!-- SECTION_TITLE --></h2>
+                <p><!-- SECTION_DESCRIPTION --></p>
+                
+                <section class="content-section">
+                    <!-- YOUR_CONTENT_HERE -->
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer container -->
+    <div id="footer-container"></div>
+    
+    <!-- Mobile navigation toggle -->
+    <button class="mobile-nav-toggle hidden-desktop" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script>
+        document.write(`
+            <script src="${BASE_PATH}/Config/Scripts/componentLoader.js"><\/script>
+            <script src="${BASE_PATH}/Config/Scripts/themeToggle.js"><\/script>
+            <script src="${BASE_PATH}/Config/Scripts/search.js"><\/script>
+        `);
+    </script>
+    
+    <!-- Add additional page-specific scripts here -->
+    <script>
+        // document.write(`<script src="${BASE_PATH}/Config/Scripts/your-page-specific-script.js"><\/script>`);
+    </script>
+</body>
+</html>

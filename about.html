@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EE Prep</title>
+    <link rel="stylesheet" href="Info/Config/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Info/Config/Scripts/componentLoader.js"></script>
+    <script src="Info/Config/Scripts/themeToggle.js"></script>
+    <script src="Info/Config/Scripts/search.js"></script>
+</head>
+
+<body class="theme-transition">
+    <!-- Navigation components will be loaded here -->
+    <div id="sidebar-container" class="sidebar"></div>
+    <div id="header-container"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- About Us section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title-gradient">About</span> <span class="accent">EE Prep</span>
+                </h1>
+                <p class="hero-subtitle">Learn more about our mission, vision, and the team behind EE Prep</p>
+            </div>
+            <div class="hero-image">
+                <img src="Info/Config/Assets/images/about-us.svg" alt="About Us">
+            </div>
+        </section>
+
+        <!-- Our Mission section -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Our Mission</h2>
+            </div>
+            <div class="content">
+                <p>At EE Prep, our mission is to provide high-quality educational resources for electrical engineering students and professionals. We aim to make learning accessible, engaging, and effective through expertly curated content and interactive practice problems.</p>
+            </div>
+        </section>
+
+        <!-- Our Vision section -->
+        <section class="content-section alt-section">
+            <div class="section-header">
+                <h2>Our Vision</h2>
+            </div>
+            <div class="content">
+                <p>We envision a world where anyone can master electrical engineering concepts and excel in their careers. By continuously updating our materials and incorporating the latest advancements in the field, we strive to be the go-to platform for electrical engineering education.</p>
+            </div>
+        </section>
+
+
+        <!-- Contact Us section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Get in Touch</h2>
+                <p>If you have any questions, feedback, or would like to collaborate with us, feel free to reach out.</p>
+                <a href="contact.html" class="btn btn-primary btn-large">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Register service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('Info/Config/Scripts/backend.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

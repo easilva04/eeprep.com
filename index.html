@@ -4,133 +4,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="description"
-        content="EEPrep - Your comprehensive resource for electrical engineering review materials, practice problems, and exam preparation for students and professionals.">
-    <meta name="keywords"
-        content="Electrical Engineering review, EE Exam Preparation, Circuit Analysis, Power Systems, Control Systems, Signal Processing, Electronics, Electromagnetics, Engineering Practice Problems">
-    <meta name="author" content="EEPrep Team">
-    <link rel="canonical" href="https://www.eeprep.com/">
-    <meta property="og:title" content="EEPrep | Electrical Engineering Review & Practice">
-    <meta property="og:description"
-        content="Master electrical engineering concepts with our comprehensive review materials, interactive practice problems, and exam preparation resources.">
-    <meta property="og:url" content="https://www.eeprep.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.eeprep.com/images/eeprep-og-image.jpg">
-    <meta property="og:image:alt" content="EEPrep - Electrical Engineering Review Resources">
-    <meta name="robots" content="index, follow">
-    <title>EEPrep | Electrical Engineering Review & Practice Resources</title>
-    <link rel="icon" href="Info/Config/Assets/images/favicon.ico" type="image/ico">
-    
-    <!-- Load stylesheets in the correct order -->
+    <title>EE Prep - Electrical Engineering Practice</title>
     <link rel="stylesheet" href="Info/Config/Styles/main.css">
-    <link rel="stylesheet" href="Info/Config/Styles/responsive.css">
-</head>
-
-<body class="theme-transition">
-    <!-- Sidebar Container -->
-    <div id="sidebar-container" class="sidebar">
-        <!-- Sidebar content will be loaded here -->
-    </div>
-    
-    <!-- Sidebar Overlay for Mobile -->
-    <div id="sidebar-overlay" class="sidebar-overlay"></div>
-    
-    <!-- Main Content -->
-    <div class="main-content">
-        <header>
-            <h1>Welcome to your Electrical Engineering Preperation guide</h1>
-        </header>
-        <main>
-            <section class="hero-section">
-                <h2>Master Electrical Engineering Concepts</h2>
-                <p>Comprehensive review materials, practice problems, and exam preparation resources for students and professionals.</p>
-                <a href="Topics/Topics.html" class="cta-button styled-button">Explore Topics</a>
-            </section>
-                        
-            <section class="about-section">
-                <h2>About EEPrep</h2>
-                <p>EEPrep is designed to help electrical engineering students and professionals master key concepts through interactive learning materials. Our resources include comprehensive topic reviews, visual explanations, and practice problems aligned with industry standards and professional exam requirements.</p>
-            </section>
-            
-            <!-- Contact form section with proper wrapper -->
-            <section class="contact-section">
-                <h2>Contact Us</h2>
-                <div class="form-container">
-                    <iframe width="100%" height="500px" src="https://forms.office.com/r/Vax9yj2ZXx?embed=true" frameborder="0"
-                    marginwidth="0" marginheight="0" style="border: none; max-width:100%;" allowfullscreen
-                    webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
-                </div>
-            </section>
-        </main>
-    </div>
-    
-    <!-- Error message display for debugging -->
-    <div id="error-display" style="display: none; position: fixed; bottom: 0; right: 0; background: #ff5555; color: white; padding: 10px; max-width: 80%; z-index: 9999;"></div>
-    
-    <!-- Scripts - Removed sidebar.js, functionality integrated into componentLoader.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="Info/Config/Scripts/componentLoader.js"></script>
     <script src="Info/Config/Scripts/themeToggle.js"></script>
     <script src="Info/Config/Scripts/search.js"></script>
-    <script src="Info/Config/Scripts/questions.js" defer></script>
-    <script src="Info/Config/Scripts/backend.js" defer></script>
-    
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09JTZCW5JJ"></script>
+</head>
+
+<body class="theme-transition">
+    <!-- Navigation components will be loaded here - no header -->
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title-gradient">Master Electrical</span><br>
+                    <span class="hero-title-gradient">Engineering</span> <span class="accent">Concepts</span>
+                </h1>
+                <p class="hero-subtitle">Your comprehensive resource for learning, practicing, and excelling in electrical engineering with expert-curated content</p>
+                <div class="hero-actions">
+                    <a href="Topics.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-book-open"></i> Browse Topics
+                    </a>
+                    <a href="practice.html" class="btn btn-outline btn-large">
+                        <i class="fas fa-tasks"></i> Practice Now
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Info/Config/Assets/images/hero-circuit.svg" alt="Electrical Engineering">
+            </div>
+        </section>
+
+        <!-- Featured topics section -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Popular Topics</h2>
+                <a href="Topics.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <div class="card-icon circuit-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Circuit Analysis</h3>
+                    <p>Learn the fundamentals of electric circuits, from Ohm's law to complex networks and circuit theorems.</p>
+                    <a href="./Topics/Circuits/Circuits.html" class="card-link">Explore <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon digital-icon">
+                        <i class="fas fa-digital-tachograph"></i>
+                    </div>
+                    <h3>Digital Systems</h3>
+                    <p>Master digital logic, boolean algebra, sequential circuit design and computer architecture.</p>
+                    <a href="./Topics/DigitalSystems/DigitalSystems.html" class="card-link">Explore <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon electronics-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3>Electronics</h3>
+                    <p>Dive into semiconductor devices, amplifiers, and electronic circuit design and analysis.</p>
+                    <a href="./Topics/Electronics/Electronics.html" class="card-link">Explore <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why EE Prep section -->
+        <section class="content-section alt-section">
+            <div class="section-header centered">
+                <h2>Why Choose EE Prep?</h2>
+                <p class="section-subtitle">Accelerate your learning with our comprehensive platform</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Expert Content</h3>
+                    <p>Materials created and reviewed by electrical engineering educators and professionals.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Structured Learning</h3>
+                    <p>Progress through topics in a logical sequence designed to build upon concepts.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Practice Problems</h3>
+                    <p>Test your understanding with our extensive database of practice questions.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Regular Updates</h3>
+                    <p>We continuously add new content and improve existing materials.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Started Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to enhance your electrical engineering knowledge?</h2>
+                <p>Join thousands of students and professionals who use EE Prep to master electrical engineering concepts.</p>
+                <a href="Topics.html" class="btn btn-primary btn-large">Get Started Today</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Register service worker -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-09JTZCW5JJ');
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
-            const yearElements = document.querySelectorAll('#current-year');
-            if (yearElements.length > 0) {
-                const currentYear = new Date().getFullYear();
-                yearElements.forEach(el => {
-                    el.textContent = currentYear;
-                });
-            }
-            
-            // Debug helpers for sidebar and theme toggle
-            console.log("Checking sidebar toggle function:", typeof window.toggleSidebar === 'function');
-            console.log("Checking theme toggle function:", typeof window.toggleTheme === 'function');
-            
-            // Add global click handlers as a fallback
-            document.addEventListener('click', function(e) {
-                // Check for theme toggle button click
-                if (e.target.closest('#theme-toggle')) {
-                    console.log('Theme toggle clicked via event delegation');
-                    if (typeof window.toggleTheme === 'function') {
-                        window.toggleTheme();
-                    }
-                }
-                
-                // Check for sidebar toggle button clicks
-                if (e.target.closest('#sidebar-toggle') || e.target.closest('#sidebar-toggle-btn') || e.target.closest('#mobile-menu-toggle')) {
-                    console.log('Sidebar toggle clicked via event delegation');
-                    if (typeof window.toggleSidebar === 'function') {
-                        window.toggleSidebar(e.target.closest('#mobile-menu-toggle') ? true : false);
-                    }
-                }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('Info/Config/Scripts/backend.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
             });
-            
-            // Better error handling
-            window.addEventListener('error', function(event) {
-                console.error('Global error caught:', event.error);
-                const errorDisplay = document.getElementById('error-display');
-                if (errorDisplay) {
-                    errorDisplay.textContent = `Error: ${event.error.message}`;
-                    errorDisplay.style.display = 'block';
-                    setTimeout(() => {
-                        errorDisplay.style.display = 'none';
-                    }, 5000);
-                }
-            });
-        });
+        }
     </script>
 </body>
 

@@ -1,180 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Search Results">
-    <title>Search Results</title>
+    <title>Search - EEPrep</title>
     <link rel="stylesheet" href="../styles/main.css">
-    <!-- Remove or replace favicon:
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    -->
 </head>
-
 <body>
-    <div class="topborder"></div>
-    <!-- Include the navbar -->
-    <div id="navbar-placeholder"></div>
-    
-    <!-- Properly include the sidebar -->
-    <div id="sidebar-container" class="sidebar collapsed">
-        <!-- The sidebar content will be loaded via JavaScript -->
-    </div>
-
     <div class="main-content">
         <header>
             <h1>Search Results</h1>
         </header>
-
         <main>
             <div class="search-wrapper">
-                <input type="text" id="search-input" placeholder="Search for topics...">
-                <button id="search-button" aria-label="Search">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.5 14H14.71L14.43 13.73C15.63 12.33 16.25 10.42 15.91 8.39C15.43 5.61 13.12 3.39 10.32 3.05C6.09 2.56 2.56 6.09 3.05 10.32C3.39 13.12 5.61 15.43 8.39 15.91C10.42 16.25 12.33 15.63 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9 14C6.79 14 5 12.21 5 10C5 7.79 6.79 6 9 6C11.21 6 13 7.79 13 10C13 12.21 11.21 14 9 14Z" fill="currentColor" />
-                    </svg>
-                </button>
-                <div id="search-results" class="search-results"></div>
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">Search</button>
+                <div id="search-results"></div>
             </div>
         </main>
     </div>
-
-    <!-- Load DOMPurify library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
-    <!-- Load search.js first -->
     <script src="../js/search.js"></script>
-    
-    <!-- Initialize search -->
-    <script>
-        /**
-         * Initialize search functionality
-         * This function should be called after the search component is loaded
-         */
-        function initializeSearch() {
-            console.log('Initializing search...');
-            
-            // Defer search initialization to when the search.js script is fully loaded
-            if (typeof SearchEngine === 'undefined') {
-                console.log('SearchEngine not loaded yet, waiting...');
-                setTimeout(initializeSearch, 300);
-                return;
-            }
-            
-            const searchEngine = new SearchEngine();
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
-            const resultsContainer = document.getElementById('search-results');
-            
-            if (!searchInput || !searchButton || !resultsContainer) {
-                console.error('Required search elements not found');
-                return;
-            }
-            
-            // Get base path for fetching search index
-            const basePath = window.getBasePath ? window.getBasePath() : '';
-            
-            // Initialize search data
-            searchEngine.initializeSearchIndex(`${basePath}/Topics/pages.json`)
-                .then(() => {
-                    console.log('Search index initialized');
-                    
-                    // Get query from URL if present
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const initialQuery = urlParams.get('q');
-                    if (initialQuery) {
-                        searchInput.value = initialQuery;
-                        performSearch(initialQuery);
-                    }
-                    
-                    // Set up event listeners
-                    searchButton.addEventListener('click', () => {
-                        performSearch(searchInput.value);
-                    });
-                    
-                    searchInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            performSearch(searchInput.value);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Failed to initialize search index:', error);
-                    resultsContainer.innerHTML = '<p>Search functionality unavailable. Please try again later.</p>';
-                });
-            
-            function performSearch(query) {
-                if (!query.trim()) {
-                    resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
-                    return;
-                }
-                
-                const results = searchEngine.search(query);
-                displayResults(results, query);
-            }
-            
-            function displayResults(results, query) {
-                if (results.length === 0) {
-                    resultsContainer.innerHTML = `<p>No results found for "${DOMPurify.sanitize(query)}"</p>`;
-                    return;
-                }
-                
-                resultsContainer.innerHTML = `
-                    <h3>Results for "${DOMPurify.sanitize(query)}"</h3>
-                    <p class="search-summary">Found ${results.length} matching pages</p>
-                    <div class="search-results-list">
-                        ${results.slice(0, 5).map(result => `
-                            <div class="search-result-item">
-                                <a href="${result.url}">
-                                    <h4>${result.title}</h4>
-                                </a>
-                                <div class="matched-terms">
-                                    ${result.matchedTerms.length > 0 ? 
-                                      `Matched: ${result.matchedTerms.map(term => 
-                                        `<span class="matched-term">${term}</span>`
-                                      ).join(', ')}` : ''}
-                                </div>
-                                ${result.excerpts.map(excerpt => `
-                                    <p class="search-excerpt">${excerpt}</p>
-                                `).join('')}
-                            </div>
-                        `).join('')}
-                    </div>
-                    ${results.length > 5 ? 
-                      `<a href="${basePath}/search.html?q=${encodeURIComponent(query)}" class="view-all-results">
-                          View all ${results.length} results
-                       </a>` : ''}
-                `;
-            }
-        }
-    </script>
-
-    <!-- Initialize after DOM content loads -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load navbar
-            fetch('../components/navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar-placeholder').innerHTML = data;
-                });
-                
-            // Load footer
-            fetch('../components/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                });
-
-            // Initialize search
-            initializeSearch();
-        });
-    </script>
-
-    <!-- Load other scripts -->
-    <script src="../js/navbar.js"></script>
-    <script src="../js/loadSidebar.js"></script>
-    <script src="../js/themeToggle.js"></script>
-    <div id="footer-placeholder"></div>
 </body>
 </html>
