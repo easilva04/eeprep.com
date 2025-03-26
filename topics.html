@@ -18,55 +18,123 @@
 
     <!-- Main content -->
     <main class="main-content">
-        <header class="page-header">
-            <h1>Topic Categories</h1>
-            <div class="breadcrumbs">
-                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Topics</span>
-            </div>
-        </header>
+        <div class="content-container">
+            <header class="page-header">
+                <h1>Topic Categories</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Topics</span>
+                </div>
+            </header>
 
-        <div class="content-section">
-            <div class="section-header">
-                <h2>Choose a Subject Area</h2>
-                <p class="section-subtitle">Select a category to see available learning materials</p>
-            </div>
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>Choose a Subject Area</h2>
+                    <p class="section-subtitle">Select a category to see available learning materials</p>
+                </div>
 
-            <div id="topics-grid" class="topics-grid">
                 <!-- Topics will be loaded dynamically from pages.json -->
-                <div class="loading-container">
-                    <div class="loading-dots">
-                        <div class="loading-dot"></div>
-                        <div class="loading-dot"></div>
-                        <div class="loading-dot"></div>
+                <div id="topics-grid" class="topics-grid">
+                    <div class="loading-container">
+                        <div class="loading-dots">
+                            <div class="loading-dot"></div>
+                            <div class="loading-dot"></div>
+                            <div class="loading-dot"></div>
+                        </div>
+                        <p>Loading topics...</p>
                     </div>
-                    <p>Loading topics...</p>
                 </div>
             </div>
-        </div>
 
-        <section class="content-section alt-section">
-            <div class="section-header centered">
-                <h2>Not Sure Where to Start?</h2>
-            </div>
-            <div class="content centered">
-                <p>If you're new to electrical engineering, we recommend starting with Circuit Analysis basics. If you need to brush up on math first, check out the Mathematics section.</p>
-                <div style="margin-top: 2rem;">
-                    <a href="./Topics/Circuits/intro.html" class="btn btn-primary">Circuit Fundamentals</a>
-                    <a href="./Topics/Math/Math.html" class="btn btn-outline" style="margin-left: 1rem;">Math Review</a>
+            <section class="content-section alt-section">
+                <div class="section-header centered">
+                    <h2>Not Sure Where to Start?</h2>
                 </div>
-            </div>
-        </section>
+                <div class="content centered">
+                    <p>If you're new to electrical engineering, we recommend starting with Circuit Analysis basics. If you need to brush up on math first, check out the Mathematics section.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="./Topics/Circuits/intro.html" class="btn btn-primary">Circuit Fundamentals</a>
+                        <a href="./Topics/Math/Math.html" class="btn btn-outline" style="margin-left: 1rem;">Math Review</a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
 
     <script>
-        // Function to load topics dynamically from pages.json
+        /**
+         * EE Prep Topics Manager
+         * Handles loading and displaying topic categories in an organized manner
+         */
+        
+        // ==========================================
+        // Constants and Configuration
+        // ==========================================
+        
+        // Topic grouping configuration
+        const TOPIC_GROUPS = {
+            "Fundamentals": ["Mathematics", "Circuits", "Electronics"],
+            "Systems": ["Digital Systems", "Computer Systems", "Control Systems", "Signal Processing", "Linear Systems"],
+            "Power & Fields": ["Electromagnetics", "Electrical Materials", "Power Systems"],
+            "Communications & Computing": ["Communications", "Computer Networks", "Software Engineering"],
+            "Professional Skills": ["Engineering Economics", "Ethics and Professional Practice"]
+        };
+        
+        // Icon mapping for visual representation
+        const CATEGORY_ICONS = {
+            "Mathematics": "calculator",
+            "Circuits": "microchip",
+            "Electronics": "wave-square",
+            "Digital Systems": "digital-tachograph",
+            "Electromagnetics": "bolt",
+            "Electrical Materials": "atom",
+            "Linear Systems": "compress-arrows-alt",
+            "Signal Processing": "exchange-alt",
+            "Computer Systems": "laptop-code",
+            "Computer Networks": "network-wired",
+            "Communications": "broadcast-tower",
+            "Control Systems": "sliders-h",
+            "Power Systems": "plug",
+            "Software Engineering": "code",
+            "Engineering Economics": "dollar-sign",
+            "Ethics and Professional Practice": "balance-scale",
+            "default": "book" // Default icon for categories without specific icon
+        };
+        
+        // Animation timing configuration
+        const ANIMATION = {
+            sectionDelay: 100,      // Delay between section animations
+            cardBaseDelay: 150,     // Base delay for cards in a section
+            cardStaggerDelay: 50    // Additional delay between cards
+        };
+        
+        // ==========================================
+        // Initialization
+        // ==========================================
+        
+        /**
+         * Document initialization event handler
+         * Triggers the loading of topic data when the DOM is fully loaded
+         */
         document.addEventListener('DOMContentLoaded', function() {
             loadTopics();
         });
         
+        // ==========================================
+        // Main Functions
+        // ==========================================
+        
+        /**
+         * Loads topic data from the server
+         * 
+         * Fetches the pages.json file that contains all topic information
+         * and passes the data to the renderer function. Handles error states
+         * with appropriate user feedback.
+         * 
+         * @returns {void}
+         */
         function loadTopics() {
             fetch('Topics/pages.json')
                 .then(response => {
@@ -80,97 +148,191 @@
                 })
                 .catch(error => {
                     console.error('Error loading topics:', error);
-                    document.getElementById('topics-grid').innerHTML = `
-                        <div class="error-message">
-                            <p>Failed to load topics. Please try again later.</p>
-                        </div>
-                    `;
+                    showErrorMessage('Failed to load topics. Please try again later.');
                 });
         }
         
+        /**
+         * Displays an error message when topics cannot be loaded
+         * 
+         * Creates a user-friendly error message when topic data
+         * cannot be retrieved, providing visual feedback about the failure.
+         * 
+         * @param {string} message - The error message to display
+         * @returns {void}
+         */
+        function showErrorMessage(message) {
+            document.getElementById('topics-grid').innerHTML = `
+                <div class="error-message">
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+        
+        /**
+         * Main function to render topics organized by groups
+         */
         function renderTopics(data) {
             const topicsGrid = document.getElementById('topics-grid');
             topicsGrid.innerHTML = '';
             
-            // Get all topic categories and sort alphabetically
-            const categories = Object.keys(data).sort();
+            // Get and organize categories
+            const topicGroups = organizeTopicCategories(Object.keys(data).sort(), TOPIC_GROUPS);
             
-            // Define icon mapping for categories
-            const iconMap = {
-                "Mathematics": "calculator",
-                "Circuits": "microchip",
-                "Electronics": "wave-square",
-                "Digital Systems": "digital-tachograph",
-                "Electromagnetics": "bolt",
-                "Electrical Materials": "atom",
-                "Linear Systems": "compress-arrows-alt",
-                "Signal Processing": "exchange-alt",
-                "Computer Systems": "laptop-code",
-                "Computer Networks": "network-wired",
-                "Communications": "broadcast-tower",
-                "Control Systems": "sliders-h",
-                "Power Systems": "plug",
-                "Software Engineering": "code",
-                "Engineering Economics": "dollar-sign",
-                "Ethics and Professional Practice": "balance-scale",
-                // Default icon
-                "default": "book"
-            };
+            // Create group sections
+            createTopicGroupSections(topicsGrid, topicGroups, data);
             
-            // Create a card for each category
-            categories.forEach(category => {
-                // Get the first topic to extract URL and snippet
-                const firstTopic = Array.isArray(data[category]) ? 
-                    data[category][0] : 
-                    Object.values(data[category])[0][0];
-                
-                // Determine the path for the category home page
-                let categoryUrl;
-                if (firstTopic && firstTopic.url) {
-                    // Extract category URL from the first topic URL
-                    // Example: "/Topics/Math/Fundamentals/Math.html" -> "/Topics/Math/Math.html"
-                    const urlParts = firstTopic.url.split('/');
-                    if (urlParts.length >= 3) {
-                        const categoryName = urlParts[2];
-                        categoryUrl = `./Topics/${categoryName}/${categoryName}.html`;
-                    } else {
-                        categoryUrl = firstTopic.url;
-                    }
-                } else {
-                    // Fallback URL based on category name
-                    const categoryName = category.replace(/\s+/g, '');
-                    categoryUrl = `./Topics/${categoryName}/${categoryName}.html`;
-                }
-                
-                // Get appropriate icon
-                const iconClass = iconMap[category] || iconMap.default;
-                
-                // Create topic card HTML
-                const cardHtml = `
-                    <div class="topic-card">
-                        <div class="topic-icon">
-                            <i class="fas fa-${iconClass}"></i>
-                        </div>
-                        <h3>${category}</h3>
-                        <p>${firstTopic?.snippet || `Explore ${category} concepts and applications in electrical engineering.`}</p>
-                        <a href="${categoryUrl}" class="btn btn-outline">View Materials</a>
-                    </div>
-                `;
-                
-                topicsGrid.innerHTML += cardHtml;
+            // Apply animations
+            animateTopicSections();
+        }
+        
+        // ==========================================
+        // Helper Functions
+        // ==========================================
+        
+        /**
+         * Organizes topics into predefined groups and adds an "Other" group for uncategorized topics
+         */
+        function organizeTopicCategories(categories, groupsConfig) {
+            // Create a set of all categories in predefined groups
+            const categorizedTopics = new Set();
+            Object.values(groupsConfig).forEach(group => {
+                group.forEach(cat => categorizedTopics.add(cat));
             });
             
-            // Add animation to cards
-            const cards = document.querySelectorAll('.topic-card');
-            cards.forEach((card, index) => {
+            // Find uncategorized topics
+            const uncategorizedTopics = categories.filter(
+                category => !categorizedTopics.has(category)
+            );
+            
+            // Clone the groups config and add uncategorized group if needed
+            const topicGroups = {...groupsConfig};
+            if (uncategorizedTopics.length > 0) {
+                topicGroups["Other Topics"] = uncategorizedTopics;
+            }
+            
+            return topicGroups;
+        }
+        
+        /**
+         * Creates section elements for each topic group
+         */
+        function createTopicGroupSections(container, topicGroups, data) {
+            Object.keys(topicGroups).forEach(groupName => {
+                // Create a section for this group
+                const groupSection = document.createElement('div');
+                groupSection.className = 'topic-group';
+                groupSection.innerHTML = `
+                    <h2 class="topic-group-title">${groupName}</h2>
+                    <div class="topic-cards-container"></div>
+                `;
+                
+                const cardsContainer = groupSection.querySelector('.topic-cards-container');
+                
+                // Add topic cards for this group
+                topicGroups[groupName].forEach(category => {
+                    if (!data[category]) return; // Skip if category doesn't exist in data
+                    
+                    const card = createTopicCard(category, data[category]);
+                    cardsContainer.appendChild(card);
+                });
+                
+                // Only add the group if it has topics
+                if (cardsContainer.children.length > 0) {
+                    container.appendChild(groupSection);
+                }
+            });
+        }
+        
+        /**
+         * Creates a topic card element for a category
+         */
+        function createTopicCard(category, categoryData) {
+            // Extract topic information
+            const firstTopic = Array.isArray(categoryData) ? 
+                categoryData[0] : 
+                Object.values(categoryData)[0][0];
+            
+            // Determine category URL
+            const categoryUrl = getCategoryUrl(category, firstTopic);
+            
+            // Get appropriate icon
+            const iconClass = CATEGORY_ICONS[category] || CATEGORY_ICONS.default;
+            
+            // Create card element
+            const card = document.createElement('div');
+            card.className = 'topic-card';
+            card.innerHTML = `
+                <div class="topic-icon">
+                    <i class="fas fa-${iconClass}"></i>
+                </div>
+                <h3>${category}</h3>
+                <p>${firstTopic?.snippet || `Explore ${category} concepts and applications in electrical engineering.`}</p>
+                <a href="${categoryUrl}" class="btn btn-outline">View Materials</a>
+            `;
+            
+            return card;
+        }
+        
+        /**
+         * Determines the URL for a category based on available data
+         */
+        function getCategoryUrl(category, firstTopic) {
+            if (firstTopic && firstTopic.url) {
+                // Extract category URL from the first topic URL
+                const urlParts = firstTopic.url.split('/');
+                if (urlParts.length >= 3) {
+                    const categoryName = urlParts[2];
+                    return `./Topics/${categoryName}/${categoryName}.html`;
+                } else {
+                    return firstTopic.url;
+                }
+            } else {
+                // Fallback URL based on category name
+                const categoryName = category.replace(/\s+/g, '');
+                return `./Topics/${categoryName}/${categoryName}.html`;
+            }
+        }
+        
+        /**
+         * Applies staggered animations to topic sections and cards
+         */
+        function animateTopicSections() {
+            // Animate sections
+            const sections = document.querySelectorAll('.topic-group');
+            sections.forEach((section, index) => {
+                // Set initial state
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                
+                // Animate with delay
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, ANIMATION.sectionDelay * index);
+                
+                // Animate cards within this section
+                animateTopicCards(section, index);
+            });
+        }
+        
+        /**
+         * Applies staggered animations to cards within a section
+         */
+        function animateTopicCards(section, sectionIndex) {
+            const cards = section.querySelectorAll('.topic-card');
+            cards.forEach((card, cardIndex) => {
+                // Set initial state
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+                card.style.transform = 'translateY(15px)';
                 card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
                 
+                // Animate with staggered delay
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, 50 * index);
+                }, ANIMATION.cardBaseDelay * sectionIndex + ANIMATION.cardStaggerDelay * cardIndex);
             });
         }
     </script>

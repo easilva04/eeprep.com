@@ -1,43 +1,105 @@
 /**
  * Components CSS for EEPrep
- * Contains styles for reusable components like sidebar, headers
+ * Contains styles for reusable components like sidebar, buttons, cards, etc.
  */
 
-/* Sidebar Styles */
+/* ------------ Sidebar Component ------------ */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+}
+
+/* Collapsed state */
+body.sidebar-collapsed .sidebar {
+    width: var(--sidebar-collapsed-width) !important;
+    min-width: var(--sidebar-collapsed-width) !important;
+    max-width: var(--sidebar-collapsed-width) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Inner sidebar container */
 .sidebar-inner {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-x: hidden !important;
+    width: 100%;
 }
 
+/* Sidebar header */
 .sidebar-header {
     padding: 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    max-width: calc(100% - 40px);
+    overflow: hidden;
 }
 
 .sidebar-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--sidebar-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
+/* Sidebar search */
 .sidebar-search {
     padding: 1rem;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .search-wrapper {
     position: relative;
     margin-bottom: 0.5rem;
+    max-width: 100%;
 }
 
 .search-input {
@@ -49,6 +111,8 @@
     color: var(--sidebar-text);
     font-size: 0.875rem;
     transition: all 0.2s ease;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .search-input::placeholder {
@@ -74,22 +138,30 @@
     cursor: pointer;
 }
 
+/* Sidebar navigation */
 .sidebar-nav {
     flex: 1;
     padding: 1rem 0;
     overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .sidebar-menu {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .sidebar-item {
-    margin: 0.25rem 0.75rem;
+    margin: 0.25rem 0.5rem;
     border-radius: var(--radius);
     overflow: hidden;
+    width: calc(100% - 1rem);
+    box-sizing: border-box;
 }
 
 .sidebar-link {
@@ -101,6 +173,16 @@
     padding: 0.75rem 1rem;
     transition: all 0.2s ease;
     border-radius: var(--radius);
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar-link span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .sidebar-link:hover {
@@ -112,12 +194,17 @@
     font-weight: 500;
 }
 
+/* Sidebar footer */
 .sidebar-footer {
     padding: 1.5rem;
     border-top: 1px solid rgba(255,255,255,0.1);
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .sidebar-info {
@@ -142,6 +229,108 @@
 
 .sidebar-close:hover {
     background: rgba(255, 255, 255, 0.1);
+}
+
+/* Collapsed sidebar styles */
+body.sidebar-collapsed .sidebar-title,
+body.sidebar-collapsed .sidebar-link span,
+body.sidebar-collapsed .theme-toggle span,
+body.sidebar-collapsed .sidebar-info,
+body.sidebar-collapsed .sidebar-search {
+    display: none;
+}
+
+body.sidebar-collapsed .sidebar-link {
+    justify-content: center;
+    padding: 0.75rem 0;
+    width: 100%;
+    text-align: center;
+}
+
+body.sidebar-collapsed .sidebar-item {
+    margin: 0.25rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Sidebar toggle button styles */
+.sidebar-collapse-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--sidebar-text);
+    border: none;
+    padding: 0.625rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.sidebar-collapse-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-collapse-toggle i {
+    transition: transform 0.3s var(--bounce);
+}
+
+.sidebar-collapse-toggle:hover i {
+    transform: translateX(-3px);
+}
+
+body.sidebar-collapsed .sidebar-collapse-toggle:hover i {
+    transform: translateX(3px);
+}
+
+body.sidebar-collapsed .sidebar-collapse-toggle {
+    padding: 0.625rem 0;
+    justify-content: center;
+    width: 100%;
+}
+
+body.sidebar-collapsed .sidebar-collapse-toggle span {
+    display: none;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--sidebar-text);
+    border: none;
+    padding: 0.625rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle i {
+    transition: transform 0.3s var(--bounce);
+}
+
+.theme-toggle:hover i {
+    transform: rotate(30deg);
+}
+
+body.sidebar-collapsed .theme-toggle {
+    padding: 0.625rem 0;
+    justify-content: center;
+    width: 100%;
 }
 
 /* Header Styles (when used) */
@@ -222,5 +411,107 @@
     
     .hidden-mobile {
         display: block;
+    }
+}
+
+/* Topic Grid Styles */
+.topics-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.topic-group {
+    margin-bottom: 1rem;
+}
+
+.topic-group-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--primary-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-light);
+    position: relative;
+}
+
+.topic-group-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.topic-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.topic-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.topic-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s var(--bounce);
+}
+
+.topic-card:hover .topic-icon {
+    transform: scale(1.1);
+    background: var(--primary-color);
+    color: white;
+}
+
+.topic-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.topic-card p {
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    opacity: 0.8;
+    flex-grow: 1;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .topic-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .topic-cards-container {
+        grid-template-columns: 1fr;
     }
 }

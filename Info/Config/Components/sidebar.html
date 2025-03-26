@@ -1,4 +1,17 @@
+<!-- 
+  Sidebar Component for EEPrep
+  
+  Contains:
+  - Logo and site title
+  - Search functionality
+  - Main navigation links
+  - Theme toggle
+  - Sidebar collapse functionality
+  
+  This component is loaded dynamically by componentLoader.js
+-->
 <div class="sidebar-inner">
+    <!-- Sidebar Header: Contains logo, title and close button -->
     <div class="sidebar-header">
         <div class="logo-container">
             <div class="modern-logo">
@@ -11,6 +24,7 @@
         </button>
     </div>
     
+    <!-- Sidebar Search: Provides topic search functionality -->
     <div class="sidebar-search">
         <div class="search-wrapper">
             <input type="text" class="search-input" placeholder="Search topics..." aria-label="Search">
@@ -21,6 +35,7 @@
         <div class="search-results-dropdown"></div>
     </div>
     
+    <!-- Main Navigation Links -->
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
             <li class="sidebar-item">
@@ -50,23 +65,36 @@
         </ul>
     </nav>
     
+    <!-- Sidebar Footer: Contains theme toggle, sidebar toggle and info text -->
     <div class="sidebar-footer">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle Theme">
             <i class="fas fa-moon"></i>
             <span>Toggle Theme</span>
         </button>
+        
+        <!-- Added sidebar collapse button to the bottom of the sidebar -->
+        <button id="sidebar-collapse-toggle" class="sidebar-collapse-toggle" aria-label="Toggle sidebar" title="Collapse Sidebar">
+            <i class="fas fa-chevron-left"></i>
+            <span>Collapse Sidebar</span>
+        </button>
+        
         <div class="sidebar-info">
             <small><i>For the aspiring engineer</i></small>
         </div>
     </div>
 </div>
 
-<!-- Update sidebar toggle button text -->
-<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar" title="Collapse sidebar">
+<!-- Remove the external sidebar toggle button since we now have it in the footer -->
+<!-- <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar">
     <i class="fas fa-chevron-left"></i>
-</button>
+</button> -->
 
 <script>
+    /**
+     * Sidebar functionality script
+     * Handles sidebar close button and toggle functionality
+     */
+    
     // Sidebar close button (mobile)
     const closeButton = document.querySelector('.sidebar-close');
     if (closeButton) {
@@ -85,55 +113,44 @@
         });
     }
     
-    // Sidebar toggle (desktop) - improved implementation
-    const sidebarToggle = document.getElementById('sidebar-toggle');
-    if (sidebarToggle) {
-        // Update icon based on current state
-        function updateToggleIcon() {
-            const icon = sidebarToggle.querySelector('i');
-            if (document.body.classList.contains('sidebar-collapsed')) {
+    // Sidebar collapse toggle (in footer) - replaces the external toggle button
+    const sidebarCollapseToggle = document.getElementById('sidebar-collapse-toggle');
+    if (sidebarCollapseToggle) {
+        // Update button based on current state
+        function updateCollapseToggleButton() {
+            const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+            const icon = sidebarCollapseToggle.querySelector('i');
+            const text = sidebarCollapseToggle.querySelector('span');
+            
+            if (isCollapsed) {
                 icon.className = 'fas fa-chevron-right';
-                sidebarToggle.setAttribute('title', 'Expand sidebar');
+                text.textContent = 'Expand Sidebar';
+                sidebarCollapseToggle.setAttribute('title', 'Expand Sidebar');
+                sidebarCollapseToggle.setAttribute('aria-label', 'Expand Sidebar');
             } else {
                 icon.className = 'fas fa-chevron-left';
-                sidebarToggle.setAttribute('title', 'Collapse sidebar');
+                text.textContent = 'Collapse Sidebar';
+                sidebarCollapseToggle.setAttribute('title', 'Collapse Sidebar');
+                sidebarCollapseToggle.setAttribute('aria-label', 'Collapse Sidebar');
             }
         }
         
-        // Initialize icon
-        updateToggleIcon();
+        // Initialize button state
+        updateCollapseToggleButton();
         
-        // Add click handler with improved functionality for icon-only mode
-        sidebarToggle.addEventListener('click', () => {
-            console.log('Sidebar toggle clicked'); // Debug logging
+        // Add click handler
+        sidebarCollapseToggle.addEventListener('click', () => {
+            console.log('Sidebar collapse toggle clicked'); // Debug logging
             
-            // Toggle the collapsed state (now for icon-only mode)
+            // Toggle the collapsed state
             document.body.classList.toggle('sidebar-collapsed');
             
-            // If sidebar was collapsed, make sure it's now visible
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                if (!document.body.classList.contains('sidebar-collapsed')) {
-                    console.log('Making sidebar visible'); // Debug logging
-                    sidebar.classList.add('active');
-                } else {
-                    console.log('Hiding sidebar'); // Debug logging
-                }
-            }
-            
-            updateToggleIcon();
+            // Update button appearance
+            updateCollapseToggleButton();
             
             // Store preference
             localStorage.setItem('sidebar-collapsed', 
                 document.body.classList.contains('sidebar-collapsed'));
         });
-        
-        // Make button more noticeable with additional effect
-        setTimeout(() => {
-            sidebarToggle.classList.add('attention');
-            setTimeout(() => {
-                sidebarToggle.classList.remove('attention');
-            }, 2000);
-        }, 1000);
     }
 </script>

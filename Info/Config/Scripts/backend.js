@@ -1,4 +1,16 @@
-// Modern service worker with improved caching strategy
+/**
+ * EEPrep Service Worker
+ * 
+ * Provides offline capabilities and performance improvements through caching.
+ * Features:
+ * - Precaching of essential assets
+ * - Network-first strategy for HTML and API requests
+ * - Cache-first strategy for static assets
+ * - Fallback pages for offline access
+ * - Cache management with version control
+ */
+
+// Cache name constants for version control
 const CACHE_NAME = 'eeprep-static-cache-v1';
 const RUNTIME_CACHE = 'eeprep-runtime-cache';
 
@@ -17,7 +29,10 @@ const PRECACHE_ASSETS = [
   '/Info/Config/Scripts/search.js'
 ];
 
-// Install event
+/**
+ * Service Worker Install Event
+ * Pre-caches essential assets for offline use
+ */
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -29,7 +44,10 @@ self.addEventListener('install', event => {
   );
 });
 
-// Activate event - clean up old caches
+/**
+ * Service Worker Activate Event
+ * Cleans up old caches when a new service worker takes over
+ */
 self.addEventListener('activate', event => {
   const currentCaches = [CACHE_NAME, RUNTIME_CACHE];
   event.waitUntil(
@@ -43,7 +61,10 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event with network-first strategy for API calls and cache-first for static assets
+/**
+ * Service Worker Fetch Event
+ * Handles all fetch requests with appropriate caching strategies
+ */
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) {
@@ -60,7 +81,13 @@ self.addEventListener('fetch', event => {
   }
 });
 
-// Cache-first strategy
+/**
+ * Cache-first strategy
+ * Try to fetch from cache first, falling back to network
+ * 
+ * @param {Request} request - The fetch request
+ * @returns {Promise<Response>} - The response
+ */
 async function cacheFirstStrategy(request) {
   const cachedResponse = await caches.match(request);
   if (cachedResponse) {
@@ -89,7 +116,13 @@ async function cacheFirstStrategy(request) {
   }
 }
 
-// Network-first strategy
+/**
+ * Network-first strategy
+ * Try to fetch from network first, falling back to cache
+ * 
+ * @param {Request} request - The fetch request
+ * @returns {Promise<Response>} - The response
+ */
 async function networkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
@@ -117,13 +150,21 @@ async function networkFirstStrategy(request) {
   }
 }
 
-// Helper function to update cache
+/**
+ * Helper function to update cache
+ * 
+ * @param {Request} request - The request to cache
+ * @param {Response} response - The response to cache
+ */
 async function updateCache(request, response) {
   const cache = await caches.open(RUNTIME_CACHE);
   await cache.put(request, response);
 }
 
-// Listen for message events - allows communicating with the service worker
+/**
+ * Listen for message events
+ * Allows communicating with the service worker from the main thread
+ */
 self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();

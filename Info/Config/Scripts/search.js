@@ -1,5 +1,22 @@
+/**
+ * EEPrep Search System
+ * 
+ * Provides client-side search functionality across all topic pages.
+ * Features:
+ * - Fast, client-side search with debouncing
+ * - Keyboard navigation through search results
+ * - Highlighted search terms in results
+ * - Responsive dropdown UI for results
+ */
+
+/**
+ * Initialize the search functionality when the DOM is loaded
+ */
 document.addEventListener('DOMContentLoaded', initializeSearch);
 
+/**
+ * Set up search functionality for all search inputs on the page
+ */
 function initializeSearch() {
     // Look for any search input on the page
     const searchInputs = document.querySelectorAll('.search-input, .search-input-large');
@@ -33,6 +50,13 @@ function initializeSearch() {
         });
 }
 
+/**
+ * Set up event handlers for a search input and its results dropdown
+ * 
+ * @param {HTMLElement} searchInput - The search input element
+ * @param {HTMLElement} resultsDropdown - The dropdown for displaying results
+ * @param {SearchEngine} searchEngine - The search engine instance
+ */
 function setupSearchHandlers(searchInput, resultsDropdown, searchEngine) {
     // Debounce function to limit search frequency
     const debounce = (func, delay) => {
@@ -129,13 +153,26 @@ function setupSearchHandlers(searchInput, resultsDropdown, searchEngine) {
     });
 }
 
-// SearchEngine class remains the same
+/**
+ * SearchEngine class for handling search functionality
+ * 
+ * Manages the search index and provides methods for searching content
+ */
 class SearchEngine {
+    /**
+     * Create a new SearchEngine instance
+     */
     constructor() { 
         this.searchIndex = []; 
         this.isIndexLoaded = false; 
     }
     
+    /**
+     * Initialize the search index by loading data from a URL
+     * 
+     * @param {string} url - URL to the search index JSON file
+     * @returns {Promise} - Promise that resolves when the index is loaded
+     */
     initializeSearchIndex(url) {
         return fetch(url)
           .then(res => {
@@ -149,6 +186,12 @@ class SearchEngine {
           });
     }
     
+    /**
+     * Search the index for the specified query
+     * 
+     * @param {string} query - The search query
+     * @returns {Array} - Array of search results
+     */
     search(query) {
         if (!this.isIndexLoaded) return [];
         

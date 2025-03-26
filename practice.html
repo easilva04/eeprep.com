@@ -19,58 +19,60 @@
 
     <!-- Main content -->
     <main class="main-content">
-        <header class="page-header">
-            <h1>Practice Problems</h1>
-            <div class="breadcrumbs">
-                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Practice</span>
-            </div>
-        </header>
+        <div class="content-container">
+            <header class="page-header">
+                <h1>Practice Problems</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Practice</span>
+                </div>
+            </header>
 
-        <div class="content-section">
-            <div class="section-header">
-                <h2>Practice Topic Selection</h2>
-            </div>
-            
-            <div class="topic-selector">
-                <p>Choose a topic to practice with randomly generated problems:</p>
-                <div class="topic-buttons">
-                    <button class="topic-btn" data-topic="general">General</button>
-                    <button class="topic-btn" data-topic="circuits">Circuits</button>
-                    <button class="topic-btn" data-topic="digital">Digital Systems</button>
-                    <button class="topic-btn" data-topic="electronics">Electronics</button>
-                    <button class="topic-btn" data-topic="emfields">EM Fields</button>
-                    <button class="topic-btn" data-topic="signals">Signals</button>
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>Practice Topic Selection</h2>
+                </div>
+                
+                <div class="topic-selector">
+                    <p>Choose a topic to practice with randomly generated problems:</p>
+                    <div class="topic-buttons">
+                        <button class="topic-btn" data-topic="general">General</button>
+                        <button class="topic-btn" data-topic="circuits">Circuits</button>
+                        <button class="topic-btn" data-topic="digital">Digital Systems</button>
+                        <button class="topic-btn" data-topic="electronics">Electronics</button>
+                        <button class="topic-btn" data-topic="emfields">EM Fields</button>
+                        <button class="topic-btn" data-topic="signals">Signals</button>
+                    </div>
+                </div>
+                
+                <div class="questions-container" id="questions-container">
+                    <!-- Questions will be dynamically loaded here -->
+                    <div class="start-message">
+                        <p>Select a topic above to start practicing or use the default "General" questions.</p>
+                    </div>
+                </div>
+                
+                <div id="results" class="results-container"></div>
+                
+                <div class="action-buttons">
+                    <button id="check-answers" class="btn btn-primary">Check Answers</button>
+                    <button id="new-questions" class="btn btn-outline">New Questions</button>
                 </div>
             </div>
-            
-            <div class="questions-container" id="questions-container">
-                <!-- Questions will be dynamically loaded here -->
-                <div class="start-message">
-                    <p>Select a topic above to start practicing or use the default "General" questions.</p>
+
+            <section class="content-section alt-section">
+                <div class="section-header centered">
+                    <h2>Practice Tips</h2>
                 </div>
-            </div>
-            
-            <div id="results" class="results-container"></div>
-            
-            <div class="action-buttons">
-                <button id="check-answers" class="btn btn-primary">Check Answers</button>
-                <button id="new-questions" class="btn btn-outline">New Questions</button>
-            </div>
+                <div class="content">
+                    <ul class="tips-list">
+                        <li><strong>Consistent Practice:</strong> Regular practice helps reinforce concepts and improve retention.</li>
+                        <li><strong>Check Your Work:</strong> After submitting answers, review the explanations for questions you got wrong.</li>
+                        <li><strong>Take Notes:</strong> Write down key concepts that are giving you trouble for later review.</li>
+                        <li><strong>Variety:</strong> Practice different types of problems to develop a well-rounded understanding.</li>
+                    </ul>
+                </div>
+            </section>
         </div>
-
-        <section class="content-section alt-section">
-            <div class="section-header centered">
-                <h2>Practice Tips</h2>
-            </div>
-            <div class="content">
-                <ul class="tips-list">
-                    <li><strong>Consistent Practice:</strong> Regular practice helps reinforce concepts and improve retention.</li>
-                    <li><strong>Check Your Work:</strong> After submitting answers, review the explanations for questions you got wrong.</li>
-                    <li><strong>Take Notes:</strong> Write down key concepts that are giving you trouble for later review.</li>
-                    <li><strong>Variety:</strong> Practice different types of problems to develop a well-rounded understanding.</li>
-                </ul>
-            </div>
-        </section>
     </main>
 
     <!-- Footer will be loaded here -->

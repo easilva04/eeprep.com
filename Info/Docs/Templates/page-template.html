@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="Info/Config/Styles/main.css">
     <link rel="stylesheet" href="Info/Config/Styles/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Essential Scripts -->
     <script src="Info/Config/Scripts/componentLoader.js"></script>
     <script src="Info/Config/Scripts/themeToggle.js"></script>
     <script src="Info/Config/Scripts/search.js"></script>
@@ -17,56 +16,71 @@
 <body class="theme-transition">
     <!-- Navigation components will be loaded here -->
     <div id="sidebar-container" class="sidebar"></div>
-    <div id="header-container"></div>
 
     <!-- Main content -->
     <main class="main-content">
-        <!-- Page header section -->
-        <header class="page-header">
-            <h1>Page Title</h1>
-            <div class="breadcrumbs">
-                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Current Page</span>
-            </div>
-        </header>
-
-        <!-- Content section 1 -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2>Section Title</h2>
-            </div>
-            
-            <div class="card">
-                <h3>Card Title</h3>
-                <p>Your content goes here. Replace this with your actual content.</p>
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="content-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-gradient">Page</span> <span class="accent">Title</span>
+                    </h1>
+                    <p class="hero-subtitle">Short description of the page content and purpose</p>
+                    <div class="breadcrumbs">
+                        <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Current Page</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Content section 2 (with alt background) -->
-        <section class="content-section alt-section">
-            <div class="section-header centered">
-                <h2>Another Section</h2>
-                <p class="section-subtitle">Supporting text for this section</p>
-            </div>
-            
-            <div class="features-grid">
-                <!-- Feature items go here -->
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Feature Title</h3>
-                    <p>Feature description goes here.</p>
+        <!-- Main content section -->
+        <section class="content-section">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Section Title</h2>
                 </div>
-                <!-- Add more feature items as needed -->
+                
+                <div class="card">
+                    <h3>Card Title</h3>
+                    <p>Your content goes here. Replace this with your actual content.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alternate background section -->
+        <section class="content-section alt-section">
+            <div class="content-container">
+                <div class="section-header centered">
+                    <h2>Another Section</h2>
+                    <p class="section-subtitle">Supporting text for this section</p>
+                </div>
+                
+                <div class="features-grid">
+                    <!-- Feature items go here -->
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Feature Title</h3>
+                        <p>Feature description goes here.</p>
+                    </div>
+                    <!-- Add more feature items as needed -->
+                </div>
             </div>
         </section>
 
         <!-- Call to action section -->
         <section class="cta-section">
-            <div class="cta-content">
-                <h2>Ready to learn more?</h2>
-                <p>Explore more topics or practice what you've learned.</p>
-                <a href="Topics.html" class="btn btn-primary btn-large">Explore Topics</a>
+            <div class="content-container">
+                <div class="cta-content">
+                    <h2>Ready to learn more?</h2>
+                    <p>Explore more topics or practice what you've learned.</p>
+                    <div class="cta-buttons">
+                        <a href="Topics.html" class="btn btn-primary btn-large">Explore Topics</a>
+                        <a href="practice.html" class="btn btn-outline btn-large" style="background: rgba(255,255,255,0.2); color: white; margin-left: 1rem;">Try Practice Problems</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

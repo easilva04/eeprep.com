@@ -1,5 +1,24 @@
+/**
+ * Component Loader System for EEPrep
+ * 
+ * Handles dynamic loading of site components like navigation, sidebar, and footer.
+ * Features:
+ * - Asynchronous component loading
+ * - Loading indicators
+ * - Mobile navigation setup
+ * - Dropdown menu initialization
+ * - Error handling for failed component loads
+ * - Touch swipe support for mobile sidebar
+ */
+
+/**
+ * Initialize the application when the DOM is loaded
+ */
 document.addEventListener('DOMContentLoaded', initApp);
 
+/**
+ * Initialize the application by loading components and setting up features
+ */
 function initApp() {
     // Create ChatGPT-like loading indicator
     const loadingIndicator = document.createElement('div');
@@ -56,6 +75,13 @@ function initApp() {
     });
 }
 
+/**
+ * Load a component HTML file into a container
+ * 
+ * @param {string} containerId - ID of the container element
+ * @param {string} url - URL of the component HTML file
+ * @returns {Promise} - Promise that resolves when the component is loaded
+ */
 function loadComponent(containerId, url) {
     const container = document.getElementById(containerId);
     if (!container) {
@@ -93,11 +119,18 @@ function loadComponent(containerId, url) {
         });
 }
 
-// Helper function for relative navigation
+/**
+ * Helper function for relative navigation
+ * 
+ * @param {string} url - URL to navigate to
+ */
 function navigateRelative(url) {
     window.location.href = url;
 }
 
+/**
+ * Set up mobile navigation functionality
+ */
 function setupMobileNavigation() {
     // Create mobile navigation toggle if it doesn't exist
     if (!document.querySelector('.mobile-nav-toggle')) {
@@ -114,43 +147,139 @@ function setupMobileNavigation() {
         
         // Improved mobile toggle functionality
         toggle.addEventListener('click', () => {
-            const isActive = sidebar.classList.contains('active');
-            
-            if (isActive) {
-                // Close sidebar
-                sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-                toggle.querySelector('i').className = 'fas fa-bars';
-            } else {
-                // Open sidebar
-                sidebar.classList.add('active');
-                overlay.classList.add('active');
-                document.body.classList.add('sidebar-open');
-                toggle.querySelector('i').className = 'fas fa-times';
-            }
+            toggleSidebar(sidebar, overlay, toggle);
         });
         
         // Close sidebar when clicking overlay
         overlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            document.body.classList.remove('sidebar-open');
-            overlay.classList.remove('active');
-            toggle.querySelector('i').className = 'fas fa-bars';
+            closeSidebar(sidebar, overlay, toggle);
         });
 
         // Close sidebar when pressing Escape key
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-                overlay.classList.remove('active');
-                toggle.querySelector('i').className = 'fas fa-bars';
+                closeSidebar(sidebar, overlay, toggle);
             }
         });
+        
+        // Add touch swipe detection for mobile
+        setupTouchSwipe(sidebar, overlay, toggle);
     }
 }
 
+/**
+ * Toggle sidebar open/closed state
+ * @param {Element} sidebar - The sidebar element
+ * @param {Element} overlay - The overlay element
+ * @param {Element} toggle - The toggle button element
+ */
+function toggleSidebar(sidebar, overlay, toggle) {
+    const isActive = sidebar.classList.contains('active');
+    
+    if (isActive) {
+        closeSidebar(sidebar, overlay, toggle);
+    } else {
+        openSidebar(sidebar, overlay, toggle);
+    }
+}
+
+/**
+ * Open the sidebar
+ * @param {Element} sidebar - The sidebar element
+ * @param {Element} overlay - The overlay element
+ * @param {Element} toggle - The toggle button element
+ */
+function openSidebar(sidebar, overlay, toggle) {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+    document.body.classList.add('sidebar-open');
+    toggle.querySelector('i').className = 'fas fa-times';
+}
+
+/**
+ * Close the sidebar
+ * @param {Element} sidebar - The sidebar element
+ * @param {Element} overlay - The overlay element
+ * @param {Element} toggle - The toggle button element
+ */
+function closeSidebar(sidebar, overlay, toggle) {
+    sidebar.classList.remove('active');
+    document.body.classList.remove('sidebar-open');
+    overlay.classList.remove('active');
+    toggle.querySelector('i').className = 'fas fa-bars';
+}
+
+/**
+ * Setup touch swipe detection for mobile sidebar
+ * @param {Element} sidebar - The sidebar element
+ * @param {Element} overlay - The overlay element
+ * @param {Element} toggle - The toggle button element
+ */
+function setupTouchSwipe(sidebar, overlay, toggle) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50; // Minimum swipe distance to trigger action
+    
+    // Add swipe detection to document body
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe(sidebar, overlay, toggle);
+    }, { passive: true });
+    
+    // Handle swipe left/right
+    function handleSwipe(sidebar, overlay, toggle) {
+        const swipeDistance = touchEndX - touchStartX;
+        const isActive = sidebar.classList.contains('active');
+        
+        // Right to left swipe (close sidebar)
+        if (swipeDistance < -minSwipeDistance && isActive) {
+            closeSidebar(sidebar, overlay, toggle);
+        }
+        
+        // Left to right swipe (open sidebar)
+        if (swipeDistance > minSwipeDistance && !isActive) {
+            openSidebar(sidebar, overlay, toggle);
+        }
+    }
+    
+    // Add edge-swipe detection specifically for opening the sidebar
+    let edgeSwipeActive = false;
+    const edgeSize = 20; // Size of edge detection zone in pixels
+    
+    document.addEventListener('touchstart', (e) => {
+        const touchX = e.touches[0].clientX;
+        
+        // If touch starts at the edge of the screen
+        if (touchX <= edgeSize) {
+            edgeSwipeActive = true;
+        }
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', (e) => {
+        if (!edgeSwipeActive) return;
+        
+        const touchX = e.touches[0].clientX;
+        const swipeDistance = touchX - touchStartX;
+        
+        // If we've swiped enough from the edge
+        if (swipeDistance > minSwipeDistance) {
+            openSidebar(sidebar, overlay, toggle);
+            edgeSwipeActive = false;
+        }
+    }, { passive: true });
+    
+    document.addEventListener('touchend', () => {
+        edgeSwipeActive = false;
+    }, { passive: true });
+}
+
+/**
+ * Set up dropdown menu functionality
+ */
 function setupDropdowns() {
     // Find all dropdown toggles
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
