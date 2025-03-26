@@ -24,25 +24,25 @@
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
             <li class="sidebar-item">
-                <a href="index.html" class="sidebar-link">
+                <a href="index.html" class="sidebar-link" title="Home">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="Topics.html" class="sidebar-link">
+                <a href="Topics.html" class="sidebar-link" title="Topics">
                     <i class="fas fa-book"></i>
                     <span>Topics</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="practice.html" class="sidebar-link">
+                <a href="practice.html" class="sidebar-link" title="Practice">
                     <i class="fas fa-tasks"></i>
                     <span>Practice</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a href="about.html" class="sidebar-link">
+                <a href="about.html" class="sidebar-link" title="About">
                     <i class="fas fa-info-circle"></i>
                     <span>About</span>
                 </a>
@@ -51,18 +51,18 @@
     </nav>
     
     <div class="sidebar-footer">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle Theme">
             <i class="fas fa-moon"></i>
             <span>Toggle Theme</span>
         </button>
         <div class="sidebar-info">
-            <small>&copy; 2023 EE Prep</small>
+            <small><i>For the aspiring engineer</i></small>
         </div>
     </div>
 </div>
 
-<!-- Add sidebar toggle button with improved visibility -->
-<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+<!-- Update sidebar toggle button text -->
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar" title="Collapse sidebar">
     <i class="fas fa-chevron-left"></i>
 </button>
 
@@ -103,11 +103,11 @@
         // Initialize icon
         updateToggleIcon();
         
-        // Add click handler with improved functionality
+        // Add click handler with improved functionality for icon-only mode
         sidebarToggle.addEventListener('click', () => {
             console.log('Sidebar toggle clicked'); // Debug logging
             
-            // Toggle the collapsed state
+            // Toggle the collapsed state (now for icon-only mode)
             document.body.classList.toggle('sidebar-collapsed');
             
             // If sidebar was collapsed, make sure it's now visible

@@ -32,8 +32,17 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
 /* Modern responsive layout */
 .main-content { 
     transition: all var(--transition-speed) var(--smooth-timing);
-    width: 100%;
+    width: calc(100% - 280px); /* Subtract sidebar width */
     padding: 2rem; 
+    margin-left: 280px; /* Full sidebar width */
+    position: relative; /* Add position relative to avoid overlapping */
+    z-index: 5; /* Lower z-index than sidebar toggle but higher than most elements */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+body.sidebar-collapsed .main-content {
+    margin-left: 60px; /* Icon-only sidebar width */
+    width: calc(100% - 60px); /* Adjust width to prevent overlap */
 }
 
 /* Responsive sidebar */
@@ -44,7 +53,7 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     height: 100vh; 
     width: 280px;
     transform: translateX(0);
-    transition: transform 0.3s var(--bounce-timing), width 0.3s var(--bounce-timing);
+    transition: all 0.3s var(--bounce-timing);
     z-index: 1000;
     background: var(--sidebar-bg); 
     color: var(--sidebar-text);
@@ -53,8 +62,48 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
     scrollbar-width: thin;
 }
 
+/* Collapsed sidebar shows only icons - fixed to prevent overlap */
 body.sidebar-collapsed .sidebar {
-    transform: translateX(-100%);
+    width: 60px; /* Width for icon-only view */
+    transform: translateX(0); /* Keep it visible */
+    overflow-x: hidden;
+    overflow-y: auto; /* Changed from visible to auto for better scrolling */
+    position: fixed; /* Ensure it stays fixed */
+    z-index: 1000; /* Keep high z-index */
+}
+
+/* Hide text in collapsed sidebar */
+body.sidebar-collapsed .sidebar-title,
+body.sidebar-collapsed .sidebar-link span,
+body.sidebar-collapsed .theme-toggle span,
+body.sidebar-collapsed .sidebar-info,
+body.sidebar-collapsed .sidebar-search {
+    display: none;
+}
+
+/* Center icons in collapsed sidebar */
+body.sidebar-collapsed .sidebar-link {
+    justify-content: center;
+    padding: 0.75rem 0; /* Reduce horizontal padding */
+    width: 100%;
+    text-align: center;
+}
+
+body.sidebar-collapsed .sidebar-item {
+    margin: 0.25rem 0; /* Adjust vertical margin only */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+body.sidebar-collapsed .theme-toggle {
+    padding: 0.625rem 0;
+    justify-content: center;
+    width: 100%;
+}
+
+body.sidebar-collapsed .sidebar-toggle {
+    left: 50px; /* Adjusted to be outside the collapsed sidebar width */
 }
 
 .sidebar::-webkit-scrollbar {
@@ -379,26 +428,27 @@ body.sidebar-collapsed .sidebar {
 /* Enhanced sidebar toggle functionality */
 .sidebar-toggle {
     position: fixed;
-    left: 260px;
-    top: 20px; /* Fixed position at the top */
-    width: 40px; /* Increased size */
-    height: 40px; /* Increased size */
-    background: #ecc94b; /* Changed to accent color for visibility */
-    color: #1a365d; /* Darker text color for contrast */
-    border: 2px solid #1a365d; /* Added border for visibility */
+    left: 240px; /* Moved to be at the edge of the sidebar */
+    top: 50%; /* Centered vertically */
+    transform: translateY(-50%); /* Perfect vertical centering */
+    width: 40px; 
+    height: 40px;
+    background: #ecc94b;
+    color: #1a365d;
+    border: 2px solid #1a365d;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 1010; /* Increased z-index to be above everything */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    z-index: 1010; /* Higher z-index than sidebar and content */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: all 0.3s var(--bounce-timing);
-    animation: pulse 2s infinite; /* Added pulsing animation to draw attention */
+    animation: pulse 2s infinite;
 }
 
 body.sidebar-collapsed .sidebar-toggle {
-    left: 20px; /* Moved further right when sidebar is collapsed */
+    left: 50px; /* Adjusted to be outside the collapsed sidebar width */
 }
 
 .sidebar-toggle i {
@@ -428,20 +478,17 @@ body.sidebar-collapsed .sidebar-toggle {
     /* Hide sidebar toggle on mobile, use mobile-nav-toggle instead */
     .sidebar-toggle {
         display: block; /* Always show toggle button */
-        top: 20px; /* Keep it at the top */
-        left: 20px; /* Position it on the left side */
-        width: 48px; /* Even larger on mobile */
-        height: 48px; /* Even larger on mobile */
+        top: 50%; /* Centered vertically on mobile too */
+        transform: translateY(-50%);
+        left: 20px;
+        width: 48px;
+        height: 48px;
         z-index: 1010;
         border: 3px solid #1a365d; /* Thicker border */
     }
     
     body.sidebar-collapsed .sidebar-toggle {
         left: 20px;
-    }
-    
-    .sidebar-toggle i {
-        font-size: 20px; /* Larger icon on mobile */
     }
     
     .sidebar {
@@ -456,6 +503,12 @@ body.sidebar-collapsed .sidebar-toggle {
     
     body.sidebar-collapsed .sidebar {
         transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    body.sidebar-collapsed .main-content {
+        margin-left: 0;
+        width: 100%;
     }
     
     /* On mobile, the sidebar should overlay content */
