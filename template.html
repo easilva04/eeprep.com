@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EE Prep - [Topic Name] | Electrical Engineering</title>
+    <link rel="stylesheet" href="Info/Config/Styles/main.css">
+    <link rel="stylesheet" href="Info/Config/Styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Info/Config/Scripts/componentLoader.js"></script>
+    <script src="Info/Config/Scripts/themeToggle.js"></script>
+    <script src="Info/Config/Scripts/search.js"></script>
+</head>
+
+<body class="theme-transition">
+    <!-- Navigation components will be loaded here - no header -->
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Topic header section -->
+        <section class="content-section">
+            <div class="content-container">
+                <div class="section-header">
+                    <h1 class="topic-title">[Topic Name]</h1>
+                    <p class="topic-description">[Brief description of this topic and its importance in electrical engineering]</p>
+                </div>
+                
+                <!-- Topic navigation breadcrumbs -->
+                <div class="topic-breadcrumbs">
+                    <a href="../../index.html">Home</a> &gt; 
+                    <a href="../../Topics.html">Topics</a> &gt; 
+                    <span>[Topic Category]</span> &gt; 
+                    <span>[Topic Name]</span>
+                </div>
+                
+                <!-- Topic overview -->
+                <div class="topic-overview">
+                    <h2>Overview</h2>
+                    <p>[Detailed overview of the topic - replace with actual content]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic main content section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>Key Concepts</h2>
+                
+                <!-- Individual concept sections -->
+                <div class="concept-section">
+                    <h3>[Concept 1]</h3>
+                    <p>[Explanation of concept 1]</p>
+                    <!-- Add formulas, diagrams, or examples as needed -->
+                </div>
+                
+                <div class="concept-section">
+                    <h3>[Concept 2]</h3>
+                    <p>[Explanation of concept 2]</p>
+                    <!-- Add formulas, diagrams, or examples as needed -->
+                </div>
+                
+                <!-- Add more concept sections as needed -->
+            </div>
+        </section>
+
+        <!-- Examples section -->
+        <section class="content-section alt-section">
+            <div class="content-container">
+                <h2>Examples</h2>
+                
+                <div class="example-box">
+                    <h3>Example 1: [Brief Title]</h3>
+                    <div class="example-problem">
+                        <p>[Problem statement]</p>
+                    </div>
+                    <div class="example-solution">
+                        <h4>Solution:</h4>
+                        <p>[Step-by-step solution]</p>
+                    </div>
+                </div>
+                
+                <!-- Add more examples as needed -->
+            </div>
+        </section>
+
+        <!-- Related topics section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>Related Topics</h2>
+                <div class="card-grid">
+                    <div class="related-topic-card">
+                        <h3>[Related Topic 1]</h3>
+                        <p>[Brief description]</p>
+                        <a href="[relative path to related topic]" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="related-topic-card">
+                        <h3>[Related Topic 2]</h3>
+                        <p>[Brief description]</p>
+                        <a href="[relative path to related topic]" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <!-- Add more related topics as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice problems section -->
+        <section class="content-section alt-section">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Practice Problems</h2>
+                    <a href="[relative path to practice problems]" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <p>Test your understanding of [Topic Name] with these practice problems:</p>
+                <ul class="practice-list">
+                    <li><a href="[relative path to problem 1]">Problem 1: [Brief description]</a></li>
+                    <li><a href="[relative path to problem 2]">Problem 2: [Brief description]</a></li>
+                    <li><a href="[relative path to problem 3]">Problem 3: [Brief description]</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Resources section -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>Additional Resources</h2>
+                <ul class="resources-list">
+                    <li><strong>Books:</strong> [Recommended textbooks or resources]</li>
+                    <li><strong>Videos:</strong> [Recommended videos]</li>
+                    <li><strong>Websites:</strong> [Useful external websites]</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Register service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

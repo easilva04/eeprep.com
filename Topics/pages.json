@@ -9,7 +9,7 @@
             "title": "Networks",
             "url": "/Topics/Circuits/ResistiveNetworks.html",
             "snippet": "Understand resistive networks and their analysis, including techniques for simplifying and solving circuits..."
-        },
+        },  
         {
             "title": "Node & Loop Analysis",
             "url": "/Topics/Circuits/nodeLoop.html",
