@@ -19,24 +19,33 @@
 
     <!-- Main content -->
     <main class="main-content">
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="content-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-gradient">Join &</span>
+                        <span class="accent">Contribute</span>
+                    </h1>
+                    <p class="hero-subtitle">Help us improve EE Prep by contributing your knowledge and expertise</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Join header section -->
         <section class="content-section">
             <div class="content-container">
-                <div class="section-header">
-                    <h1 class="topic-title">Join & Contribute</h1>
-                    <p class="topic-description">Help us improve EE Prep by contributing your knowledge and expertise</p>
-                </div>
-                
                 <!-- Topic navigation breadcrumbs -->
                 <div class="topic-breadcrumbs">
-                    <a href="index.html">Home</a> &gt; 
+                    <a href="index.html">Home</a> &gt;
                     <span>Join & Contribute</span>
                 </div>
-                
+
                 <!-- Join overview -->
                 <div class="topic-overview">
                     <h2>Why Contribute?</h2>
-                    <p>EE Prep is an open-source educational platform built by the community, for the community. By contributing, you can:</p>
+                    <p>EE Prep is an open-source educational platform built by the community, for the community. By
+                        contributing, you can:</p>
                     <ul>
                         <li>Share your electrical engineering knowledge with students and professionals worldwide</li>
                         <li>Help improve the quality and accuracy of our educational content</li>
@@ -50,13 +59,17 @@
         <!-- GitHub info section -->
         <section class="content-section">
             <div class="content-container">
-                <h2>Our GitHub Repository</h2>
-                
+                <div class="section-header">
+                    <h2>Our GitHub Repository</h2>
+                </div>
+
                 <div class="concept-section">
                     <h3>Repository Information</h3>
-                    <p>EE Prep is hosted on GitHub, making it easy for contributors to collaborate. Our repository contains all the HTML, CSS, JavaScript, and content files that make up the website.</p>
+                    <p>EE Prep is hosted on GitHub, making it easy for contributors to collaborate. Our repository
+                        contains all the HTML, CSS, JavaScript, and content files that make up the website.</p>
                     <div class="github-info">
-                        <p><strong>Repository URL:</strong> <a href="https://github.com/easilva04/eeprep.com" target="_blank">https://github.com/easilva04/eeprep.com</a></p>
+                        <p><strong>Repository URL:</strong> <a href="https://github.com/easilva04/eeprep.com"
+                                target="_blank">https://github.com/easilva04/eeprep.com</a></p>
                         <p><strong>Project Overview:</strong> <a href="README.md" target="_blank">README.md</a></p>
                         <p><strong>Task List:</strong> <a href="Todo.md" target="_blank">Todo.md</a></p>
                     </div>
@@ -67,15 +80,19 @@
         <!-- How to contribute section -->
         <section class="content-section alt-section">
             <div class="content-container">
-                <h2>How to Contribute</h2>
-                
+                <div class="section-header">
+                    <h2>How to Contribute</h2>
+                </div>
+
                 <div class="contribution-steps">
                     <div class="step-box">
                         <h3>1. Fork the Repository</h3>
                         <p>Create your own copy of the EE Prep repository by forking it to your GitHub account.</p>
-                        <a href="https://github.com/easilva04/eeprep.com/fork" target="_blank" class="button">Fork Repository</a>
+                        <a href="https://github.com/easilva04/eeprep.com/fork" target="_blank" class="button">
+                            <i class="fas fa-code-branch"></i> Fork Repository
+                        </a>
                     </div>
-                    
+
                     <div class="step-box">
                         <h3>2. Clone to Your Local Machine</h3>
                         <p>Clone your forked repository to your local machine using Git:</p>
@@ -84,7 +101,7 @@
 cd eeprep.com</code></pre>
                         </div>
                     </div>
-                    
+
                     <div class="step-box">
                         <h3>3. Set Up Upstream Remote</h3>
                         <p>Link your local repository to the main project:</p>
@@ -92,7 +109,7 @@ cd eeprep.com</code></pre>
                             <pre><code>git remote add upstream https://github.com/easilva04/eeprep.com.git</code></pre>
                         </div>
                     </div>
-                    
+
                     <div class="step-box">
                         <h3>4. Create a New Branch</h3>
                         <p>Create a new branch for your changes:</p>
@@ -100,18 +117,18 @@ cd eeprep.com</code></pre>
                             <pre><code>git checkout -b feature/your-feature-name</code></pre>
                         </div>
                     </div>
-                    
+
                     <div class="step-box">
                         <h3>5. Make Your Changes</h3>
                         <p>Edit, add, or improve content in your local repository. You can:</p>
                         <ul>
                             <li>Fix errors in existing topics</li>
                             <li>Add new examples or practice problems</li>
-                            <li>Create new topic pages using our template at <code>Config/template.html</code></li>
+                            <li>Create new topic pages using our template at <code>template.html</code></li>
                             <li>Improve site functionality</li>
                         </ul>
                     </div>
-                    
+
                     <div class="step-box">
                         <h3>6. Commit and Push</h3>
                         <p>Commit your changes and push them to your forked repository:</p>
@@ -121,7 +138,7 @@ git commit -m "Brief description of your changes"
 git push origin feature/your-feature-name</code></pre>
                         </div>
                     </div>
-                    
+
                     <div class="step-box">
                         <h3>7. Create a Pull Request</h3>
                         <p>Submit a pull request from your branch to the main EE Prep repository:</p>
@@ -140,29 +157,41 @@ git push origin feature/your-feature-name</code></pre>
         <!-- Content management section -->
         <section class="content-section">
             <div class="content-container">
-                <h2>Content Management</h2>
-                
-                <div class="concept-section">
-                    <h3>Using the HTML Template</h3>
-                    <p>We use a standardized HTML template for all content pages to ensure consistency across the site:</p>
-                    <ul>
-                        <li>Find the template at <code>Config/template.html</code></li>
-                        <li>Copy this template as your starting point for any new page</li>
-                        <li>Replace all placeholder text (text in [square brackets])</li>
-                        <li>Maintain the HTML structure and class names</li>
-                        <li>Test your page in a browser before submitting</li>
-                    </ul>
+                <div class="section-header">
+                    <h2>Content Management</h2>
                 </div>
-                
-                <div class="concept-section">
-                    <h3>Managing Content with pages.json</h3>
-                    <p>The <code>pages.json</code> file serves as our content database and helps maintain site structure:</p>
-                    <ul>
-                        <li>Find the file at <code>Topics/pages.json</code></li>
-                        <li>Use the <code>quickAdd.newPage</code> section to add new content</li>
-                        <li>Fill in the required fields (title, categoryId, filename, etc.)</li>
-                        <li>Follow the examples provided in the file</li>
-                    </ul>
+
+                <div class="card-grid">
+                    <div class="feature-card">
+                        <div class="card-icon circuit-icon">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <h3>Using the HTML Template</h3>
+                        <p>We use a standardized HTML template for all content pages to ensure consistency across the site:
+                        </p>
+                        <ul>
+                            <li>Find the template at <code>template.html</code></li>
+                            <li>Copy this template as your starting point for any new page</li>
+                            <li>Replace all placeholder text (text in [square brackets])</li>
+                            <li>Maintain the HTML structure and class names</li>
+                            <li>Test your page in a browser before submitting</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon digital-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Managing Content with pages.json</h3>
+                        <p>The <code>pages.json</code> file serves as our content database and helps maintain site
+                            structure:</p>
+                        <ul>
+                            <li>Find the file at <code>Topics/pages.json</code></li>
+                            <li>Use the <code>quickAdd.newPage</code> section to add new content</li>
+                            <li>Fill in the required fields (title, categoryId, filename, etc.)</li>
+                            <li>Follow the examples provided in the file</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -170,34 +199,44 @@ git push origin feature/your-feature-name</code></pre>
         <!-- Contribution guidelines section -->
         <section class="content-section alt-section">
             <div class="content-container">
-                <h2>Contribution Guidelines</h2>
-                
-                <div class="concept-section">
-                    <h3>Content Standards</h3>
-                    <ul>
-                        <li>Use clear, concise language appropriate for engineering students</li>
-                        <li>Define technical terms on first use</li>
-                        <li>Break down difficult concepts into manageable parts</li>
-                        <li>Include examples for abstract concepts</li>
-                        <li>Use headers and lists for organization</li>
-                        <li>Include relevant equations (use LaTeX format)</li>
-                        <li>Add diagrams or images as needed</li>
-                        <li>Properly reference external sources and respect copyright</li>
-                    </ul>
+                <div class="section-header">
+                    <h2>Contribution Guidelines</h2>
                 </div>
-                
-                <div class="concept-section">
-                    <h3>Code Standards</h3>
-                    <ul>
-                        <li>Follow responsive design principles</li>
-                        <li>Comment your code appropriately</li>
-                        <li>Ensure cross-browser compatibility</li>
-                        <li>Optimize for performance</li>
-                        <li>Use semantic HTML for accessibility</li>
-                        <li>Include alt text for images</li>
-                        <li>Ensure keyboard navigation works</li>
-                        <li>Maintain sufficient color contrast</li>
-                    </ul>
+
+                <div class="card-grid">
+                    <div class="feature-card">
+                        <div class="card-icon circuit-icon">
+                            <i class="fas fa-feather-alt"></i>
+                        </div>
+                        <h3>Content Standards</h3>
+                        <ul>
+                            <li>Use clear, concise language appropriate for engineering students</li>
+                            <li>Define technical terms on first use</li>
+                            <li>Break down difficult concepts into manageable parts</li>
+                            <li>Include examples for abstract concepts</li>
+                            <li>Use headers and lists for organization</li>
+                            <li>Include relevant equations (use LaTeX format)</li>
+                            <li>Add diagrams or images as needed</li>
+                            <li>Properly reference external sources and respect copyright</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon electronics-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Code Standards</h3>
+                        <ul>
+                            <li>Follow responsive design principles</li>
+                            <li>Comment your code appropriately</li>
+                            <li>Ensure cross-browser compatibility</li>
+                            <li>Optimize for performance</li>
+                            <li>Use semantic HTML for accessibility</li>
+                            <li>Include alt text for images</li>
+                            <li>Ensure keyboard navigation works</li>
+                            <li>Maintain sufficient color contrast</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -205,14 +244,37 @@ git push origin feature/your-feature-name</code></pre>
         <!-- Get support section -->
         <section class="content-section">
             <div class="content-container">
-                <h2>Getting Support</h2>
-                <p>Need help with your contribution? Here are some resources:</p>
-                <ul>
-                    <li>Review our <a href="howto.md" target="_blank">detailed contribution guide</a></li>
-                    <li>Check our <a href="Todo.md" target="_blank">Todo List</a> for prioritized tasks</li>
-                    <li>Raise questions in the <a href="https://github.com/easilva04/eeprep.com/discussions" target="_blank">GitHub Discussions</a></li>
-                </ul>
-                <p>We welcome contributors of all experience levels, and our community is ready to help you get started!</p>
+                <div class="section-header">
+                    <h2>Getting Support</h2>
+                </div>
+                <div class="concept-section">
+                    <p>Need help with your contribution? Here are some resources:</p>
+                    <ul class="resources-list">
+                        <li><strong>Documentation:</strong> Review our <a href="howto.md" target="_blank">detailed contribution guide</a></li>
+                        <li><strong>Tasks:</strong> Check our <a href="Todo.md" target="_blank">Todo List</a> for prioritized tasks</li>
+                        <li><strong>Community:</strong> Raise questions in the <a href="https://github.com/easilva04/eeprep.com/discussions"
+                                target="_blank">GitHub Discussions</a></li>
+                    </ul>
+                    <p>We welcome contributors of all experience levels, and our community is ready to help you get started!</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Simple CTA section -->
+        <section class="cta-section">
+            <div class="content-container">
+                <div class="cta-content">
+                    <h2>Ready to make a difference?</h2>
+                    <p>Join our community of contributors and help improve electrical engineering education for everyone</p>
+                    <div class="cta-buttons">
+                        <a href="https://github.com/easilva04/eeprep.com/fork" target="_blank" class="btn btn-primary btn-large">
+                            <i class="fas fa-code-branch"></i> Fork Repository
+                        </a>
+                        <a href="https://github.com/easilva04/eeprep.com/discussions" target="_blank" class="btn btn-outline btn-large" style="background: rgba(255,255,255,0.2); color: white; margin-left: 1rem;">
+                            <i class="fas fa-comments"></i> Join Discussions
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
