@@ -18,15 +18,15 @@ const RUNTIME_CACHE = 'eeprep-runtime-cache';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/Info/Config/Styles/main.css',
-  '/Info/Config/Styles/responsive.css',
-  '/Info/Config/Scripts/componentLoader.js',
-  '/Info/Config/Components/navigation.html',
-  '/Info/Config/Components/header.html',
-  '/Info/Config/Components/footer.html',
-  '/Info/Config/Components/sidebar.html',
-  '/Info/Config/Scripts/themeToggle.js',
-  '/Info/Config/Scripts/search.js'
+  '/Config/Styles/main.css',
+  '/Config/Styles/responsive.css',
+  '/Config/Scripts/componentLoader.js',
+  '/Config/Components/navigation.html',
+  '/Config/Components/header.html',
+  '/Config/Components/footer.html',
+  '/Config/Components/sidebar.html',
+  '/Config/Scripts/themeToggle.js',
+  '/Config/Scripts/search.js'
 ];
 
 /**

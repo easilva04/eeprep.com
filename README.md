@@ -1,20 +1,23 @@
-# EEPrep Project Summary
+# EEPrep.com
 
-The EEPrep project is a comprehensive collection of resources and tools designed to help individuals prepare for electrical engineering exams and certifications. The project folder includes:
+## Project Overview
+EEPrep.com is a comprehensive educational website dedicated to electrical engineering preparation. The site aims to provide structured learning paths and resources for students, professionals, and anyone interested in electrical engineering concepts.
 
-- **Study Guides**: Detailed notes and summaries of key electrical engineering concepts.
-- **Practice Problems**: A variety of problems with solutions to test understanding and application of concepts.
-- **Reference Materials**: Important formulas, tables, and charts for quick reference.
-- **Software Tools**: Scripts and programs to simulate electrical circuits and solve complex problems.
-- **Documentation**: Instructions and guidelines on how to use the resources effectively.
+## Mission
+Our mission is to make electrical engineering education accessible, structured, and engaging. We're working to build a platform that guides learners through the entire electrical engineering curriculum in a logical progression.
 
-This project aims to provide a structured and efficient way for students and professionals to enhance their knowledge and skills in electrical engineering.
+## Repository Information
+- **Website URL**: [eeprep.com](https://eeprep.com) (in development)
+- **Repository**: [github.com/easilva04/eeprep.com](https://github.com/easilva04/eeprep.com)
 
-## TODO:
-- Review and update the **Study Guides** with the latest information.
-- Add new **Practice Problems** to cover recent exam topics.
-- Update the **Reference Materials** with the latest standards and formulas.
-- Enhance the **Software Tools** with new features and bug fixes.
-- Complete the **Documentation** for new users.
+## For Contributors
+- Check our [Todo List](/Todo.md) to see what needs to be done
+- Read the [Contribution Guide](/howto.md) to learn how to contribute
 
-For more detailed tasks, refer to the [TODO file](./Todo.md).
+## Long-term Goals
+- Create comprehensive educational content for all electrical engineering subjects
+- Build an intuitive, responsive user interface
+- Establish as a 501c3 non-profit organization
+- Become a premier resource for electrical engineering education
+
+For questions or more information, please contact the repository maintainer.

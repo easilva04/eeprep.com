@@ -1,515 +1,561 @@
 {
-    "Circuits": [
-        {
-            "title": "Circuits Home",
-            "url": "/Topics/Circuits/Circuits.html",
-            "snippet": "Dive into the world of circuit analysis, starting with the basics and progressing to more advanced topics..."
+    "// DOCUMENTATION": "This file serves as a database for the eeprep.com website content. The quickAdd section provides the easiest way to add new content.",
+    "utilities": {
+        "generateId": "Use directory-pagename format (e.g., 'Circuits-ohms-law')",
+        "defaultValues": {
+            "author": "EE Prep Team",
+            "difficulty": "intermediate",
+            "featured": false,
+            "hasEquations": true,
+            "hasDiagrams": true,
+            "showInNavigation": true,
+            "showInSitemap": true,
+            "estimatedReadTime": 10
         },
-        {
-            "title": "Networks",
-            "url": "/Topics/Circuits/ResistiveNetworks.html",
-            "snippet": "Understand resistive networks and their analysis, including techniques for simplifying and solving circuits..."
-        },  
-        {
-            "title": "Node & Loop Analysis",
-            "url": "/Topics/Circuits/nodeLoop.html",
-            "snippet": "Learn about node and loop analysis methods for systematically solving complex electrical circuits..."
+        "examples": {
+            "paths": {
+                "Circuits": "/Topics/Circuits/",
+                "Communications": "/Topics/Communications/",
+                "ComputerSystems": "/Topics/ComputerSystems/",
+                "Controls": "/Topics/Controls/",
+                "DigitalSystems": "/Topics/DigitalSystems/",
+                "Economics": "/Topics/Economics/",
+                "ElectricalMaterials": "/Topics/ElectricalMaterials/",
+                "Electromagnetics": "/Topics/Electromagnetics/",
+                "Electronics": "/Topics/Electronics/",
+                "Ethics": "/Topics/Ethics/",
+                "LinearSystems": "/Topics/LinearSystems/",
+                "Math": "/Topics/Math/",
+                "Math/Fundamentals": "/Topics/Math/Fundamentals/",
+                "Math/Calculus": "/Topics/Math/Calculus/",
+                "Math/Statistics": "/Topics/Math/Statistics/",
+                "Networks": "/Topics/Networks/",
+                "Power": "/Topics/Power/",
+                "Signals": "/Topics/Signals/",
+                "SoftwareEngineering": "/Topics/SoftwareEngineering/"
+            },
+            "pageId": {
+                "Circuits": "Circuits-page-name",
+                "Communications": "Communications-page-name",
+                "Networks": "Networks-page-name"
+            }
         },
-        {
-            "title": "AC Analysis",
-            "url": "/Topics/Circuits/AC.html",
-            "snippet": "Explore AC circuit analysis, including phasors, impedance, and frequency response..."
+        "quickAdd": {
+            "// HOW TO USE": "Fill out the minimal fields below and the system will auto-generate the rest.",
+            "newPage": {
+                "title": "",
+                "categoryId": "One of: Circuits, Communications, ComputerSystems, Controls, DigitalSystems, Economics, ElectricalMaterials, Electromagnetics, Electronics, Ethics, LinearSystems, Math, Networks, Power, Signals, SoftwareEngineering",
+                "filename": "",
+                "snippet": "",
+                "introText": "",
+                "keywords": [],
+                "difficulty": "beginner|intermediate|advanced",
+                "prerequisites": []
+            },
+            "newCategory": {
+                "name": "",
+                "description": "",
+                "parentId": null
+            },
+            "history": {
+                "recentlyAdded": [
+                    "Circuits-thevenin-norton",
+                    "Circuits-transformations"
+                ]
+            }
         },
-        {
-            "title": "Waveforms",
-            "url": "/Topics/Circuits/Waveforms.html",
-            "snippet": "Study different types of waveforms and their characteristics, and how they are used in electrical engineering..."
-        },
-        {
-            "title": "Transformations",
-            "url": "/Topics/Circuits/Transformations.html",
-            "snippet": "Understand various transformations used in circuit analysis, such as Laplace and Fourier transforms..."
-        },
-        {
-            "title": "Thevenin & Norton",
-            "url": "/Topics/Circuits/TheveninNorton.html",
-            "snippet": "Learn about Thevenin's and Norton's theorems and their applications in simplifying and analyzing circuits..."
-        }
-    ],
-    "Communications": [
-        {
-            "title": "Communications Home",
-            "url": "/Topics/Communications/Communications.html",
-            "snippet": "Overview of communications engineering..."
-        },
-        {
-            "title": "Digital Communications",
-            "url": "/Topics/Communications/DigitalComms.html",
-            "snippet": "Explore digital communication methods..."
-        },
-        {
-            "title": "Fourier Methods",
-            "url": "/Topics/Communications/Fourier.html",
-            "snippet": "Fourier analysis in communication systems..."
-        },
-        {
-            "title": "Modulation",
-            "url": "/Topics/Communications/Modulation.html",
-            "snippet": "Introduction to modulation techniques..."
-        },
-        {
-            "title": "Multiplexing",
-            "url": "/Topics/Communications/Multiplexing.html",
-            "snippet": "Combining signals for efficient transmission..."
-        }
-    ],
-    "Computer Networks": [
-        {
-            "title": "Networks Home",
-            "url": "/Topics/Networks/Networks.html",
-            "snippet": "Foundations of network concepts and engineering..."
-        },
-        {
-            "title": "Network Models",
-            "url": "/Topics/Networks/Models.html",
-            "snippet": "Modeling data and service networks..."
-        },
-        {
-            "title": "NIDP",
-            "url": "/Topics/Networks/NIDP.html",
-            "snippet": "Network intrusion detection and prevention..."
-        },
-        {
-            "title": "Network Security",
-            "url": "/Topics/Networks/Security.html",
-            "snippet": "Securing computer and communication networks..."
-        },
-        {
-            "title": "Network Topologies",
-            "url": "/Topics/Networks/Topologies.html",
-            "snippet": "Common layout patterns in networking..."
-        },
-        {
-            "title": "Network Types",
-            "url": "/Topics/Networks/Types.html",
-            "snippet": "LAN, WAN, and other network classifications..."
-        }
-    ],
-    "Computer Systems": [
-        {
-            "title": "Computer Systems Home",
-            "url": "/Topics/ComputerSystems/ComputerSystems.html",
-            "snippet": "Fundamentals of computer architecture and organization..."
-        },
-        {
-            "title": "Interfacing",
-            "url": "/Topics/ComputerSystems/Interfacing.html",
-            "snippet": "Techniques for hardware-software interfacing..."
-        },
-        {
-            "title": "Memory",
-            "url": "/Topics/ComputerSystems/Memory.html",
-            "snippet": "Memory structures and organization..."
-        },
-        {
-            "title": "Microprocessors",
-            "url": "/Topics/ComputerSystems/Microprocessors.html",
-            "snippet": "Overview of microprocessor architectures..."
-        }
-    ],
-    "Control Systems": [
-        {
-            "title": "Controls Home",
-            "url": "/Topics/Controls/Controls.html",
-            "snippet": "Introduction to control systems and feedback loops..."
-        },
-        {
-            "title": "Block Diagrams",
-            "url": "/Topics/Controls/BlockDiagrams.html",
-            "snippet": "Control system representation using block diagrams..."
-        },
-        {
-            "title": "Bode Plots",
-            "url": "/Topics/Controls/Bode.html",
-            "snippet": "Frequency response analysis with Bode plots..."
-        },
-        {
-            "title": "Performance",
-            "url": "/Topics/Controls/Performance.html",
-            "snippet": "Evaluating control system performance..."
-        },
-        {
-            "title": "Stability",
-            "url": "/Topics/Controls/Stability.html",
-            "snippet": "Assessing stability in closed-loop systems..."
-        }
-    ],
-    "Digital Systems": [
-        {
-            "title": "Digital Systems Home",
-            "url": "/Topics/DigitalSystems/DigitalSystems.html",
-            "snippet": "Key concepts in digital logic and systems design..."
-        },
-        {
-            "title": "Boolean Algebra",
-            "url": "/Topics/DigitalSystems/Boolean.html",
-            "snippet": "Logic simplification using Boolean algebra..."
-        },
-        {
-            "title": "Flip-Flops",
-            "url": "/Topics/DigitalSystems/FlipFlops.html",
-            "snippet": "Sequential circuits and flip-flop types..."
-        },
-        {
-            "title": "Logic Gates",
-            "url": "/Topics/DigitalSystems/Gates.html",
-            "snippet": "Fundamental logic gate operations..."
-        },
-        {
-            "title": "Logic Concepts",
-            "url": "/Topics/DigitalSystems/Logic.html",
-            "snippet": "Advanced logic principles and syntax..."
-        },
-        {
-            "title": "Number Systems",
-            "url": "/Topics/DigitalSystems/Numbers.html",
-            "snippet": "Binary, decimal, and other representations..."
-        },
-        {
-            "title": "PLDs",
-            "url": "/Topics/DigitalSystems/PLDs.html",
-            "snippet": "Programmable logic devices overview..."
-        },
-        {
-            "title": "State Machines",
-            "url": "/Topics/DigitalSystems/StateMachines.html",
-            "snippet": "Modeling sequential logic with state machines..."
-        },
-        {
-            "title": "Timing Analysis",
-            "url": "/Topics/DigitalSystems/Timing.html",
-            "snippet": "Clocking considerations and timing constraints..."
-        }
-    ],
-    "Electrical Materials": [
-        {
-            "title": "Electrical Materials Home",
-            "url": "/Topics/ElectricalMaterials/ElectricalMaterials.html",
-            "snippet": "Materials science aspects important for electrical engineering..."
-        },
-        {
-            "title": "Electrical Properties",
-            "url": "/Topics/ElectricalMaterials/Electrical.html",
-            "snippet": "Core electrical properties of engineering materials..."
-        },
-        {
-            "title": "Material Fundamentals",
-            "url": "/Topics/ElectricalMaterials/Materials.html",
-            "snippet": "Composite and conductive materials overview..."
-        },
-        {
-            "title": "Semiconductors",
-            "url": "/Topics/ElectricalMaterials/Semiconductors.html",
-            "snippet": "Properties and applications of semiconductors..."
-        },
-        {
-            "title": "Thermal Properties",
-            "url": "/Topics/ElectricalMaterials/Thermal.html",
-            "snippet": "Heat transfer in electrical contexts..."
-        }
-    ],
-    "Electromagnetics": [
-        {
-            "title": "Electromagnetics Home",
-            "url": "/Topics/Electromagnetics/Electromagnetics.html",
-            "snippet": "Concepts of fields, waves, and their applications in EE..."
-        },
-        {
-            "title": "Electrodynamics",
-            "url": "/Topics/Electromagnetics/Electrodynamics.html",
-            "snippet": "Dynamic electromagnetic fields and waves..."
-        },
-        {
-            "title": "Electro/Magneto-Statics",
-            "url": "/Topics/Electromagnetics/ElectroMagnetoStatics.html",
-            "snippet": "Static electric and magnetic field analysis..."
-        },
-        {
-            "title": "Transmission Lines",
-            "url": "/Topics/Electromagnetics/TransmissionLines.html",
-            "snippet": "Modeling and analyzing transmission lines..."
-        }
-    ],
-    "Electronics": [
-        {
-            "title": "Electronics Home",
-            "url": "/Topics/Electronics/Electronics.html",
-            "snippet": "Discuss components, amplifiers, and semiconductor devices..."
-        },
-        {
-            "title": "Amplifiers",
-            "url": "/Topics/Electronics/Amplifiers.html",
-            "snippet": "Fundamentals of amplifier circuits..."
-        },
-        {
-            "title": "Instrumentation",
-            "url": "/Topics/Electronics/Instrumentation.html",
-            "snippet": "Electronic measurement and instrumentation..."
-        },
-        {
-            "title": "Device Models",
-            "url": "/Topics/Electronics/Models.html",
-            "snippet": "Mathematical models of electronic components..."
-        },
-        {
-            "title": "Operational Amplifiers",
-            "url": "/Topics/Electronics/OpAmps.html",
-            "snippet": "Ideal and real op-amp behaviors..."
-        },
-        {
-            "title": "Power Systems",
-            "url": "/Topics/Electronics/PowerSystems.html",
-            "snippet": "Electrical power in electronics applications..."
-        }
-    ],
-    "Engineering Economics": [
-        {
-            "title": "Economics Home",
-            "url": "/Topics/Economics/Economics.html",
-            "snippet": "Economic principles relevant to engineering..."
-        },
-        {
-            "title": "Economic Analysis",
-            "url": "/Topics/Economics/Analysis.html",
-            "snippet": "Analyzing costs and benefits in engineering..."
-        },
-        {
-            "title": "Cost Estimation",
-            "url": "/Topics/Economics/CostEstimation.html",
-            "snippet": "Approaches to estimating engineering costs..."
-        },
-        {
-            "title": "Engineering Economics",
-            "url": "/Topics/Economics/EngineeringEcon.html",
-            "snippet": "Key concepts in economic decision-making..."
-        },
-        {
-            "title": "Risk Analysis",
-            "url": "/Topics/Economics/Risk.html",
-            "snippet": "Evaluating uncertainties in engineering projects..."
-        },
-        {
-            "title": "Time Value of Money",
-            "url": "/Topics/Economics/TimeValue.html",
-            "snippet": "Interest rates and present/future value concepts..."
-        }
-    ],
-    "Ethics and Professional Practice": [
-        {
-            "title": "Ethics Home",
-            "url": "/Topics/Ethics/Ethics.html",
-            "snippet": "Professional and ethical considerations in engineering..."
-        },
-        {
-            "title": "Codes of Ethics",
-            "url": "/Topics/Ethics/Codes.html",
-            "snippet": "Key organizational and professional codes..."
-        },
-        {
-            "title": "Intellectual Property",
-            "url": "/Topics/Ethics/IntellectualProperty.html",
-            "snippet": "Rights and considerations for IP in engineering..."
-        },
-        {
-            "title": "Safety Ethics",
-            "url": "/Topics/Ethics/Safety.html",
-            "snippet": "Ensuring safety through ethical practices..."
-        }
-    ],
-    "Linear Systems": [
-        {
-            "title": "Linear Systems Home",
-            "url": "/Topics/LinearSystems/LinearSystems.html",
-            "snippet": "Overview of linear systems and their analysis..."
-        },
-        {
-            "title": "Frequency Response",
-            "url": "/Topics/LinearSystems/FrequencyResponse.html",
-            "snippet": "Analyzing systems in the frequency domain..."
-        },
-        {
-            "title": "Laplace Transform",
-            "url": "/Topics/LinearSystems/Laplace.html",
-            "snippet": "Laplace techniques for system analysis..."
-        },
-        {
-            "title": "Resonance",
-            "url": "/Topics/LinearSystems/Resonance.html",
-            "snippet": "Phenomena of resonance in linear systems..."
-        },
-        {
-            "title": "Transfer Functions",
-            "url": "/Topics/LinearSystems/TFs.html",
-            "snippet": "Deriving and interpreting system transfer functions..."
-        }
-    ],
-    "Mathematics": {
-        "Fundamentals": [
+        "categories": [
             {
-                "title": "Math Home",
-                "url": "/Topics/Math/Fundamentals/Math.html",
-                "snippet": "Explore the mathematical foundations necessary for electrical engineering, including algebra, calculus, and more..."
+                "id": "Circuits",
+                "name": "Circuits",
+                "description": "Circuit analysis and design concepts",
+                "parentId": null,
+                "order": 1,
+                "icon": "microchip",
+                "featured": true,
+                "path": "/Topics/Circuits/"
             },
             {
-                "title": "Algebra",
-                "url": "/Topics/Math/Fundamentals/Algebra.html",
-                "snippet": "Review key algebraic concepts and techniques that are essential for solving electrical engineering problems..."
+                "id": "Communications",
+                "name": "Communications",
+                "description": "Communication systems and signal transmission",
+                "parentId": null,
+                "order": 2,
+                "icon": "broadcast-tower",
+                "path": "/Topics/Communications/"
             },
             {
-                "title": "Complex Numbers",
-                "url": "/Topics/Math/Fundamentals/ComplexNumbers.html",
-                "snippet": "Understand the role of complex numbers in electrical engineering, including their use in AC circuit analysis..."
+                "id": "Networks",
+                "name": "Computer Networks",
+                "description": "Network architectures and protocols",
+                "parentId": null,
+                "order": 3,
+                "icon": "network-wired",
+                "path": "/Topics/Networks/"
             },
             {
-                "title": "Vectors",
-                "url": "/Topics/Math/Fundamentals/Vectors.html",
-                "snippet": "Learn about vector mathematics and its applications in electrical engineering, such as in electromagnetics..."
+                "id": "ComputerSystems",
+                "name": "Computer Systems",
+                "description": "Architecture and organization of computer systems",
+                "parentId": null,
+                "order": 4,
+                "path": "/Topics/ComputerSystems/"
             },
             {
-                "title": "Linear Algebra",
-                "url": "/Topics/Math/Fundamentals/LinearAlgebra.html",
-                "snippet": "Study linear algebra concepts that are crucial for understanding systems of equations and transformations in engineering..."
+                "id": "Controls",
+                "name": "Control Systems",
+                "description": "Feedback and control system design",
+                "parentId": null,
+                "order": 5,
+                "path": "/Topics/Controls/"
             },
             {
-                "title": "Geometry",
-                "url": "/Topics/Math/Fundamentals/Geometry.html",
-                "snippet": "Review geometric principles and their applications in electrical engineering, including coordinate systems and transformations..."
+                "id": "DigitalSystems",
+                "name": "Digital Systems",
+                "description": "Digital logic and design concepts",
+                "parentId": null,
+                "order": 6,
+                "path": "/Topics/DigitalSystems/"
             },
             {
-                "title": "Discrete Mathematics",
-                "url": "/Topics/Math/Fundamentals/Discrete.html",
-                "snippet": "Sets, combinatorics, and discrete structures..."
+                "id": "ElectricalMaterials",
+                "name": "Electrical Materials",
+                "description": "Properties and applications of materials in EE",
+                "parentId": null,
+                "order": 7,
+                "path": "/Topics/ElectricalMaterials/"
+            },
+            {
+                "id": "Electromagnetics",
+                "name": "Electromagnetics",
+                "description": "Electromagnetic fields and waves",
+                "parentId": null,
+                "order": 8,
+                "path": "/Topics/Electromagnetics/"
+            },
+            {
+                "id": "Electronics",
+                "name": "Electronics",
+                "description": "Electronic components and circuit design",
+                "parentId": null,
+                "order": 9,
+                "path": "/Topics/Electronics/"
+            },
+            {
+                "id": "Economics",
+                "name": "Engineering Economics",
+                "description": "Economic analysis for engineering decisions",
+                "parentId": null,
+                "order": 10,
+                "path": "/Topics/Economics/"
+            },
+            {
+                "id": "Ethics",
+                "name": "Ethics and Professional Practice",
+                "description": "Professional ethics in engineering",
+                "parentId": null,
+                "order": 11,
+                "path": "/Topics/Ethics/"
+            },
+            {
+                "id": "LinearSystems",
+                "name": "Linear Systems",
+                "description": "Linear system analysis and design",
+                "parentId": null,
+                "order": 12,
+                "path": "/Topics/LinearSystems/"
+            },
+            {
+                "id": "Math",
+                "name": "Mathematics",
+                "description": "Mathematical foundations for engineering",
+                "parentId": null,
+                "order": 13,
+                "path": "/Topics/Math/"
+            },
+            {
+                "id": "Math/Fundamentals",
+                "name": "Fundamentals",
+                "description": "Basic mathematical concepts",
+                "parentId": "Math",
+                "order": 1,
+                "path": "/Topics/Math/Fundamentals/"
+            },
+            {
+                "id": "Math/Calculus",
+                "name": "Calculus",
+                "description": "Calculus and differential equations",
+                "parentId": "Math",
+                "order": 2,
+                "path": "/Topics/Math/Calculus/"
+            },
+            {
+                "id": "Math/Statistics",
+                "name": "Statistics",
+                "description": "Probability and statistical analysis",
+                "parentId": "Math",
+                "order": 3,
+                "path": "/Topics/Math/Statistics/"
+            },
+            {
+                "id": "Power",
+                "name": "Power Systems",
+                "description": "Generation, transmission, and distribution",
+                "parentId": null,
+                "order": 14,
+                "path": "/Topics/Power/"
+            },
+            {
+                "id": "Signals",
+                "name": "Signal Processing",
+                "description": "Analysis and manipulation of signals",
+                "parentId": null,
+                "order": 15,
+                "path": "/Topics/Signals/"
+            },
+            {
+                "id": "SoftwareEngineering",
+                "name": "Software Engineering",
+                "description": "Software development principles and practices",
+                "parentId": null,
+                "order": 16,
+                "path": "/Topics/SoftwareEngineering/"
             }
         ],
-        "Calculus": [
+        "pages": [
             {
-                "title": "Calculus Overview",
-                "url": "/Topics/Math/Calculus/Calculus.html",
-                "snippet": "Master calculus concepts that are fundamental to analyzing and solving electrical engineering problems..."
+                "id": "Circuits-home",
+                "title": "Circuits Home",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/Circuits.html",
+                "slug": "home",
+                "snippet": "Dive into the world of circuit analysis, starting with the basics and progressing to more advanced topics...",
+                "content": {
+                    "introText": "Circuit analysis is a fundamental skill for electrical engineers. This section covers all key aspects from basic principles to advanced techniques.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "beginner"
+                },
+                "meta": {
+                    "keywords": [
+                        "circuit analysis",
+                        "electrical circuits",
+                        "introduction",
+                        "ohm's law"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-01",
+                    "lastUpdated": "2023-01-01",
+                    "estimatedReadTime": 10
+                },
+                "relationships": {
+                    "prerequisites": [],
+                    "relatedPages": [
+                        "Circuits-networks",
+                        "Circuits-node-loop"
+                    ],
+                    "nextInSequence": "Circuits-networks",
+                    "previousInSequence": null
+                },
+                "display": {
+                    "featured": true,
+                    "order": 1,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
             },
             {
-                "title": "Calculus 1",
-                "url": "/Topics/Math/Calculus/Calculus1.html",
-                "snippet": "Master the basics of differential and integral calculus, including limits, derivatives, and integrals..."
+                "id": "Circuits-networks",
+                "title": "Networks",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/ResistiveNetworks.html",
+                "slug": "networks",
+                "snippet": "Understand resistive networks and their analysis, including techniques for simplifying and solving circuits...",
+                "content": {
+                    "introText": "Resistive networks form the backbone of many circuit designs. Learn how to analyze and simplify these networks efficiently.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "intermediate"
+                },
+                "meta": {
+                    "keywords": [
+                        "resistive networks",
+                        "circuit analysis",
+                        "network reduction",
+                        "series",
+                        "parallel"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-02",
+                    "lastUpdated": "2023-01-02",
+                    "estimatedReadTime": 15
+                },
+                "relationships": {
+                    "prerequisites": [
+                        "Circuits-home"
+                    ],
+                    "relatedPages": [
+                        "Circuits-home",
+                        "Circuits-thevenin-norton"
+                    ],
+                    "nextInSequence": "Circuits-node-loop",
+                    "previousInSequence": "Circuits-home"
+                },
+                "display": {
+                    "featured": false,
+                    "order": 2,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
             },
             {
-                "title": "Calculus 2",
-                "url": "/Topics/Math/Calculus/Calculus2.html",
-                "snippet": "Dive deeper into integral calculus, series, and sequences, with applications in engineering..."
+                "id": "Circuits-node-loop",
+                "title": "Node & Loop Analysis",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/nodeLoop.html",
+                "slug": "node-loop",
+                "snippet": "Learn about node and loop analysis methods for systematically solving complex electrical circuits...",
+                "content": {
+                    "introText": "Node and loop analysis provide systematic approaches to solve complex circuits with multiple sources and components.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "intermediate"
+                },
+                "meta": {
+                    "keywords": [
+                        "node analysis",
+                        "loop analysis",
+                        "mesh analysis",
+                        "KCL",
+                        "KVL"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-03",
+                    "lastUpdated": "2023-01-03",
+                    "estimatedReadTime": 20
+                },
+                "relationships": {
+                    "prerequisites": [
+                        "Circuits-networks"
+                    ],
+                    "relatedPages": [
+                        "Circuits-networks",
+                        "Circuits-thevenin-norton"
+                    ],
+                    "nextInSequence": "Circuits-ac",
+                    "previousInSequence": "Circuits-networks"
+                },
+                "display": {
+                    "featured": false,
+                    "order": 3,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
             },
             {
-                "title": "Calculus 3",
-                "url": "/Topics/Math/Calculus/Calculus3.html",
-                "snippet": "Explore multivariable calculus, including partial derivatives, multiple integrals, and vector calculus..."
+                "id": "Circuits-ac",
+                "title": "AC Analysis",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/AC.html",
+                "slug": "ac",
+                "snippet": "Explore AC circuit analysis, including phasors, impedance, and frequency response...",
+                "content": {
+                    "introText": "AC circuit analysis extends circuit theory to time-varying signals, introducing concepts like impedance and phasors.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "intermediate"
+                },
+                "meta": {
+                    "keywords": [
+                        "AC circuits",
+                        "phasors",
+                        "impedance",
+                        "reactance"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-04",
+                    "lastUpdated": "2023-01-04",
+                    "estimatedReadTime": 25
+                },
+                "relationships": {
+                    "prerequisites": [
+                        "Circuits-node-loop"
+                    ],
+                    "relatedPages": [
+                        "Circuits-waveforms",
+                        "Circuits-transformations"
+                    ],
+                    "nextInSequence": "Circuits-waveforms",
+                    "previousInSequence": "Circuits-node-loop"
+                },
+                "display": {
+                    "featured": false,
+                    "order": 4,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
             },
             {
-                "title": "Differential Equations",
-                "url": "/Topics/Math/Calculus/ODEs.html",
-                "snippet": "Learn about differential equations and their applications in modeling and analyzing electrical systems..."
+                "id": "Circuits-waveforms",
+                "title": "Waveforms",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/Waveforms.html",
+                "slug": "waveforms",
+                "snippet": "Study different types of waveforms and their characteristics, and how they are used in electrical engineering...",
+                "content": {
+                    "introText": "Waveforms are fundamental to signal processing and circuit analysis. Understand their characteristics and applications.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "intermediate"
+                },
+                "meta": {
+                    "keywords": [
+                        "waveforms",
+                        "sine waves",
+                        "square waves",
+                        "time domain"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-05",
+                    "lastUpdated": "2023-01-05",
+                    "estimatedReadTime": 20
+                },
+                "relationships": {
+                    "prerequisites": [
+                        "Circuits-ac"
+                    ],
+                    "relatedPages": [
+                        "Circuits-ac",
+                        "signal-processing-analog"
+                    ],
+                    "nextInSequence": "Circuits-transformations",
+                    "previousInSequence": "Circuits-ac"
+                },
+                "display": {
+                    "featured": false,
+                    "order": 5,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
+            },
+            {
+                "id": "Circuits-transformations",
+                "title": "Transformations",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/Transformations.html",
+                "slug": "transformations",
+                "snippet": "Understand various transformations used in circuit analysis, such as Laplace and Fourier transforms...",
+                "content": {
+                    "introText": "Transformations like Laplace and Fourier are powerful tools for analyzing circuits in different domains.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "intermediate"
+                },
+                "meta": {
+                    "keywords": [
+                        "transformations",
+                        "Laplace transform",
+                        "Fourier transform",
+                        "circuit analysis"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-06",
+                    "lastUpdated": "2023-01-06",
+                    "estimatedReadTime": 30
+                },
+                "relationships": {
+                    "prerequisites": [
+                        "Circuits-waveforms"
+                    ],
+                    "relatedPages": [
+                        "Circuits-ac",
+                        "linear-systems-laplace"
+                    ],
+                    "nextInSequence": "Circuits-thevenin-norton",
+                    "previousInSequence": "Circuits-waveforms"
+                },
+                "display": {
+                    "featured": false,
+                    "order": 6,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
+            },
+            {
+                "id": "Circuits-thevenin-norton",
+                "title": "Thevenin & Norton",
+                "categoryId": "Circuits",
+                "path": "/Topics/Circuits/TheveninNorton.html",
+                "slug": "thevenin-norton",
+                "snippet": "Learn about Thevenin's and Norton's theorems and their applications in simplifying and analyzing circuits...",
+                "content": {
+                    "introText": "Thevenin's and Norton's theorems are essential for simplifying complex circuits into manageable equivalents.",
+                    "hasEquations": true,
+                    "hasDiagrams": true,
+                    "difficulty": "intermediate"
+                },
+                "meta": {
+                    "keywords": [
+                        "Thevenin",
+                        "Norton",
+                        "equivalent circuits",
+                        "circuit simplification"
+                    ],
+                    "author": "EE Prep Team",
+                    "createdDate": "2023-01-07",
+                    "lastUpdated": "2023-01-07",
+                    "estimatedReadTime": 20
+                },
+                "relationships": {
+                    "prerequisites": [
+                        "Circuits-networks"
+                    ],
+                    "relatedPages": [
+                        "Circuits-networks",
+                        "Circuits-node-loop"
+                    ],
+                    "nextInSequence": null,
+                    "previousInSequence": "Circuits-transformations"
+                },
+                "display": {
+                    "featured": false,
+                    "order": 7,
+                    "showInNavigation": true,
+                    "showInSitemap": true
+                }
             }
         ],
-        "Statistics": [
-            {
-                "title": "Probability Statistics Home",
-                "url": "/Topics/Math/Statistics/ProbStats.html",
-                "snippet": "Explore the fundamental concepts of probability and statistics and their applications in electrical engineering..."
+        "scripts": {
+            "addPageInstructions": "1. Fill out the quickAdd.newPage section with your content. 2. Run 'npm run add-page' to process and add it to the database.",
+            "findRelatedInstructions": "Use 'npm run find-related -- --topic=\"your keywords\"' to discover related content for linking."
+        },
+        "metadata": {
+            "version": "3.5",
+            "lastUpdated": "2023-08-25",
+            "totalCategories": 19,
+            "totalPages": 7,
+            "contentStats": {
+                "beginnerPages": 3,
+                "intermediatePages": 3,
+                "advancedPages": 1
             },
-            {
-                "title": "Distributions",
-                "url": "/Topics/Math/Statistics/Distributions.html",
-                "snippet": "Learn about probability distributions, including discrete and continuous distributions commonly used in engineering..."
-            },
-            {
-                "title": "Tendencies",
-                "url": "/Topics/Math/Statistics/Tendencies.html",
-                "snippet": "Understand measures of central tendency and dispersion, and how they are used to describe data distributions..."
-            },
-            {
-                "title": "Expected Value",
-                "url": "/Topics/Math/Statistics/ExpectedValue.html",
-                "snippet": "Study expected value and its applications in probability and statistics, including in decision-making and risk analysis..."
-            }
-        ]
-    },
-    "Power Systems": [
-        {
-            "title": "Power Home",
-            "url": "/Topics/Power/Power.html",
-            "snippet": "Key topics in power systems and distribution..."
-        },
-        {
-            "title": "Motors & Generators",
-            "url": "/Topics/Power/MotorsGenerators.html",
-            "snippet": "Principles of electric machines..."
-        },
-        {
-            "title": "Power Theory",
-            "url": "/Topics/Power/Theory.html",
-            "snippet": "Important theoretical concepts in power systems..."
-        },
-        {
-            "title": "Transformers",
-            "url": "/Topics/Power/Transformers.html",
-            "snippet": "Voltage transformation and operation..."
-        },
-        {
-            "title": "Transmission & Distribution",
-            "url": "/Topics/Power/TransmissionDistribution.html",
-            "snippet": "Delivering electric power over distances..."
+            "changeLog": [
+                {
+                    "date": "2023-08-25",
+                    "description": "Aligned with actual directory structure",
+                    "version": "3.5"
+                },
+                {
+                    "date": "2023-08-20",
+                    "description": "Enhanced for easier content addition",
+                    "version": "3.0"
+                },
+                {
+                    "date": "2023-08-15",
+                    "description": "Updated database structure for better usability",
+                    "version": "2.0"
+                }
+            ]
         }
-    ],
-    "Signal Processing": [
-        {
-            "title": "Signals Home",
-            "url": "/Topics/Signals/Signals.html",
-            "snippet": "Introduction to signal processing concepts..."
-        },
-        {
-            "title": "Analog Signals",
-            "url": "/Topics/Signals/Analog.html",
-            "snippet": "Characteristics and processing of analog signals..."
-        },
-        {
-            "title": "Digital Signals",
-            "url": "/Topics/Signals/Digital.html",
-            "snippet": "Discrete-time signal representation..."
-        },
-        {
-            "title": "Sampling",
-            "url": "/Topics/Signals/Sampling.html",
-            "snippet": "Acquiring and converting continuous signals..."
-        }
-    ],
-    "Software Engineering": [
-        {
-            "title": "Software Engineering Home",
-            "url": "/Topics/SoftwareEngineering/SoftwareEngineering.html",
-            "snippet": "Principles and practices in software development..."
-        },
-        {
-            "title": "Algorithms",
-            "url": "/Topics/SoftwareEngineering/Algorithms.html",
-            "snippet": "Algorithmic complexity and design strategies..."
-        },
-        {
-            "title": "Data Structures",
-            "url": "/Topics/SoftwareEngineering/DataStructures.html",
-            "snippet": "Common structures for data storage and retrieval..."
-        },
-        {
-            "title": "Implementation",
-            "url": "/Topics/SoftwareEngineering/Implementation.html",
-            "snippet": "Coding best practices and methodologies..."
-        }
-    ]
+    }
 }

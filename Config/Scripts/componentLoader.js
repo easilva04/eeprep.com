@@ -47,8 +47,8 @@ function initApp() {
     
     // Load all components - skip header
     Promise.all([
-        loadComponent('sidebar-container', 'Info/Config/Components/sidebar.html'),
-        loadComponent('footer-container', 'Info/Config/Components/footer.html')
+        loadComponent('sidebar-container', 'Config/Components/sidebar.html'),
+        loadComponent('footer-container', 'Config/Components/footer.html')
     ])
     .then(() => {
         // Initialize features after components are loaded

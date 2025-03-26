@@ -720,6 +720,11 @@ body.sidebar-collapsed .sidebar-toggle {
         width: 100% !important;
         margin-left: 0 !important;
     }
+    
+    /* Topics page responsive styles */
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Desktop adjustments */
