@@ -79,7 +79,49 @@
             fetch('/Topics/pages.json')
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        // If file doesn't exist, use placeholder data instead of throwing an error
+                        console.warn('Topics data file not found, using placeholder data');
+                        return Promise.resolve({
+                            categories: [
+                                { id: 'fundamentals', name: 'Electrical Fundamentals', icon: 'bolt', order: 1 },
+                                { id: 'circuits', name: 'Circuit Analysis', icon: 'project-diagram', order: 2 },
+                                { id: 'electronics', name: 'Electronics', icon: 'microchip', order: 3 }
+                            ],
+                            pages: [
+                                { 
+                                    categoryId: 'fundamentals', 
+                                    title: 'Basic Electrical Concepts', 
+                                    snippet: 'Introduction to voltage, current, and resistance.',
+                                    path: '#',
+                                    content: { difficulty: 'beginner' },
+                                    meta: { estimatedReadTime: 8 }
+                                },
+                                { 
+                                    categoryId: 'fundamentals', 
+                                    title: 'Ohm\'s Law', 
+                                    snippet: 'Understanding the relationship between voltage, current, and resistance.',
+                                    path: '#',
+                                    content: { difficulty: 'beginner' },
+                                    meta: { estimatedReadTime: 12 }
+                                },
+                                { 
+                                    categoryId: 'circuits', 
+                                    title: 'Series and Parallel Circuits', 
+                                    snippet: 'Learn how to analyze series and parallel configurations.',
+                                    path: '#',
+                                    content: { difficulty: 'intermediate' },
+                                    meta: { estimatedReadTime: 15 }
+                                },
+                                { 
+                                    categoryId: 'electronics', 
+                                    title: 'Semiconductor Devices', 
+                                    snippet: 'Introduction to diodes, transistors, and their applications.',
+                                    path: '#',
+                                    content: { difficulty: 'advanced' },
+                                    meta: { estimatedReadTime: 20 }
+                                }
+                            ]
+                        });
                     }
                     return response.json();
                 })
@@ -93,6 +135,8 @@
                         <div class="error-message">
                             <p>Sorry, we couldn't load the topics. Please try again later.</p>
                             <p>Error: ${error.message}</p>
+                            <p>Note: You may need to create a Topics/pages.json file with category and page data.</p>
+                            <button class="btn btn-primary" onclick="window.location.reload()">Try Again</button>
                         </div>
                     `;
                 });
@@ -321,19 +365,7 @@
     </script>
 
     <!-- Register service worker -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registered with scope:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed:', error);
-                    });
-            });
-        }
-    </script>
+    
 </body>
 
 </html>
