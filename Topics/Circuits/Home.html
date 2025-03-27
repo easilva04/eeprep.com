@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- 
+        ==========================================================================
+        TEMPLATE USAGE INSTRUCTIONS
+        ==========================================================================
+        
+        REQUIRED CHANGES:
+        1. Replace ALL instances of [Topic Name] with the actual topic name
+        2. Update the page title and meta tags for SEO
+        3. Replace [Topic Category] in breadcrumbs with correct category
+        4. Fill in ALL content sections marked with square brackets []
+        5. Add proper examples, practice problems and solutions
+        6. Link to actual related topics (update href attributes)
+        7. Add relevant resources in the Additional Resources section
+        
+        PATH MANAGEMENT:
+        - IMPORTANT: You must adjust relative paths based on folder depth!
+        - For topics in /Topics/CategoryName/TopicName.html:
+           * Change "../../../../index.html" to "../../../../index.html"
+           * Change "../../../../Topics.html" to "../../../../Topics.html"
+        - For topics in /Topics/TopicName.html:
+           * Change "../../../../index.html" to "../../index.html"
+           * Change "../../../../Topics.html" to "../../Topics.html"
+        - Update all other relative paths accordingly
+        
+        DO NOT MODIFY:
+        - <head> meta tags and resource links marked as "DO NOT MODIFY/CHANGE/REMOVE"
+        - The structure of component loading divs (sidebar-container, footer-container)
+        - Core CSS class names and structure
+        - JavaScript functions
+        
+        TEMPLATE REMOVAL:
+        - Delete these instructions when your content is complete
+        ==========================================================================
+    -->
 <head>
+    <!-- IMPORTANT: DO NOT MODIFY or REORDER these meta tags and resource links -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EE Prep - [Topic Name] | Electrical Engineering</title>
-    <link rel="icon" href="Config/Assets/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="Config/Assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="Config/Assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Config/Assets/images/favicon-16x16.png">
-    <link rel="manifest" href="Config/Assets/images/site.webmanifest">
-    <link rel="stylesheet" href="Config/Styles/main.css">
-    <link rel="stylesheet" href="Config/Styles/components.css">
+    <!-- Favicon and app icons - DO NOT CHANGE -->
+    <link rel="icon" href="../../Config/Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../Config/Assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../Config/Assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../Config/Assets/images/favicon-16x16.png">
+    <link rel="manifest" href="../../Config/Assets/images/site.webmanifest">
+    <!-- Core stylesheets - DO NOT MODIFY -->
+    <link rel="stylesheet" href="../../Config/Styles/main.css">
+    <link rel="stylesheet" href="../../Config/Styles/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <script src="Config/Scripts/backend.js"></script>
-    <script src="Config/Scripts/componentLoader.js"></script>
-    <script src="Config/Scripts/themeToggle.js"></script>
-    <script src="Config/Scripts/search.js"></script>
+    <!-- Essential scripts - DO NOT REMOVE OR REORDER -->
+    <script src="../../Config/Scripts/backend.js"></script>
+    <script src="../../Config/Scripts/componentLoader.js"></script>
+    <script src="../../Config/Scripts/themeToggle.js"></script>
+    <script src="../../Config/Scripts/search.js"></script>
 
-    <!-- MathJax Configuration and Loading -->
-    <script src="Config/Scripts/mathjax-config.js"></script>
+    <!-- MathJax Configuration - DO NOT MODIFY -->
+    <script src="../../Config/Scripts/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    
+    
+    <!-- CUSTOMIZE: Update title, description, and keywords with your topic information -->
+    <title>EE Prep - [Topic Name] | Electrical Engineering</title>
+    <meta name="description" content="Learn about [Topic Name] in electrical engineering. Comprehensive explanations, examples, and practice problems.">
+    <meta name="keywords" content="[Topic Name], Electrical Engineering, EE Prep, Study Guide">
+    <meta name="author" content="EE Prep Team">
+    <meta name="robots" content="index, follow">
+    
 </head>
 
 <body class="theme-transition">
-    <!-- Navigation components will be loaded here - no header -->
+    <!-- Navigation components will be loaded here - DO NOT MODIFY THIS DIV -->
     <div id="sidebar-container" class="sidebar"></div>
 
     <!-- Main content -->
     <main class="main-content">
-        <!-- Topic header section -->
+        <!-- Topic header section - CUSTOMIZE ALL TEXT INSIDE [] BRACKETS -->
         <section class="content-section">
             <div class="content-container">
                 <div class="section-header">
@@ -38,15 +84,15 @@
                     <p class="topic-description">[Brief description of this topic and its importance in electrical engineering]</p>
                 </div>
                 
-                <!-- Topic navigation breadcrumbs -->
+                <!-- CUSTOMIZE BREADCRUMBS: Update category and topic name, adjust relative paths based on folder depth -->
                 <div class="topic-breadcrumbs">
-                    <a href="../../index.html">Home</a> &gt; 
-                    <a href="../../Topics.html">Topics</a> &gt; 
+                    <a href="../../../../index.html">Home</a> &gt; 
+                    <a href="../../../../Topics.html">Topics</a> &gt; 
                     <span>[Topic Category]</span> &gt; 
                     <span>[Topic Name]</span>
                 </div>
                 
-                <!-- Topic overview -->
+                <!-- REPLACE: Add a comprehensive overview of your topic -->
                 <div class="topic-overview">
                     <h2>Overview</h2>
                     <p>[Detailed overview of the topic - replace with actual content]</p>
@@ -54,33 +100,35 @@
             </div>
         </section>
 
-        <!-- Topic main content section -->
+        <!-- CUSTOMIZE: Add real concepts with explanations and examples -->
         <section class="content-section">
             <div class="content-container">
                 <h2>Key Concepts</h2>
                 
-                <!-- Individual concept sections -->
+                <!-- REPLACE: Add actual concept headings and explanations -->
                 <div class="concept-section">
                     <h3>[Concept 1]</h3>
                     <p>[Explanation of concept 1]</p>
-                    <!-- Add formulas, diagrams, or examples as needed -->
+                    <!-- OPTIONAL: Add formulas using MathJax (enclosed in $$) for equations -->
+                    <!-- Example: $$E = mc^2$$ -->
                 </div>
                 
                 <div class="concept-section">
                     <h3>[Concept 2]</h3>
                     <p>[Explanation of concept 2]</p>
-                    <!-- Add formulas, diagrams, or examples as needed -->
+                    <!-- OPTIONAL: Add images using <img src="relative/path/to/image.jpg" alt="Description"> -->
                 </div>
                 
-                <!-- Add more concept sections as needed -->
+                <!-- ADD MORE: Create additional concept sections as needed following the same pattern -->
             </div>
         </section>
 
-        <!-- Examples section -->
+        <!-- CUSTOMIZE: Replace with actual worked examples -->
         <section class="content-section alt-section">
             <div class="content-container">
                 <h2>Examples</h2>
                 
+                <!-- REPLACE: Add a complete worked example with problem statement and solution -->
                 <div class="example-box">
                     <h3>Example 1: [Brief Title]</h3>
                     <div class="example-problem">
@@ -89,64 +137,74 @@
                     <div class="example-solution">
                         <h4>Solution:</h4>
                         <p>[Step-by-step solution]</p>
+                        <!-- OPTIONAL: Include equations using MathJax: $$y = mx + b$$ -->
                     </div>
                 </div>
                 
-                <!-- Add more examples as needed -->
+                <!-- ADD MORE: Create additional examples following the same pattern -->
             </div>
         </section>
 
-        <!-- Related topics section -->
+        <!-- CUSTOMIZE: Link to relevant existing topics -->
         <section class="content-section">
             <div class="content-container">
                 <h2>Related Topics</h2>
                 <div class="card-grid">
+                    <!-- REPLACE: Add actual related topic with proper relative link -->
                     <div class="related-topic-card">
                         <h3>[Related Topic 1]</h3>
                         <p>[Brief description]</p>
+                        <!-- UPDATE PATH: Point to an actual topic page, considering folder depth -->
                         <a href="[relative path to related topic]" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
                     </div>
                     
+                    <!-- REPLACE: Add another related topic with proper relative link -->
                     <div class="related-topic-card">
                         <h3>[Related Topic 2]</h3>
                         <p>[Brief description]</p>
+                        <!-- UPDATE PATH: Point to an actual topic page, considering folder depth -->
                         <a href="[relative path to related topic]" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
                     </div>
                     
-                    <!-- Add more related topics as needed -->
+                    <!-- ADD MORE: Create additional related topic cards as needed -->
                 </div>
             </div>
         </section>
 
-        <!-- Practice problems section -->
+        <!-- CUSTOMIZE: Add real practice problems with solutions -->
         <section class="content-section alt-section">
             <div class="content-container">
                 <div class="section-header">
                     <h2>Practice Problems</h2>
                 </div>
+                <!-- REPLACE: Update with your actual topic name -->
                 <p>Test your understanding of [Topic Name] with these practice problems:</p>
                 
-                <!-- Integrated practice problems -->
+                <!-- CUSTOMIZE: Add actual practice problems and solutions -->
                 <div class="practice-problems">
-                    <!-- Problem 1 -->
+                    <!-- REPLACE: Add complete problem with solution -->
                     <div class="practice-problem">
                         <h3>Problem 1: [Brief description]</h3>
                         <div class="problem-content">
                             <p>[Problem statement]</p>
+                            <!-- OPTIONAL: For diagrams, use <img> tags with proper alt text -->
                         </div>
+                        <!-- DO NOT MODIFY: Solution toggle button functionality -->
                         <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
                         <div class="problem-solution" style="display: none;">
                             <h4>Solution:</h4>
                             <p>[Detailed solution steps]</p>
+                            <!-- OPTIONAL: Include equations using MathJax: $$F = ma$$ -->
                         </div>
                     </div>
                     
-                    <!-- Problem 2 -->
+                    <!-- REPLACE: Add complete problem with solution -->
                     <div class="practice-problem">
                         <h3>Problem 2: [Brief description]</h3>
                         <div class="problem-content">
                             <p>[Problem statement]</p>
                         </div>
+                        <!-- DO NOT MODIFY: Solution toggle button functionality -->
                         <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
                         <div class="problem-solution" style="display: none;">
                             <h4>Solution:</h4>
@@ -154,12 +212,13 @@
                         </div>
                     </div>
                     
-                    <!-- Problem 3 -->
+                    <!-- REPLACE: Add complete problem with solution -->
                     <div class="practice-problem">
                         <h3>Problem 3: [Brief description]</h3>
                         <div class="problem-content">
                             <p>[Problem statement]</p>
                         </div>
+                        <!-- DO NOT MODIFY: Solution toggle button functionality -->
                         <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
                         <div class="problem-solution" style="display: none;">
                             <h4>Solution:</h4>
@@ -168,8 +227,9 @@
                     </div>
                 </div>
                 
-                <!-- Link to more problems -->
+                <!-- CUSTOMIZE: Add link to more practice problems if available -->
                 <div class="more-practice" style="margin-top: 2rem; text-align: center;">
+                    <!-- UPDATE PATH: Point to actual practice problems page, considering folder depth -->
                     <a href="[relative path to more practice problems]" class="btn btn-primary">
                         <i class="fas fa-tasks"></i> More Practice Problems
                     </a>
@@ -177,11 +237,12 @@
             </div>
         </section>
 
-        <!-- Resources section -->
+        <!-- CUSTOMIZE: Add relevant resources for further study -->
         <section class="content-section">
             <div class="content-container">
                 <h2>Additional Resources</h2>
                 <ul class="resources-list">
+                    <!-- REPLACE: Add actual books, videos, and website recommendations -->
                     <li><strong>Books:</strong> [Recommended textbooks or resources]</li>
                     <li><strong>Videos:</strong> [Recommended videos]</li>
                     <li><strong>Websites:</strong> [Useful external websites]</li>
@@ -190,10 +251,10 @@
         </section>
     </main>
 
-    <!-- Footer will be loaded here -->
+    <!-- Footer will be loaded here - DO NOT MODIFY THIS DIV -->
     <div id="footer-container"></div>
 
-    <!-- Add JavaScript for toggle solution buttons -->
+    <!-- DO NOT MODIFY: This script handles the show/hide solution functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get all solution toggle buttons
