@@ -196,6 +196,10 @@ function toggleSidebar(sidebar, overlay, toggle) {
  * @param {Element} toggle - The toggle button element
  */
 function openSidebar(sidebar, overlay, toggle) {
+    // Add animating class for smoother transitions
+    sidebar.classList.add('sidebar-animating');
+    
+    // Show sidebar
     sidebar.classList.add('active');
     overlay.classList.add('active');
     document.body.classList.add('sidebar-open');
@@ -203,6 +207,11 @@ function openSidebar(sidebar, overlay, toggle) {
     
     // IMPROVED: Prevent body scrolling when sidebar is open
     document.body.style.overflow = 'hidden';
+    
+    // Remove animating class after transition completes
+    setTimeout(() => {
+        sidebar.classList.remove('sidebar-animating');
+    }, 300);
 }
 
 /**
@@ -212,6 +221,10 @@ function openSidebar(sidebar, overlay, toggle) {
  * @param {Element} toggle - The toggle button element
  */
 function closeSidebar(sidebar, overlay, toggle) {
+    // Add animating class for smoother transitions
+    sidebar.classList.add('sidebar-animating');
+    
+    // Hide sidebar
     sidebar.classList.remove('active');
     document.body.classList.remove('sidebar-open');
     overlay.classList.remove('active');
@@ -219,6 +232,11 @@ function closeSidebar(sidebar, overlay, toggle) {
     
     // IMPROVED: Restore body scrolling when sidebar is closed
     document.body.style.overflow = '';
+    
+    // Remove animating class after transition completes
+    setTimeout(() => {
+        sidebar.classList.remove('sidebar-animating');
+    }, 300);
 }
 
 /**
@@ -253,39 +271,44 @@ function setupTouchSwipe(sidebar, overlay, toggle) {
         }
         
         // Left to right swipe (open sidebar)
-        if (swipeDistance > minSwipeDistance && !isActive) {
+        if (swipeDistance > minSwipeDistance && !isActive && touchStartX < 50) {
             openSidebar(sidebar, overlay, toggle);
         }
     }
     
-    // Add edge-swipe detection specifically for opening the sidebar
-    let edgeSwipeActive = false;
-    const edgeSize = 20; // Size of edge detection zone in pixels
+    // Enhanced edge swipe detection
+    let touchMoveHandler = null;
     
     document.addEventListener('touchstart', (e) => {
         const touchX = e.touches[0].clientX;
         
-        // If touch starts at the edge of the screen
-        if (touchX <= edgeSize) {
-            edgeSwipeActive = true;
-        }
-    }, { passive: true });
-    
-    document.addEventListener('touchmove', (e) => {
-        if (!edgeSwipeActive) return;
-        
-        const touchX = e.touches[0].clientX;
-        const swipeDistance = touchX - touchStartX;
-        
-        // If we've swiped enough from the edge
-        if (swipeDistance > minSwipeDistance) {
-            openSidebar(sidebar, overlay, toggle);
-            edgeSwipeActive = false;
+        // Only activate edge detection when touch starts near the left edge
+        if (touchX <= 20 && !sidebar.classList.contains('active')) {
+            // Create touchmove handler for this specific gesture
+            touchMoveHandler = function(moveEvent) {
+                const currentX = moveEvent.touches[0].clientX;
+                const deltaX = currentX - touchX;
+                
+                // If swiped enough from edge, show sidebar
+                if (deltaX > 70) {
+                    openSidebar(sidebar, overlay, toggle);
+                    
+                    // Clean up by removing this handler
+                    document.removeEventListener('touchmove', touchMoveHandler);
+                    touchMoveHandler = null;
+                }
+            };
+            
+            document.addEventListener('touchmove', touchMoveHandler);
         }
     }, { passive: true });
     
     document.addEventListener('touchend', () => {
-        edgeSwipeActive = false;
+        // Clean up touchmove handler when touch ends
+        if (touchMoveHandler) {
+            document.removeEventListener('touchmove', touchMoveHandler);
+            touchMoveHandler = null;
+        }
     }, { passive: true });
 }
 
