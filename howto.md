@@ -78,7 +78,7 @@ git merge upstream/main
 We use a standardized HTML template for all content pages to ensure consistency across the site.
 
 1. **Locate the Template**
-   - Find the template at [template.html](template.html)
+   - Find the template at [template.html](Templates/template.html)
    - Copy this template as your starting point for any new page
 
 2. **Template Structure**

@@ -5,12 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EE Prep - [Topic Name] | Electrical Engineering</title>
+    <link rel="icon" href="Config/Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="Config/Assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Config/Assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Config/Assets/images/favicon-16x16.png">
+    <link rel="manifest" href="Config/Assets/images/site.webmanifest">
     <link rel="stylesheet" href="Config/Styles/main.css">
     <link rel="stylesheet" href="Config/Styles/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    
     <script src="Config/Scripts/componentLoader.js"></script>
     <script src="Config/Scripts/themeToggle.js"></script>
     <script src="Config/Scripts/search.js"></script>
+
+    <!-- MathJax Configuration and Loading -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body class="theme-transition">
@@ -112,14 +134,57 @@
             <div class="content-container">
                 <div class="section-header">
                     <h2>Practice Problems</h2>
-                    <a href="[relative path to practice problems]" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <p>Test your understanding of [Topic Name] with these practice problems:</p>
-                <ul class="practice-list">
-                    <li><a href="[relative path to problem 1]">Problem 1: [Brief description]</a></li>
-                    <li><a href="[relative path to problem 2]">Problem 2: [Brief description]</a></li>
-                    <li><a href="[relative path to problem 3]">Problem 3: [Brief description]</a></li>
-                </ul>
+                
+                <!-- Integrated practice problems -->
+                <div class="practice-problems">
+                    <!-- Problem 1 -->
+                    <div class="practice-problem">
+                        <h3>Problem 1: [Brief description]</h3>
+                        <div class="problem-content">
+                            <p>[Problem statement]</p>
+                        </div>
+                        <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
+                        <div class="problem-solution" style="display: none;">
+                            <h4>Solution:</h4>
+                            <p>[Detailed solution steps]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Problem 2 -->
+                    <div class="practice-problem">
+                        <h3>Problem 2: [Brief description]</h3>
+                        <div class="problem-content">
+                            <p>[Problem statement]</p>
+                        </div>
+                        <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
+                        <div class="problem-solution" style="display: none;">
+                            <h4>Solution:</h4>
+                            <p>[Detailed solution steps]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Problem 3 -->
+                    <div class="practice-problem">
+                        <h3>Problem 3: [Brief description]</h3>
+                        <div class="problem-content">
+                            <p>[Problem statement]</p>
+                        </div>
+                        <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
+                        <div class="problem-solution" style="display: none;">
+                            <h4>Solution:</h4>
+                            <p>[Detailed solution steps]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Link to more problems -->
+                <div class="more-practice" style="margin-top: 2rem; text-align: center;">
+                    <a href="[relative path to more practice problems]" class="btn btn-primary">
+                        <i class="fas fa-tasks"></i> More Practice Problems
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -139,8 +204,30 @@
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
 
-    <!-- Register service worker -->
-    
+    <!-- Add JavaScript for toggle solution buttons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all solution toggle buttons
+            const toggleButtons = document.querySelectorAll('.toggle-solution');
+            
+            // Add click event to each button
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Find the solution div that follows this button
+                    const solution = this.nextElementSibling;
+                    
+                    // Toggle visibility
+                    if (solution.style.display === 'none') {
+                        solution.style.display = 'block';
+                        this.textContent = 'Hide Solution';
+                    } else {
+                        solution.style.display = 'none';
+                        this.textContent = 'Show Solution';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

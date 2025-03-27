@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topics - EE Prep</title>
+    <link rel="icon" href="Config/Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="Config/Assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Config/Assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Config/Assets/images/favicon-16x16.png">
+    <link rel="manifest" href="Config/Assets/images/site.webmanifest">
     <link rel="stylesheet" href="Config/Styles/main.css">
     <link rel="stylesheet" href="Config/Styles/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    
     <script src="Config/Scripts/componentLoader.js"></script>
     <script src="Config/Scripts/themeToggle.js"></script>
     <script src="Config/Scripts/search.js"></script>
@@ -41,16 +48,6 @@
                         <select id="sort-select" class="filter-select">
                             <option value="alphabetical">Alphabetical</option>
                             <option value="newest">Newest First</option>
-                            <option value="difficulty">Difficulty Level</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <span class="filter-label">Filter:</span>
-                        <select id="filter-select" class="filter-select">
-                            <option value="all">All Topics</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
                         </select>
                     </div>
                     <div class="search-box">
@@ -79,49 +76,7 @@
             fetch('/Topics/pages.json')
                 .then(response => {
                     if (!response.ok) {
-                        // If file doesn't exist, use placeholder data instead of throwing an error
-                        console.warn('Topics data file not found, using placeholder data');
-                        return Promise.resolve({
-                            categories: [
-                                { id: 'fundamentals', name: 'Electrical Fundamentals', icon: 'bolt', order: 1 },
-                                { id: 'circuits', name: 'Circuit Analysis', icon: 'project-diagram', order: 2 },
-                                { id: 'electronics', name: 'Electronics', icon: 'microchip', order: 3 }
-                            ],
-                            pages: [
-                                { 
-                                    categoryId: 'fundamentals', 
-                                    title: 'Basic Electrical Concepts', 
-                                    snippet: 'Introduction to voltage, current, and resistance.',
-                                    path: '#',
-                                    content: { difficulty: 'beginner' },
-                                    meta: { estimatedReadTime: 8 }
-                                },
-                                { 
-                                    categoryId: 'fundamentals', 
-                                    title: 'Ohm\'s Law', 
-                                    snippet: 'Understanding the relationship between voltage, current, and resistance.',
-                                    path: '#',
-                                    content: { difficulty: 'beginner' },
-                                    meta: { estimatedReadTime: 12 }
-                                },
-                                { 
-                                    categoryId: 'circuits', 
-                                    title: 'Series and Parallel Circuits', 
-                                    snippet: 'Learn how to analyze series and parallel configurations.',
-                                    path: '#',
-                                    content: { difficulty: 'intermediate' },
-                                    meta: { estimatedReadTime: 15 }
-                                },
-                                { 
-                                    categoryId: 'electronics', 
-                                    title: 'Semiconductor Devices', 
-                                    snippet: 'Introduction to diodes, transistors, and their applications.',
-                                    path: '#',
-                                    content: { difficulty: 'advanced' },
-                                    meta: { estimatedReadTime: 20 }
-                                }
-                            ]
-                        });
+                        throw new Error('Failed to load topics data');
                     }
                     return response.json();
                 })
@@ -135,144 +90,41 @@
                         <div class="error-message">
                             <p>Sorry, we couldn't load the topics. Please try again later.</p>
                             <p>Error: ${error.message}</p>
-                            <p>Note: You may need to create a Topics/pages.json file with category and page data.</p>
                             <button class="btn btn-primary" onclick="window.location.reload()">Try Again</button>
                         </div>
                     `;
                 });
 
-            function initializeTopics(data) {
-                // Extract the relevant data - fix the path to match actual structure
-                const categories = data.categories || [];
-                const pages = data.pages || [];
-                
-                // Sort categories by order
-                categories.sort((a, b) => (a.order || 999) - (b.order || 999));
-                
-                // Create a map to organize pages by category
-                const pagesByCategory = {};
-                categories.forEach(category => {
-                    pagesByCategory[category.id] = [];
-                });
-                
-                // Populate the pages by category
-                pages.forEach(page => {
-                    if (pagesByCategory[page.categoryId]) {
-                        pagesByCategory[page.categoryId].push(page);
-                    }
-                });
-                
-                // Generate HTML for topics
+            function initializeTopics(topicsData) {
                 const topicsContainer = document.getElementById('topics-container');
                 topicsContainer.innerHTML = '';
                 
-                // Function to toggle category collapse
-                function toggleCategory(categoryId) {
-                    const header = document.querySelector(`.category-header[data-category="${categoryId}"]`);
-                    const content = document.querySelector(`.category-content[data-category="${categoryId}"]`);
-                    
-                    if (header && content) {
-                        header.classList.toggle('collapsed');
-                        content.classList.toggle('collapsed');
-                    }
-                }
+                // Create a single topic grid to hold all topics
+                const topicGrid = document.createElement('div');
+                topicGrid.className = 'topic-grid';
                 
-                // Handle subcategories (like Math subcategories)
-                const subcategoriesByParent = {};
-                categories.forEach(category => {
-                    if (category.parentId) {
-                        if (!subcategoriesByParent[category.parentId]) {
-                            subcategoriesByParent[category.parentId] = [];
-                        }
-                        subcategoriesByParent[category.parentId].push(category);
-                    }
-                });
-                
-                // Generate HTML for each category
-                categories.forEach(category => {
-                    // Skip subcategories - they'll be handled with their parent
-                    if (category.parentId) return;
+                // Generate cards for each topic
+                topicsData.forEach(topic => {
+                    // Format the display name (add spaces before capital letters)
+                    const displayName = topic.name.replace(/([A-Z])/g, ' $1').trim();
                     
-                    // Get pages for this category
-                    let categoryPages = pagesByCategory[category.id] || [];
+                    // Calculate estimated read time (example: based on content length)
                     
-                    // Add pages from subcategories if any
-                    const subcategories = subcategoriesByParent[category.id] || [];
-                    subcategories.forEach(subcat => {
-                        const subcatPages = pagesByCategory[subcat.id] || [];
-                        categoryPages = categoryPages.concat(subcatPages);
-                    });
-                    
-                    if (categoryPages.length === 0) return; // Skip empty categories
-                    
-                    // Sort pages by order safely
-                    categoryPages.sort((a, b) => {
-                        const orderA = a.display?.order || a.order || 999;
-                        const orderB = b.display?.order || b.order || 999;
-                        return orderA - orderB;
-                    });
-                    
-                    // Create category section
-                    const categorySection = document.createElement('div');
-                    categorySection.className = 'category-section';
-                    
-                    // Create category header
-                    const categoryHeader = document.createElement('div');
-                    categoryHeader.className = 'category-header';
-                    categoryHeader.setAttribute('data-category', category.id);
-                    categoryHeader.innerHTML = `
-                        <h2><i class="fas fa-${category.icon || 'folder'}"></i> ${category.name}</h2>
-                        <i class="fas fa-chevron-down"></i>
+                    const topicCard = document.createElement('div');
+                    topicCard.className = 'topic-card';
+                    topicCard.innerHTML = `
+                        <h3>${displayName}</h3>
+                        <p>Explore concepts and practices in ${displayName}.</p>
+                        <div class="topic-actions">
+                            <a href="${topic.path}" class="btn btn-primary btn-sm">Explore Topic</a>
+                        </div>
                     `;
                     
-                    // Create category content
-                    const categoryContent = document.createElement('div');
-                    categoryContent.className = 'category-content';
-                    categoryContent.setAttribute('data-category', category.id);
-                    
-                    // Create topic grid
-                    const topicGrid = document.createElement('div');
-                    topicGrid.className = 'topic-grid';
-                    
-                    // Generate cards for each page
-                    categoryPages.forEach(page => {
-                        // Safely access nested properties with fallbacks
-                        const difficulty = page.content?.difficulty || 'intermediate';
-                        const estimatedReadTime = page.meta?.estimatedReadTime || 10;
-                        
-                        const topicCard = document.createElement('div');
-                        topicCard.className = 'topic-card';
-                        topicCard.setAttribute('data-difficulty', difficulty);
-                        topicCard.innerHTML = `
-                            <h3>${page.title}</h3>
-                            <div class="topic-meta">
-                                <span class="difficulty ${difficulty}">${difficulty}</span>
-                                <span class="read-time">${estimatedReadTime} min read</span>
-                            </div>
-                            <p>${page.snippet}</p>
-                            <div class="topic-actions">
-                                <a href="${page.path}" class="btn btn-primary btn-sm">Read More</a>
-                            </div>
-                        `;
-                        
-                        topicGrid.appendChild(topicCard);
-                    });
-                    
-                    // Add topic grid to category content
-                    categoryContent.appendChild(topicGrid);
-                    
-                    // Add event listener to category header
-                    categoryHeader.addEventListener('click', () => {
-                        toggleCategory(category.id);
-                    });
-                    
-                    // Add header and content to category section
-                    categorySection.appendChild(categoryHeader);
-                    categorySection.appendChild(categoryContent);
-                    
-                    // Add category section to topics container
-                    topicsContainer.appendChild(categorySection);
+                    topicGrid.appendChild(topicCard);
                 });
+                
+                // Add topic grid to topics container
+                topicsContainer.appendChild(topicGrid);
                 
                 // Set up filtering and searching
                 setupFiltersAndSearch();
@@ -280,13 +132,11 @@
             
             function setupFiltersAndSearch() {
                 const sortSelect = document.getElementById('sort-select');
-                const filterSelect = document.getElementById('filter-select');
                 const searchInput = document.getElementById('topic-search');
                 
                 // Function to apply filters and sorting
                 function applyFiltersAndSort() {
                     const sortValue = sortSelect.value;
-                    const filterValue = filterSelect.value;
                     const searchValue = searchInput.value.toLowerCase();
                     
                     // Get all topic cards
@@ -297,14 +147,12 @@
                     topicCards.forEach(card => {
                         const title = card.querySelector('h3').textContent.toLowerCase();
                         const snippet = card.querySelector('p').textContent.toLowerCase();
-                        const difficulty = card.getAttribute('data-difficulty');
                         
-                        // Check if card matches search and filter criteria
+                        // Check if card matches search criteria
                         const matchesSearch = title.includes(searchValue) || snippet.includes(searchValue);
-                        const matchesFilter = filterValue === 'all' || difficulty === filterValue;
                         
                         // Show or hide the card
-                        if (matchesSearch && matchesFilter) {
+                        if (matchesSearch) {
                             card.style.display = 'flex';
                             visibleCount++;
                         } else {
@@ -313,49 +161,40 @@
                     });
                     
                     // Show "no results" message if needed
-                    const topicGrids = document.querySelectorAll('.topic-grid');
-                    topicGrids.forEach(grid => {
-                        const visibleCards = grid.querySelectorAll('.topic-card[style="display: flex;"]').length;
-                        
-                        // Get or create no-results element
-                        let noResults = grid.querySelector('.no-results');
-                        if (!noResults && visibleCards === 0) {
-                            noResults = document.createElement('div');
-                            noResults.className = 'no-results';
-                            noResults.innerHTML = 'No topics match your criteria';
-                            grid.appendChild(noResults);
-                        } else if (noResults && visibleCards > 0) {
-                            noResults.remove();
-                        }
-                    });
+                    const topicGrid = document.querySelector('.topic-grid');
+                    const visibleCards = document.querySelectorAll('.topic-card[style="display: flex;"]').length;
+                    
+                    // Get or create no-results element
+                    let noResults = topicGrid.querySelector('.no-results');
+                    if (!noResults && visibleCards === 0) {
+                        noResults = document.createElement('div');
+                        noResults.className = 'no-results';
+                        noResults.innerHTML = 'No topics match your criteria';
+                        topicGrid.appendChild(noResults);
+                    } else if (noResults && visibleCards > 0) {
+                        noResults.remove();
+                    }
                     
                     // Apply sorting
-                    // Reuse the already defined topicGrids variable
-                    topicGrids.forEach(grid => {
-                        const cards = Array.from(grid.querySelectorAll('.topic-card[style="display: flex;"]'));
-                        
-                        // Sort cards based on selected option
-                        cards.sort((a, b) => {
-                            if (sortValue === 'alphabetical') {
-                                return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
-                            } else if (sortValue === 'difficulty') {
-                                const difficultyOrder = { 'beginner': 1, 'intermediate': 2, 'advanced': 3 };
-                                return difficultyOrder[a.getAttribute('data-difficulty')] - difficultyOrder[b.getAttribute('data-difficulty')];
-                            } else if (sortValue === 'newest') {
-                                // For demonstration, we'll just reverse alphabetical order
-                                return b.querySelector('h3').textContent.localeCompare(a.querySelector('h3').textContent);
-                            }
-                            return 0;
-                        });
-                        
-                        // Reorder elements
-                        cards.forEach(card => grid.appendChild(card));
+                    const cards = Array.from(document.querySelectorAll('.topic-card[style="display: flex;"]'));
+                    
+                    // Sort cards based on selected option
+                    cards.sort((a, b) => {
+                        if (sortValue === 'alphabetical') {
+                            return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+                        } else if (sortValue === 'newest') {
+                            // For demonstration, we'll just reverse alphabetical order
+                            return b.querySelector('h3').textContent.localeCompare(a.querySelector('h3').textContent);
+                        }
+                        return 0;
                     });
+                    
+                    // Reorder elements
+                    cards.forEach(card => topicGrid.appendChild(card));
                 }
                 
                 // Add event listeners
                 sortSelect.addEventListener('change', applyFiltersAndSort);
-                filterSelect.addEventListener('change', applyFiltersAndSort);
                 searchInput.addEventListener('input', applyFiltersAndSort);
                 
                 // Initial application
@@ -365,7 +204,5 @@
     </script>
 
     <!-- Register service worker -->
-    
 </body>
-
 </html>

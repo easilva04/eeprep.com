@@ -42,11 +42,12 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); b
 .main-content { 
     transition: all var(--transition-speed) var(--smooth-timing);
     width: calc(100% - 280px); /* Subtract sidebar width */
-    padding: 2rem; 
+    padding: 0; /* Remove default padding */
     margin-left: 280px; /* Full sidebar width */
     position: relative; /* Add position relative to avoid overlapping */
     z-index: 5; /* Lower z-index than sidebar toggle but higher than most elements */
     overflow-x: hidden; /* Prevent horizontal overflow */
+    min-height: 100vh; /* Ensure full viewport height coverage */
 }
 
 /* Main content adjustment when sidebar is collapsed */
@@ -322,7 +323,7 @@ body.sidebar-collapsed .sidebar-toggle {
 }
 
 /* 
- * Enhanced search results dropdown
+ * Search results dropdown
  */
 .search-results-dropdown {
     position: absolute;
@@ -506,6 +507,43 @@ body.sidebar-collapsed .sidebar-toggle {
     100% { transform: scale(1); }
 }
 
+/* IMPROVED: More granular media queries for better responsive behavior */
+/* Extra large screens (desktops, >1400px) */
+@media (min-width: 1400px) {
+    .content-container {
+        max-width: 1320px;
+        padding: 0 2.5rem;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+/* Large screens (desktops, 1200px-1400px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .content-container {
+        max-width: 1140px;
+        padding: 0 2rem;
+    }
+}
+
+/* Medium-large screens (laptops, 1025px-1199px) */
+@media (min-width: 1025px) and (max-width: 1199px) {
+    .content-container {
+        max-width: 960px;
+        padding: 0 1.5rem;
+    }
+    
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
 /* 
  * Media queries for responsive design
  * Adjusts layout based on screen width
@@ -536,8 +574,8 @@ body.sidebar-collapsed .sidebar-toggle {
     /* Off-canvas sidebar for mobile */
     .sidebar {
         transform: translateX(-100%);
-        width: var(--sidebar-width) !important;
-        max-width: var(--sidebar-width) !important;
+        width: 280px !important;
+        max-width: 85vw !important; /* IMPROVED: Limit sidebar width on narrow screens */
         overflow-x: hidden !important;
         z-index: 1000;
     }
@@ -559,7 +597,11 @@ body.sidebar-collapsed .sidebar-toggle {
     
     /* Content sections need padding in mobile view */
     .content-section {
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 0 !important; /* IMPROVED: Reduced vertical padding */
+    }
+    
+    .content-container {
+        padding: 0 1.5rem; /* Consistent padding */
     }
     
     /* Mobile navigation button */
@@ -624,11 +666,8 @@ body.sidebar-collapsed .sidebar-toggle {
     }
     
     .card-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .content-section {
-        padding: 3rem 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.25rem; /* IMPROVED: Reduced gap */
     }
     
     .site-header {
@@ -653,42 +692,80 @@ body.sidebar-collapsed .sidebar-toggle {
         padding-top: 4rem;
     }
     
-    /* Fix centered text on mobile */
-    .text-center-mobile {
+    /* IMPROVED: Center section headers on mobile */
+    .section-header {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
+        margin-bottom: 1.5rem;
     }
     
-    /* Ensure all sections have consistent margins */
-    .section-header, .card-grid, .features-grid {
-        margin-left: auto;
-        margin-right: auto;
+    .section-header h2 {
+        margin-bottom: 0.75rem;
     }
     
-    /* Fix hero section padding on mobile */
+    .section-header h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* IMPROVED: Make CTA section more comfortable on mobile */
+    .cta-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    .cta-buttons .btn-outline {
+        margin-left: 0 !important;
+    }
+    
+    /* IMPROVED: Hero section adjustments */
     .hero-section {
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 0 !important;
         text-align: center;
     }
     
-    /* Center hero content on mobile */
     .hero-content {
-        margin: 0 auto;
+        max-width: 100%;
     }
     
-    /* Center hero actions on mobile */
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
     .hero-actions {
         justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
     }
     
-    /* Fix collapsed sidebar content overlap on mobile */
-    body.sidebar-collapsed .main-content {
-        margin-left: 0; /* No margin on mobile */
-        width: 100%; /* Full width on mobile */
+    .hero-actions .btn {
+        width: 100%;
     }
     
-    body.sidebar-collapsed .site-footer {
-        margin-left: 0; /* No margin on mobile */
-        width: 100%; /* Full width on mobile */
+    /* IMPROVED: Feature cards on mobile */
+    .feature-card {
+        padding: 1.5rem;
     }
     
     /* Enhanced mobile sidebar header */
@@ -719,11 +796,88 @@ body.sidebar-collapsed .sidebar-toggle {
     .site-footer {
         width: 100% !important;
         margin-left: 0 !important;
+        padding: 2.5rem 0 1.5rem !important;
     }
     
-    /* Topics page responsive styles */
+    .footer-top {
+        gap: 2rem;
+    }
+    
+    /* IMPROVED: Topics page responsive styles */
+    .topic-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+    
+    .filter-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .filter-select {
+        flex: 1;
+        max-width: 65%;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
     .topic-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    /* IMPROVED: Make concept sections more compact */
+    .concept-section, .topic-overview {
+        padding: 1.5rem;
+    }
+    
+    /* IMPROVED: Contribution steps responsive layout */
+    .contribution-steps {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .step-box {
+        padding: 1.25rem;
+    }
+}
+
+/* Tablets (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .hero-actions .btn {
+        width: auto;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Allow horizontal CTA buttons on tablets */
+    .cta-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .cta-buttons .btn {
+        width: auto;
     }
 }
 
@@ -743,12 +897,60 @@ body.sidebar-collapsed .sidebar-toggle {
 }
 
 /* 
- * Responsive typography
- * Adjust font sizes for small screens
+ * Smaller tablets and large phones (640px-767px)
+ */
+@media (max-width: 767px) {
+    html {
+        font-size: 15px;
+    }
+    
+    /* Better spacing for card grid on small devices */
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    /* Reduce padding on mobile */
+    .feature-card {
+        padding: 1.25rem;
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    /* IMPROVED: Make topic cards more compact */
+    .topic-card {
+        padding: 1.25rem;
+    }
+    
+    /* IMPROVED: Category headers on topics page */
+    .category-header {
+        padding: 1rem;
+    }
+    
+    .category-header h2 {
+        font-size: 1.15rem;
+    }
+}
+
+/* 
+ * Responsive typography for small screens (phones)
  */
 @media (max-width: 640px) {
     html {
-        font-size: 15px;
+        font-size: 14px;
+    }
+    
+    .content-container {
+        padding: 0 1rem; /* Further reduce padding on very small screens */
     }
     
     .card {
@@ -759,30 +961,119 @@ body.sidebar-collapsed .sidebar-toggle {
         font-size: 1.75rem;
     }
     
-    .hero-section {
-        padding: 3rem 1.5rem;
+    .section-header h2 {
+        font-size: 1.5rem;
     }
     
     .hero-title {
-        font-size: 2.25rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .footer-top {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .cta-section h2 {
         font-size: 1.75rem;
     }
     
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.5rem;
+    }
+    
     .cta-section p {
+        font-size: 0.95rem;
+    }
+    
+    /* IMPROVED: Make buttons easier to tap */
+    .btn {
+        padding: 0.75rem 1.25rem;
+    }
+    
+    .btn-large {
+        padding: 0.85rem 1.5rem;
+    }
+    
+    /* IMPROVED: Better spacing for small screens */
+    .hero-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .content-section {
+        padding: 2rem 0 !important;
+    }
+    
+    /* IMPROVED: More compact features grid */
+    .features-grid {
+        gap: 1.25rem;
+    }
+    
+    .feature-item {
+        padding: 1.25rem;
+    }
+    
+    /* IMPROVED: Sidebar width for small screens */
+    .sidebar {
+        max-width: 80vw !important;
+    }
+    
+    /* IMPROVED: More readable code snippets */
+    .code-snippet {
+        font-size: 0.85rem;
+    }
+    
+    /* IMPROVED: Resources list more compact */
+    .resources-list li {
+        padding: 0.75rem;
+    }
+    
+    /* IMPROVED: Topic header in template */
+    .topic-title {
+        font-size: 1.75rem;
+    }
+    
+    .topic-description {
         font-size: 1rem;
+    }
+}
+
+/* IMPROVED: Very small screens optimization (under 400px) */
+@media (max-width: 400px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .sidebar-header {
+        padding: 1rem;
+    }
+    
+    .sidebar-link {
+        padding: 0.65rem 1rem;
+    }
+    
+    /* Make buttons even more compact on very small screens */
+    .btn {
+        padding: 0.65rem 1rem;
+    }
+    
+    .btn-large {
+        padding: 0.75rem 1.25rem;
+    }
+    
+    /* Ensure filter dropdowns and search are usable */
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+    
+    .filter-select {
+        max-width: 100%;
     }
 }
 
@@ -797,34 +1088,6 @@ body.sidebar-collapsed .sidebar-toggle {
 
 .loading-pulse {
     animation: pulse 1.5s infinite ease-in-out;
-}
-
-/* 
- * Enhanced mobile sidebar header
- */
-@media (max-width: 1024px) {
-    .sidebar-header {
-        padding: 1.25rem;
-    }
-    
-    .sidebar-close {
-        background: transparent;
-        color: var(--sidebar-text);
-        border: none;
-        width: 2.5rem;
-        height: 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-    }
-    
-    .sidebar-close:hover {
-        background-color: rgba(255,255,255,0.1);
-    }
 }
 
 /* 
@@ -849,8 +1112,8 @@ body.sidebar-collapsed .sidebar-toggle {
 }
 
 .loading-dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--primary-color);
     animation: loadingBounce 1.4s infinite ease-in-out both;
@@ -870,6 +1133,45 @@ body.sidebar-collapsed .sidebar-toggle {
     }
     40% {
         transform: scale(1);
+    }
+}
+
+/* 
+ * IMPROVED: Touch-friendly elements for mobile
+ * Make interactive elements easier to tap
+ */
+@media (max-width: 767px) {
+    /* Ensure all buttons and links are touch-friendly */
+    .sidebar-link, 
+    .header-nav-item,
+    .btn, 
+    button,
+    .filter-select,
+    .search-box input,
+    .card-link,
+    .view-all,
+    .topic-card a,
+    .practice-list li a {
+        min-height: 44px; /* Apple's recommended minimum */
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Increase spacing between tappable elements */
+    .sidebar-item {
+        margin: 0.25rem 0.5rem;
+    }
+    
+    .footer-nav li {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Make cards more distinct with better spacing */
+    .feature-card,
+    .topic-card,
+    .step-box,
+    .concept-section {
+        margin-bottom: 1rem;
     }
 }
 

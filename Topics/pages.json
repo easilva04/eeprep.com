@@ -1,561 +1,70 @@
-{
-    "// DOCUMENTATION": "This file serves as a database for the eeprep.com website content. The quickAdd section provides the easiest way to add new content.",
-    "utilities": {
-        "generateId": "Use directory-pagename format (e.g., 'Circuits-ohms-law')",
-        "defaultValues": {
-            "author": "EE Prep Team",
-            "difficulty": "intermediate",
-            "featured": false,
-            "hasEquations": true,
-            "hasDiagrams": true,
-            "showInNavigation": true,
-            "showInSitemap": true,
-            "estimatedReadTime": 10
-        },
-        "examples": {
-            "paths": {
-                "Circuits": "/Topics/Circuits/",
-                "Communications": "/Topics/Communications/",
-                "ComputerSystems": "/Topics/ComputerSystems/",
-                "Controls": "/Topics/Controls/",
-                "DigitalSystems": "/Topics/DigitalSystems/",
-                "Economics": "/Topics/Economics/",
-                "ElectricalMaterials": "/Topics/ElectricalMaterials/",
-                "Electromagnetics": "/Topics/Electromagnetics/",
-                "Electronics": "/Topics/Electronics/",
-                "Ethics": "/Topics/Ethics/",
-                "LinearSystems": "/Topics/LinearSystems/",
-                "Math": "/Topics/Math/",
-                "Math/Fundamentals": "/Topics/Math/Fundamentals/",
-                "Math/Calculus": "/Topics/Math/Calculus/",
-                "Math/Statistics": "/Topics/Math/Statistics/",
-                "Networks": "/Topics/Networks/",
-                "Power": "/Topics/Power/",
-                "Signals": "/Topics/Signals/",
-                "SoftwareEngineering": "/Topics/SoftwareEngineering/"
-            },
-            "pageId": {
-                "Circuits": "Circuits-page-name",
-                "Communications": "Communications-page-name",
-                "Networks": "Networks-page-name"
-            }
-        },
-        "quickAdd": {
-            "// HOW TO USE": "Fill out the minimal fields below and the system will auto-generate the rest.",
-            "newPage": {
-                "title": "",
-                "categoryId": "One of: Circuits, Communications, ComputerSystems, Controls, DigitalSystems, Economics, ElectricalMaterials, Electromagnetics, Electronics, Ethics, LinearSystems, Math, Networks, Power, Signals, SoftwareEngineering",
-                "filename": "",
-                "snippet": "",
-                "introText": "",
-                "keywords": [],
-                "difficulty": "beginner|intermediate|advanced",
-                "prerequisites": []
-            },
-            "newCategory": {
-                "name": "",
-                "description": "",
-                "parentId": null
-            },
-            "history": {
-                "recentlyAdded": [
-                    "Circuits-thevenin-norton",
-                    "Circuits-transformations"
-                ]
-            }
-        },
-        "categories": [
-            {
-                "id": "Circuits",
-                "name": "Circuits",
-                "description": "Circuit analysis and design concepts",
-                "parentId": null,
-                "order": 1,
-                "icon": "microchip",
-                "featured": true,
-                "path": "/Topics/Circuits/"
-            },
-            {
-                "id": "Communications",
-                "name": "Communications",
-                "description": "Communication systems and signal transmission",
-                "parentId": null,
-                "order": 2,
-                "icon": "broadcast-tower",
-                "path": "/Topics/Communications/"
-            },
-            {
-                "id": "Networks",
-                "name": "Computer Networks",
-                "description": "Network architectures and protocols",
-                "parentId": null,
-                "order": 3,
-                "icon": "network-wired",
-                "path": "/Topics/Networks/"
-            },
-            {
-                "id": "ComputerSystems",
-                "name": "Computer Systems",
-                "description": "Architecture and organization of computer systems",
-                "parentId": null,
-                "order": 4,
-                "path": "/Topics/ComputerSystems/"
-            },
-            {
-                "id": "Controls",
-                "name": "Control Systems",
-                "description": "Feedback and control system design",
-                "parentId": null,
-                "order": 5,
-                "path": "/Topics/Controls/"
-            },
-            {
-                "id": "DigitalSystems",
-                "name": "Digital Systems",
-                "description": "Digital logic and design concepts",
-                "parentId": null,
-                "order": 6,
-                "path": "/Topics/DigitalSystems/"
-            },
-            {
-                "id": "ElectricalMaterials",
-                "name": "Electrical Materials",
-                "description": "Properties and applications of materials in EE",
-                "parentId": null,
-                "order": 7,
-                "path": "/Topics/ElectricalMaterials/"
-            },
-            {
-                "id": "Electromagnetics",
-                "name": "Electromagnetics",
-                "description": "Electromagnetic fields and waves",
-                "parentId": null,
-                "order": 8,
-                "path": "/Topics/Electromagnetics/"
-            },
-            {
-                "id": "Electronics",
-                "name": "Electronics",
-                "description": "Electronic components and circuit design",
-                "parentId": null,
-                "order": 9,
-                "path": "/Topics/Electronics/"
-            },
-            {
-                "id": "Economics",
-                "name": "Engineering Economics",
-                "description": "Economic analysis for engineering decisions",
-                "parentId": null,
-                "order": 10,
-                "path": "/Topics/Economics/"
-            },
-            {
-                "id": "Ethics",
-                "name": "Ethics and Professional Practice",
-                "description": "Professional ethics in engineering",
-                "parentId": null,
-                "order": 11,
-                "path": "/Topics/Ethics/"
-            },
-            {
-                "id": "LinearSystems",
-                "name": "Linear Systems",
-                "description": "Linear system analysis and design",
-                "parentId": null,
-                "order": 12,
-                "path": "/Topics/LinearSystems/"
-            },
-            {
-                "id": "Math",
-                "name": "Mathematics",
-                "description": "Mathematical foundations for engineering",
-                "parentId": null,
-                "order": 13,
-                "path": "/Topics/Math/"
-            },
-            {
-                "id": "Math/Fundamentals",
-                "name": "Fundamentals",
-                "description": "Basic mathematical concepts",
-                "parentId": "Math",
-                "order": 1,
-                "path": "/Topics/Math/Fundamentals/"
-            },
-            {
-                "id": "Math/Calculus",
-                "name": "Calculus",
-                "description": "Calculus and differential equations",
-                "parentId": "Math",
-                "order": 2,
-                "path": "/Topics/Math/Calculus/"
-            },
-            {
-                "id": "Math/Statistics",
-                "name": "Statistics",
-                "description": "Probability and statistical analysis",
-                "parentId": "Math",
-                "order": 3,
-                "path": "/Topics/Math/Statistics/"
-            },
-            {
-                "id": "Power",
-                "name": "Power Systems",
-                "description": "Generation, transmission, and distribution",
-                "parentId": null,
-                "order": 14,
-                "path": "/Topics/Power/"
-            },
-            {
-                "id": "Signals",
-                "name": "Signal Processing",
-                "description": "Analysis and manipulation of signals",
-                "parentId": null,
-                "order": 15,
-                "path": "/Topics/Signals/"
-            },
-            {
-                "id": "SoftwareEngineering",
-                "name": "Software Engineering",
-                "description": "Software development principles and practices",
-                "parentId": null,
-                "order": 16,
-                "path": "/Topics/SoftwareEngineering/"
-            }
-        ],
-        "pages": [
-            {
-                "id": "Circuits-home",
-                "title": "Circuits Home",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/Circuits.html",
-                "slug": "home",
-                "snippet": "Dive into the world of circuit analysis, starting with the basics and progressing to more advanced topics...",
-                "content": {
-                    "introText": "Circuit analysis is a fundamental skill for electrical engineers. This section covers all key aspects from basic principles to advanced techniques.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "beginner"
-                },
-                "meta": {
-                    "keywords": [
-                        "circuit analysis",
-                        "electrical circuits",
-                        "introduction",
-                        "ohm's law"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-01",
-                    "lastUpdated": "2023-01-01",
-                    "estimatedReadTime": 10
-                },
-                "relationships": {
-                    "prerequisites": [],
-                    "relatedPages": [
-                        "Circuits-networks",
-                        "Circuits-node-loop"
-                    ],
-                    "nextInSequence": "Circuits-networks",
-                    "previousInSequence": null
-                },
-                "display": {
-                    "featured": true,
-                    "order": 1,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            },
-            {
-                "id": "Circuits-networks",
-                "title": "Networks",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/ResistiveNetworks.html",
-                "slug": "networks",
-                "snippet": "Understand resistive networks and their analysis, including techniques for simplifying and solving circuits...",
-                "content": {
-                    "introText": "Resistive networks form the backbone of many circuit designs. Learn how to analyze and simplify these networks efficiently.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "intermediate"
-                },
-                "meta": {
-                    "keywords": [
-                        "resistive networks",
-                        "circuit analysis",
-                        "network reduction",
-                        "series",
-                        "parallel"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-02",
-                    "lastUpdated": "2023-01-02",
-                    "estimatedReadTime": 15
-                },
-                "relationships": {
-                    "prerequisites": [
-                        "Circuits-home"
-                    ],
-                    "relatedPages": [
-                        "Circuits-home",
-                        "Circuits-thevenin-norton"
-                    ],
-                    "nextInSequence": "Circuits-node-loop",
-                    "previousInSequence": "Circuits-home"
-                },
-                "display": {
-                    "featured": false,
-                    "order": 2,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            },
-            {
-                "id": "Circuits-node-loop",
-                "title": "Node & Loop Analysis",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/nodeLoop.html",
-                "slug": "node-loop",
-                "snippet": "Learn about node and loop analysis methods for systematically solving complex electrical circuits...",
-                "content": {
-                    "introText": "Node and loop analysis provide systematic approaches to solve complex circuits with multiple sources and components.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "intermediate"
-                },
-                "meta": {
-                    "keywords": [
-                        "node analysis",
-                        "loop analysis",
-                        "mesh analysis",
-                        "KCL",
-                        "KVL"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-03",
-                    "lastUpdated": "2023-01-03",
-                    "estimatedReadTime": 20
-                },
-                "relationships": {
-                    "prerequisites": [
-                        "Circuits-networks"
-                    ],
-                    "relatedPages": [
-                        "Circuits-networks",
-                        "Circuits-thevenin-norton"
-                    ],
-                    "nextInSequence": "Circuits-ac",
-                    "previousInSequence": "Circuits-networks"
-                },
-                "display": {
-                    "featured": false,
-                    "order": 3,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            },
-            {
-                "id": "Circuits-ac",
-                "title": "AC Analysis",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/AC.html",
-                "slug": "ac",
-                "snippet": "Explore AC circuit analysis, including phasors, impedance, and frequency response...",
-                "content": {
-                    "introText": "AC circuit analysis extends circuit theory to time-varying signals, introducing concepts like impedance and phasors.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "intermediate"
-                },
-                "meta": {
-                    "keywords": [
-                        "AC circuits",
-                        "phasors",
-                        "impedance",
-                        "reactance"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-04",
-                    "lastUpdated": "2023-01-04",
-                    "estimatedReadTime": 25
-                },
-                "relationships": {
-                    "prerequisites": [
-                        "Circuits-node-loop"
-                    ],
-                    "relatedPages": [
-                        "Circuits-waveforms",
-                        "Circuits-transformations"
-                    ],
-                    "nextInSequence": "Circuits-waveforms",
-                    "previousInSequence": "Circuits-node-loop"
-                },
-                "display": {
-                    "featured": false,
-                    "order": 4,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            },
-            {
-                "id": "Circuits-waveforms",
-                "title": "Waveforms",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/Waveforms.html",
-                "slug": "waveforms",
-                "snippet": "Study different types of waveforms and their characteristics, and how they are used in electrical engineering...",
-                "content": {
-                    "introText": "Waveforms are fundamental to signal processing and circuit analysis. Understand their characteristics and applications.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "intermediate"
-                },
-                "meta": {
-                    "keywords": [
-                        "waveforms",
-                        "sine waves",
-                        "square waves",
-                        "time domain"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-05",
-                    "lastUpdated": "2023-01-05",
-                    "estimatedReadTime": 20
-                },
-                "relationships": {
-                    "prerequisites": [
-                        "Circuits-ac"
-                    ],
-                    "relatedPages": [
-                        "Circuits-ac",
-                        "signal-processing-analog"
-                    ],
-                    "nextInSequence": "Circuits-transformations",
-                    "previousInSequence": "Circuits-ac"
-                },
-                "display": {
-                    "featured": false,
-                    "order": 5,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            },
-            {
-                "id": "Circuits-transformations",
-                "title": "Transformations",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/Transformations.html",
-                "slug": "transformations",
-                "snippet": "Understand various transformations used in circuit analysis, such as Laplace and Fourier transforms...",
-                "content": {
-                    "introText": "Transformations like Laplace and Fourier are powerful tools for analyzing circuits in different domains.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "intermediate"
-                },
-                "meta": {
-                    "keywords": [
-                        "transformations",
-                        "Laplace transform",
-                        "Fourier transform",
-                        "circuit analysis"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-06",
-                    "lastUpdated": "2023-01-06",
-                    "estimatedReadTime": 30
-                },
-                "relationships": {
-                    "prerequisites": [
-                        "Circuits-waveforms"
-                    ],
-                    "relatedPages": [
-                        "Circuits-ac",
-                        "linear-systems-laplace"
-                    ],
-                    "nextInSequence": "Circuits-thevenin-norton",
-                    "previousInSequence": "Circuits-waveforms"
-                },
-                "display": {
-                    "featured": false,
-                    "order": 6,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            },
-            {
-                "id": "Circuits-thevenin-norton",
-                "title": "Thevenin & Norton",
-                "categoryId": "Circuits",
-                "path": "/Topics/Circuits/TheveninNorton.html",
-                "slug": "thevenin-norton",
-                "snippet": "Learn about Thevenin's and Norton's theorems and their applications in simplifying and analyzing circuits...",
-                "content": {
-                    "introText": "Thevenin's and Norton's theorems are essential for simplifying complex circuits into manageable equivalents.",
-                    "hasEquations": true,
-                    "hasDiagrams": true,
-                    "difficulty": "intermediate"
-                },
-                "meta": {
-                    "keywords": [
-                        "Thevenin",
-                        "Norton",
-                        "equivalent circuits",
-                        "circuit simplification"
-                    ],
-                    "author": "EE Prep Team",
-                    "createdDate": "2023-01-07",
-                    "lastUpdated": "2023-01-07",
-                    "estimatedReadTime": 20
-                },
-                "relationships": {
-                    "prerequisites": [
-                        "Circuits-networks"
-                    ],
-                    "relatedPages": [
-                        "Circuits-networks",
-                        "Circuits-node-loop"
-                    ],
-                    "nextInSequence": null,
-                    "previousInSequence": "Circuits-transformations"
-                },
-                "display": {
-                    "featured": false,
-                    "order": 7,
-                    "showInNavigation": true,
-                    "showInSitemap": true
-                }
-            }
-        ],
-        "scripts": {
-            "addPageInstructions": "1. Fill out the quickAdd.newPage section with your content. 2. Run 'npm run add-page' to process and add it to the database.",
-            "findRelatedInstructions": "Use 'npm run find-related -- --topic=\"your keywords\"' to discover related content for linking."
-        },
-        "metadata": {
-            "version": "3.5",
-            "lastUpdated": "2023-08-25",
-            "totalCategories": 19,
-            "totalPages": 7,
-            "contentStats": {
-                "beginnerPages": 3,
-                "intermediatePages": 3,
-                "advancedPages": 1
-            },
-            "changeLog": [
-                {
-                    "date": "2023-08-25",
-                    "description": "Aligned with actual directory structure",
-                    "version": "3.5"
-                },
-                {
-                    "date": "2023-08-20",
-                    "description": "Enhanced for easier content addition",
-                    "version": "3.0"
-                },
-                {
-                    "date": "2023-08-15",
-                    "description": "Updated database structure for better usability",
-                    "version": "2.0"
-                }
-            ]
-        }
+[
+    {
+        "name": "Circuits",
+        "path": "Topics/Circuits"
+    },
+    {
+        "name": "Communications",
+        "path": "Topics/Communications"
+    },
+    {
+        "name": "Computer Systems",
+        "path": "Topics/ComputerSystems"
+    },
+    {
+        "name": "Controls",
+        "path": "Topics/Controls"
+    },
+    {
+        "name": "Digital Systems",
+        "path": "Topics/DigitalSystems"
+    },
+    {
+        "name": "Economics",
+        "path": "Topics/Economics"
+    },
+    {
+        "name": "Electrical Materials",
+        "path": "Topics/ElectricalMaterials"
+    },
+    {
+        "name": "Electromagnetics",
+        "path": "Topics/Electromagnetics"
+    },
+    {
+        "name": "Electronics",
+        "path": "Topics/Electronics"
+    },
+    {
+        "name": "Ethics",
+        "path": "Topics/Ethics"
+    },
+    {
+        "name": "Linear Systems",
+        "path": "Topics/LinearSystems"
+    },
+    {
+        "name": "Mathematics",
+        "path": "Topics/Math"
+    },
+    {
+        "name": "Networks",
+        "path": "Topics/Networks"
+    },
+    {
+        "name": "Power",
+        "path": "Topics/Power"
+    },
+    {
+        "name": "Probability and Statistics",
+        "path": "Topics/ProbStats"
+    },
+    {
+        "name": "Signals",
+        "path": "Topics/Signals"
+    },
+    {
+        "name": "Software Engineering",
+        "path": "Topics/SoftwareEngineering"
     }
-}
+]

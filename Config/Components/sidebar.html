@@ -72,11 +72,6 @@
     </div>
 </div>
 
-<!-- Remove the external sidebar toggle button since we now have it in the footer -->
-<!-- <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar">
-    <i class="fas fa-chevron-left"></i>
-</button> -->
-
 <script>
     /**
      * Sidebar functionality script
@@ -98,6 +93,9 @@
             if (mobileToggle && mobileToggle.querySelector('i')) {
                 mobileToggle.querySelector('i').className = 'fas fa-bars';
             }
+            
+            // IMPROVED: Restore body scrolling when sidebar is closed
+            document.body.style.overflow = '';
         });
     }
     
@@ -128,8 +126,6 @@
         
         // Add click handler
         sidebarCollapseToggle.addEventListener('click', () => {
-            console.log('Sidebar collapse toggle clicked'); // Debug logging
-            
             // Toggle the collapsed state
             document.body.classList.toggle('sidebar-collapsed');
             
@@ -141,4 +137,43 @@
                 document.body.classList.contains('sidebar-collapsed'));
         });
     }
+    
+    // IMPROVED: Hide sidebar collapse toggle on mobile
+    function updateCollapseToggleVisibility() {
+        if (window.innerWidth <= 1024 && sidebarCollapseToggle) {
+            sidebarCollapseToggle.style.display = 'none';
+        } else if (sidebarCollapseToggle) {
+            sidebarCollapseToggle.style.display = 'flex';
+        }
+    }
+    
+    // Run on load
+    updateCollapseToggleVisibility();
+    
+    // Run on window resize
+    window.addEventListener('resize', updateCollapseToggleVisibility);
+    
+    // IMPROVED: Mark current page in sidebar
+    function highlightCurrentPage() {
+        const currentPath = window.location.pathname;
+        const links = document.querySelectorAll('.sidebar-link');
+        
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href) {
+                // Get the filename part from both URLs
+                const currentFile = currentPath.split('/').pop().toLowerCase();
+                const linkFile = href.split('/').pop().toLowerCase();
+                
+                // Mark as active if files match or if we're on homepage
+                if (currentFile === linkFile || 
+                    (currentFile === '' && linkFile === 'index.html')) {
+                    link.parentElement.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Run highlight on load
+    highlightCurrentPage();
 </script>

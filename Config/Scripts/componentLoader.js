@@ -55,6 +55,12 @@ function initApp() {
         setupMobileNavigation();
         setupDropdowns();
         
+        // IMPROVED: Handle touch events for better mobile experience
+        setupTouchControls();
+        
+        // IMPROVED: Apply viewport meta tag adjustments for better mobile display
+        adjustViewport();
+        
         // Remove loading indicator with fade effect
         loadingIndicator.classList.add('fade-out');
         setTimeout(() => {
@@ -194,6 +200,9 @@ function openSidebar(sidebar, overlay, toggle) {
     overlay.classList.add('active');
     document.body.classList.add('sidebar-open');
     toggle.querySelector('i').className = 'fas fa-times';
+    
+    // IMPROVED: Prevent body scrolling when sidebar is open
+    document.body.style.overflow = 'hidden';
 }
 
 /**
@@ -207,6 +216,9 @@ function closeSidebar(sidebar, overlay, toggle) {
     document.body.classList.remove('sidebar-open');
     overlay.classList.remove('active');
     toggle.querySelector('i').className = 'fas fa-bars';
+    
+    // IMPROVED: Restore body scrolling when sidebar is closed
+    document.body.style.overflow = '';
 }
 
 /**
@@ -275,6 +287,54 @@ function setupTouchSwipe(sidebar, overlay, toggle) {
     document.addEventListener('touchend', () => {
         edgeSwipeActive = false;
     }, { passive: true });
+}
+
+/**
+ * IMPROVED: Setup additional touch-friendly controls
+ */
+function setupTouchControls() {
+    // Make links in mobile view have a slight delay to prevent accidental clicks
+    if (window.innerWidth <= 1024) {
+        const links = document.querySelectorAll('a[href]:not([href^="#"])');
+        links.forEach(link => {
+            // Skip links that open in new tabs
+            if (link.getAttribute('target') === '_blank') return;
+            
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('javascript:')) {
+                    e.preventDefault();
+                    this.classList.add('link-clicked');
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 150);
+                }
+            });
+        });
+    }
+    
+    // Add active state to buttons when pressed on touch devices
+    const buttons = document.querySelectorAll('button, .btn');
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.classList.add('button-active');
+        }, { passive: true });
+        
+        button.addEventListener('touchend', function() {
+            this.classList.remove('button-active');
+        }, { passive: true });
+    });
+}
+
+/**
+ * IMPROVED: Adjust viewport meta tag for better mobile display
+ */
+function adjustViewport() {
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+        // Prevent auto-zooming on form inputs on iOS
+        viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    }
 }
 
 /**
