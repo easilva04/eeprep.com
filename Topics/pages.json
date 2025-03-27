@@ -1,70 +1,70 @@
 [
     {
         "name": "Circuits",
-        "path": "Topics/Circuits"
+        "path": "Topics/Circuits/Home.html"
     },
     {
         "name": "Communications",
-        "path": "Topics/Communications"
+        "path": "Topics/Communications/Home.html"
     },
     {
         "name": "Computer Systems",
-        "path": "Topics/ComputerSystems"
+        "path": "Topics/ComputerSystems/Home.html"
     },
     {
         "name": "Controls",
-        "path": "Topics/Controls"
+        "path": "Topics/Controls/Home.html"
     },
     {
         "name": "Digital Systems",
-        "path": "Topics/DigitalSystems"
+        "path": "Topics/DigitalSystems/Home.html"
     },
     {
         "name": "Economics",
-        "path": "Topics/Economics"
+        "path": "Topics/Economics/Home.html"
     },
     {
         "name": "Electrical Materials",
-        "path": "Topics/ElectricalMaterials"
+        "path": "Topics/ElectricalMaterials/Home.html"
     },
     {
         "name": "Electromagnetics",
-        "path": "Topics/Electromagnetics"
+        "path": "Topics/Electromagnetics/Home.html"
     },
     {
         "name": "Electronics",
-        "path": "Topics/Electronics"
+        "path": "Topics/Electronics/Home.html"
     },
     {
         "name": "Ethics",
-        "path": "Topics/Ethics"
+        "path": "Topics/Ethics/Home.html"
     },
     {
         "name": "Linear Systems",
-        "path": "Topics/LinearSystems"
+        "path": "Topics/LinearSystems/Home.html"
     },
     {
         "name": "Mathematics",
-        "path": "Topics/Math"
+        "path": "Topics/Math/Home.html"
     },
     {
         "name": "Networks",
-        "path": "Topics/Networks"
+        "path": "Topics/Networks/Home.html"
     },
     {
         "name": "Power",
-        "path": "Topics/Power"
+        "path": "Topics/Power/Home.html"
     },
     {
         "name": "Probability and Statistics",
-        "path": "Topics/ProbStats"
+        "path": "Topics/ProbStats/Home.html"
     },
     {
         "name": "Signals",
-        "path": "Topics/Signals"
+        "path": "Topics/Signals/Home.html"
     },
     {
         "name": "Software Engineering",
-        "path": "Topics/SoftwareEngineering"
+        "path": "Topics/SoftwareEngineering/Home.html"
     }
 ]

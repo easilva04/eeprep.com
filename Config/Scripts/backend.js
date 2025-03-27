@@ -8,11 +8,13 @@
  * - Cache-first strategy for static assets
  * - Fallback pages for offline access
  * - Cache management with version control
+ * - MathJax support for LaTeX rendering
  */
 
 // Cache name constants for version control
 const CACHE_NAME = 'eeprep-static-cache-v1';
 const RUNTIME_CACHE = 'eeprep-runtime-cache';
+const MATHJAX_CACHE = 'eeprep-mathjax-cache-v1';
 
 // Assets to cache on install
 const PRECACHE_ASSETS = [
@@ -26,8 +28,22 @@ const PRECACHE_ASSETS = [
   '/Config/Components/footer.html',
   '/Config/Components/sidebar.html',
   '/Config/Scripts/themeToggle.js',
-  '/Config/Scripts/search.js'
+  '/Config/Scripts/search.js',
+  // Add MathJax core files
+  'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+  '/Config/Scripts/mathjax-config.js'
 ];
+
+// Additional MathJax resources that might be loaded dynamically
+const MATHJAX_URL_PATTERNS = [
+  'cdn.jsdelivr.net/npm/mathjax@3',
+  'mathjax.org'
+];
+
+// Check if a URL is a MathJax resource
+function isMathJaxResource(url) {
+  return MATHJAX_URL_PATTERNS.some(pattern => url.includes(pattern));
+}
 
 /**
  * Service Worker Install Event
@@ -66,8 +82,15 @@ self.addEventListener('activate', event => {
  * Handles all fetch requests with appropriate caching strategies
  */
 self.addEventListener('fetch', event => {
-  // Skip cross-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) {
+  // Skip cross-origin requests except for MathJax resources
+  if (!event.request.url.startsWith(self.location.origin) && 
+      !isMathJaxResource(event.request.url)) {
+    return;
+  }
+  
+  // For MathJax resources, use cache-first strategy with dedicated cache
+  if (isMathJaxResource(event.request.url)) {
+    event.respondWith(mathJaxCacheStrategy(event.request));
     return;
   }
   
@@ -146,6 +169,34 @@ async function networkFirstStrategy(request) {
       return caches.match('/offline.html');
     }
     
+    throw error;
+  }
+}
+
+/**
+ * MathJax-specific caching strategy
+ * Cache-first with long expiration for MathJax resources
+ * 
+ * @param {Request} request - The fetch request
+ * @returns {Promise<Response>} - The response
+ */
+async function mathJaxCacheStrategy(request) {
+  const cachedResponse = await caches.match(request);
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+  
+  try {
+    const networkResponse = await fetch(request);
+    
+    if (networkResponse.ok) {
+      const cache = await caches.open(MATHJAX_CACHE);
+      await cache.put(request, networkResponse.clone());
+    }
+    
+    return networkResponse;
+  } catch (error) {
+    console.error('MathJax fetch failed:', error);
     throw error;
   }
 }

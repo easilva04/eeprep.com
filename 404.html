@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EE Prep - 404 Error | Page Not Found</title>
+    <link rel="icon" href="Config/Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="Config/Assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Config/Assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Config/Assets/images/favicon-16x16.png">
+    <link rel="manifest" href="Config/Assets/images/site.webmanifest">
+    <link rel="stylesheet" href="Config/Styles/main.css">
+    <link rel="stylesheet" href="Config/Styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    
+    <script src="Config/Scripts/componentLoader.js"></script>
+    <script src="Config/Scripts/themeToggle.js"></script>
+    <script src="Config/Scripts/search.js"></script>
+
+    <!-- MathJax Configuration and Loading -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body class="theme-transition">
+    <!-- Navigation components will be loaded here - no header -->
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- 404 Error section -->
+        <section class="content-section">
+            <div class="content-container text-center" style="text-align: center; padding: 3rem 1rem;">
+                <div class="section-header">
+                    <h1 class="topic-title" style="font-size: 5rem; margin-bottom: 0.5rem;">404</h1>
+                    <p class="topic-description" style="font-size: 1.5rem; margin-bottom: 2rem;">Connection Lost</p>
+                </div>
+                
+                <div style="margin: 2rem 0;">
+                    <i class="fas fa-bolt" style="font-size: 5rem; color: var(--accent-color); margin-bottom: 2rem;"></i>
+                    <h2>Looks Like We've Encountered Some Resistance</h2>
+                    <p style="font-size: 1.2rem; max-width: 600px; margin: 1rem auto;">The circuit between you and this page has an open connection. Our electrons couldn't find a path to the content you were looking for.</p>
+                </div>
+
+                <div style="margin: 3rem 0;">
+                    <h3>Technical Explanation:</h3>
+                    <p>Error 404: $\text{Page} \neq \text{Found}$</p>
+                    <p>The URL you requested has been analyzed and does not match any file in our system.</p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h3>Troubleshooting Options:</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="/" class="btn btn-primary">
+                            <i class="fas fa-home"></i> Return to Homepage
+                        </a>
+                        <a href="/Topics.html" class="btn btn-outline">
+                            <i class="fas fa-list"></i> Browse Topics
+                        </a>
+                        <button class="btn btn-outline" onclick="history.back()">
+                            <i class="fas fa-arrow-left"></i> Go Back
+                        </button>
+                    </div>
+                </div>
+
+                <div style="margin: 3rem 0;">
+                    <div class="example-box" style="max-width: 600px; margin: 0 auto;">
+                        <h3>Engineering Humor:</h3>
+                        <p>Why don't electrons ever get lost? They're always following the path of least resistance!</p>
+                        <p>Unfortunately, this page took the path of most resistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Add JavaScript for 404 search functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('404-search');
+            const searchBtn = document.getElementById('404-search-btn');
+            
+            searchBtn.addEventListener('click', function() {
+                performSearch();
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query) {
+                    window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
