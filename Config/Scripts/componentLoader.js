@@ -47,8 +47,8 @@ function initApp() {
     
     // Load all components - skip header
     Promise.all([
-        loadComponent('sidebar-container', 'Config/Components/sidebar.html'),
-        loadComponent('footer-container', 'Config/Components/footer.html')
+        loadComponent('sidebar-container', resolveComponentPath('Config/Components/sidebar.html')),
+        loadComponent('footer-container', resolveComponentPath('Config/Components/footer.html'))
     ])
     .then(() => {
         // Initialize features after components are loaded
@@ -79,6 +79,39 @@ function initApp() {
             </div>
         `;
     });
+}
+
+/**
+ * Resolve component path relative to the site root
+ * This helps load components regardless of current page depth
+ * 
+ * @param {string} path - Path to the component relative to site root
+ * @returns {string} - The resolved path
+ */
+function resolveComponentPath(path) {
+    // Get the depth of the current page relative to site root
+    const pathDepth = window.location.pathname.split('/').filter(Boolean).length;
+    
+    // Build the appropriate relative path prefix based on current depth
+    // For root pages: path as is
+    // For deeper pages: add "../" for each level
+    let relativePath = '';
+    if (pathDepth > 0) {
+        relativePath = '../'.repeat(pathDepth);
+    }
+    
+    return relativePath + path;
+}
+
+/**
+ * Resolve data file path relative to the site root
+ * Similar to resolveComponentPath but specifically for data files like JSON
+ * 
+ * @param {string} path - Path to the data file relative to site root
+ * @returns {string} - The resolved path
+ */
+function resolveDataPath(path) {
+    return resolveComponentPath(path);
 }
 
 /**

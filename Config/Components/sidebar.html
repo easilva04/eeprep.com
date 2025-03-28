@@ -3,276 +3,113 @@
   
   Contains:
   - Logo and site title
-  - Main navigation links
+  - Main navigation links with dropdowns
+  - Dynamic topic loading from JSON
   - Theme toggle
   - Sidebar collapse functionality
+  - Mobile-responsive behavior with touch gestures
   
   This component is loaded dynamically by componentLoader.js
 -->
 <div class="sidebar-inner">
-    <!-- Sidebar Header: Contains logo, title and close button -->
+    <!-- 
+      Sidebar Header Section
+      Contains the site logo, title and toggle/close buttons
+    -->
     <div class="sidebar-header">
+        <!-- Logo and title container -->
         <div class="logo-container">
             <div class="modern-logo">
-                <img src="Config/Assets/images/eeprep.png" alt="EE Prep Logo">
+                <img src="/Config/Assets/images/eeprep.png" alt="EE Prep Logo">
             </div>
             <h2 class="sidebar-title">EE Prep</h2>
         </div>
         
-        <!-- Add toggle button in header -->
+        <!-- 
+          Sidebar collapse toggle button 
+          Used to collapse sidebar on desktop for more content space
+        -->
         <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar" title="Collapse Sidebar">
             <i class="fas fa-chevron-left"></i>
         </button>
         
+        <!-- 
+          Close button (visible only on mobile)
+          Used to dismiss the sidebar overlay on small screens
+        -->
         <button class="sidebar-close hidden-desktop" aria-label="Close menu">
             <i class="fas fa-times"></i>
         </button>
     </div>
     
-    <!-- Main Navigation Links -->
+    <!-- 
+      Main Navigation Section
+      Contains all navigation links and dropdown menus
+    -->
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
+            <!-- Home navigation item -->
             <li class="sidebar-item">
-            <a href="index.html" class="sidebar-link" title="Home">
+            <a href="/index.html" class="sidebar-link" title="Home">
                 <i class="fas fa-home"></i>
                 <span class="link-text">Home</span>
             </a>
             </li>
-            <li class="sidebar-item dropdown">
+            
+            <!-- 
+              Topics dropdown navigation item
+              Contains dynamically loaded topics from JSON file
+            -->
+            <li class="sidebar-item dropdown" id="topics-dropdown">
                 <div class="sidebar-link-container">
-                    <a href="../../Topics.html" class="sidebar-link" title="Topics">
+                    <a href="/Topics.html" class="sidebar-link" title="Topics">
                         <i class="fas fa-book"></i>
                         <span class="link-text">Topics</span>
                     </a>
+                    <!-- Dropdown toggle button -->
                     <button class="dropdown-toggle-btn" title="Expand Topics" id="topics-toggle">
                         <i class="fas fa-chevron-down dropdown-icon"></i>
                     </button>
                 </div>
+                <!-- 
+                  Dropdown menu container
+                  Content is loaded dynamically from pages.json
+                -->
                 <div class="dropdown-menu" id="topics-dropdown-menu">
-                    <!-- Topics will be loaded dynamically -->
+                    <!-- Loading placeholder -->
                     <div class="dropdown-item loading">
-                        <span>Loading topics...</span>
+                        <span><i class="fas fa-spinner fa-pulse"></i> Loading topics...</span>
                     </div>
                 </div>
             </li>
 
-            <script>
-                // Debug: Log current path context
-                console.log('Current page URL:', window.location.href);
-                console.log('Current path:', window.location.pathname);
-                
-                // Improved topics loading with better debugging and fallbacks
-                (function() {
-                    // Get the dropdown menu element
-                    const dropdownMenu = document.getElementById('topics-dropdown-menu');
-                    const toggleBtn = document.getElementById('topics-toggle');
-                    
-                    if (!dropdownMenu) {
-                        console.error('Topics dropdown menu element not found!');
-                        return;
-                    }
-                    
-                    // Show loading indicator
-                    dropdownMenu.innerHTML = '<div class="dropdown-item loading"><span>Loading topics...</span></div>';
-                    
-                    // Function to toggle dropdown visibility
-                    function toggleDropdown() {
-                        const isActive = dropdownMenu.classList.contains('active');
-                        dropdownMenu.classList.toggle('active');
-                        
-                        // Update icon
-                        if (toggleBtn) {
-                            const icon = toggleBtn.querySelector('.dropdown-icon');
-                            if (icon) {
-                                icon.className = isActive ? 
-                                    'fas fa-chevron-down dropdown-icon' : 
-                                    'fas fa-chevron-up dropdown-icon';
-                            }
-                        }
-                    }
-                    
-                    // Attach click handler to toggle button
-                    if (toggleBtn) {
-                        toggleBtn.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            toggleDropdown();
-                        });
-                    }
-                    
-                    // Hardcoded fallback data in case JSON loading fails
-                    const fallbackTopics = [
-                        { name: "Circuits", path: "Topics/Circuits/index.html" },
-                        { name: "Digital", path: "Topics/Digital/index.html" },
-                        { name: "Electronics", path: "Topics/Electronics/index.html" },
-                        { name: "Programming", path: "Topics/Programming/index.html" }
-                    ];
-                    
-                    // Function to populate topics in dropdown
-                    function populateTopics(topics) {
-                        // Clear loading message
-                        dropdownMenu.innerHTML = '';
-                        
-                        if (!Array.isArray(topics) || topics.length === 0) {
-                            dropdownMenu.innerHTML = '<div class="dropdown-item"><span>No topics available</span></div>';
-                            return;
-                        }
-                        
-                        // Sort topics alphabetically
-                        topics.sort((a, b) => a.name.localeCompare(b.name));
-                        
-                        // Add each topic
-                        topics.forEach(topic => {
-                            const listItem = document.createElement('div');
-                            listItem.className = 'dropdown-item';
-                            
-                            const link = document.createElement('a');
-                            link.href = topic.path;
-                            link.className = 'dropdown-link';
-                            link.textContent = topic.name;
-                            
-                            listItem.appendChild(link);
-                            dropdownMenu.appendChild(listItem);
-                            
-                            console.log('Added topic:', topic.name, 'with path:', topic.path);
-                        });
-                    }
-                    
-                    // Try to load from multiple sources with better error reporting
-                    let jsonLoaded = false;
-                    
-                    // Absolute path attempts starting from the domain root
-                    const pathsToTry = [
-                        '/Topics/pages.json',
-                        'Topics/pages.json',
-                        '../Topics/pages.json',
-                        '../../Topics/pages.json',
-                        '../../../Topics/pages.json',
-                        window.location.origin + '/Topics/pages.json'
-                    ];
-                    
-                    // Load pages.json with better error handling
-                    function tryLoadJSON(index) {
-                        if (jsonLoaded || index >= pathsToTry.length) {
-                            if (!jsonLoaded) {
-                                console.warn('All paths failed, using fallback data');
-                                populateTopics(fallbackTopics);
-                                
-                                // Add message about using fallback data
-                                const fallbackMsg = document.createElement('div');
-                                fallbackMsg.className = 'dropdown-item notice';
-                                fallbackMsg.innerHTML = '<small>Using fallback data - JSON loading failed</small>';
-                                dropdownMenu.appendChild(fallbackMsg);
-                            }
-                            return;
-                        }
-                        
-                        const path = pathsToTry[index];
-                        console.log(`Trying to load topics from: ${path}`);
-                        
-                        fetch(path, {
-                            method: 'GET',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Cache-Control': 'no-cache'
-                            },
-                            cache: 'no-store'
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(`HTTP error ${response.status}`);
-                            }
-                            console.log(`Successfully fetched from ${path}:`, response);
-                            return response.text(); // Get as text first to inspect
-                        })
-                        .then(text => {
-                            console.log(`Raw JSON data from ${path}:`, text);
-                            try {
-                                const data = JSON.parse(text);
-                                if (Array.isArray(data)) {
-                                    console.log('Parsed JSON data:', data);
-                                    jsonLoaded = true;
-                                    populateTopics(data);
-                                } else {
-                                    console.error('JSON is not an array:', data);
-                                    tryLoadJSON(index + 1);
-                                }
-                            } catch (parseError) {
-                                console.error('JSON parse error:', parseError, 'for text:', text);
-                                tryLoadJSON(index + 1);
-                            }
-                        })
-                        .catch(error => {
-                            console.warn(`Failed to load from ${path}:`, error);
-                            // Try next path after a short delay
-                            setTimeout(() => tryLoadJSON(index + 1), 100);
-                        });
-                    }
-                    
-                    // Start trying to load JSON
-                    tryLoadJSON(0);
-                    
-                    // Force dropdown to be visible when clicking link directly
-                    const topicsLink = document.querySelector('.sidebar-item.dropdown .sidebar-link');
-                    if (topicsLink) {
-                        topicsLink.addEventListener('click', function(e) {
-                            // If dropdown isn't active, prevent navigation and show dropdown
-                            if (!dropdownMenu.classList.contains('active')) {
-                                e.preventDefault();
-                                toggleDropdown();
-                            }
-                        });
-                    }
-                    
-                    // Make sure dropdown menu is properly styled
-                    // Apply these styles directly to ensure visibility
-                    if (dropdownMenu) {
-                        // Ensure dropdown has proper CSS for visibility
-                        dropdownMenu.style.transition = 'all 0.3s ease';
-                        
-                        // Make dropdown active state more explicit
-                        const style = document.createElement('style');
-                        style.textContent = `
-                            .dropdown-menu.active {
-                                display: block !important;
-                                opacity: 1 !important;
-                                visibility: visible !important;
-                                max-height: 500px !important;
-                                overflow-y: auto !important;
-                            }
-                        `;
-                        document.head.appendChild(style);
-                    }
-                })();
-            </script>
+            <!-- Additional sidebar items would go here -->
         </ul>
     </nav>
     
-    <!-- Sidebar Footer: Contains theme toggle, sidebar toggle and info text -->
+    <!-- 
+      Sidebar Footer Section
+      Contains theme toggle and site info text
+    -->
     <div class="sidebar-footer">
+        <!-- Theme toggle button (light/dark mode) -->
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle Theme">
             <i class="fas fa-moon"></i>
             <span class="link-text">Toggle Theme</span>
         </button>
         
+        <!-- Site info/tagline -->
         <div class="sidebar-info">
             <small><i>For the aspiring engineer</i></small>
         </div>
     </div>
 </div>
 
-<!-- Remove this duplicate button -->
-<!-- <button id="sidebar-collapse-toggle" class="sidebar-collapse-toggle" aria-label="Toggle sidebar" title="Collapse Sidebar">
-    <i class="fas fa-chevron-left"></i>
-</button> -->
-
 <script>
     /**
-     * Sidebar functionality script
-     * Handles sidebar close button and toggle functionality
+     * Mobile sidebar close functionality
+     * Handles closing the sidebar when the close button is clicked on mobile
      */
-    
-    // Sidebar close button (mobile)
     const closeButton = document.querySelector('.sidebar-close');
     if (closeButton) {
         closeButton.addEventListener('click', () => {
@@ -293,7 +130,11 @@
         });
     }
     
-    // Improved sidebar collapse toggle functionality
+    /**
+     * Sidebar collapse functionality
+     * Allows users to collapse the sidebar on desktop for more content space
+     * State is preserved in localStorage between page loads
+     */
     const sidebarCollapseToggle = document.getElementById('sidebar-toggle');
     if (sidebarCollapseToggle) {
         sidebarCollapseToggle.addEventListener('click', () => {
@@ -309,7 +150,7 @@
             sidebarCollapseToggle.querySelector('i').className = isCollapsed ? 
                 'fas fa-chevron-right' : 'fas fa-chevron-left';
                 
-            // Save state to localStorage
+            // Save state to localStorage for persistence between page loads
             localStorage.setItem('sidebar-collapsed', isCollapsed);
             
             // Remove animation class after transition completes
@@ -319,94 +160,12 @@
             }, 300);
         });
     }
-    
-    // Handle dropdowns in the sidebar
-    document.addEventListener('DOMContentLoaded', () => {
-        // Function to open/close dropdown - defined outside event handlers
-        function toggleDropdown(button) {
-            // Find parent li element which contains both the button and dropdown menu
-            const dropdownItem = button.closest('.sidebar-item.dropdown');
-            if (!dropdownItem) return;
-            
-            // Find the dropdown menu within this item
-            const dropdownMenu = dropdownItem.querySelector('.dropdown-menu');
-            if (!dropdownMenu) return;
-            
-            // Toggle the active class
-            dropdownMenu.classList.toggle('active');
-            
-            // Update the dropdown icon
-            const icon = button.querySelector('.dropdown-icon');
-            if (icon) {
-                icon.className = dropdownMenu.classList.contains('active') 
-                    ? 'fas fa-chevron-up dropdown-icon' 
-                    : 'fas fa-chevron-down dropdown-icon';
-            }
-        }
-        
-        const dropdownButtons = document.querySelectorAll('.sidebar-item.dropdown .dropdown-toggle-btn');
-        
-        dropdownButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Check if sidebar is collapsed, expand it first if needed
-                const isSidebarCollapsed = document.body.classList.contains('sidebar-collapsed');
-                if (isSidebarCollapsed) {
-                    // Expand sidebar first
-                    document.body.classList.remove('sidebar-collapsed');
-                    
-                    // Update toggle button icon
-                    const sidebarToggle = document.getElementById('sidebar-toggle');
-                    if (sidebarToggle) {
-                        sidebarToggle.querySelector('i').className = 'fas fa-chevron-left';
-                    }
-                    
-                    // Save state to localStorage
-                    localStorage.setItem('sidebar-collapsed', false);
-                    
-                    // Add a small delay before opening dropdown to allow sidebar animation to complete
-                    setTimeout(() => {
-                        toggleDropdown(button);
-                    }, 300);
-                } else {
-                    // Sidebar already expanded, open dropdown immediately
-                    toggleDropdown(button);
-                }
-            });
-        });
-        
-        // Prevent dropdown menus from closing when clicking inside them
-        const dropdownMenus = document.querySelectorAll('.sidebar .dropdown-menu');
-        dropdownMenus.forEach(menu => {
-            menu.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        });
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            // Only proceed if we're not clicking on a dropdown-toggle-btn
-            if (!e.target.closest('.dropdown-toggle-btn')) {
-                document.querySelectorAll('.sidebar .dropdown-menu.active').forEach(menu => {
-                    menu.classList.remove('active');
-                    
-                    // Find the associated toggle button and update its icon
-                    const dropdownItem = menu.closest('.sidebar-item.dropdown');
-                    if (dropdownItem) {
-                        const button = dropdownItem.querySelector('.dropdown-toggle-btn');
-                        if (button) {
-                            const icon = button.querySelector('.dropdown-icon');
-                            if (icon) icon.className = 'fas fa-chevron-down dropdown-icon';
-                        }
-                    }
-                });
-            }
-        });
-    });
-    
-    // IMPROVED: Hide sidebar collapse toggle on mobile
+
+    /**
+     * Responsive sidebar collapse toggle visibility
+     * Hides the sidebar collapse toggle button on mobile screens
+     * as it's not needed in the mobile layout
+     */
     function updateCollapseToggleVisibility() {
         if (window.innerWidth <= 1024 && sidebarCollapseToggle) {
             sidebarCollapseToggle.style.display = 'none';
@@ -415,13 +174,241 @@
         }
     }
     
-    // Run on load
+    // Run visibility check on page load
     updateCollapseToggleVisibility();
     
-    // Run on window resize
+    // Update visibility when window resizes
     window.addEventListener('resize', updateCollapseToggleVisibility);
     
-    // IMPROVED: Mark current page in sidebar
+    /**
+     * Topics Dropdown System
+     * 
+     * This IIFE handles the dynamic loading and display of topic links
+     * from the pages.json file. Features include:
+     * - Dynamic path resolution based on current page depth
+     * - Loading states and error handling
+     * - Animated dropdown open/close
+     * - Alphabetical sorting of topics
+     * - Hover intent for desktop
+     * - Click handling for all devices
+     */
+    (function() {
+        // Get required DOM elements
+        const topicsDropdown = document.getElementById('topics-dropdown');
+        const dropdownMenu = document.getElementById('topics-dropdown-menu');
+        const toggleBtn = document.getElementById('topics-toggle');
+        
+        // Validate required elements
+        if (!topicsDropdown || !dropdownMenu || !toggleBtn) {
+            console.error('Required dropdown elements not found');
+            return;
+        }
+        
+        /**
+         * Determines the correct path to the topics JSON file
+         * based on the current page's depth in the site structure
+         * @returns {string} Path to the pages.json file
+         */
+        function getTopicsJsonPath() {
+            const pathDepth = window.location.pathname.split('/').filter(Boolean).length;
+            let basePath = pathDepth > 0 ? '../'.repeat(pathDepth) : '';
+            return `${basePath}Topics/pages.json`;
+        }
+        
+        /**
+         * Shows a loading indicator in the dropdown menu
+         */
+        function showLoading() {
+            dropdownMenu.innerHTML = '<div class="dropdown-item loading"><span><i class="fas fa-spinner fa-pulse"></i> Loading topics...</span></div>';
+        }
+        
+        /**
+         * Shows an error message in the dropdown menu
+         * @param {string} message - The error message to display
+         */
+        function showError(message) {
+            dropdownMenu.innerHTML = `<div class="dropdown-item error"><span><i class="fas fa-exclamation-circle"></i> ${message}</span></div>`;
+        }
+        
+        /**
+         * Creates a properly formatted path to a topic page
+         * @param {string} path - Raw path from the JSON file
+         * @returns {string} Properly formatted path from site root
+         */
+        function createTopicPath(path) {
+            if (!path) return '/Topics.html';
+            if (path.startsWith('/')) return path;
+            
+            // Always return path from site root
+            return '/' + path.replace(/^\.\//, '');
+        }
+        
+        /**
+         * Renders the topics list in the dropdown menu
+         * @param {Array} topics - Array of topic objects with name and path properties
+         */
+        function renderTopics(topics) {
+            // Clear dropdown content
+            dropdownMenu.innerHTML = '';
+            
+            // Handle empty topics array
+            if (!topics || topics.length === 0) {
+                dropdownMenu.innerHTML = '<div class="dropdown-item"><span>No topics available</span></div>';
+                return;
+            }
+            
+            // Sort topics alphabetically
+            topics.sort((a, b) => a.name.localeCompare(b.name));
+            
+            // Create dropdown items without letter headers
+            topics.forEach((topic, index) => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item';
+                
+                const link = document.createElement('a');
+                link.href = createTopicPath(topic.path);
+                link.className = 'dropdown-link';
+                link.textContent = topic.name;
+                
+                item.appendChild(link);
+                dropdownMenu.appendChild(item);
+                
+                // Add fade-in animation with staggered delay for visual appeal
+                item.style.animationDelay = `${index * 20}ms`;
+                item.classList.add('fade-in');
+            });
+        }
+        
+        /**
+         * Toggles the dropdown menu visibility with animation
+         */
+        function toggleDropdown() {
+            // Close any other open dropdowns first
+            document.querySelectorAll('.sidebar .dropdown-menu.active').forEach(menu => {
+                if (menu !== dropdownMenu) {
+                    menu.classList.remove('active');
+                    const icon = menu.parentElement.querySelector('.dropdown-icon');
+                    if (icon) icon.className = 'fas fa-chevron-down dropdown-icon';
+                }
+            });
+            
+            const isActive = dropdownMenu.classList.contains('active');
+            
+            // Change icon direction based on dropdown state
+            toggleBtn.querySelector('.dropdown-icon').className = isActive ? 
+                'fas fa-chevron-down dropdown-icon' : 'fas fa-chevron-up dropdown-icon';
+            
+            if (isActive) {
+                // Close dropdown with animation
+                dropdownMenu.classList.add('closing');
+                setTimeout(() => {
+                    dropdownMenu.classList.remove('active');
+                    dropdownMenu.classList.remove('closing');
+                }, 300);
+            } else {
+                // Open dropdown with animation
+                dropdownMenu.classList.add('active');
+                
+                // Load topics data if not already loaded
+                if (!dropdownMenu.dataset.loaded) {
+                    loadTopics();
+                }
+            }
+        }
+        
+        /**
+         * Loads topics data from the JSON file
+         * Shows loading state and handles errors
+         */
+        async function loadTopics() {
+            showLoading();
+            
+            try {
+                const jsonPath = getTopicsJsonPath();
+                const response = await fetch(jsonPath);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load topics (${response.status})`);
+                }
+                
+                const topics = await response.json();
+                
+                if (!Array.isArray(topics)) {
+                    throw new Error('Invalid topics data format');
+                }
+                
+                renderTopics(topics);
+                dropdownMenu.dataset.loaded = 'true';
+                
+            } catch (error) {
+                console.error('Error loading topics:', error);
+                showError('Could not load topics');
+            }
+        }
+        
+        // Initialize click event for dropdown toggle
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleDropdown();
+        });
+        
+        /**
+         * Close dropdown when clicking outside
+         * Adds global click handler to detect clicks outside the dropdown
+         */
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#topics-dropdown') && dropdownMenu.classList.contains('active')) {
+                toggleBtn.querySelector('.dropdown-icon').className = 'fas fa-chevron-down dropdown-icon';
+                dropdownMenu.classList.add('closing');
+                setTimeout(() => {
+                    dropdownMenu.classList.remove('active');
+                    dropdownMenu.classList.remove('closing');
+                }, 300);
+            }
+        });
+        
+        /**
+         * Hover intent for desktop devices
+         * Opens dropdown on hover after a short delay for improved UX
+         * Closes dropdown when mouse leaves after a longer delay
+         */
+        if (window.innerWidth > 1024) {
+            let hoverTimer = null;
+            
+            topicsDropdown.addEventListener('mouseenter', () => {
+                if (hoverTimer) clearTimeout(hoverTimer);
+                
+                // Don't auto-open on hover if sidebar is collapsed
+                if (!document.body.classList.contains('sidebar-collapsed') && 
+                    !dropdownMenu.classList.contains('active')) {
+                    hoverTimer = setTimeout(() => {
+                        toggleDropdown();
+                    }, 200);
+                }
+            });
+            
+            topicsDropdown.addEventListener('mouseleave', () => {
+                if (hoverTimer) clearTimeout(hoverTimer);
+                
+                if (dropdownMenu.classList.contains('active')) {
+                    hoverTimer = setTimeout(() => {
+                        toggleBtn.querySelector('.dropdown-icon').className = 'fas fa-chevron-down dropdown-icon';
+                        dropdownMenu.classList.add('closing');
+                        setTimeout(() => {
+                            dropdownMenu.classList.remove('active');
+                            dropdownMenu.classList.remove('closing');
+                        }, 300);
+                    }, 400);
+                }
+            });
+        }
+    })();
+
+    /**
+     * Current Page Highlighting
+     * Adds 'active' class to the sidebar link that matches the current page
+     */
     function highlightCurrentPage() {
         const currentPath = window.location.pathname;
         const links = document.querySelectorAll('.sidebar-link');
@@ -445,7 +432,12 @@
     // Run highlight on load
     highlightCurrentPage();
     
-        // Add swipe gesture support for mobile
+    /**
+     * Mobile Swipe Gesture Support
+     * Enables touch gesture support for opening/closing the sidebar on mobile devices
+     * - Right-to-left swipe: Opens sidebar
+     * - Left-to-right swipe: Closes sidebar
+     */
     document.addEventListener('DOMContentLoaded', function() {
         const sidebar = document.querySelector('.sidebar');
         const content = document.querySelector('.main-content');
@@ -454,19 +446,23 @@
         let touchStartX = 0;
         let touchEndX = 0;
         
-        // Handle swipe open (right to left)
+        // Track touch start position
         content.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         }, {passive: true});
         
+        // Handle touch end and calculate swipe
         content.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipeGesture();
         }, {passive: true});
         
-        // Function to handle swipe gestures
+        /**
+         * Processes swipe gestures to open or close the sidebar
+         * Uses a threshold to prevent accidental triggers
+         */
         function handleSwipeGesture() {
-            const threshold = 100; // Minimum swipe distance
+            const threshold = 100; // Minimum swipe distance in pixels
             
             // Right to left swipe (open sidebar)
             if (touchStartX - touchEndX > threshold) {
@@ -488,53 +484,4 @@
             }
         }
     });
-    
-    // Update mobile menu toggle functionality
-    const mobileToggle = document.querySelector('.mobile-nav-toggle');
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.querySelector('.sidebar-overlay');
-            const mainContent = document.querySelector('.main-content');
-            
-            if (sidebar) {
-                if (sidebar.classList.contains('active')) {
-                    // Close sidebar with animation
-                    sidebar.classList.add('animating-out');
-                    
-                    setTimeout(() => {
-                        sidebar.classList.remove('active');
-                        sidebar.classList.remove('animating-out');
-                        if (overlay) overlay.classList.remove('active');
-                        document.body.classList.remove('sidebar-open');
-                        
-                        // Update toggle icon
-                        const icon = mobileToggle.querySelector('i');
-                        if (icon) icon.className = 'fas fa-bars';
-                    }, 300);
-                } else {
-                    // Open sidebar with animation
-                    sidebar.classList.add('animating-in');
-                    sidebar.classList.add('active');
-                    
-                    // Position overlay properly next to the sidebar
-                    if (overlay && mainContent) {
-                        overlay.style.width = mainContent.offsetWidth + 'px';
-                        overlay.classList.add('active');
-                    }
-                    
-                    document.body.classList.add('sidebar-open');
-                    
-                    // Update toggle icon
-                    const icon = mobileToggle.querySelector('i');
-                    if (icon) icon.className = 'fas fa-times';
-                    
-                    // Clean up animation classes
-                    setTimeout(() => {
-                        sidebar.classList.remove('animating-in');
-                    }, 300);
-                }
-            }
-        });
-    }
 </script>

@@ -1,27 +1,145 @@
 [
   {
-    "subject": "",
-    "subtopic": "",
-    "question": "",
+    "subject": "Circuits",
+    "subtopic": "Ohm's Law",
+    "question": "A resistor has $5\\text{ V}$ across it and draws $2\\text{ A}$ of current. What is its resistance?",
     "options": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "$2.5\\text{ \\Omega}$",
+      "$10\\text{ \\Omega}$",
+      "$0.4\\text{ \\Omega}$",
+      "$7\\text{ \\Omega}$"
     ],
-    "answer": ""
+    "answer": "$2.5\\text{ \\Omega}$",
+    "solution": "Using Ohm's Law: $R = \\frac{V}{I}$, where $R$ is resistance, $V$ is voltage, and $I$ is current.\n\nSubstituting the known values:\n$R = \\frac{V}{I} = \\frac{5\\text{ V}}{2\\text{ A}} = 2.5\\text{ \\Omega}$\n\nThis fundamental relationship demonstrates how voltage and current are proportional, with resistance as the constant of proportionality."
   },
   {
-    "subject": "",
-    "subtopic": "",
-    "question": "",
+    "subject": "Circuits",
+    "subtopic": "Series Circuits",
+    "question": "Three resistors of $4\\text{ \\Omega}$, $6\\text{ \\Omega}$, and $2\\text{ \\Omega}$ are connected in series. What is the total resistance?",
     "options": [
-      "",
-      "",
-      "",
-      ""
+      "$12\\text{ \\Omega}$",
+      "$2\\text{ \\Omega}$",
+      "$\\frac{12}{12}\\text{ \\Omega}$",
+      "$0.5\\text{ \\Omega}$"
     ],
-    "answer": ""
+    "answer": "$12\\text{ \\Omega}$",
+    "solution": "For resistors in series, the total resistance is the sum of individual resistances:\n\n$R_{\\text{total}} = R_1 + R_2 + R_3$\n\nSubstituting the given values:\n$R_{\\text{total}} = 4\\text{ \\Omega} + 6\\text{ \\Omega} + 2\\text{ \\Omega} = 12\\text{ \\Omega}$\n\nIn a series circuit, the same current flows through each component, and the voltage divides across components proportionally to their resistance values."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Kirchhoff's Laws",
+    "question": "Which of Kirchhoff's laws states that the algebraic sum of currents at any node is zero?",
+    "options": [
+      "Kirchhoff's Current Law",
+      "Kirchhoff's Voltage Law",
+      "Kirchhoff's Power Law",
+      "Kirchhoff's Resistance Law"
+    ],
+    "answer": "Kirchhoff's Current Law",
+    "solution": "Kirchhoff's Current Law (KCL) states that the algebraic sum of all currents entering and leaving a node must equal zero:\n\n$\\sum_{k=1}^{n} I_k = 0$\n\nWhere $I_k$ represents each current, with currents entering a node considered positive and currents leaving considered negative (or vice versa, as long as the convention is consistent).\n\nThis law is based on the principle of conservation of charge – charge cannot accumulate at a node in a steady-state circuit."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Power",
+    "question": "A circuit has $12\\text{ V}$ and draws $3\\text{ A}$. What is the power consumption?",
+    "options": [
+      "$36\\text{ W}$",
+      "$4\\text{ W}$",
+      "$15\\text{ W}$",
+      "$9\\text{ W}$"
+    ],
+    "answer": "$36\\text{ W}$",
+    "solution": "The power consumed in an electrical circuit can be calculated using the formula:\n\n$P = V \\times I$\n\nWhere $P$ is power in watts, $V$ is voltage in volts, and $I$ is current in amperes.\n\n$P = 12\\text{ V} \\times 3\\text{ A} = 36\\text{ W}$\n\nAlternatively, power can also be calculated using $P = I^2R$ or $P = \\frac{V^2}{R}$ if resistance is known."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Capacitors",
+    "question": "What happens to the voltage across a capacitor immediately after it is connected to a DC source?",
+    "options": [
+      "It rises exponentially",
+      "It drops exponentially",
+      "It remains constant",
+      "It oscillates"
+    ],
+    "answer": "It rises exponentially",
+    "solution": "When a capacitor is connected to a DC source through a resistor, the voltage across the capacitor rises exponentially according to the equation:\n\n$v(t) = V_s(1-e^{-t/\\tau})$\n\nWhere:\n- $v(t)$ is the capacitor voltage at time $t$\n- $V_s$ is the source voltage\n- $\\tau = RC$ is the time constant\n- $R$ is the resistance\n- $C$ is the capacitance\n\nInitially, the capacitor voltage is zero and increases exponentially, reaching approximately 63% of the source voltage after one time constant, and approaching the full source voltage as $t$ approaches infinity."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Inductors",
+    "question": "What does an inductor resist?",
+    "options": [
+      "Changes in current",
+      "Changes in voltage",
+      "DC current",
+      "AC voltage"
+    ],
+    "answer": "Changes in current",
+    "solution": "An inductor resists changes in current. This property is described by Faraday's Law, which for an inductor is expressed as:\n\n$v = L\\frac{di}{dt}$\n\nWhere:\n- $v$ is the voltage across the inductor\n- $L$ is the inductance in henries\n- $\\frac{di}{dt}$ is the rate of change of current with respect to time\n\nThis equation shows that the voltage across an inductor is proportional to how quickly the current through it is changing. When current through an inductor is constant (as in DC steady state), $\\frac{di}{dt} = 0$, so the voltage across it is zero, making it effectively a short circuit."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "RC Circuits",
+    "question": "The time constant of an RC circuit is:",
+    "options": [
+      "$R \\times C$",
+      "$R + C$",
+      "$\\frac{R}{C}$",
+      "$\\frac{C}{R}$"
+    ],
+    "answer": "$R \\times C$",
+    "solution": "The time constant of an RC circuit is given by:\n\n$\\tau = R \\times C$\n\nWhere:\n- $\\tau$ (tau) is the time constant in seconds\n- $R$ is the resistance in ohms\n- $C$ is the capacitance in farads\n\nThe time constant represents the time it takes for the capacitor to charge to approximately 63.2% of the final value during charging, or to discharge to approximately 36.8% of the initial value during discharging. After 5 time constants, the capacitor is considered fully charged or discharged (>99%)."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "AC Circuits",
+    "question": "What is the reactance of a $10\\text{ μF}$ capacitor at $50\\text{ Hz}$?",
+    "options": [
+      "$318.3\\text{ Ω}$",
+      "$3.14\\text{ Ω}$",
+      "$500\\text{ Ω}$",
+      "$0.5\\text{ Ω}$"
+    ],
+    "answer": "$318.3\\text{ Ω}$",
+    "solution": "Capacitive reactance ($X_C$) is calculated using the formula:\n\n$X_C = \\frac{1}{2\\pi fC}$\n\nWhere:\n- $X_C$ is the capacitive reactance in ohms\n- $f$ is the frequency in hertz\n- $C$ is the capacitance in farads\n\nSubstituting the given values:\n$X_C = \\frac{1}{2\\pi \\times 50\\text{ Hz} \\times 10 \\times 10^{-6}\\text{ F}}$\n$X_C = \\frac{1}{2\\pi \\times 50 \\times 10^{-5}}$\n$X_C = \\frac{1}{3.14159 \\times 10^{-3}}$\n$X_C \\approx 318.3\\text{ Ω}$\n\nThis reactance represents the opposition to AC current flow by a capacitor, which decreases as frequency increases."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Resonance",
+    "question": "At resonance in an RLC circuit:",
+    "options": [
+      "Inductive and capacitive reactances are equal",
+      "Current is maximum",
+      "Impedance is minimum",
+      "All of the above"
+    ],
+    "answer": "All of the above",
+    "solution": "At resonance in an RLC circuit, all of the following occur:\n\n1. Inductive reactance equals capacitive reactance: $X_L = X_C$\n\nSince $X_L = 2\\pi fL$ and $X_C = \\frac{1}{2\\pi fC}$, the resonant frequency is:\n$f_r = \\frac{1}{2\\pi\\sqrt{LC}}$\n\n2. The impedance is minimum and equals the resistance $R$, since the reactive components cancel out:\n$Z = \\sqrt{R^2 + (X_L - X_C)^2} = \\sqrt{R^2 + 0^2} = R$\n\n3. Current reaches its maximum value because impedance is at its minimum:\n$I = \\frac{V}{Z} = \\frac{V}{R}$\n\nThis makes resonant circuits useful for frequency selection in applications like radio tuning and filters."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Filters",
+    "question": "A high-pass filter allows:",
+    "options": [
+      "Frequencies above the cutoff frequency",
+      "Frequencies below the cutoff frequency",
+      "Only the cutoff frequency",
+      "No frequencies to pass"
+    ],
+    "answer": "Frequencies above the cutoff frequency",
+    "solution": "A high-pass filter attenuates signals with frequencies lower than the cutoff frequency ($f_c$), while allowing higher frequencies to pass through with minimal attenuation.\n\nFor a first-order RC high-pass filter, the cutoff frequency is given by:\n$f_c = \\frac{1}{2\\pi RC}$\n\nThe frequency response of a high-pass filter can be described by the transfer function:\n$H(f) = \\frac{j2\\pi f}{j2\\pi f + \\frac{1}{RC}}$\n\nThe magnitude response is:\n$|H(f)| = \\frac{f}{\\sqrt{f^2 + f_c^2}}$\n\nAt the cutoff frequency, the output power is 50% of the input power (-3 dB), and for $f \\gg f_c$, the filter approaches unity gain."
+  },
+  {
+    "subject": "Circuits",
+    "subtopic": "Transformers",
+    "question": "If a transformer has 100 turns in the primary and 50 turns in the secondary, and $220\\text{ V}$ is applied to the primary, what is the secondary voltage?",
+    "options": [
+      "$110\\text{ V}$",
+      "$440\\text{ V}$",
+      "$55\\text{ V}$",
+      "$22\\text{ V}$"
+    ],
+    "answer": "$110\\text{ V}$",
+    "solution": "In an ideal transformer, the relationship between primary and secondary voltages is directly proportional to the turns ratio:\n\n$\\frac{V_s}{V_p} = \\frac{N_s}{N_p}$\n\nWhere:\n- $V_s$ is the secondary voltage\n- $V_p$ is the primary voltage\n- $N_s$ is the number of turns in the secondary winding\n- $N_p$ is the number of turns in the primary winding\n\nRearranging to solve for the secondary voltage:\n$V_s = V_p \\times \\frac{N_s}{N_p} = 220\\text{ V} \\times \\frac{50}{100} = 220\\text{ V} \\times 0.5 = 110\\text{ V}$\n\nThis transformer is a step-down transformer, reducing the voltage by a factor of 2. In an ideal transformer, power is conserved, so the current in the secondary would be twice that in the primary."
   }
 ]

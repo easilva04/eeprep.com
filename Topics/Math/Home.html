@@ -59,12 +59,94 @@
     <script src="../../Config/Scripts/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-    
+    <!-- Added script for loading Math topics -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMathTopics();
+        });
+
+        async function loadMathTopics() {
+            try {
+                // Get the containers
+                const mathTopicsContainer = document.getElementById('math-topics-container');
+                const probstatsTopicsContainer = document.getElementById('probstats-topics-container');
+                
+                if (!mathTopicsContainer || !probstatsTopicsContainer) return;
+                
+                // Use the actual files we know exist (excluding Home.html)
+                const mathFiles = await fetchDirectoryFiles('.');
+                
+                // Render topics to their containers
+                renderTopics(mathFiles, mathTopicsContainer, '');
+                
+                // For now, hide the Probstats section if it's empty
+                const probstatsSection = probstatsTopicsContainer.closest('.content-section');
+                if (probstatsSection) {
+                    probstatsSection.style.display = 'none';
+                }
+                
+            } catch (error) {
+                console.error('Error loading math topics:', error);
+            }
+        }
+        
+        async function fetchDirectoryFiles(directory) {
+            // Return the actual files we know exist
+            if (directory === '.') {
+                return [
+                    'Calculus1.html', 
+                    'Calculus2.html', 
+                    'Calculus3.html', 
+                    'DifferentialEquations.html', 
+                    'LinearAlgebra.html', 
+                    'LinearSystems.html'
+                ];
+            }
+            return [];
+        }
+        
+        function renderTopics(topics, container, pathPrefix) {
+            if (topics.length === 0) {
+                container.innerHTML = '<p>No topics found.</p>';
+                return;
+            }
+            
+            const cardGrid = document.createElement('div');
+            cardGrid.className = 'card-grid';
+            
+            topics.forEach(filename => {
+                const topicName = formatTopicName(filename.replace('.html', ''));
+                const card = document.createElement('div');
+                card.className = 'related-topic-card';
+                
+                card.innerHTML = `
+                    <h3>${topicName}</h3>
+                    <p>Click to learn about ${topicName}</p>
+                    <a href="${pathPrefix}${filename}" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                `;
+                
+                cardGrid.appendChild(card);
+            });
+            
+            container.appendChild(cardGrid);
+        }
+        
+        // Helper function to format topic names nicely
+        function formatTopicName(name) {
+            // Handle specific cases like "Calculus1" to "Calculus I"
+            if (name === 'Calculus1') return 'Calculus I';
+            if (name === 'Calculus2') return 'Calculus II';
+            if (name === 'Calculus3') return 'Calculus III';
+            
+            // For other cases, add spaces before capital letters
+            return name.replace(/([A-Z])/g, ' $1').trim();
+        }
+    </script>
     
     <!-- CUSTOMIZE: Update title, description, and keywords with your topic information -->
-    <title>EE Prep - [Topic Name] | Electrical Engineering</title>
-    <meta name="description" content="Learn about [Topic Name] in electrical engineering. Comprehensive explanations, examples, and practice problems.">
-    <meta name="keywords" content="[Topic Name], Electrical Engineering, EE Prep, Study Guide">
+    <title>EE Prep - Mathematics | Electrical Engineering</title>
+    <meta name="description" content="Learn about Mathematics in electrical engineering. Comprehensive explanations, examples, and practice problems.">
+    <meta name="keywords" content="Mathematics, Electrical Engineering, EE Prep, Study Guide, Math, Probability, Statistics">
     <meta name="author" content="EE Prep Team">
     <meta name="robots" content="index, follow">
     
@@ -80,128 +162,78 @@
         <section class="content-section">
             <div class="content-container">
                 <div class="section-header">
-                    <h1 class="topic-title">[Topic Name]</h1>
-                    <p class="topic-description">[Brief description of this topic and its importance in electrical engineering]</p>
+                    <h1 class="topic-title">Mathematics</h1>
+                    <p class="topic-description">Mathematical concepts and methods essential for electrical engineering</p>
                 </div>
                 
                 <!-- CUSTOMIZE BREADCRUMBS: Update category and topic name, adjust relative paths based on folder depth -->
                 <div class="topic-breadcrumbs">
-                    <a href="../../../../index.html">Home</a> &gt; 
-                    <a href="../../../../Topics.html">Topics</a> &gt; 
-                    <span>[Topic Category]</span> &gt; 
-                    <span>[Topic Name]</span>
+                    <a href="../../index.html">Home</a> &gt; 
+                    <a href="../../Topics.html">Topics</a> &gt; 
+                    <span>Mathematics</span>
                 </div>
                 
                 <!-- REPLACE: Add a comprehensive overview of your topic -->
                 <div class="topic-overview">
                     <h2>Overview</h2>
-                    <p>[Detailed overview of the topic - replace with actual content]</p>
+                    <p>Mathematics serves as the foundation for electrical engineering, providing the tools and methods necessary for analyzing circuits, signals, systems, and more. This section covers essential mathematical concepts from algebra and calculus to probability and statistics.</p>
                 </div>
             </div>
         </section>
 
-        <!-- CUSTOMIZE: Add real concepts with explanations and examples -->
+        <!-- Math Topics Section -->
         <section class="content-section">
             <div class="content-container">
-                <h2>Key Concepts</h2>
+                <h2>Core Mathematics</h2>
+                <p>Explore fundamental mathematical concepts used in electrical engineering:</p>
                 
-                <!-- REPLACE: Add actual concept headings and explanations -->
-                <div class="concept-section">
-                    <h3>[Concept 1]</h3>
-                    <p>[Explanation of concept 1]</p>
-                    <!-- OPTIONAL: Add formulas using MathJax (enclosed in $$) for equations -->
-                    <!-- Example: $$E = mc^2$$ -->
-                </div>
-                
-                <div class="concept-section">
-                    <h3>[Concept 2]</h3>
-                    <p>[Explanation of concept 2]</p>
-                    <!-- OPTIONAL: Add images using <img src="relative/path/to/image.jpg" alt="Description"> -->
-                </div>
-                
-                <!-- ADD MORE: Create additional concept sections as needed following the same pattern -->
+                <!-- Container for dynamically loaded math topics -->
+                <div id="math-topics-container"></div>
             </div>
         </section>
 
-        <!-- CUSTOMIZE: Replace with actual worked examples -->
+        <!-- Probability and Statistics Section -->
         <section class="content-section alt-section">
             <div class="content-container">
-                <h2>Examples</h2>
+                <h2>Probability and Statistics</h2>
+                <p>Essential statistical methods and probability concepts for signal analysis, communications, and more:</p>
                 
-                <!-- REPLACE: Add a complete worked example with problem statement and solution -->
-                <div class="example-box">
-                    <h3>Example 1: [Brief Title]</h3>
-                    <div class="example-problem">
-                        <p>[Problem statement]</p>
-                    </div>
-                    <div class="example-solution">
-                        <h4>Solution:</h4>
-                        <p>[Step-by-step solution]</p>
-                        <!-- OPTIONAL: Include equations using MathJax: $$y = mx + b$$ -->
-                    </div>
-                </div>
-                
-                <!-- ADD MORE: Create additional examples following the same pattern -->
+                <!-- Container for dynamically loaded probability and statistics topics -->
+                <div id="probstats-topics-container"></div>
             </div>
         </section>
 
         <!-- CUSTOMIZE: Link to relevant existing topics -->
         <section class="content-section">
             <div class="content-container">
-                <h2>Related Topics</h2>
+                <h2>Related Areas</h2>
                 <div class="card-grid">
-                    <!-- REPLACE: Add actual related topic with proper relative link -->
                     <div class="related-topic-card">
-                        <h3>[Related Topic 1]</h3>
-                        <p>[Brief description]</p>
-                        <!-- UPDATE PATH: Point to an actual topic page, considering folder depth -->
-                        <a href="[relative path to related topic]" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                        <h3>Signals and Systems</h3>
+                        <p>Mathematical foundations for analyzing signals and systems</p>
+                        <a href="../Signals/Home.html" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
                     </div>
                     
-                    <!-- REPLACE: Add another related topic with proper relative link -->
                     <div class="related-topic-card">
-                        <h3>[Related Topic 2]</h3>
-                        <p>[Brief description]</p>
-                        <!-- UPDATE PATH: Point to an actual topic page, considering folder depth -->
-                        <a href="[relative path to related topic]" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                        <h3>Circuit Analysis</h3>
+                        <p>Mathematical methods for circuit analysis and design</p>
+                        <a href="../Circuits/Home.html" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
                     </div>
-                    
-                    <!-- ADD MORE: Create additional related topic cards as needed -->
                 </div>
             </div>
         </section>
 
-        <!-- CUSTOMIZE: Add real practice problems with solutions -->
+        <!-- Resources Section -->
         <section class="content-section alt-section">
-            <div class="content-container">
-                <div class="section-header">
-                    <h2>Practice Problems</h2>
-                </div>
-                <p>Test your understanding of Circuit concepts with these practice problems:</p>
-                
-                <!-- Replace static problems with dynamically loaded problems -->
-                <div id="practice-problems-container" class="practice-problems" data-json-path="Topics/Circuits/questions.json" data-limit="3">
-                    <!-- Problems will be loaded here dynamically -->
-                </div>
-                
-                <!-- CUSTOMIZE: Add link to more practice problems if available -->
-                <div class="more-practice" style="margin-top: 2rem; text-align: center;">
-                    <a href="CircuitProblems.html" class="btn btn-primary">
-                        <i class="fas fa-tasks"></i> More Practice Problems
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CUSTOMIZE: Add relevant resources for further study -->
-        <section class="content-section">
             <div class="content-container">
                 <h2>Additional Resources</h2>
                 <ul class="resources-list">
-                    <!-- REPLACE: Add actual books, videos, and website recommendations -->
-                    <li><strong>Books:</strong> [Recommended textbooks or resources]</li>
-                    <li><strong>Videos:</strong> [Recommended videos]</li>
-                    <li><strong>Websites:</strong> [Useful external websites]</li>
+                    <li><strong>Online Resources:</strong>
+                        <ul>
+                            <li><a href="https://www.khanacademy.org/math" target="_blank">Khan Academy Mathematics</a></li>
+                            <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank">MIT OpenCourseWare - Mathematics</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </section>

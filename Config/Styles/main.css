@@ -30,16 +30,26 @@
     --chat-user-bg-light: #ffffff;
     --chat-ai-bg-light: #f7fafc;
     
-    /* Dark theme colors */
-    --bg-dark: #1a202c;
-    --text-dark: #f7fafc;
-    --sidebar-bg-dark: #0f172a;
-    --sidebar-text-dark: #f7fafc;
-    --card-bg-dark: #2d3748;
-    --border-dark: #4a5568;
-    --chat-user-bg-dark: #1a202c;
-    --chat-ai-bg-dark: #2d3748;
-    --title-text-dark: #e2e8f0;
+    /* Dark theme colors - Serene */
+    --bg-dark: #1a2030; /* Softer navy-black */
+    --text-dark: #e6edf3; /* Softer white text */
+    --sidebar-bg-dark: #0f1a2a; /* Deep serene blue */
+    --sidebar-text-dark: #f0f4f8; /* Gentle white */
+    --card-bg-dark: #232a3b; /* Muted blue-gray */
+    --border-dark: #3d4663; /* Softer borders */
+    --chat-user-bg-dark: #1e2433; /* Subtle blue tint */
+    --chat-ai-bg-dark: #283044; /* Subtle warm blue */
+    --title-text-dark: #f0f7ff; /* Soft blue-white */
+    
+    /* Alternative dark accents - Serene palette */
+    --primary-color-dark: #5e9de6; /* Serene blue */
+    --accent-color-dark: #68d5ca; /* Calm teal */
+    --link-color-dark: #7fb3ec; /* Gentle blue link */
+    --muted-text-dark: #a8b9d0; /* Soft blue-gray */
+    
+    /* Dark mode shadows */
+    --shadow-dark: 0 4px 15px rgba(0, 10, 32, 0.15);
+    --shadow-lg-dark: 0 8px 30px rgba(0, 10, 32, 0.2);
     
     /* Default theme */
     --bg: var(--bg-light);
@@ -97,7 +107,7 @@
     --content-padding-mobile: 1rem;
 }
 
-/* Dark theme settings */
+/* Dark theme settings - Enhanced & Serene */
 [data-theme="dark"] {
     --bg: var(--bg-dark);
     --text: var(--text-dark);
@@ -108,6 +118,15 @@
     --chat-user-bg: var(--chat-user-bg-dark);
     --chat-ai-bg: var(--chat-ai-bg-dark);
     --title-text: var(--title-text-dark);
+    --primary-color: var(--primary-color-dark);
+    --accent-color: var(--accent-color-dark);
+    --shadow: var(--shadow-dark);
+    --shadow-lg: var(--shadow-lg-dark);
+}
+
+/* Dark mode text treatments */
+[data-theme="dark"] {
+    color-scheme: dark;
 }
 
 [data-theme="dark"] h1, 
@@ -116,7 +135,214 @@
 [data-theme="dark"] h4, 
 [data-theme="dark"] h5, 
 [data-theme="dark"] h6 {
+    color: var(--title-text-dark);
+}
+
+[data-theme="dark"] p {
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] a:not(.btn) {
+    color: var(--link-color-dark);
+}
+
+/* Dark mode UI components - Serene styling */
+[data-theme="dark"] .card {
+    background: var(--card-bg-dark);
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 20px rgba(0, 10, 32, 0.18);
+    backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .feature-card {
+    background: linear-gradient(145deg, rgba(35, 42, 59, 0.8), rgba(30, 36, 51, 1));
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .feature-card::before {
+    background: linear-gradient(to right, var(--primary-color-dark), var(--accent-color-dark));
+}
+
+[data-theme="dark"] .site-header {
+    background: rgba(26, 32, 48, 0.75);
+    border-bottom: 1px solid rgba(61, 70, 99, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .section-header h2 {
+    color: var(--title-text-dark);
+    background: linear-gradient(to right, var(--primary-color-dark), var(--accent-color-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .section-header h2::after {
+    background: linear-gradient(to right, var(--primary-color-dark), var(--accent-color-dark));
+}
+
+[data-theme="dark"] .hero-title .accent {
+    background: linear-gradient(to right, var(--primary-color-dark), var(--accent-color-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .hero-title .accent::after {
+    background: linear-gradient(to right, var(--primary-color-dark), var(--accent-color-dark));
+}
+
+[data-theme="dark"] .hero-section::before {
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(94, 157, 230, 0.08) 0%, transparent 70%),
+        radial-gradient(circle at 90% 80%, rgba(104, 213, 202, 0.08) 0%, transparent 60%);
+}
+
+[data-theme="dark"] .alt-section {
+    background: linear-gradient(to right, rgba(94, 157, 230, 0.03), rgba(26, 32, 48, 0));
+}
+
+/* New serene styles for dark mode */
+[data-theme="dark"] body {
+    background-image: radial-gradient(circle at 80% 20%, rgba(94, 157, 230, 0.03) 0%, transparent 25%),
+                      radial-gradient(circle at 20% 80%, rgba(104, 213, 202, 0.03) 0%, transparent 25%);
+}
+
+[data-theme="dark"] .footer-nav a {
+    color: rgba(240, 244, 248, 0.7);
+}
+
+[data-theme="dark"] .footer-nav a:hover {
+    color: var(--accent-color-dark);
+}
+
+[data-theme="dark"] .footer-social a {
+    background: rgba(240, 244, 248, 0.08);
+}
+
+[data-theme="dark"] .footer-social a:hover {
+    background: rgba(94, 157, 230, 0.3);
+}
+
+[data-theme="dark"] .modern-logo {
+    box-shadow: 0 2px 15px rgba(94, 157, 230, 0.2);
+}
+
+[data-theme="dark"] .card-icon {
+    background: linear-gradient(135deg, var(--primary-color-dark), rgba(94, 157, 230, 0.8));
+}
+
+[data-theme="dark"] .btn-primary {
+    background: linear-gradient(to right, var(--primary-color-dark), rgba(104, 213, 202, 0.9));
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background: linear-gradient(to right, rgba(94, 157, 230, 0.9), var(--accent-color-dark));
+}
+
+[data-theme="dark"] .btn-outline {
+    border-color: rgba(94, 157, 230, 0.6);
+    color: var(--primary-color-dark);
+}
+
+[data-theme="dark"] .cta-section {
+    background: linear-gradient(135deg, #1a2642, #1a3449);
+}
+
+[data-theme="dark"] .cta-section::before {
+    background: radial-gradient(circle, rgba(94, 157, 230, 0.15), transparent 70%);
+}
+
+[data-theme="dark"] .hero-image::after {
+    background: linear-gradient(to right, rgba(94, 157, 230, 0.15), rgba(104, 213, 202, 0.15));
+}
+
+/* Subtle text effect for dark mode */
+[data-theme="dark"] .hero-subtitle {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Add subtle frost effect to certain containers in dark mode */
+[data-theme="dark"] .content-container {
+    background: linear-gradient(180deg, rgba(35, 42, 59, 0.01), rgba(26, 32, 48, 0));
+}
+
+/* Dark mode refinements - Additional polish */
+[data-theme="dark"] .view-all {
+    color: var(--primary-color-dark);
+}
+
+[data-theme="dark"] .view-all:hover {
+    color: var(--accent-color-dark);
+}
+
+[data-theme="dark"] .card-link {
+    color: var(--primary-color-dark);
+}
+
+[data-theme="dark"] .card-link:hover {
+    color: var(--accent-color-dark);
+}
+
+/* Enhance dark mode header navigation */
+[data-theme="dark"] .header-nav-item::after {
+    background: linear-gradient(to right, var(--primary-color-dark), var(--accent-color-dark));
+}
+
+[data-theme="dark"] .header-nav-item:hover {
+    color: var(--primary-color-dark);
+}
+
+/* Dark mode specific scrollbar */
+[data-theme="dark"] {
+    scrollbar-color: var(--border-dark) var(--bg-dark);
+}
+
+[data-theme="dark"]::-webkit-scrollbar {
+    width: 14px;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+    border: 3px solid var(--bg-dark);
+    border-radius: 10px;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color-dark);
+}
+
+/* Dark mode form elements */
+[data-theme="dark"] input, 
+[data-theme="dark"] textarea, 
+[data-theme="dark"] select {
+    background-color: rgba(35, 42, 59, 0.8);
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] input:focus, 
+[data-theme="dark"] textarea:focus, 
+[data-theme="dark"] select:focus {
+    border-color: var(--primary-color-dark);
+    box-shadow: 0 0 0 2px rgba(94, 157, 230, 0.2);
+}
+
+/* Dark mode code snippets */
+[data-theme="dark"] pre, 
+[data-theme="dark"] code {
+    background-color: #1d2433;
+    border-color: #2c3547;
     color: #e2e8f0;
+}
+
+/* Ensure animations work well in dark mode */
+[data-theme="dark"] .hero-image img {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
 }
 
 /* ------------ Content Layout ------------ */
@@ -394,151 +620,6 @@ body.sidebar-collapsed .site-footer {
 
 .section-header.centered h2::after {
     left: 50%;
-    transform: translateX(-50%);
-}
-
-.section-header.centered {
-    flex-direction: column;
-    text-align: center;
-}
-
-.section-subtitle {
-    font-size: 1.125rem;
-    margin-top: 0.5rem;
-    opacity: 0.8;
-}
-
-.view-all {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-}
-
-.view-all:hover {
-    color: var(--primary-hover);
-    transform: translateX(3px);
-}
-
-/* ------------ Hero Section ------------ */
-.hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-20) 0;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: 
-        radial-gradient(circle at 10% 20%, rgba(26, 54, 93, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 90% 80%, rgba(56, 178, 172, 0.08) 0%, transparent 50%);
-    z-index: -1;
-}
-
-.hero-content {
-    max-width: 600px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-title {
-    font-size: var(--font-5xl);
-    font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: var(--space-6);
-    position: relative;
-}
-
-.hero-title-gradient {
-    background: linear-gradient(to right, #2d3748, var(--primary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-}
-
-.hero-title .accent {
-    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    position: relative;
-    display: inline-block;
-}
-
-.hero-title .accent::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-    border-radius: var(--radius-full);
-    opacity: 0.7;
-}
-
-.hero-subtitle {
-    font-size: var(--font-xl);
-    margin-bottom: var(--space-8);
-    color: var(--text);
-    opacity: 0.9;
-    line-height: 1.5;
-}
-
-.hero-actions {
-    display: flex;
-    gap: var(--space-4);
-}
-
-.hero-image {
-    position: relative;
-    max-width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
-    animation: float 5s ease-in-out infinite;
-}
-
-.hero-image::after {
-    content: '';
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(to right, rgba(26, 54, 93, 0.2), rgba(56, 178, 172, 0.2));
-    border-radius: 50%;
-    filter: blur(50px);
-    z-index: -1;
-    animation: pulse 8s infinite alternate;
-}
-
-/* ------------ Card Grid & Feature Cards ------------ */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
     max-width: 100%;
     box-sizing: border-box;
 }

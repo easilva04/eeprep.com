@@ -4,22 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search - EEPrep</title>
+    <!-- 
+      Main stylesheet for consistent styling with the rest of the site
+      Contains typography, color schemes, and responsive design rules
+    -->
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
+    <!-- Main content container -->
     <div class="main-content">
+        <!-- Page header -->
         <header>
             <h1>Search Results</h1>
         </header>
+        <!-- Main search area -->
         <main>
+            <!-- 
+              Search wrapper contains:
+              - Search input field
+              - Search button
+              - Results container for dynamic content
+            -->
             <div class="search-wrapper">
+                <!-- Search input with placeholder -->
                 <input type="text" id="search-input" placeholder="Search...">
+                <!-- Search trigger button -->
                 <button id="search-button">Search</button>
+                <!-- 
+                  Search results container 
+                  This is populated dynamically by search.js
+                -->
                 <div id="search-results"></div>
             </div>
         </main>
     </div>
+    <!-- 
+      DOMPurify library for sanitizing search results
+      Prevents XSS attacks from unsanitized content
+    -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
+    <!-- 
+      Main search functionality script
+      Handles:
+      - Search execution
+      - Results fetching
+      - Results rendering and sanitization
+    -->
     <script src="../js/search.js"></script>
 </body>
 </html>

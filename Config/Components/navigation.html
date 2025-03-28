@@ -1,39 +1,63 @@
 <!-- 
-This file was split into separate components:
-- sidebar.html: Contains the sidebar navigation
-- footer.html: Contains the site footer
-
-To include these components in your pages, use:
-<div id="sidebar-container"></div>
-<div id="footer-container"></div>
-
-And load them with JavaScript:
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof initApp !== 'function') {
-        // Load componentLoader.js if it hasn't been loaded yet
-        const script = document.createElement('script');
-        script.src = 'Config/Scripts/componentLoader.js';
-        document.head.appendChild(script);
-    } else {
-        // If already loaded, initialize the app
-        initApp();
-    }
-});
+  Navigation Component Loader
+  
+  This file serves as a bridge to the modular component system.
+  It was split into separate components for better maintenance:
+  - sidebar.html: Contains the sidebar navigation structure
+  - footer.html: Contains the site footer
+  
+  This approach enables:
+  - Better code organization and maintenance
+  - Independent updates to each component
+  - Consistent navigation and footer across the site
+  - Reduced duplication of code
+  
+  Usage:
+  Include this file in your pages or directly include the individual components:
+  <div id="sidebar-container"></div>
+  <div id="footer-container"></div>
 -->
 
+<!-- Container for the sidebar component -->
 <div id="sidebar-container"></div>
+
+<!-- Container for the footer component -->
 <div id="footer-container"></div>
 
 <script>
-// This script ensures the components are loaded correctly
+/**
+ * Component Initialization Script
+ * 
+ * This script ensures the componentLoader.js is loaded properly
+ * and handles path calculation based on the current page depth
+ * to correctly resolve relative paths to components.
+ * 
+ * Features:
+ * - Automatic path detection based on URL
+ * - Dynamic script loading if not already present
+ * - Initialization of components after loading
+ */
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if component loader is already available
     if (typeof initApp !== 'function') {
-        // Load componentLoader.js if it hasn't been loaded yet
+        // Calculate relative path based on current page depth
+        // This ensures components can be loaded from any directory level
+        const pathDepth = window.location.pathname.split('/').filter(Boolean).length;
+        const basePath = pathDepth > 0 ? '../'.repeat(pathDepth) : '';
+        
+        // Create script element to load componentLoader.js
         const script = document.createElement('script');
-        script.src = 'Config/Scripts/componentLoader.js';
+        script.src = basePath + 'Config/Scripts/componentLoader.js';
         document.head.appendChild(script);
+        
+        // Initialize app once script has loaded
+        script.onload = function() {
+            if (typeof initApp === 'function') {
+                initApp();
+            }
+        };
     } else {
-        // If already loaded, initialize the app
+        // If componentLoader.js is already loaded, just initialize
         initApp();
     }
 });

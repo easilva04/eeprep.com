@@ -61,6 +61,22 @@ function initQuestions(topic) {
  * Load questions from the server
  */
 function loadQuestions(topic) {
+    // If a specific file path is provided, use that directly
+    if (topic.includes('/')) {
+        return fetch(topic)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load questions: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error("Error fetching questions:", error);
+                throw error;
+            });
+    }
+    
+    // Otherwise use the traditional topic-based path
     return fetch(`../Questions/${topic}.json`)
         .then(response => {
             if (!response.ok) {
@@ -77,6 +93,139 @@ function loadQuestions(topic) {
                 return loadQuestions('general');
             }
             throw error;
+        });
+}
+
+/**
+ * Load questions from a specific file path (new function)
+ * @param {string} filePath - Path to the JSON file containing questions
+ */
+function loadQuestionsFromFile(filePath) {
+    const resolvedPath = resolveDataPath ? resolveDataPath(filePath) : filePath;
+    
+    showLoadingState();
+    
+    return fetch(resolvedPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load questions: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Store questions
+            currentQuestions = data;
+            
+            // Reset user answers
+            userAnswers = Array(currentQuestions.length).fill(null);
+            
+            // Display questions
+            displayQuestions(currentQuestions);
+            
+            // Hide loading state
+            hideLoadingState();
+            
+            return data;
+        })
+        .catch(error => {
+            console.error("Error loading questions from file:", error);
+            showError("Failed to load questions. Please try again later.");
+            hideLoadingState();
+            throw error;
+        });
+}
+
+/**
+ * Display topic-specific practice problems from JSON file
+ * @param {string} containerId - ID of the container to display questions in
+ * @param {string} jsonPath - Path to the JSON file with questions
+ * @param {number} limit - Maximum number of questions to display (optional)
+ */
+function displayTopicProblems(containerId, jsonPath, limit = 3) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    // Show loading indicator
+    container.innerHTML = `
+        <div class="loading-questions">
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+            <p>Loading practice problems...</p>
+        </div>
+    `;
+    
+    // Resolve the file path
+    const resolvedPath = resolveDataPath ? resolveDataPath(jsonPath) : jsonPath;
+    
+    // Fetch the questions
+    fetch(resolvedPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load questions: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(questions => {
+            // Clear loading indicator
+            container.innerHTML = '';
+            
+            // Get a subset of questions (limited by the limit parameter)
+            const displayQuestions = questions.slice(0, limit);
+            
+            // Create HTML for each question
+            displayQuestions.forEach((question, index) => {
+                const problemDiv = document.createElement('div');
+                problemDiv.className = 'practice-problem';
+                
+                // Create the problem HTML
+                problemDiv.innerHTML = `
+                    <h3>Problem ${index + 1}: ${question.subtopic}</h3>
+                    <div class="problem-content">
+                        <p>${question.question}</p>
+                        ${question.options ? 
+                            `<ul class="problem-options">
+                                ${question.options.map(opt => `<li>${opt}</li>`).join('')}
+                             </ul>` 
+                            : ''}
+                    </div>
+                    <button class="btn btn-sm btn-outline toggle-solution">Show Solution</button>
+                    <div class="problem-solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <p>${question.solution}</p>
+                        ${question.answer ? `<p><strong>Answer:</strong> ${question.answer}</p>` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(problemDiv);
+            });
+            
+            // Add event listeners to toggle solution buttons
+            container.querySelectorAll('.toggle-solution').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Find the solution div that follows this button
+                    const solution = this.nextElementSibling;
+                    
+                    // Toggle visibility
+                    if (solution.style.display === 'none') {
+                        solution.style.display = 'block';
+                        this.textContent = 'Hide Solution';
+                    } else {
+                        solution.style.display = 'none';
+                        this.textContent = 'Show Solution';
+                    }
+                });
+            });
+        })
+        .catch(error => {
+            console.error("Error loading topic problems:", error);
+            container.innerHTML = `
+                <div class="error-message">
+                    <p>Failed to load practice problems. Please try again later.</p>
+                </div>
+            `;
         });
 }
 
@@ -333,6 +482,17 @@ function setupEventListeners() {
     const newQuestionsBtn = document.getElementById('new-questions');
     if (newQuestionsBtn) {
         newQuestionsBtn.addEventListener('click', generateNewQuestions);
+    }
+    
+    // Check if we should automatically load problems from a file
+    const problemsContainer = document.getElementById('practice-problems-container');
+    if (problemsContainer) {
+        const jsonPath = problemsContainer.dataset.jsonPath;
+        const limit = parseInt(problemsContainer.dataset.limit || '3');
+        
+        if (jsonPath) {
+            displayTopicProblems('practice-problems-container', jsonPath, limit);
+        }
     }
 }
 

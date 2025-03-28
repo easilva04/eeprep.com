@@ -1,27 +1,15 @@
 [
   {
-    "subject": "",
-    "subtopic": "",
-    "question": "",
+    "subject": "SUBJECT_NAME",
+    "subtopic": "SUBTOPIC_NAME",
+    "question": "QUESTION_TEXT",
     "options": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "OPTION_1",
+      "OPTION_2",
+      "OPTION_3",
+      "OPTION_4"
     ],
-    "answer": ""
-  },
-  {
-    "subject": "",
-    "subtopic": "",
-    "question": "",
-    "options": [
-      "",
-      "",
-      "",
-      ""
-    ],
-    "answer": ""
+    "answer": "CORRECT_OPTION",
+    "solution": "DETAILED_SOLUTION_TEXT"
   }
 ]

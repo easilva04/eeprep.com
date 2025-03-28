@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+        ==========================================================================
+        TEMPLATE REMOVAL:
+        - Delete these instructions when your content is complete
+        ==========================================================================
+    -->
+<head>
+    <!-- IMPORTANT: DO NOT MODIFY or REORDER these meta tags and resource links -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon and app icons - DO NOT CHANGE -->
+    <link rel="icon" href="../../../Config/Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Config/Assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../Config/Assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../Config/Assets/images/favicon-16x16.png">
+    <link rel="manifest" href="../../../Config/Assets/images/site.webmanifest">
+    <!-- Core stylesheets - DO NOT MODIFY -->
+    <link rel="stylesheet" href="../../../Config/Styles/main.css">
+    <link rel="stylesheet" href="../../../Config/Styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Essential scripts - DO NOT REMOVE OR REORDER -->
+    <script src="../../../Config/Scripts/backend.js"></script>
+    <script src="../../../Config/Scripts/componentLoader.js"></script>
+    <script src="../../../Config/Scripts/themeToggle.js"></script>
+    <script src="../../../Config/Scripts/search.js"></script>
+
+    <!-- MathJax Configuration - DO NOT MODIFY -->
+    <script src="../../../Config/Scripts/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    
+    
+    <!-- Updated title, description, and keywords for Probability and Statistics -->
+    <title>EE Prep - Probability and Statistics | Electrical Engineering</title>
+    <meta name="description" content="Learn about Probability and Statistics in electrical engineering. Comprehensive explanations, examples, and practice problems for engineering applications.">
+    <meta name="keywords" content="Probability, Statistics, Random Variables, Distributions, Confidence Intervals, Hypothesis Testing, Electrical Engineering, EE Prep, Study Guide">
+    <meta name="author" content="EE Prep Team">
+    <meta name="robots" content="index, follow">
+    
+</head>
+
+<body class="theme-transition">
+    <!-- Navigation components will be loaded here - DO NOT MODIFY THIS DIV -->
+    <div id="sidebar-container" class="sidebar"></div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Topic header section with proper content -->
+        <section class="content-section">
+            <div class="content-container">
+                <div class="section-header">
+                    <h1 class="topic-title">Probability and Statistics</h1>
+                    <p class="topic-description">Essential mathematical tools for analyzing uncertainty, variability, and making data-driven decisions in electrical engineering applications.</p>
+                </div>
+                
+                <!-- Fixed breadcrumb navigation paths -->
+                <div class="topic-breadcrumbs">
+                    <a href="../../../index.html">Home</a> &gt; 
+                    <a href="../../../Topics.html">Topics</a> &gt; 
+                    <span>Mathematics</span> &gt; 
+                    <span>Probability and Statistics</span>
+                </div>
+                
+                <!-- Updated overview with actual content -->
+                <div class="topic-overview">
+                    <h2>Overview</h2>
+                    <p>Probability and statistics form the foundation for understanding uncertainty and variability in engineering systems. These mathematical tools enable engineers to analyze data, make predictions, and design systems that operate reliably under unpredictable conditions. In electrical engineering, applications range from signal processing and communication systems to reliability engineering and quality control.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key concepts section with actual content -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>Key Concepts</h2>
+                
+                <div class="concept-section">
+                    <h3>Probability Fundamentals</h3>
+                    <p>Probability theory provides the mathematical framework for quantifying uncertainty. Key principles include:</p>
+                    <ul>
+                        <li><strong>Sample Space (Ω):</strong> The set of all possible outcomes of an experiment</li>
+                        <li><strong>Events:</strong> Subsets of the sample space</li>
+                        <li><strong>Probability Axioms:</strong> Basic rules that define a valid probability measure</li>
+                        <li><strong>Conditional Probability:</strong> The probability of an event given that another event has occurred</li>
+                    </ul>
+                    <p>The probability of an event A is denoted as P(A), where \(0 \leq P(A) \leq 1\).</p>
+                </div>
+                
+                <div class="concept-section">
+                    <h3>Random Variables and Distributions</h3>
+                    <p>Random variables map outcomes from a sample space to numerical values. They can be:</p>
+                    <ul>
+                        <li><strong>Discrete:</strong> Taking on countable values (e.g., number of component failures)</li>
+                        <li><strong>Continuous:</strong> Taking on values in a continuous range (e.g., voltage measurement)</li>
+                    </ul>
+                    <p>Common probability distributions in electrical engineering include:</p>
+                    <ul>
+                        <li><strong>Binomial Distribution:</strong> Models number of successes in n independent trials</li>
+                        <li><strong>Poisson Distribution:</strong> Models number of events in a fixed interval</li>
+                        <li><strong>Normal Distribution:</strong> Describes many natural phenomena and is crucial in signal processing</li>
+                        <li><strong>Exponential Distribution:</strong> Often used to model time between failures</li>
+                    </ul>
+                    <p>The normal distribution is defined by the probability density function:</p>
+                    <p>$$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$</p>
+                    <p>where \(\mu\) is the mean and \(\sigma\) is the standard deviation.</p>
+                </div>
+                
+                <div class="concept-section">
+                    <h3>Statistical Inference</h3>
+                    <p>Statistical inference involves drawing conclusions about populations based on sample data:</p>
+                    <ul>
+                        <li><strong>Point Estimation:</strong> Using sample statistics to estimate population parameters</li>
+                        <li><strong>Confidence Intervals:</strong> Ranges that likely contain the true parameter value</li>
+                        <li><strong>Hypothesis Testing:</strong> Evaluating claims about population parameters</li>
+                    </ul>
+                    <p>A 95% confidence interval for a population mean with known variance is given by:</p>
+                    <p>$$\bar{x} \pm 1.96 \frac{\sigma}{\sqrt{n}}$$</p>
+                    <p>where \(\bar{x}\) is the sample mean, \(\sigma\) is the population standard deviation, and \(n\) is the sample size.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples section with actual worked examples -->
+        <section class="content-section alt-section">
+            <div class="content-container">
+                <h2>Examples</h2>
+                
+                <div class="example-box">
+                    <h3>Example 1: Reliability Calculation</h3>
+                    <div class="example-problem">
+                        <p>A communication system has three identical components connected in series, each with a reliability of 0.95 (probability of not failing). What is the overall system reliability?</p>
+                    </div>
+                    <div class="example-solution">
+                        <h4>Solution:</h4>
+                        <p>In a series configuration, all components must function for the system to work. Therefore, the system reliability is the product of the individual component reliabilities:</p>
+                        <p>$$R_{system} = R_1 \times R_2 \times R_3 = 0.95 \times 0.95 \times 0.95 = 0.95^3 = 0.857375$$</p>
+                        <p>The overall system reliability is approximately 0.857 or 85.7%.</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Example 2: Confidence Interval for Signal-to-Noise Ratio</h3>
+                    <div class="example-problem">
+                        <p>An engineer measures the signal-to-noise ratio (SNR) of a communication channel 25 times and calculates a sample mean of 18 dB with a sample standard deviation of 2.5 dB. Calculate a 95% confidence interval for the true mean SNR.</p>
+                    </div>
+                    <div class="example-solution">
+                        <h4>Solution:</h4>
+                        <p>For a sample size less than 30 with unknown population standard deviation, we use the t-distribution. For a 95% confidence level with 24 degrees of freedom, the critical t-value is approximately 2.064.</p>
+                        <p>The formula for the confidence interval is:</p>
+                        <p>$$\bar{x} \pm t_{\alpha/2} \frac{s}{\sqrt{n}}$$</p>
+                        <p>Substituting our values:</p>
+                        <p>$$18 \pm 2.064 \times \frac{2.5}{\sqrt{25}} = 18 \pm 2.064 \times 0.5 = 18 \pm 1.032$$</p>
+                        <p>Therefore, the 95% confidence interval for the true mean SNR is (16.97 dB, 19.03 dB).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related topics section with actual links -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>Related Topics</h2>
+                <div class="card-grid">
+                    <div class="related-topic-card">
+                        <h3>Signal Processing</h3>
+                        <p>Explore how probability and statistics form the foundation of signal processing techniques.</p>
+                        <a href="../../Signals/Home.html" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="related-topic-card">
+                        <h3>Communications Systems</h3>
+                        <p>Learn how statistical tools are used to analyze and design reliable communication systems.</p>
+                        <a href="../../Communications/Home.html" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="related-topic-card">
+                        <h3>Linear Algebra</h3>
+                        <p>Understand the mathematical foundation that complements statistical analysis in engineering.</p>
+                        <a href="../LinearAlgebra.html" class="card-link">View topic <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice problems section with updated content -->
+        <section class="content-section alt-section">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Practice Problems</h2>
+                </div>
+                <p>Test your understanding of Probability and Statistics concepts with these practice problems:</p>
+                
+                <!-- Updated JSON path for ProbStats questions -->
+                <div id="practice-problems-container" class="practice-problems" data-json-path="Topics/Math/ProbStats/questions.json" data-limit="3">
+                    <!-- Problems will be loaded here dynamically -->
+                </div>
+                
+                <!-- Updated link to more practice problems -->
+                <div class="more-practice" style="margin-top: 2rem; text-align: center;">
+                    <a href="Problems.html" class="btn btn-primary">
+                        <i class="fas fa-tasks"></i> More Practice Problems
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional resources section with actual content -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>Additional Resources</h2>
+                <ul class="resources-list">
+                    <li><strong>Books:</strong> 
+                        <ul>
+                            <li>"Probability and Statistics for Engineers and Scientists" by Walpole, Myers, Myers, and Ye</li>
+                            <li>"Introduction to Probability and Statistics for Engineers and Scientists" by Sheldon M. Ross</li>
+                            <li>"Probability, Random Variables, and Random Signal Principles" by Peyton Z. Peebles</li>
+                        </ul>
+                    </li>
+                    <li><strong>Videos:</strong> 
+                        <ul>
+                            <li><a href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRjKA_NuK9mHmlk0dZzuP1P1" target="_blank">Probability and Statistics for Engineers (YouTube series)</a></li>
+                            <li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank">Khan Academy Statistics and Probability</a></li>
+                        </ul>
+                    </li>
+                    <li><strong>Websites:</strong> 
+                        <ul>
+                            <li><a href="https://www.statsoft.com/Textbook" target="_blank">StatSoft Electronic Statistics Textbook</a></li>
+                            <li><a href="https://www.probabilitycourse.com/" target="_blank">Introduction to Probability</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here - DO NOT MODIFY THIS DIV -->
+    <div id="footer-container"></div>
+
+    <!-- DO NOT MODIFY: This script handles the show/hide solution functionality -->
+    <script>
+        // ...existing code...
+    </script>
+</body>
+
+</html>
