@@ -8,7 +8,7 @@ Our mission is to make electrical engineering education accessible, structured, 
 
 ## Repository Information
 - **Website URL**: [eeprep.com](https://eeprep.com) (in development)
-- **Repository**: [github.com/easilva04/eeprep.com](https://github.com/easilva04/eeprep.com)
+- **Repository**: [github.com/edwardasilva/eeprep.com](https://github.com/edwardasilva/eeprep.com)
 
 ## For Contributors
 - Check our [Todo List](/Todo.md) to see what needs to be done

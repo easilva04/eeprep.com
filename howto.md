@@ -3,7 +3,7 @@
 This guide explains how to contribute to the EEPrep.com project. Whether you're a content creator, developer, designer, or just interested in helping, this document will guide you through the process.
 
 ## Repository Information
-- **Repository URL**: [github.com/easilva04/eeprep.com](https://github.com/easilva04/eeprep.com)
+- **Repository URL**: [github.com/edwardasilva/eeprep.com](https://github.com/edwardasilva/eeprep.com)
 - **Project Overview**: See our [README.md](/README.md) for project details
 - **Task List**: Check our [Todo.md](/Todo.md) for current tasks
 
@@ -19,7 +19,7 @@ This guide explains how to contribute to the EEPrep.com project. Whether you're 
 ### Setting Up Your Local Environment
 
 1. **Fork the Repository**
-   - Visit [github.com/easilva04/eeprep.com](https://github.com/easilva04/eeprep.com)
+   - Visit [github.com/edwardasilva/eeprep.com](https://github.com/edwardasilva/eeprep.com)
    - Click the "Fork" button in the top-right corner
 
 2. **Clone Your Fork**
@@ -30,7 +30,7 @@ This guide explains how to contribute to the EEPrep.com project. Whether you're 
 
 3. **Set Up Upstream Remote**
    ```
-   git remote add upstream https://github.com/easilva04/eeprep.com.git
+   git remote add upstream https://github.com/edwardasilva/eeprep.com.git
    ```
 
 ## Development Workflow
